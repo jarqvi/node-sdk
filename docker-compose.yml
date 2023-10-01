@@ -1,0 +1,47 @@
+version: '3.5'
+services:
+  paas:
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ${PWD}/node-sdk:/local
+    command: >
+      generate
+      -i https://openapi.liara.ir/paas.yaml
+      -g typescript
+      -o /local/paas
+  dbaas:
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ${PWD}/node-sdk:/local
+    command: >
+      generate
+      -i https://openapi.liara.ir/dbaas.yaml
+      -g typescript
+      -o /local/dbaas
+  dns:
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ${PWD}/node-sdk:/local
+    command: >
+      generate
+      -i https://openapi.liara.ir/dns.yaml
+      -g typescript
+      -o /local/dns
+  mail:
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ${PWD}/node-sdk:/local
+    command: >
+      generate
+      -i https://openapi.liara.ir/mail.yaml
+      -g typescript
+      -o /local/mail
+  object-storage:
+    image: openapitools/openapi-generator-cli
+    volumes:
+      - ${PWD}/node-sdk:/local
+    command: >
+      generate
+      -i https://openapi.liara.ir/object-storage.yaml
+      -g typescript
+      -o /local/object-storage
