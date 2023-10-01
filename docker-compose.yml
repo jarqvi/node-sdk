@@ -3,7 +3,7 @@ services:
   paas:
     image: openapitools/openapi-generator-cli
     volumes:
-      - ${PWD}/sdk:/local
+      - ${PWD}/.:/local
     command: >
       generate
       -i https://openapi.liara.ir/paas.yaml
@@ -12,7 +12,7 @@ services:
   dbaas:
     image: openapitools/openapi-generator-cli
     volumes:
-      - ${PWD}/sdk:/local
+      - ${PWD}/.:/local
     command: >
       generate
       -i https://openapi.liara.ir/dbaas.yaml
@@ -21,7 +21,7 @@ services:
   dns:
     image: openapitools/openapi-generator-cli
     volumes:
-      - ${PWD}/sdk:/local
+      - ${PWD}/.:/local
     command: >
       generate
       -i https://openapi.liara.ir/dns.yaml
@@ -30,7 +30,7 @@ services:
   mail:
     image: openapitools/openapi-generator-cli
     volumes:
-      - ${PWD}/sdk:/local
+      - ${PWD}/.:/local
     command: >
       generate
       -i https://openapi.liara.ir/mail.yaml
@@ -39,7 +39,7 @@ services:
   object-storage:
     image: openapitools/openapi-generator-cli
     volumes:
-      - ${PWD}/sdk:/local
+      - ${PWD}/.:/local
     command: >
       generate
       -i https://openapi.liara.ir/object-storage.yaml

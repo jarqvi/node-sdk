@@ -1,0 +1,48 @@
+{
+  "name": "",
+  "version": "",
+  "description": "OpenAPI client for ",
+  "author": "OpenAPI-Generator Contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "openapi",
+    "fetch",
+    "liara",
+    "node",
+    "sdk"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "types": "./lib/index.d.js"
+    }
+  },
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "whatwg-fetch": "^3.0.0",
+    "es6-promise": "^4.2.4",
+    "url-parse": "^1.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.0",
+    "@types/url-parse": "1.4.4",
+    "@types/node": "^20.4.5",
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1"
+  },
+  "files": [
+    "lib"
+  ]
+}
