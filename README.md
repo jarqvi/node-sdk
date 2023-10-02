@@ -46,7 +46,6 @@ npm publish
 
 ```
 npm install @liara/sdk
-
 ```
 
 #### TypeScript example:
