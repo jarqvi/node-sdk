@@ -28,7 +28,9 @@
   "typings": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "config:cmd": "./bin/cmd/generate.cmd && ./bin/cmd/doc.cmd && ./bin/cmd/remove-files.cmd",
+    "config:bash": "./bin/bash/generate.sh && ./bin/bash/doc.sh && ./bin/bash/remove-files.sh"
   },
   "dependencies": {
     "whatwg-fetch": "^3.0.0",
