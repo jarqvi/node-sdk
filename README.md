@@ -44,6 +44,11 @@ npm publish
 
 #### Note: The type argument in the package.json file must be equal to commonjs.
 
+```
+npm install @liara/sdk
+
+```
+
 #### TypeScript example:
 
 ```
