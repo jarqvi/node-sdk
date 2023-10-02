@@ -1,80 +1,122 @@
-## @
+## @liara/sdk
 
-This generator creates TypeScript/JavaScript client that utilizes fetch-api.
+The liara sdk, with TypeScript/JavaScript languages for client that utilizes fetch-api.
 
-### Building
+### Development
 
-To build and compile the typescript sources to javascript use:
+#### Note: You must have Node and NPM, Docker, Docker Compose installed on the system.
+
+#### First, clone the project with the following command:
+```
+git clone https://github.com/liara-cloud/node-sdk.git
+```
+
+#### Second, run one of the following commands depending on your operating system:
+
+_windows:_
+
+```
+npm run config:cmd
+```
+_Linux/Mac:_
+
+```
+npm run config:bash
+```
+
+#### Third, run one of the following commands for installing packages:
 ```
 npm install
-npm run build
 ```
 
-### Publishing
-
-First build the package then run ```npm publish```
-
-### Consuming
-
-Navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
-
+#### Fourth, run one of the following commands for build project:
 ```
-npm install @ --save
+npm run prepare
 ```
+### Publish new version
 
-_unPublished (not recommended):_
-
+#### To publish the package, first increase the version of the package in the package.json file, then publish the package with the following command:
 ```
-npm install PATH_TO_GENERATED_PACKAGE --save
+npm publish
 ```
 
 ### Usage
 
-Below code snippet shows exemplary usage of the configuration and the API based 
-on the typical `PetStore` example used for OpenAPI. 
+#### Note: The type argument in the package.json file must be equal to commonjs.
+
+#### TypeScript example:
 
 ```
-import * as your_api from 'your_api_package'
+import liaraSDK from '@liara/sdk';
 
-// Covers all auth methods included in your OpenAPI yaml definition
-const authConfig: your_api.AuthMethodsConfiguration = {
-    "api_key": "YOUR_API_KEY"
-}
+const { paas, dbaas, dns, mail, objectStorage } = liaraSDK('your-api-token');
 
-// Implements a simple middleware to modify requests before (`pre`) they are sent
-// and after (`post`) they have been received 
-class Test implements your_api.Middleware {
-    pre(context: your_api.RequestContext): Promise<your_api.RequestContext> {
-        // Modify context here and return
-        return Promise.resolve(context);
-    }
-
-    post(context: your_api.ResponseContext): Promise<your_api.ResponseContext> {
-        return Promise.resolve(context);
-    }
-
-}
-
-// Create configuration parameter object
-const configurationParameters = {
-    httpApi: new your_api.JQueryHttpLibrary(), // Can also be ignored - default is usually fine
-    baseServer: your_api.servers[0], // First server is default
-    authMethods: authConfig, // No auth is default
-    promiseMiddleware: [new Test()],
-}
-
-// Convert to actual configuration
-const config = your_api.createConfiguration(configurationParameters);
-
-// Use configuration with your_api
-const api = new your_api.PetApi(config);
-your_api.Pet p = new your_api.Pet();
-p.name = "My new pet";
-p.photoUrls = [];
-p.tags = [];
-p.status = "available";
-Promise<your_api.Pet> createdPet = api.addPet(p);
+paas.AppsApi.getApps()
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 
 ```
+
+#### JavaScript example:
+
+```
+const { default: liaraSDK } = require('jarqvi-sdk');
+
+const { paas, dbaas, dns, mail, objectStorage } = liaraSDK('your-api-token');
+
+paas.AppsApi.getApps()
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+
+```
+
+### Documentation of all methods:
+
+#### DNS:
+[CheckNameServersApi](./doc/dns/CheckNameServersApi.md)
+
+[DnsRecordApi](./doc/dns/DnsRecordApi.md)
+
+[ZoneApi](./doc/dns/ZoneApi.md)
+#### Mail:
+[AccountsApi](./doc/mail/AccountsApi.md)
+
+[AttachmentsApi](./doc/mail/AttachmentsApi.md)
+
+[EventApi](./doc/mail/EventApi.md)
+
+[ForwardApi](./doc/mail/ForwardApi.md)
+
+[MailsApi](./doc/mail/MailsApi.md)
+
+[MessagesApi](./doc/mail/MessagesApi.md)
+
+[SmtpApi](./doc/mail/SmtpApi.md)
+#### PaaS:
+[AppsApi](./doc/paas/AppsApi.md)
+
+[DeployApi](./doc/paas/DeployApi.md)
+
+[DisksApi](./doc/paas/DisksApi.md)
+
+[DomainsApi](./doc/paas/DomainsApi.md)
+
+[ReportsApi](./doc/paas/ReportsApi.md)
+
+[SettingsApi](./doc/paas/SettingsApi.md)
+#### DBaaS:
+[BackupsApi](./doc/dbaas/BackupsApi.md)
+
+[DatabasesApi](./doc/dbaas/DatabasesApi.md)
+
+[DatabasesApi](./doc/dbaas/DatabasesApi.md)
+#### Object Storage:
+[BucketApi](./doc/object-storage/BucketApi.md)
+
+[FolderApi](./doc/object-storage/FolderApi.md)
+
+[KeyApi](./doc/object-storage/KeyApi.md)
+
+[MetricsApi](./doc/object-storage/MetricsApi.md)
+
+[ObjectApi](./doc/object-storage/ObjectApi.md)
