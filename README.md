@@ -64,7 +64,7 @@ paas.AppsApi.getApps()
 #### JavaScript example:
 
 ```
-const { default: liaraSDK } = require('jarqvi-sdk');
+const { default: liaraSDK } = require('@liara/sdk');
 
 const { paas, dbaas, dns, mail, objectStorage } = liaraSDK('your-api-token');
 

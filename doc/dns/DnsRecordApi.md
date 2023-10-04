@@ -1,4 +1,4 @@
-# .DnsRecordApi
+# DnsRecordApi
 
 All URIs are relative to *https://dns-service.iran.liara.ir/api/v1*
 
@@ -20,29 +20,22 @@ Creates a new dns record, returns the dns record on creation
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DnsRecordApi(configuration);
-
-let body:.DnsRecordApiCreateDnsRecordRequest = {
-  // string | The name of the zone to delete
-  zone: "zone_example",
-  // DnsRecord
-  dnsRecord: {
-    name: "name_example",
-    type: "type_example",
-    ttl: 3.14,
-    contents: [
-      {},
-    ],
-  },
+const body = {
+    "name": "name-example",
+    "type": "type-example",
+    "ttl": 0,
+    "contents": [
+        {}
+    ]
 };
 
-apiInstance.createDnsRecord(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dns.DnsRecordApi.createDnsRecord('zone-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -60,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -77,7 +70,8 @@ Name | Type | Description  | Notes
 **404** | Zone does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
+
 
 # **deleteDnsRecord**
 > void deleteDnsRecord()
@@ -88,22 +82,13 @@ Delete dns record from this zone
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DnsRecordApi(configuration);
-
-let body:.DnsRecordApiDeleteDnsRecordRequest = {
-  // string | The name of the zone to delete dns record
-  zone: "zone_example",
-  // string | The id of dns record to delete its data
-  id: "id_example",
-};
-
-apiInstance.deleteDnsRecord(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dns.DnsRecordApi.deleteDnsRecord('zone-example', 'dns-record-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -121,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -137,7 +122,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Zone does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **editDnsRecord**
 > DnsRecordResponse editDnsRecord(dnsRecord)
@@ -148,31 +133,22 @@ you can not edit type of dns record
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DnsRecordApi(configuration);
-
-let body:.DnsRecordApiEditDnsRecordRequest = {
-  // string | The name of the zone to edit dns record
-  zone: "zone_example",
-  // string | The id of dns record to edit its data
-  id: "id_example",
-  // DnsRecord
-  dnsRecord: {
-    name: "name_example",
-    type: "type_example",
-    ttl: 3.14,
-    contents: [
-      {},
-    ],
-  },
+const body = {
+    "name": "name-example",
+    "type": "type-example",
+    "ttl": 0,
+    "contents": [
+        {}
+    ]
 };
 
-apiInstance.editDnsRecord(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dns.DnsRecordApi.editDnsRecord('zone-example', 'dns-record-id', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -191,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -208,7 +184,7 @@ Name | Type | Description  | Notes
 **404** | Zone does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDnsRecord**
 > DnsRecordResponse getDnsRecord()
@@ -219,22 +195,13 @@ Get Dns Record data on this zone
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DnsRecordApi(configuration);
-
-let body:.DnsRecordApiGetDnsRecordRequest = {
-  // string | The name of the zone to see dns record
-  zone: "zone_example",
-  // string | The id of dns record to see its data
-  id: "id_example",
-};
-
-apiInstance.getDnsRecord(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dns.DnsRecordApi.getDnsRecord('zone-example', 'dns-record-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -252,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -268,7 +235,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Zone or dns record Not Found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListDnsRecords**
 > AllDnsRecordResponse getListDnsRecords()
@@ -279,20 +246,13 @@ Get all Dns Records on this zone
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DnsRecordApi(configuration);
-
-let body:.DnsRecordApiGetListDnsRecordsRequest = {
-  // string | The name of the zone to see all dns records
-  zone: "zone_example",
-};
-
-apiInstance.getListDnsRecords(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dns.DnsRecordApi.getListDnsRecords('zone-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -309,7 +269,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -325,6 +285,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Zone Not Found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

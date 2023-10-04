@@ -1,4 +1,4 @@
-# .CheckNameServersApi
+# CheckNameServersApi
 
 All URIs are relative to *https://dns-service.iran.liara.ir/api/v1*
 
@@ -16,20 +16,13 @@ check nameserver of zone
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .CheckNameServersApi(configuration);
-
-let body:.CheckNameServersApiCheckNameServerRequest = {
-  // string | The name of the zone to check status
-  zone: "zone_example",
-};
-
-apiInstance.checkNameServer(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dns.CheckNameServersApi.checkNameServer('zone-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -46,7 +39,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -64,6 +57,4 @@ Name | Type | Description  | Notes
 **406** | Please try later. |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)
