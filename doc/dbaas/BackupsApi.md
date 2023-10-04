@@ -1,4 +1,4 @@
-# .BackupsApi
+# BackupsApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -18,20 +18,13 @@ backup a database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BackupsApi(configuration);
-
-let body:.BackupsApiCreateBackupRequest = {
-  // string
-  id: "id_example",
-};
-
-apiInstance.createBackup(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.BackupsApi.createBackup('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -48,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -64,7 +57,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **downloadBackup**
 > void downloadBackup()
@@ -75,22 +68,13 @@ download a backup that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BackupsApi(configuration);
-
-let body:.BackupsApiDownloadBackupRequest = {
-  // string | The id of your database
-  id: "id_example",
-  // string | The name of your backup
-  name: "name_example",
-};
-
-apiInstance.downloadBackup(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.BackupsApi.downloadBackup('id-example', 'name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -108,7 +92,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -124,7 +108,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListBackups**
 > void getListBackups()
@@ -135,20 +119,13 @@ get all backups that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BackupsApi(configuration);
-
-let body:.BackupsApiGetListBackupsRequest = {
-  // string
-  id: "id_example",
-};
-
-apiInstance.getListBackups(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.BackupsApi.getListBackups('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -165,7 +142,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -181,6 +158,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

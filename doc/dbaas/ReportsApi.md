@@ -1,4 +1,4 @@
-# .ReportsApi
+# ReportsApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -20,22 +20,15 @@ get cpu reports of database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1696214892; // example
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetDatabaseCpuReportsRequest = {
-  // string | The name of your database
-  id: "id_example",
-  // number | The since of your cpu reports
-  since: 3.14,
-};
-
-apiInstance.getDatabaseCpuReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DBReportsApi.getDatabaseCpuReports('id-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -53,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -69,7 +62,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseMemoryReports**
 > void getDatabaseMemoryReports()
@@ -80,22 +73,15 @@ get memory reports of database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1696214892;
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetDatabaseMemoryReportsRequest = {
-  // string | The name of your database
-  id: "id_example",
-  // number | The since of your memory reports
-  since: 3.14,
-};
-
-apiInstance.getDatabaseMemoryReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DBReportsApi.getDatabaseMemoryReports('id-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -113,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -129,7 +115,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseNetworkReceiveReports**
 > void getDatabaseNetworkReceiveReports()
@@ -140,22 +126,15 @@ get network-receive reports of database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1696214892;
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetDatabaseNetworkReceiveReportsRequest = {
-  // string | The name of your database
-  id: "id_example",
-  // number | The since of your network-receive reports
-  since: 3.14,
-};
-
-apiInstance.getDatabaseNetworkReceiveReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DBReportsApi.getDatabaseNetworkReceiveReports('id-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -173,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -189,7 +168,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseNetworkTransmitReports**
 > void getDatabaseNetworkTransmitReports()
@@ -200,22 +179,15 @@ get network-transmit reports of database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1696214892;
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetDatabaseNetworkTransmitReportsRequest = {
-  // string | The name of your database
-  id: "id_example",
-  // number | The since of your network-transmit reports
-  since: 3.14,
-};
-
-apiInstance.getDatabaseNetworkTransmitReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DBReportsApi.getDatabaseNetworkTransmitReports('id-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -233,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -249,7 +221,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseSummaryReports**
 > void getDatabaseSummaryReports()
@@ -260,20 +232,13 @@ get summary reports of database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetDatabaseSummaryReportsRequest = {
-  // string | The name of your database
-  id: "id_example",
-};
-
-apiInstance.getDatabaseSummaryReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DBReportsApi.getDatabaseSummaryReports('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -290,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -306,6 +271,6 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 

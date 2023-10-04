@@ -1,4 +1,4 @@
-# .DatabasesApi
+# DatabasesApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**turnDatabase**](DatabasesApi.md#turnDatabase) | **POST** /v1/databases/{id}/actions/scale | Power on or power off a database
 
 
+
 # **changeControlPanel**
 > void changeControlPanel()
 
@@ -23,22 +24,15 @@ change control-panel status that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const status = 'enable'; // 'disable'
 
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiChangeControlPanelRequest = {
-  // string
-  id: "id_example",
-  // 'enable' | 'disable'
-  status: "enable",
-};
-
-apiInstance.changeControlPanel(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.changeControlPanel('id-example', status)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -56,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -73,7 +67,7 @@ Name | Type | Description  | Notes
 **404** | Database not found |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **changePublicNetwork**
 > void changePublicNetwork()
@@ -84,22 +78,15 @@ change public network status that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const status = 'enable'; // 'disable'
 
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiChangePublicNetworkRequest = {
-  // string
-  id: "id_example",
-  // 'enable' | 'disable'
-  status: "enable",
-};
-
-apiInstance.changePublicNetwork(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.changePublicNetwork('id-example', status)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -117,7 +104,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -134,7 +121,7 @@ Name | Type | Description  | Notes
 **404** | Database not found |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createDatabase**
 > void createDatabase(createADatabases)
@@ -145,26 +132,21 @@ create a database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiCreateDatabaseRequest = {
-  // CreateDatabases
-  createADatabases: {
-    hostname: "hostname_example",
+const body = {
+    hostname: 'hostname-example',
     publicNetwork: true,
-    type: "type_example",
-    planID: "planID_example",
-    version: "version_example",
-  },
+    type: 'type-example',
+    planID: 'planID-example',
+    version: 'version-example',
 };
 
-apiInstance.createDatabase(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.createDatabase(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -181,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -197,7 +179,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteDatabase**
 > void deleteDatabase()
@@ -208,20 +190,13 @@ delete a database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiDeleteDatabaseRequest = {
-  // string
-  id: "id_example",
-};
-
-apiInstance.deleteDatabase(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.deleteDatabase('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -238,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -254,7 +229,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabase**
 > DBDetails getDatabase()
@@ -265,20 +240,13 @@ get a database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiGetDatabaseRequest = {
-  // string
-  id: "id_example",
-};
-
-apiInstance.getDatabase(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.getDatabase('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -295,7 +263,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -311,7 +279,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListDatabases**
 > DBsDetails getListDatabases()
@@ -322,17 +290,13 @@ get all databases that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:any = {};
-
-apiInstance.getListDatabases(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.getListDatabases()
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -346,7 +310,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -361,7 +325,7 @@ This endpoint does not need any parameter.
 **400** | Bad request |  -  |
 **401** | Missing authentication |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **resizeDatabase**
 > void resizeDatabase(resize)
@@ -372,25 +336,18 @@ resize a database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiResizeDatabaseRequest = {
-  // string
-  id: "id_example",
-  // ResizeDatabaseRequest
-  resize: {
+const body = {
     disk: true,
-    planID: "planID_example",
-  },
+    planID: 'planID-example',
 };
 
-apiInstance.resizeDatabase(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.resizeDatabase('id-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -408,7 +365,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -424,7 +381,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **turnDatabase**
 > void turnDatabase(scale)
@@ -435,24 +392,17 @@ power on or power off a database that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DatabasesApi(configuration);
-
-let body:.DatabasesApiTurnDatabaseRequest = {
-  // string
-  id: "id_example",
-  // TurnDatabaseRequest | 1 for power on or 0 for power off
-  scale: {
-    scale: 3.14,
-  },
+const body = {
+    scale: 1
 };
 
-apiInstance.turnDatabase(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+dbaas.DatabasesApi.turnDatabase('id-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -470,7 +420,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -486,6 +436,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Database not found |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

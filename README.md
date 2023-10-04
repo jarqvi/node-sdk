@@ -113,7 +113,7 @@ paas.AppsApi.getApps()
 
 [DatabasesApi](./doc/dbaas/DatabasesApi.md)
 
-[DatabasesApi](./doc/dbaas/DatabasesApi.md)
+[ReportsApi](./doc/dbaas/ReportsApi.md)
 #### Object Storage:
 [BucketApi](./doc/object-storage/BucketApi.md)
 
