@@ -1,4 +1,4 @@
-# .EventApi
+# EventApi
 
 All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
 
@@ -15,26 +15,13 @@ Method | HTTP request | Description
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .EventApi(configuration);
-
-let body:.EventApiGetAllEventsRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  messageID: "62ECB020842930cc01FFCCfe",
-  // number (optional)
-  page: 1,
-  // number (optional)
-  count: 15,
-};
-
-apiInstance.getAllEvents(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.EventApi.getAllEvents('mail-server-id', 'message-id', 1, 15)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -54,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -70,6 +57,6 @@ Name | Type | Description  | Notes
 **404** | Mail Server or Mail Message not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 

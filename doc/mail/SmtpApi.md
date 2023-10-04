@@ -1,4 +1,4 @@
-# .SmtpApi
+# SmtpApi
 
 All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
 
@@ -18,22 +18,13 @@ Method | HTTP request | Description
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SmtpApi(configuration);
-
-let body:.SmtpApiDeleteSmtpCredentialRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  username: "username_example",
-};
-
-apiInstance.deleteSmtpCredential(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.SmtpApi.deleteSmtpCredential('mail-server-id', 'username')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -51,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -67,7 +58,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server or SMTP Credential not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **generateCredentials**
 > CreateSMTP generateCredentials()
@@ -77,24 +68,17 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SmtpApi(configuration);
-
-let body:.SmtpApiGenerateCredentialsRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // Model4 (optional)
-  body: {
-    description: "description_example",
-  },
+const body = {
+    description: 'description-example'
 };
 
-apiInstance.generateCredentials(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.SmtpApi.generateCredentials('mail-server-id', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -112,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -129,7 +113,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getCredential**
 > SMTP getCredential()
@@ -139,20 +123,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SmtpApi(configuration);
-
-let body:.SmtpApiGetCredentialRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-};
-
-apiInstance.getCredential(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.SmtpApi.getCredential('mail-server-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -169,7 +146,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -185,7 +162,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **revokeCredentials**
 > CreateSMTP revokeCredentials()
@@ -195,24 +172,17 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SmtpApi(configuration);
-
-let body:.SmtpApiRevokeCredentialsRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // Model9 (optional)
-  body: {
-    username: "username_example",
-  },
+const body = {
+    username: 'username-example'
 };
 
-apiInstance.revokeCredentials(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.SmtpApi.revokeCredentials('mail-server-id', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -230,7 +200,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -246,6 +216,6 @@ Name | Type | Description  | Notes
 **404** | Mail Server or Username not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 

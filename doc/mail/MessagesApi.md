@@ -19,24 +19,13 @@ Method | HTTP request | Description
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .MessagesApi(configuration);
-
-let body:.MessagesApiGenerateTemporaryRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  messageID: "62ECB020842930cc01FFCCfe",
-  // number | Specifying hourly expiration schedule options (optional)
-  expiration: 1,
-};
-
-apiInstance.generateTemporary(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.MessagesApi.generateTemporary('mail-server-id', 'message-id', 1)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -55,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -72,7 +61,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server or Mail Message not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAllMails**
 > MailMessages getAllMails()
@@ -82,34 +71,19 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const direction = 'incoming'; // or 'outgoing'
+const state = "state-example";
+const subject = "subject-example";
+const _from = "from-example";
+const to = "to-example";
 
-const configuration = .createConfiguration();
-const apiInstance = new .MessagesApi(configuration);
-
-let body:.MessagesApiGetAllMailsRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // 'incoming' | 'outgoing'
-  direction: "incoming",
-  // number (optional)
-  page: 1,
-  // number (optional)
-  count: 15,
-  // string (optional)
-  state: "state_example",
-  // string (optional)
-  subject: "subject_example",
-  // string (optional)
-  _from: "from_example",
-  // string (optional)
-  to: "to_example",
-};
-
-apiInstance.getAllMails(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.MessagesApi.getAllMails('mail-server-id', direction, 1, 15, state, subject, _from, to)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -133,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -149,7 +123,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getSingleMail**
 > MailMessage getSingleMail()
@@ -159,22 +133,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .MessagesApi(configuration);
-
-let body:.MessagesApiGetSingleMailRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  messageID: "62ECB020842930cc01FFCCfe",
-};
-
-apiInstance.getSingleMail(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.MessagesApi.getSingleMail('mail-server-id', 'message-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -192,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -208,7 +173,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server or Mail Message not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getSingleMailHtml**
 > void getSingleMailHtml()
@@ -218,24 +183,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .MessagesApi(configuration);
-
-let body:.MessagesApiGetSingleMailHtmlRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  messageID: "62ECB020842930cc01FFCCfe",
-  // string
-  token: "token_example",
-};
-
-apiInstance.getSingleMailHtml(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.MessagesApi.getSingleMailHtml('mail-server-id', 'message-id', 'token')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -254,7 +208,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -272,7 +226,7 @@ Name | Type | Description  | Notes
 **409** | Account already taken. |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **sendMail**
 > void sendMail()
@@ -282,36 +236,29 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .MessagesApi(configuration);
-
-let body:.MessagesApiSendMailRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // Model3 (optional)
-  body: {
-    html: "html_example",
-    text: "text_example",
-    subject: "subject_example",
-    to: "to_example",
-    _from: "_from_example",
-    replyTo: "replyTo_example",
+const body = {
+    html: 'html-example',
+    text: 'text-example',
+    subject: 'subject-example',
+    to: 'to-example',
+    _from: '-from-example',
+    replyTo: 'replyTo-example',
     attachments: [
-      {
-        name: "name_example",
-        contentType: "contentType_example",
-        data: "data_example",
-      },
+        {
+            name: 'name-example',
+            contentType: 'contentType-example',
+            data: 'data-example',
+        },
     ],
-  },
 };
 
-apiInstance.sendMail(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.MessagesApi.sendMail('mail-server-id', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -329,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -348,6 +295,4 @@ Name | Type | Description  | Notes
 **429** | Too mnay requests |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

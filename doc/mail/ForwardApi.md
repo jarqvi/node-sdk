@@ -1,4 +1,4 @@
-# .ForwardApi
+# ForwardApi
 
 All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
 
@@ -17,26 +17,17 @@ Method | HTTP request | Description
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ForwardApi(configuration);
-
-let body:.ForwardApiCreateAddressForwardingRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  accountID: "62ECB020842930cc01FFCCfe",
-  // Model6 (optional)
-  body: {
-    address: "address_example",
-  },
+const body = {
+    address: "address-example",
 };
 
-apiInstance.createAddressForwarding(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.ForwardApi.createAddressForwarding('mail-server-id', 'account-id', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -55,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -73,7 +64,7 @@ Name | Type | Description  | Notes
 **409** | Address endpoint already exists |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteExtraEndpoint**
 > void deleteExtraEndpoint()
@@ -83,24 +74,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ForwardApi(configuration);
-
-let body:.ForwardApiDeleteExtraEndpointRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  accountID: "62ECB020842930cc01FFCCfe",
-  // string
-  addressID: "62ECB020842930cc01FFCCfe",
-};
-
-apiInstance.deleteExtraEndpoint(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.ForwardApi.deleteExtraEndpoint('mail-server-id', 'account-id', 'address-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -119,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -135,7 +115,7 @@ Name | Type | Description  | Notes
 **404** | Mail Server or Mail Account or Mail Forward not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListAddressForwarding**
 > MailForwards getListAddressForwarding()
@@ -145,22 +125,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ForwardApi(configuration);
-
-let body:.ForwardApiGetListAddressForwardingRequest = {
-  // string
-  mailServerID: "62ECB020842930cc01FFCCfe",
-  // string
-  accountID: "62ECB020842930cc01FFCCfe",
-};
-
-apiInstance.getListAddressForwarding(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+mail.ForwardApi.getListAddressForwarding('mail-server-id', 'account-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -178,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -194,6 +165,4 @@ Name | Type | Description  | Notes
 **404** | Mail Server or Mail Account not found |  -  |
 **500** | Unexpected error |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)
