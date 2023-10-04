@@ -1,4 +1,4 @@
-# .DomainsApi
+# DomainsApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -23,20 +23,13 @@ check a domain that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiCheckDomainRequest = {
-  // string | The id of your domain
-  id: "id_example",
-};
-
-apiInstance.checkDomain(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.checkDomain('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -53,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -69,7 +62,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Domain does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createAppDomain**
 > void createAppDomain(domain)
@@ -80,24 +73,19 @@ create a domain that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiCreateAppDomainRequest = {
-  // CreateAppDomainRequest | The domain of your app
-  domain: {
-    name: "name_example",
-    project: "project_example",
-    type: "PROJECT",
-  },
+const body = {
+    name: 'name-example',
+    project: 'project-example',
+    type: 'PROJECT',
 };
 
-apiInstance.createAppDomain(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.createAppDomain(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -114,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -131,7 +119,7 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteDomain**
 > void deleteDomain()
@@ -142,20 +130,13 @@ delete a domain that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiDeleteDomainRequest = {
-  // string | The id of your domain
-  id: "id_example",
-};
-
-apiInstance.deleteDomain(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.deleteDomain('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -172,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -188,7 +169,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Domain does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **disableSsl**
 > void disableSsl()
@@ -199,20 +180,13 @@ disable ssl that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiDisableSslRequest = {
-  // string | The id of your domain
-  id: "id_example",
-};
-
-apiInstance.disableSsl(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.disableSsl('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -229,7 +203,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -245,7 +219,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Domain does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **enableSsl**
 > void enableSsl(domain)
@@ -256,22 +230,17 @@ enable ssl that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiEnableSslRequest = {
-  // EnableSslRequest | The domain of your app
-  domain: {
-    domain: "domain_example",
-  },
+const body = {
+    domain: 'domain-example',
 };
 
-apiInstance.enableSsl(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.enableSsl(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -288,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -304,7 +273,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Domain does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppDomains**
 > Domains getAppDomains()
@@ -315,20 +284,13 @@ get all domains that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiGetAppDomainsRequest = {
-  // string | The name of your app
-  name: "name_example",
-};
-
-apiInstance.getAppDomains(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.getAppDomains('name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -345,7 +307,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -361,7 +323,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **redirectDomain**
 > void redirectDomain(domain)
@@ -372,25 +334,18 @@ redirect a domain that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiRedirectDomainRequest = {
-  // string | The id of your domain
-  id: "id_example",
-  // RedirectDomainRequest | The domain of your app
-  domain: {
-    redirectStatus: 3.14,
-    redirectTo: "redirectTo_example",
-  },
+const body = {
+    redirectStatus: 301, // or 302
+    redirectTo: 'redirectTo-example',
 };
 
-apiInstance.redirectDomain(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.redirectDomain('id-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -408,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -424,7 +379,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | Domain does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **setAppDomain**
 > void setAppDomain(domain)
@@ -435,23 +390,18 @@ set a domain for project that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DomainsApi(configuration);
-
-let body:.DomainsApiSetAppDomainRequest = {
-  // SetAppDomainRequest | The domain of your app
-  domain: {
-    domainID: "domainID_example",
-    projectID: "projectID_example",
-  },
+const body = {
+    domainID: 'domainID-example',
+    projectID: 'projectID-example',
 };
 
-apiInstance.setAppDomain(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DomainsApi.setAppDomain(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -468,7 +418,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -484,6 +434,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App or domain does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

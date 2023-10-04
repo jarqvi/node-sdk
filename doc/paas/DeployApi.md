@@ -1,4 +1,4 @@
-# .DeployApi
+# DeployApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -17,26 +17,19 @@ deploy releases that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DeployApi(configuration);
-
-let body:.DeployApiReleasesDeployRequest = {
-  // string | The name of your app for deploy
-  name: "name_example",
-  // DeployReleases
-  deployReleases: {
-    sourceID: "sourceID_example",
-    port: 3.14,
-    type: "type_example",
-  },
+const body = {
+    sourceID: 'sourceID-example',
+    port: 3000,
+    type: 'type-example',
 };
 
-apiInstance.releasesDeploy(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DeployApi.releasesDeploy('name-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -54,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -70,7 +63,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **sourcesDeploy**
 > void sourcesDeploy()
@@ -114,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -130,6 +123,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

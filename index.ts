@@ -70,6 +70,7 @@ function createLiaraSDK(token: string) {
             SettingsApi: new paasSDK.SettingsApi(paasConfig),
             DisksApi: new paasSDK.DisksApi(paasConfig),
             PReportsApi: new paasSDK.ReportsApi(paasConfig),
+            DomainsApi: new paasSDK.DomainsApi(paasConfig),
         },
         dbaas: {
             DatabasesApi: new dbaasSDK.DatabasesApi(dbaasConfig),

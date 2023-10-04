@@ -1,4 +1,4 @@
-# .ReportsApi
+# ReportsApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -20,22 +20,15 @@ get cpu reports of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1354654789; // example
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetAppCpuReportsRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // number | The since of your cpu reports
-  since: 3.14,
-};
-
-apiInstance.getAppCpuReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.PReportsApi.getAppCpuReports('name-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -53,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -69,7 +62,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppMemoryReports**
 > void getAppMemoryReports()
@@ -80,22 +73,15 @@ get memory reports of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1354654789; // example
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetAppMemoryReportsRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // number | The since of your memory reports
-  since: 3.14,
-};
-
-apiInstance.getAppMemoryReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.PReportsApi.getAppMemoryReports('name-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -113,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -129,7 +115,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppNetworkReceiveReports**
 > void getAppNetworkReceiveReports()
@@ -140,22 +126,15 @@ get network-receive reports of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1354654789; // example
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetAppNetworkReceiveReportsRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // number | The since of your network-receive reports
-  since: 3.14,
-};
-
-apiInstance.getAppNetworkReceiveReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.PReportsApi.getAppNetworkReceiveReports('name-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -173,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -189,7 +168,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppSummaryReports**
 > void getAppSummaryReports()
@@ -200,20 +179,13 @@ get summary reports of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetAppSummaryReportsRequest = {
-  // string | The name of your app
-  name: "name_example",
-};
-
-apiInstance.getAppSummaryReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.PReportsApi.getAppSummaryReports('name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -230,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -246,7 +218,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getNetworkTransmitReports**
 > void getNetworkTransmitReports()
@@ -257,22 +229,15 @@ get network-transmit reports of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+const since = 1354654789; // example
 
-const configuration = .createConfiguration();
-const apiInstance = new .ReportsApi(configuration);
-
-let body:.ReportsApiGetNetworkTransmitReportsRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // number | The since of your network-transmit reports
-  since: 3.14,
-};
-
-apiInstance.getNetworkTransmitReports(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.PReportsApi.getNetworkTransmitReports('name-example', since)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -290,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -306,6 +271,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

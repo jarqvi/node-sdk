@@ -1,4 +1,4 @@
-# .SettingsApi
+# SettingsApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -19,22 +19,13 @@ default subdomain that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SettingsApi(configuration);
-
-let body:.SettingsApiDefaultSubdomainRequest = {
-  // string
-  id: "id_example",
-  // string | disable or enable
-  status: "status_example",
-};
-
-apiInstance.defaultSubdomain(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.SettingsApi.defaultSubdomain('id-example', 'enable') // or 'disable'
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -52,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -69,7 +60,7 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **ipStatic**
 > any ipStatic()
@@ -80,22 +71,13 @@ ip static that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SettingsApi(configuration);
-
-let body:.SettingsApiIpStaticRequest = {
-  // string
-  id: "id_example",
-  // string | disable or enable
-  status: "status_example",
-};
-
-apiInstance.ipStatic(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.SettingsApi.ipStatic('id-example', 'enable') // or 'disable'
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -113,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -130,7 +112,7 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **updateEnvs**
 > void updateEnvs(updateEnvs)
@@ -141,28 +123,23 @@ update envs that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SettingsApi(configuration);
-
-let body:.SettingsApiUpdateEnvsRequest = {
-  // UpdateEnvs
-  updateEnvs: {
-    project: "project_example",
+const body = {
+    project: 'project-example',
     variables: [
       {
-        key: "key_example",
-        value: "value_example",
+        key: 'key-example',
+        value: 'value-example',
       },
     ],
-  },
-};
+  };
 
-apiInstance.updateEnvs(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.SettingsApi.updateEnvs(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -179,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -195,7 +172,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **zeroDowntime**
 > void zeroDowntime()
@@ -206,22 +183,13 @@ zero downtime that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .SettingsApi(configuration);
-
-let body:.SettingsApiZeroDowntimeRequest = {
-  // string
-  id: "id_example",
-  // string | disable or enable
-  status: "status_example",
-};
-
-apiInstance.zeroDowntime(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.SettingsApi.zeroDowntime('id-example', 'enable') // or 'disable'
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -239,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -256,6 +224,6 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 

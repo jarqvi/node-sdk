@@ -1,4 +1,4 @@
-# .AppsApi
+# AppsApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -25,24 +25,17 @@ create app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiChangePlanRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // ChangePlanRequest | The plan of your app
-  plan: {
-    planID: "planID_example",
-  },
+const body = {
+    planID: 'plan-example'
 };
 
-apiInstance.changePlan(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.changePlan('name-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -60,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -76,7 +69,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createApp**
 > void createApp(createApp)
@@ -87,24 +80,19 @@ create app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiCreateAppRequest = {
-  // CreateApp
-  createApp: {
-    name: "name_example",
-    planID: "planID_example",
-    platform: "platform_example",
-  },
+const body = {
+    name: 'name-example',
+    planID: 'planID-example',
+    platform: 'platform-example',
 };
 
-apiInstance.createApp(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.createApp(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -121,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -137,7 +125,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteAppByName**
 > void deleteAppByName()
@@ -148,20 +136,13 @@ delete app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiDeleteAppByNameRequest = {
-  // string | The name of the app to delete
-  name: "name_example",
-};
-
-apiInstance.deleteAppByName(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.deleteAppByName('name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -178,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -194,7 +175,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppApplets**
 > Applets getAppApplets()
@@ -205,20 +186,13 @@ get applets of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiGetAppAppletsRequest = {
-  // string | The name of your app
-  name: "name_example",
-};
-
-apiInstance.getAppApplets(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.getAppApplets('name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -235,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -251,7 +225,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppByName**
 > ProjectAllDetails getAppByName()
@@ -262,20 +236,13 @@ get all details of all project that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiGetAppByNameRequest = {
-  // string | The name of your app
-  name: "name_example",
-};
-
-apiInstance.getAppByName(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+ipaas.AppsApi.getAppByName('name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -292,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -307,7 +274,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppLogs**
 > void getAppLogs()
@@ -318,22 +285,13 @@ get logs of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiGetAppLogsRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // string | Show logs since timestamp
-  since: "since_example",
-};
-
-apiInstance.getAppLogs(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.getAppLogs('name-example', 'since-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -351,7 +309,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -367,7 +325,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppReleases**
 > Releases getAppReleases()
@@ -378,24 +336,13 @@ get releases of app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiGetAppReleasesRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // number | The page of your releases
-  page: 1.0,
-  // number | The count of your releases
-  count: 10.0,
-};
-
-apiInstance.getAppReleases(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.getAppReleases('name-example', 1, 10)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -414,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -430,7 +377,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getApps**
 > Projects getApps()
@@ -441,17 +388,13 @@ get all details of all projects that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:any = {};
-
-apiInstance.getApps(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.getApps()
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -465,7 +408,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -480,7 +423,7 @@ This endpoint does not need any parameter.
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **restartApp**
 > void restartApp()
@@ -491,20 +434,13 @@ to restart app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiRestartAppRequest = {
-  // string | The name of the app to restart
-  name: "name_example",
-};
-
-apiInstance.restartApp(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.restartApp('name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -521,7 +457,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -536,7 +472,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **turnApp**
 > void turnApp(scale)
@@ -547,24 +483,17 @@ turn on or off a app that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .AppsApi(configuration);
-
-let body:.AppsApiTurnAppRequest = {
-  // string | The name of the app to turn on or off
-  name: "name_example",
-  // TurnAppRequest | Return 1 to turn on or 0 to turn off
-  scale: {
-    scale: 3.14,
-  },
+const body = {
+    scale: 1
 };
 
-apiInstance.turnApp(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.AppsApi.turnApp('name-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -582,7 +511,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -597,6 +526,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

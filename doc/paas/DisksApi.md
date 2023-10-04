@@ -1,4 +1,4 @@
-# .DisksApi
+# DisksApi
 
 All URIs are relative to *https://api.iran.liara.ir*
 
@@ -21,22 +21,13 @@ create backup disk that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiCreateBackupRequest = {
-  // string | The id of your app
-  id: "id_example",
-  // string | The name of your disk
-  name: "name_example",
-};
-
-apiInstance.createBackup(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DisksApi.createBackup('id-example', 'name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -54,7 +45,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -70,7 +61,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createDisk**
 > void createDisk(disk)
@@ -81,25 +72,18 @@ create a disk that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiCreateDiskRequest = {
-  // string | The name of your app
-  name: "name_example",
-  // CreateDiskRequest | The disk of your app
-  disk: {
-    name: "name_example",
-    size: "size_example",
-  },
+const body = {
+    name: 'name-example',
+    size: 'size-example',
 };
 
-apiInstance.createDisk(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DisksApi.createDisk('name-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -117,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -133,7 +117,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteDisk**
 > void deleteDisk()
@@ -144,22 +128,13 @@ delete a disk that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiDeleteDiskRequest = {
-  // string | The id of your app
-  id: "id_example",
-  // string | The name of your disk of app
-  name: "name_example",
-};
-
-apiInstance.deleteDisk(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DisksApi.deleteDisk('id-example', 'name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -177,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -194,7 +169,7 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 **409** | Conflict |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **downloadBackup**
 > void downloadBackup()
@@ -205,24 +180,13 @@ download backup disk that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiDownloadBackupRequest = {
-  // string | The id of your app
-  id: "id_example",
-  // string | The name of your disk
-  dname: "dname_example",
-  // string | The name of your backup
-  bname: "bname_example",
-};
-
-apiInstance.downloadBackup(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DisksApi.downloadBackup('id-example', 'dname-example', 'bname_example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -241,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -257,7 +221,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getBackups**
 > void getBackups()
@@ -268,22 +232,13 @@ get backups disk that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiGetBackupsRequest = {
-  // string | The id of your app
-  id: "id_example",
-  // string | The name of your disk
-  name: "name_example",
-};
-
-apiInstance.getBackups(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DisksApi.getBackups('id-example', 'name-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -301,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -317,7 +272,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDisks**
 > void getDisks()
@@ -328,20 +283,13 @@ get disks that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiGetDisksRequest = {
-  // string | The id of your app
-  id: "id_example",
-};
-
-apiInstance.getDisks(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+paas.DisksApi.getDisks('id-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -358,7 +306,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -374,6 +322,4 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)
