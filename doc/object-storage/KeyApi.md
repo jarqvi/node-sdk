@@ -1,4 +1,4 @@
-# .KeyApi
+# KeyApi
 
 All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
 
@@ -21,25 +21,20 @@ Create access and secret key
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .KeyApi(configuration);
-
-let body:.KeyApiCreateKeyRequest = {
-  // CreateKey | Declare Buckets for access key
-  body: {
+const body = {
     buckets: [
-      {},
+        {}
     ],
-    description: "description_example",
-  },
+    description: "description-example"
 };
 
-apiInstance.createKey(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.KeyApi.createKey(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -56,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -73,7 +68,7 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteKey**
 > void deleteKey()
@@ -84,20 +79,13 @@ Delete access key
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .KeyApi(configuration);
-
-let body:.KeyApiDeleteKeyRequest = {
-  // string
-  key: "key_example",
-};
-
-apiInstance.deleteKey(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.KeyApi.deleteKey('key-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -114,7 +102,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -132,7 +120,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getKey**
 > void getKey()
@@ -143,20 +131,13 @@ Get a key
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .KeyApi(configuration);
-
-let body:.KeyApiGetKeyRequest = {
-  // string
-  key: "key_example",
-};
-
-apiInstance.getKey(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.KeyApi.getKey('key-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -173,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -190,7 +171,7 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListKeys**
 > void getListKeys()
@@ -200,17 +181,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .KeyApi(configuration);
-
-let body:any = {};
-
-apiInstance.getListKeys(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.KeyApi.getListKeys()
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -224,7 +201,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -241,7 +218,7 @@ This endpoint does not need any parameter.
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **revokeSecretKey**
 > void revokeSecretKey()
@@ -252,20 +229,13 @@ Revoke secret key
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .KeyApi(configuration);
-
-let body:.KeyApiRevokeSecretKeyRequest = {
-  // string
-  key: "key_example",
-};
-
-apiInstance.revokeSecretKey(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.KeyApi.revokeSecretKey('key-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -282,7 +252,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -300,7 +270,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **updateKey**
 > void updateKey(body)
@@ -311,27 +281,20 @@ Update buckets of key ( redefine )
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .KeyApi(configuration);
-
-let body:.KeyApiUpdateKeyRequest = {
-  // string
-  key: "key_example",
-  // CreateKey | Declare Buckets for access key
-  body: {
+const body = {
     buckets: [
-      {},
+        {}
     ],
-    description: "description_example",
-  },
+    description: "description-example"
 };
 
-apiInstance.updateKey(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.KeyApi.updateKey('key-example', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -349,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -367,6 +330,4 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

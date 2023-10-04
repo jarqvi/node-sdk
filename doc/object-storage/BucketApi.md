@@ -1,4 +1,4 @@
-# .BucketApi
+# BucketApi
 
 All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
 
@@ -25,22 +25,13 @@ Change Bucket Access policy on an object storage ( public / private )
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiChangeBucketAccessRequest = {
-  // string
-  bucket: "bucket_example",
-  // string
-  permission: "permission_example",
-};
-
-apiInstance.changeBucketAccess(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.changeBucketAccess('bucket-example', 'permission-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -58,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -75,7 +66,7 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **checkBucket**
 > void checkBucket()
@@ -86,20 +77,13 @@ Check if you can create Bucket with specified Name.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiCheckBucketRequest = {
-  // string
-  bucket: "bucket_example",
-};
-
-apiInstance.checkBucket(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.checkBucket('bucket-name')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -116,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -134,7 +118,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createBucket**
 > void createBucket(body)
@@ -145,24 +129,19 @@ creates a new bucket on an object storage
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiCreateBucketRequest = {
-  // CreateBucket | create bucket. Acceptable values for permission: ( private / public ) and for plan: ( 20g, 40g, 80g, 160g )
-  body: {
-    name: "name_example",
-    plan: "plan_example",
-    permission: "permission_example",
-  },
+const body = {
+    name: 'name-example',
+    plan: 'plan-example',
+    permission: 'permission-example',
 };
 
-apiInstance.createBucket(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.createBucket(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -179,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -196,7 +175,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **destroyBucket**
 > void destroyBucket()
@@ -207,20 +186,13 @@ Delete Bucket on an object storage
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiDestroyBucketRequest = {
-  // string
-  bucket: "bucket_example",
-};
-
-apiInstance.destroyBucket(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.destroyBucket('bocket-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -237,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -254,7 +226,7 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getBuckets**
 > void getBuckets()
@@ -265,17 +237,13 @@ List all Bucket
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:any = {};
-
-apiInstance.getBuckets(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.getBuckets()
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -289,7 +257,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -304,7 +272,7 @@ This endpoint does not need any parameter.
 **401** | Missing authentication |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListPreviousBuckets**
 > void getListPreviousBuckets()
@@ -315,17 +283,13 @@ List previous buckets of storage service in liara.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:any = {};
-
-apiInstance.getListPreviousBuckets(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.getListPreviousBuckets()
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -339,7 +303,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -356,7 +320,7 @@ This endpoint does not need any parameter.
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getMigrations**
 > void getMigrations()
@@ -367,17 +331,13 @@ list migration operation
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:any = {};
-
-apiInstance.getMigrations(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.getMigrations()
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -391,7 +351,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -408,7 +368,7 @@ This endpoint does not need any parameter.
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getSingleBuckets**
 > void getSingleBuckets()
@@ -418,20 +378,13 @@ This endpoint does not need any parameter.
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiGetSingleBucketsRequest = {
-  // string
-  bucket: "bucket_example",
-};
-
-apiInstance.getSingleBuckets(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.getSingleBuckets('bucket-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -448,7 +401,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -463,7 +416,7 @@ Name | Type | Description  | Notes
 **401** | Missing authentication |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **migratingBuckets**
 > void migratingBuckets(body)
@@ -474,24 +427,19 @@ Move data from one bucket to another
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiMigratingBucketsRequest = {
-  // MigrateBucket | Migrate buckets
-  body: {
-    _from: "_from_example",
-    to: "to_example",
-    path: "path_example",
-  },
+const body = {
+    _from: '_from-example',
+    to: 'to-example',
+    path: 'path-example',
 };
 
-apiInstance.migratingBuckets(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.migratingBuckets(body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -508,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -525,7 +473,7 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **upgradeBucket**
 > void upgradeBucket()
@@ -536,22 +484,13 @@ Upgrade Bucket plan ( just make space bigger )
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .BucketApi(configuration);
-
-let body:.BucketApiUpgradeBucketRequest = {
-  // string
-  bucket: "bucket_example",
-  // string
-  plan: "plan_example",
-};
-
-apiInstance.upgradeBucket(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.BucketApi.upgradeBucket('bucket-example', 'plan-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -569,7 +508,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -588,6 +527,4 @@ Name | Type | Description  | Notes
 **500** | server does not response |  -  |
 **502** | bad gateway |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

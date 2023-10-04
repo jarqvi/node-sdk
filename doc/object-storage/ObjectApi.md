@@ -1,4 +1,4 @@
-# .ObjectApi
+# ObjectApi
 
 All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
 
@@ -20,22 +20,13 @@ Delete an object from storage
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ObjectApi(configuration);
-
-let body:.ObjectApiDeleteObjectRequest = {
-  // string
-  bucket: "bucket_example",
-  // string
-  prefix: "prefix_example",
-};
-
-apiInstance.deleteObject(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.ObjectApi.deleteObject('bucket-example', 'prefix-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    }); 
 ```
 
 
@@ -53,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -71,7 +62,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **downloadObject**
 > void downloadObject()
@@ -82,24 +73,13 @@ Return presigned url for download object
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ObjectApi(configuration);
-
-let body:.ObjectApiDownloadObjectRequest = {
-  // string
-  bucket: "bucket_example",
-  // string | specify object path
-  object: "object_example",
-  // string | example: 2 days 7 hours 45 minutes (optional)
-  expiry: "expiry_example",
-};
-
-apiInstance.downloadObject(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.ObjectApi.downloadObject('bucket-example', 'object-example', 'expiry-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -118,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -136,7 +116,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListObjects**
 > void getListObjects()
@@ -147,26 +127,13 @@ Return list of objects ( max:50, min:1 )
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ObjectApi(configuration);
-
-let body:.ObjectApiGetListObjectsRequest = {
-  // string
-  bucket: "bucket_example",
-  // string
-  prefix: "prefix_example",
-  // string | specify number of object ( max: 50, min: 1 ) (optional)
-  number: "number_example",
-  // string (optional)
-  page: "page_example",
-};
-
-apiInstance.getListObjects(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.ObjectApi.getListObjects('bucket-example', 'prefix-example', '10', '1')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -186,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -204,7 +171,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getStatObject**
 > void getStatObject()
@@ -214,22 +181,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ObjectApi(configuration);
-
-let body:.ObjectApiGetStatObjectRequest = {
-  // string
-  bucket: "bucket_example",
-  // string
-  object: "object_example",
-};
-
-apiInstance.getStatObject(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.ObjectApi.getStatObject('bucket-example', 'object-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -247,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -265,7 +223,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **uploadObject**
 > void uploadObject()
@@ -276,22 +234,13 @@ Return presigned url for download object
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .ObjectApi(configuration);
-
-let body:.ObjectApiUploadObjectRequest = {
-  // string
-  bucket: "bucket_example",
-  // string | specify object path
-  object: "object_example",
-};
-
-apiInstance.uploadObject(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.ObjectApi.uploadObject('bucket-example', 'object-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -309,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -327,6 +276,4 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

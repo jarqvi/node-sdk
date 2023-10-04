@@ -1,4 +1,4 @@
-# .MetricsApi
+# MetricsApi
 
 All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
 
@@ -16,22 +16,13 @@ Method | HTTP request | Description
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .MetricsApi(configuration);
-
-let body:.MetricsApiGetHisotricalMetricsRequest = {
-  // string
-  bucket: "bucket_example",
-  // string | unix time
-  since: "since_example",
-};
-
-apiInstance.getHisotricalMetrics(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.MetricsApi.getHisotricalMetrics('bucket-example', 'sicne-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -49,7 +40,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -67,7 +58,7 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getMetricsSummary**
 > void getMetricsSummary()
@@ -77,20 +68,13 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
-
-const configuration = .createConfiguration();
-const apiInstance = new .MetricsApi(configuration);
-
-let body:.MetricsApiGetMetricsSummaryRequest = {
-  // string
-  bucket: "bucket_example",
-};
-
-apiInstance.getMetricsSummary(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+objectStorage.MetricsApi.getMetricsSummary('bucket-example')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 ```
 
 
@@ -107,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](README.md#jwt)
+[jwt](../../README.md#jwt)
 
 ### HTTP request headers
 
@@ -125,6 +109,4 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 **500** | server does not response |  -  |
 
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-
+[[Back to top]](#) [[Back to README]](./../../README.md)

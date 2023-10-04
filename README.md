@@ -76,6 +76,8 @@ paas.AppsApi.getApps()
 
 ### Documentation of all methods:
 
+[Openapi documentation link](https://openapi.liara.ir/)
+
 #### DNS:
 [CheckNameServersApi](./doc/dns/CheckNameServersApi.md)
 
