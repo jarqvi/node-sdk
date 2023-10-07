@@ -29,12 +29,8 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
-    "generate:cmd": "./bin/cmd/generate.cmd",
-    "generate:bash": "./bin/bash/generate.sh",
-    "doc:cmd": "./bin/cmd/doc.cmd",
-    "doc:bash": "./bin/bash/doc.sh",
-    "remove-files:cmd": "./bin/cmd/remove-files.cmd",
-    "remove-files:bash": "./bin/bash/remove-files.sh"
+    "config:cmd": "./bin/cmd/generate.cmd && ./bin/cmd/doc.cmd && ./bin/cmd/remove-files.cmd",
+    "config:bash": "./bin/bash/generate.sh && ./bin/bash/doc.sh && ./bin/bash/remove-files.sh"
   },
   "dependencies": {
     "es6-promise": "^4.2.4",

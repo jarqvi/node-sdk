@@ -28,6 +28,11 @@ for dir in "${directories[@]}"; do
 
     # Move all mark down files except README.md file in the doc directory
     for md_file in "$dir"/*.md; do
-        move_file_if_exists ./"$md_file" ./doc/"$dir"
+        if [ ./doc/"$md_file" ]; then
+            mkdir -p ./doc/"$dir/new"
+            move_file_if_exists ./"$md_file" ./doc/"$dir/new"
+        else 
+            move_file_if_exists ./"$md_file" ./doc/"$dir"
+        fi
     done
 done
