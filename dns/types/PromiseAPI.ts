@@ -2,12 +2,14 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration} from '../configuration'
 
 import { AllDnsRecordResponse } from '../models/AllDnsRecordResponse';
+import { CreateZone } from '../models/CreateZone';
 import { CreateZoneRequest } from '../models/CreateZoneRequest';
 import { DnsRecord } from '../models/DnsRecord';
 import { DnsRecordId } from '../models/DnsRecordId';
 import { DnsRecordResponse } from '../models/DnsRecordResponse';
 import { Submitted } from '../models/Submitted';
 import { Zone } from '../models/Zone';
+import { Zones } from '../models/Zones';
 import { ObservableCheckNameServersApi } from './ObservableAPI';
 
 import { CheckNameServersApiRequestFactory, CheckNameServersApiResponseProcessor} from "../apis/CheckNameServersApi";
@@ -195,7 +197,7 @@ export class PromiseZoneApi {
      * Create Zone
      * @param zoneStruct The zone to create
      */
-    public createZoneWithHttpInfo(zoneStruct: CreateZoneRequest, _options?: Configuration): Promise<HttpInfo<Zone>> {
+    public createZoneWithHttpInfo(zoneStruct: CreateZoneRequest, _options?: Configuration): Promise<HttpInfo<CreateZone>> {
         const result = this.api.createZoneWithHttpInfo(zoneStruct, _options);
         return result.toPromise();
     }
@@ -205,7 +207,7 @@ export class PromiseZoneApi {
      * Create Zone
      * @param zoneStruct The zone to create
      */
-    public createZone(zoneStruct: CreateZoneRequest, _options?: Configuration): Promise<Zone> {
+    public createZone(zoneStruct: CreateZoneRequest, _options?: Configuration): Promise<CreateZone> {
         const result = this.api.createZone(zoneStruct, _options);
         return result.toPromise();
     }
@@ -215,7 +217,7 @@ export class PromiseZoneApi {
      * Delete Zone
      * @param zone The name of the zone to delete
      */
-    public deleteZoneWithHttpInfo(zone: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public deleteZoneWithHttpInfo(zone: string, _options?: Configuration): Promise<HttpInfo<Submitted | void>> {
         const result = this.api.deleteZoneWithHttpInfo(zone, _options);
         return result.toPromise();
     }
@@ -225,7 +227,7 @@ export class PromiseZoneApi {
      * Delete Zone
      * @param zone The name of the zone to delete
      */
-    public deleteZone(zone: string, _options?: Configuration): Promise<void> {
+    public deleteZone(zone: string, _options?: Configuration): Promise<Submitted | void> {
         const result = this.api.deleteZone(zone, _options);
         return result.toPromise();
     }
@@ -234,7 +236,7 @@ export class PromiseZoneApi {
      * list all zones that user owns
      * List all zones
      */
-    public getListZonesWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<Zone>>> {
+    public getListZonesWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Zones>> {
         const result = this.api.getListZonesWithHttpInfo(_options);
         return result.toPromise();
     }
@@ -243,7 +245,7 @@ export class PromiseZoneApi {
      * list all zones that user owns
      * List all zones
      */
-    public getListZones(_options?: Configuration): Promise<Array<Zone>> {
+    public getListZones(_options?: Configuration): Promise<Zones> {
         const result = this.api.getListZones(_options);
         return result.toPromise();
     }
@@ -251,9 +253,9 @@ export class PromiseZoneApi {
     /**
      * Get this zone, all dns records
      * Get Zone
-     * @param zone The name of the zone to delete
+     * @param zone The name of the zone
      */
-    public getZoneWithHttpInfo(zone: string, _options?: Configuration): Promise<HttpInfo<Zone>> {
+    public getZoneWithHttpInfo(zone: string, _options?: Configuration): Promise<HttpInfo<CreateZone>> {
         const result = this.api.getZoneWithHttpInfo(zone, _options);
         return result.toPromise();
     }
@@ -261,9 +263,9 @@ export class PromiseZoneApi {
     /**
      * Get this zone, all dns records
      * Get Zone
-     * @param zone The name of the zone to delete
+     * @param zone The name of the zone
      */
-    public getZone(zone: string, _options?: Configuration): Promise<Zone> {
+    public getZone(zone: string, _options?: Configuration): Promise<CreateZone> {
         const result = this.api.getZone(zone, _options);
         return result.toPromise();
     }

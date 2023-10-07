@@ -8,9 +8,10 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { MailMessage } from '../models/MailMessage';
+import { GetSingleMail200Response } from '../models/GetSingleMail200Response';
 import { MailMessages } from '../models/MailMessages';
 import { Model3 } from '../models/Model3';
+import { PostMails201Response } from '../models/PostMails201Response';
 import { TmpAccess } from '../models/TmpAccess';
 
 /**
@@ -41,7 +42,7 @@ export class MessagesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages/{messageID}/temporary-access'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages/{messageID}/temporary-access'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'messageID' + '}', encodeURIComponent(String(messageID)));
 
@@ -103,7 +104,7 @@ export class MessagesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -182,7 +183,7 @@ export class MessagesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages/{messageID}'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages/{messageID}'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'messageID' + '}', encodeURIComponent(String(messageID)));
 
@@ -234,7 +235,7 @@ export class MessagesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages/{messageID}/render'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages/{messageID}/render'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'messageID' + '}', encodeURIComponent(String(messageID)));
 
@@ -279,7 +280,7 @@ export class MessagesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -288,7 +289,9 @@ export class MessagesApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "Model3", ""),
@@ -401,13 +404,13 @@ export class MessagesApiResponseProcessor {
      * @params response Response returned by the server for a request to getSingleMail
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getSingleMailWithHttpInfo(response: ResponseContext): Promise<HttpInfo<MailMessage >> {
+     public async getSingleMailWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetSingleMail200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: MailMessage = ObjectSerializer.deserialize(
+            const body: GetSingleMail200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "MailMessage", ""
-            ) as MailMessage;
+                "GetSingleMail200Response", ""
+            ) as GetSingleMail200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -422,10 +425,10 @@ export class MessagesApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: MailMessage = ObjectSerializer.deserialize(
+            const body: GetSingleMail200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "MailMessage", ""
-            ) as MailMessage;
+                "GetSingleMail200Response", ""
+            ) as GetSingleMail200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -479,10 +482,14 @@ export class MessagesApiResponseProcessor {
      * @params response Response returned by the server for a request to sendMail
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async sendMailWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async sendMailWithHttpInfo(response: ResponseContext): Promise<HttpInfo<PostMails201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: PostMails201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PostMails201Response", ""
+            ) as PostMails201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -505,10 +512,10 @@ export class MessagesApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: PostMails201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "PostMails201Response", ""
+            ) as PostMails201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

@@ -10,6 +10,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 import { MailForwards } from '../models/MailForwards';
 import { Model6 } from '../models/Model6';
+import { PostMails201Response } from '../models/PostMails201Response';
 
 /**
  * no description
@@ -39,7 +40,7 @@ export class ForwardApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts/{accountID}/forwards'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts/{accountID}/forwards'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'accountID' + '}', encodeURIComponent(String(accountID)));
 
@@ -49,7 +50,9 @@ export class ForwardApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "Model6", ""),
@@ -100,7 +103,7 @@ export class ForwardApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts/{accountID}/forwards/{addressID}'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts/{accountID}/forwards/{addressID}'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'accountID' + '}', encodeURIComponent(String(accountID)))
             .replace('{' + 'addressID' + '}', encodeURIComponent(String(addressID)));
@@ -146,7 +149,7 @@ export class ForwardApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts/{accountID}/forwards'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts/{accountID}/forwards'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'accountID' + '}', encodeURIComponent(String(accountID)));
 
@@ -181,10 +184,14 @@ export class ForwardApiResponseProcessor {
      * @params response Response returned by the server for a request to createAddressForwarding
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createAddressForwardingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createAddressForwardingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<PostMails201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: PostMails201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PostMails201Response", ""
+            ) as PostMails201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -204,10 +211,10 @@ export class ForwardApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: PostMails201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "PostMails201Response", ""
+            ) as PostMails201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

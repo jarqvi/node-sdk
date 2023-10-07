@@ -74,22 +74,32 @@ deploy sources code that user owns
 
 
 ```typescript
-import {  } from '';
 import * as fs from 'fs';
 
-const configuration = .createConfiguration();
-const apiInstance = new .DeployApi(configuration);
+export type HttpFile = Blob & { readonly name: string };
 
-let body:.DeployApiSourcesDeployRequest = {
-  // string | The name of your app for deploy
-  name: "name_example",
-  // HttpFile | The .gz file to deploy
-  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
-};
+// Function to create an HttpFile from a local file
+function createHttpFile(filePath: string): HttpFile | null {
+  try {
+    const fileBuffer = fs.readFileSync(filePath);
+    return new Blob([fileBuffer], { type: 'application/octet-stream' }) as HttpFile;
+  } catch (error) {
+    console.error('Error reading file:', error);
+    return null;
+  }
+}
 
-apiInstance.sourcesDeploy(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
+// Replace './README.md' with the actual path to your file
+const filePath = './README.md';
+const httpFile = createHttpFile(filePath);
+
+if (httpFile) {
+  paas.DeployApi.sourcesDeploy('name-example', httpFile)
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+} else {
+  console.log('HttpFile could not be created.');
+}
 ```
 
 

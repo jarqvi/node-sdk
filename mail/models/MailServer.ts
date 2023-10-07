@@ -10,81 +10,26 @@
  * Do not edit the class manually.
  */
 
+import { MailServerData } from '../models/MailServerData';
 import { HttpFile } from '../http/http';
 
 export class MailServer {
-    'id'?: string;
-    'mode'?: string;
-    'recordsStatus'?: string;
-    'smtpPort'?: string;
-    'smtpServer'?: string;
-    'plan'?: any;
-    'domain'?: string;
-    'createdAt'?: string;
-    'dnsSetup'?: string;
-    'rateLimitTier'?: any;
+    'status'?: string;
+    'data'?: MailServerData;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "id",
-            "baseName": "id",
+            "name": "status",
+            "baseName": "status",
             "type": "string",
             "format": ""
         },
         {
-            "name": "mode",
-            "baseName": "mode",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "recordsStatus",
-            "baseName": "recordsStatus",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "smtpPort",
-            "baseName": "smtp_port",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "smtpServer",
-            "baseName": "smtp_server",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "plan",
-            "baseName": "plan",
-            "type": "any",
-            "format": ""
-        },
-        {
-            "name": "domain",
-            "baseName": "domain",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "createdAt",
-            "baseName": "createdAt",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "dnsSetup",
-            "baseName": "dns_setup",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "rateLimitTier",
-            "baseName": "rateLimitTier",
-            "type": "any",
+            "name": "data",
+            "baseName": "data",
+            "type": "MailServerData",
             "format": ""
         }    ];
 

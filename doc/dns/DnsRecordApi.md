@@ -84,7 +84,7 @@ Delete dns record from this zone
 ```typescript
 dns.DnsRecordApi.deleteDnsRecord('zone-example', 'dns-record-id')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

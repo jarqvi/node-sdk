@@ -1,9 +1,23 @@
 export * from '../models/CheckDNS';
+export * from '../models/CheckDNSData';
+export * from '../models/CheckDNSResponse';
+export * from '../models/CheckDNSResponseDnsSetup';
+export * from '../models/CheckDNSResponseDnsSetupDkim';
+export * from '../models/CheckDNSResponseDnsSetupMxRecord';
+export * from '../models/CheckDNSResponseDnsSetupReturnPath';
+export * from '../models/CheckDNSResponseDnsSetupSpf';
 export * from '../models/CountMailPerDay';
+export * from '../models/CountMailPerDayData';
+export * from '../models/CountMailPerDayDataEmailPerDayInner';
 export * from '../models/CreateSMTP';
 export * from '../models/CreateSMTPData';
+export * from '../models/DownloadAttachments200Response';
+export * from '../models/DownloadAttachments200ResponseData';
+export * from '../models/GetSingleMail200Response';
+export * from '../models/GetSingleMail200ResponseData';
 export * from '../models/MailAccounts';
 export * from '../models/MailAccountsData';
+export * from '../models/MailAccountsDataAccountsInner';
 export * from '../models/MailAttachment';
 export * from '../models/MailAttachments';
 export * from '../models/MailAttachmentsData';
@@ -11,10 +25,17 @@ export * from '../models/MailEvents';
 export * from '../models/MailEventsData';
 export * from '../models/MailForwards';
 export * from '../models/MailForwardsData';
+export * from '../models/MailForwardsDataForwardersInner';
 export * from '../models/MailMessage';
+export * from '../models/MailMessageStatus';
 export * from '../models/MailMessages';
 export * from '../models/MailMessagesData';
 export * from '../models/MailServer';
+export * from '../models/MailServerData';
+export * from '../models/MailServerResponse';
+export * from '../models/MailServerResponseRateLimitTier';
+export * from '../models/MailServers';
+export * from '../models/MailServersData';
 export * from '../models/Mode';
 export * from '../models/Model1';
 export * from '../models/Model10';
@@ -26,20 +47,36 @@ export * from '../models/Model6';
 export * from '../models/Model7';
 export * from '../models/Model8';
 export * from '../models/Model9';
+export * from '../models/PostMails201Response';
 export * from '../models/RemainingFreeMails';
 export * from '../models/RemainingFreeMailsData';
 export * from '../models/SMTP';
 export * from '../models/SMTPData';
+export * from '../models/SMTPDataCredentialsInner';
 export * from '../models/Timeout';
 export * from '../models/TmpAccess';
 export * from '../models/TmpAccessData';
 
 import { CheckDNS } from '../models/CheckDNS';
+import { CheckDNSData } from '../models/CheckDNSData';
+import { CheckDNSResponse } from '../models/CheckDNSResponse';
+import { CheckDNSResponseDnsSetup } from '../models/CheckDNSResponseDnsSetup';
+import { CheckDNSResponseDnsSetupDkim } from '../models/CheckDNSResponseDnsSetupDkim';
+import { CheckDNSResponseDnsSetupMxRecord } from '../models/CheckDNSResponseDnsSetupMxRecord';
+import { CheckDNSResponseDnsSetupReturnPath } from '../models/CheckDNSResponseDnsSetupReturnPath';
+import { CheckDNSResponseDnsSetupSpf } from '../models/CheckDNSResponseDnsSetupSpf';
 import { CountMailPerDay } from '../models/CountMailPerDay';
+import { CountMailPerDayData } from '../models/CountMailPerDayData';
+import { CountMailPerDayDataEmailPerDayInner } from '../models/CountMailPerDayDataEmailPerDayInner';
 import { CreateSMTP } from '../models/CreateSMTP';
 import { CreateSMTPData } from '../models/CreateSMTPData';
+import { DownloadAttachments200Response } from '../models/DownloadAttachments200Response';
+import { DownloadAttachments200ResponseData } from '../models/DownloadAttachments200ResponseData';
+import { GetSingleMail200Response } from '../models/GetSingleMail200Response';
+import { GetSingleMail200ResponseData } from '../models/GetSingleMail200ResponseData';
 import { MailAccounts } from '../models/MailAccounts';
 import { MailAccountsData } from '../models/MailAccountsData';
+import { MailAccountsDataAccountsInner } from '../models/MailAccountsDataAccountsInner';
 import { MailAttachment } from '../models/MailAttachment';
 import { MailAttachments } from '../models/MailAttachments';
 import { MailAttachmentsData } from '../models/MailAttachmentsData';
@@ -47,10 +84,17 @@ import { MailEvents } from '../models/MailEvents';
 import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
+import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
 import { MailMessage } from '../models/MailMessage';
+import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
 import { MailMessagesData } from '../models/MailMessagesData';
 import { MailServer } from '../models/MailServer';
+import { MailServerData } from '../models/MailServerData';
+import { MailServerResponse } from '../models/MailServerResponse';
+import { MailServerResponseRateLimitTier } from '../models/MailServerResponseRateLimitTier';
+import { MailServers } from '../models/MailServers';
+import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1    } from '../models/Model1';
 import { Model10 } from '../models/Model10';
@@ -62,10 +106,12 @@ import { Model6 } from '../models/Model6';
 import { Model7      } from '../models/Model7';
 import { Model8  } from '../models/Model8';
 import { Model9 } from '../models/Model9';
+import { PostMails201Response } from '../models/PostMails201Response';
 import { RemainingFreeMails } from '../models/RemainingFreeMails';
 import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
+import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
 import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
@@ -99,11 +145,25 @@ let enumsMap: Set<string> = new Set<string>([
 
 let typeMap: {[index: string]: any} = {
     "CheckDNS": CheckDNS,
+    "CheckDNSData": CheckDNSData,
+    "CheckDNSResponse": CheckDNSResponse,
+    "CheckDNSResponseDnsSetup": CheckDNSResponseDnsSetup,
+    "CheckDNSResponseDnsSetupDkim": CheckDNSResponseDnsSetupDkim,
+    "CheckDNSResponseDnsSetupMxRecord": CheckDNSResponseDnsSetupMxRecord,
+    "CheckDNSResponseDnsSetupReturnPath": CheckDNSResponseDnsSetupReturnPath,
+    "CheckDNSResponseDnsSetupSpf": CheckDNSResponseDnsSetupSpf,
     "CountMailPerDay": CountMailPerDay,
+    "CountMailPerDayData": CountMailPerDayData,
+    "CountMailPerDayDataEmailPerDayInner": CountMailPerDayDataEmailPerDayInner,
     "CreateSMTP": CreateSMTP,
     "CreateSMTPData": CreateSMTPData,
+    "DownloadAttachments200Response": DownloadAttachments200Response,
+    "DownloadAttachments200ResponseData": DownloadAttachments200ResponseData,
+    "GetSingleMail200Response": GetSingleMail200Response,
+    "GetSingleMail200ResponseData": GetSingleMail200ResponseData,
     "MailAccounts": MailAccounts,
     "MailAccountsData": MailAccountsData,
+    "MailAccountsDataAccountsInner": MailAccountsDataAccountsInner,
     "MailAttachment": MailAttachment,
     "MailAttachments": MailAttachments,
     "MailAttachmentsData": MailAttachmentsData,
@@ -111,10 +171,17 @@ let typeMap: {[index: string]: any} = {
     "MailEventsData": MailEventsData,
     "MailForwards": MailForwards,
     "MailForwardsData": MailForwardsData,
+    "MailForwardsDataForwardersInner": MailForwardsDataForwardersInner,
     "MailMessage": MailMessage,
+    "MailMessageStatus": MailMessageStatus,
     "MailMessages": MailMessages,
     "MailMessagesData": MailMessagesData,
     "MailServer": MailServer,
+    "MailServerData": MailServerData,
+    "MailServerResponse": MailServerResponse,
+    "MailServerResponseRateLimitTier": MailServerResponseRateLimitTier,
+    "MailServers": MailServers,
+    "MailServersData": MailServersData,
     "Model1": Model1,
     "Model10": Model10,
     "Model2": Model2,
@@ -125,10 +192,12 @@ let typeMap: {[index: string]: any} = {
     "Model7": Model7,
     "Model8": Model8,
     "Model9": Model9,
+    "PostMails201Response": PostMails201Response,
     "RemainingFreeMails": RemainingFreeMails,
     "RemainingFreeMailsData": RemainingFreeMailsData,
     "SMTP": SMTP,
     "SMTPData": SMTPData,
+    "SMTPDataCredentialsInner": SMTPDataCredentialsInner,
     "TmpAccess": TmpAccess,
     "TmpAccessData": TmpAccessData,
 }

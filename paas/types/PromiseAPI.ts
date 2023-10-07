@@ -8,15 +8,33 @@ import { ChangePlanRequest } from '../models/ChangePlanRequest';
 import { CheckDomain } from '../models/CheckDomain';
 import { CheckDomainDomain } from '../models/CheckDomainDomain';
 import { CheckDomainDomainProject } from '../models/CheckDomainDomainProject';
-import { CheckDomainDomainProjectCurrentService } from '../models/CheckDomainDomainProjectCurrentService';
 import { CreateApp } from '../models/CreateApp';
+import { CreateAppDomain201Response } from '../models/CreateAppDomain201Response';
+import { CreateAppDomain201ResponseDomain } from '../models/CreateAppDomain201ResponseDomain';
 import { CreateAppDomainRequest } from '../models/CreateAppDomainRequest';
 import { CreateDiskRequest } from '../models/CreateDiskRequest';
+import { CreateFtp200Response } from '../models/CreateFtp200Response';
+import { CreateFtpRequest } from '../models/CreateFtpRequest';
 import { DeployReleases } from '../models/DeployReleases';
 import { Domains } from '../models/Domains';
 import { DomainsDomainsInner } from '../models/DomainsDomainsInner';
 import { DomainsDomainsInnerProject } from '../models/DomainsDomainsInnerProject';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { EnableSsl200Response } from '../models/EnableSsl200Response';
 import { EnableSslRequest } from '../models/EnableSslRequest';
+import { GetAppSummaryReports200Response } from '../models/GetAppSummaryReports200Response';
+import { GetAppSummaryReports200ResponseCpuUsageInner } from '../models/GetAppSummaryReports200ResponseCpuUsageInner';
+import { GetAppSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetAppSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetAppSummaryReports200ResponseDisksUsageInner } from '../models/GetAppSummaryReports200ResponseDisksUsageInner';
+import { GetDiskBackup } from '../models/GetDiskBackup';
+import { GetDiskBackupBackupsInner } from '../models/GetDiskBackupBackupsInner';
+import { GetDisks } from '../models/GetDisks';
+import { GetDisksDisksInner } from '../models/GetDisksDisksInner';
+import { GetDisksMountsInner } from '../models/GetDisksMountsInner';
+import { GetFtps200Response } from '../models/GetFtps200Response';
+import { GetFtps200ResponseAccessesInner } from '../models/GetFtps200ResponseAccessesInner';
+import { IpStatic200Response } from '../models/IpStatic200Response';
+import { LogsInner } from '../models/LogsInner';
 import { ProjectAllDetails } from '../models/ProjectAllDetails';
 import { ProjectAllDetailsProject } from '../models/ProjectAllDetailsProject';
 import { ProjectAllDetailsProjectEnvsInner } from '../models/ProjectAllDetailsProjectEnvsInner';
@@ -25,10 +43,18 @@ import { Projects } from '../models/Projects';
 import { ProjectsProjectsInner } from '../models/ProjectsProjectsInner';
 import { RedirectDomainRequest } from '../models/RedirectDomainRequest';
 import { Releases } from '../models/Releases';
+import { ReleasesDeploy200Response } from '../models/ReleasesDeploy200Response';
 import { ReleasesReleasesInner } from '../models/ReleasesReleasesInner';
+import { ReleasesReleasesInnerGitInfo } from '../models/ReleasesReleasesInnerGitInfo';
+import { ReleasesReleasesInnerGitInfoAuthor } from '../models/ReleasesReleasesInnerGitInfoAuthor';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
+import { ResizeDiskRequest } from '../models/ResizeDiskRequest';
 import { SetAppDomainRequest } from '../models/SetAppDomainRequest';
+import { SourcesDeploy200Response } from '../models/SourcesDeploy200Response';
 import { TurnAppRequest } from '../models/TurnAppRequest';
 import { UpdateEnvs } from '../models/UpdateEnvs';
+import { UpdateEnvs200Response } from '../models/UpdateEnvs200Response';
 import { UpdateEnvsVariablesInner } from '../models/UpdateEnvsVariablesInner';
 import { ObservableAppsApi } from './ObservableAPI';
 
@@ -152,7 +178,7 @@ export class PromiseAppsApi {
      * @param name The name of your app
      * @param since Show logs since timestamp
      */
-    public getAppLogsWithHttpInfo(name: string, since: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getAppLogsWithHttpInfo(name: string, since: string, _options?: Configuration): Promise<HttpInfo<Array<LogsInner>>> {
         const result = this.api.getAppLogsWithHttpInfo(name, since, _options);
         return result.toPromise();
     }
@@ -163,7 +189,7 @@ export class PromiseAppsApi {
      * @param name The name of your app
      * @param since Show logs since timestamp
      */
-    public getAppLogs(name: string, since: string, _options?: Configuration): Promise<void> {
+    public getAppLogs(name: string, since: string, _options?: Configuration): Promise<Array<LogsInner>> {
         const result = this.api.getAppLogs(name, since, _options);
         return result.toPromise();
     }
@@ -277,7 +303,7 @@ export class PromiseDeployApi {
      * @param name The name of your app for deploy
      * @param deployReleases 
      */
-    public releasesDeployWithHttpInfo(name: string, deployReleases: DeployReleases, _options?: Configuration): Promise<HttpInfo<void>> {
+    public releasesDeployWithHttpInfo(name: string, deployReleases: DeployReleases, _options?: Configuration): Promise<HttpInfo<ReleasesDeploy200Response>> {
         const result = this.api.releasesDeployWithHttpInfo(name, deployReleases, _options);
         return result.toPromise();
     }
@@ -288,7 +314,7 @@ export class PromiseDeployApi {
      * @param name The name of your app for deploy
      * @param deployReleases 
      */
-    public releasesDeploy(name: string, deployReleases: DeployReleases, _options?: Configuration): Promise<void> {
+    public releasesDeploy(name: string, deployReleases: DeployReleases, _options?: Configuration): Promise<ReleasesDeploy200Response> {
         const result = this.api.releasesDeploy(name, deployReleases, _options);
         return result.toPromise();
     }
@@ -299,7 +325,7 @@ export class PromiseDeployApi {
      * @param name The name of your app for deploy
      * @param file The .gz file to deploy
      */
-    public sourcesDeployWithHttpInfo(name: string, file: HttpFile, _options?: Configuration): Promise<HttpInfo<void>> {
+    public sourcesDeployWithHttpInfo(name: string, file: HttpFile, _options?: Configuration): Promise<HttpInfo<SourcesDeploy200Response>> {
         const result = this.api.sourcesDeployWithHttpInfo(name, file, _options);
         return result.toPromise();
     }
@@ -310,7 +336,7 @@ export class PromiseDeployApi {
      * @param name The name of your app for deploy
      * @param file The .gz file to deploy
      */
-    public sourcesDeploy(name: string, file: HttpFile, _options?: Configuration): Promise<void> {
+    public sourcesDeploy(name: string, file: HttpFile, _options?: Configuration): Promise<SourcesDeploy200Response> {
         const result = this.api.sourcesDeploy(name, file, _options);
         return result.toPromise();
     }
@@ -379,6 +405,30 @@ export class PromiseDisksApi {
     }
 
     /**
+     * create ftp that user owns
+     * Create ftp
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param createFtp The plan of your app
+     */
+    public createFtpWithHttpInfo(name: string, dname: string, createFtp: CreateFtpRequest, _options?: Configuration): Promise<HttpInfo<CreateFtp200Response>> {
+        const result = this.api.createFtpWithHttpInfo(name, dname, createFtp, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * create ftp that user owns
+     * Create ftp
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param createFtp The plan of your app
+     */
+    public createFtp(name: string, dname: string, createFtp: CreateFtpRequest, _options?: Configuration): Promise<CreateFtp200Response> {
+        const result = this.api.createFtp(name, dname, createFtp, _options);
+        return result.toPromise();
+    }
+
+    /**
      * delete a disk that user owns
      * Delete a disk
      * @param id The id of your app
@@ -401,13 +451,33 @@ export class PromiseDisksApi {
     }
 
     /**
+     * delete a ftp that user owns
+     * Delete a ftp
+     * @param fname The name of your ftp
+     */
+    public deleteFtpWithHttpInfo(fname: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.deleteFtpWithHttpInfo(fname, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * delete a ftp that user owns
+     * Delete a ftp
+     * @param fname The name of your ftp
+     */
+    public deleteFtp(fname: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteFtp(fname, _options);
+        return result.toPromise();
+    }
+
+    /**
      * download backup disk that user owns
      * Download backup disk
      * @param id The id of your app
      * @param dname The name of your disk
      * @param bname The name of your backup
      */
-    public downloadBackupWithHttpInfo(id: string, dname: string, bname: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public downloadBackupWithHttpInfo(id: string, dname: string, bname: string, _options?: Configuration): Promise<HttpInfo<DownloadBackup200Response>> {
         const result = this.api.downloadBackupWithHttpInfo(id, dname, bname, _options);
         return result.toPromise();
     }
@@ -419,7 +489,7 @@ export class PromiseDisksApi {
      * @param dname The name of your disk
      * @param bname The name of your backup
      */
-    public downloadBackup(id: string, dname: string, bname: string, _options?: Configuration): Promise<void> {
+    public downloadBackup(id: string, dname: string, bname: string, _options?: Configuration): Promise<DownloadBackup200Response> {
         const result = this.api.downloadBackup(id, dname, bname, _options);
         return result.toPromise();
     }
@@ -430,7 +500,7 @@ export class PromiseDisksApi {
      * @param id The id of your app
      * @param name The name of your disk
      */
-    public getBackupsWithHttpInfo(id: string, name: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getBackupsWithHttpInfo(id: string, name: string, _options?: Configuration): Promise<HttpInfo<GetDiskBackup>> {
         const result = this.api.getBackupsWithHttpInfo(id, name, _options);
         return result.toPromise();
     }
@@ -441,7 +511,7 @@ export class PromiseDisksApi {
      * @param id The id of your app
      * @param name The name of your disk
      */
-    public getBackups(id: string, name: string, _options?: Configuration): Promise<void> {
+    public getBackups(id: string, name: string, _options?: Configuration): Promise<GetDiskBackup> {
         const result = this.api.getBackups(id, name, _options);
         return result.toPromise();
     }
@@ -451,7 +521,7 @@ export class PromiseDisksApi {
      * Get disks
      * @param id The id of your app
      */
-    public getDisksWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getDisksWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<GetDisks>> {
         const result = this.api.getDisksWithHttpInfo(id, _options);
         return result.toPromise();
     }
@@ -461,8 +531,54 @@ export class PromiseDisksApi {
      * Get disks
      * @param id The id of your app
      */
-    public getDisks(id: string, _options?: Configuration): Promise<void> {
+    public getDisks(id: string, _options?: Configuration): Promise<GetDisks> {
         const result = this.api.getDisks(id, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * get ftps that user owns
+     * Get ftps
+     * @param name The name of your app
+     * @param dname The name of your disk
+     */
+    public getFtpsWithHttpInfo(name: string, dname: string, _options?: Configuration): Promise<HttpInfo<GetFtps200Response>> {
+        const result = this.api.getFtpsWithHttpInfo(name, dname, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * get ftps that user owns
+     * Get ftps
+     * @param name The name of your app
+     * @param dname The name of your disk
+     */
+    public getFtps(name: string, dname: string, _options?: Configuration): Promise<GetFtps200Response> {
+        const result = this.api.getFtps(name, dname, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * resize disk that user owns
+     * Resize disk
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param resizeDisk The size of your disk
+     */
+    public resizeDiskWithHttpInfo(name: string, dname: string, resizeDisk: ResizeDiskRequest, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.resizeDiskWithHttpInfo(name, dname, resizeDisk, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * resize disk that user owns
+     * Resize disk
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param resizeDisk The size of your disk
+     */
+    public resizeDisk(name: string, dname: string, resizeDisk: ResizeDiskRequest, _options?: Configuration): Promise<void> {
+        const result = this.api.resizeDisk(name, dname, resizeDisk, _options);
         return result.toPromise();
     }
 
@@ -510,7 +626,7 @@ export class PromiseDomainsApi {
      * Create a domain
      * @param domain The domain of your app
      */
-    public createAppDomainWithHttpInfo(domain: CreateAppDomainRequest, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createAppDomainWithHttpInfo(domain: CreateAppDomainRequest, _options?: Configuration): Promise<HttpInfo<CreateAppDomain201Response>> {
         const result = this.api.createAppDomainWithHttpInfo(domain, _options);
         return result.toPromise();
     }
@@ -520,7 +636,7 @@ export class PromiseDomainsApi {
      * Create a domain
      * @param domain The domain of your app
      */
-    public createAppDomain(domain: CreateAppDomainRequest, _options?: Configuration): Promise<void> {
+    public createAppDomain(domain: CreateAppDomainRequest, _options?: Configuration): Promise<CreateAppDomain201Response> {
         const result = this.api.createAppDomain(domain, _options);
         return result.toPromise();
     }
@@ -570,7 +686,7 @@ export class PromiseDomainsApi {
      * Enable ssl
      * @param domain The domain of your app
      */
-    public enableSslWithHttpInfo(domain: EnableSslRequest, _options?: Configuration): Promise<HttpInfo<void>> {
+    public enableSslWithHttpInfo(domain: EnableSslRequest, _options?: Configuration): Promise<HttpInfo<EnableSsl200Response>> {
         const result = this.api.enableSslWithHttpInfo(domain, _options);
         return result.toPromise();
     }
@@ -580,7 +696,7 @@ export class PromiseDomainsApi {
      * Enable ssl
      * @param domain The domain of your app
      */
-    public enableSsl(domain: EnableSslRequest, _options?: Configuration): Promise<void> {
+    public enableSsl(domain: EnableSslRequest, _options?: Configuration): Promise<EnableSsl200Response> {
         const result = this.api.enableSsl(domain, _options);
         return result.toPromise();
     }
@@ -588,20 +704,20 @@ export class PromiseDomainsApi {
     /**
      * get all domains that user owns
      * Get all domains
-     * @param name The name of your app
+     * @param project The name of your app
      */
-    public getAppDomainsWithHttpInfo(name: string, _options?: Configuration): Promise<HttpInfo<Domains>> {
-        const result = this.api.getAppDomainsWithHttpInfo(name, _options);
+    public getAppDomainsWithHttpInfo(project: string, _options?: Configuration): Promise<HttpInfo<Domains>> {
+        const result = this.api.getAppDomainsWithHttpInfo(project, _options);
         return result.toPromise();
     }
 
     /**
      * get all domains that user owns
      * Get all domains
-     * @param name The name of your app
+     * @param project The name of your app
      */
-    public getAppDomains(name: string, _options?: Configuration): Promise<Domains> {
-        const result = this.api.getAppDomains(name, _options);
+    public getAppDomains(project: string, _options?: Configuration): Promise<Domains> {
+        const result = this.api.getAppDomains(project, _options);
         return result.toPromise();
     }
 
@@ -672,7 +788,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your cpu reports
      */
-    public getAppCpuReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getAppCpuReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getAppCpuReportsWithHttpInfo(name, since, _options);
         return result.toPromise();
     }
@@ -683,7 +799,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your cpu reports
      */
-    public getAppCpuReports(name: string, since: number, _options?: Configuration): Promise<void> {
+    public getAppCpuReports(name: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getAppCpuReports(name, since, _options);
         return result.toPromise();
     }
@@ -694,7 +810,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your memory reports
      */
-    public getAppMemoryReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getAppMemoryReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getAppMemoryReportsWithHttpInfo(name, since, _options);
         return result.toPromise();
     }
@@ -705,7 +821,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your memory reports
      */
-    public getAppMemoryReports(name: string, since: number, _options?: Configuration): Promise<void> {
+    public getAppMemoryReports(name: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getAppMemoryReports(name, since, _options);
         return result.toPromise();
     }
@@ -716,7 +832,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your network-receive reports
      */
-    public getAppNetworkReceiveReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getAppNetworkReceiveReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getAppNetworkReceiveReportsWithHttpInfo(name, since, _options);
         return result.toPromise();
     }
@@ -727,7 +843,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your network-receive reports
      */
-    public getAppNetworkReceiveReports(name: string, since: number, _options?: Configuration): Promise<void> {
+    public getAppNetworkReceiveReports(name: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getAppNetworkReceiveReports(name, since, _options);
         return result.toPromise();
     }
@@ -737,7 +853,7 @@ export class PromiseReportsApi {
      * Get summary reports of app
      * @param name The name of your app
      */
-    public getAppSummaryReportsWithHttpInfo(name: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getAppSummaryReportsWithHttpInfo(name: string, _options?: Configuration): Promise<HttpInfo<GetAppSummaryReports200Response>> {
         const result = this.api.getAppSummaryReportsWithHttpInfo(name, _options);
         return result.toPromise();
     }
@@ -747,7 +863,7 @@ export class PromiseReportsApi {
      * Get summary reports of app
      * @param name The name of your app
      */
-    public getAppSummaryReports(name: string, _options?: Configuration): Promise<void> {
+    public getAppSummaryReports(name: string, _options?: Configuration): Promise<GetAppSummaryReports200Response> {
         const result = this.api.getAppSummaryReports(name, _options);
         return result.toPromise();
     }
@@ -758,7 +874,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your network-transmit reports
      */
-    public getNetworkTransmitReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getNetworkTransmitReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getNetworkTransmitReportsWithHttpInfo(name, since, _options);
         return result.toPromise();
     }
@@ -769,7 +885,7 @@ export class PromiseReportsApi {
      * @param name The name of your app
      * @param since The since of your network-transmit reports
      */
-    public getNetworkTransmitReports(name: string, since: number, _options?: Configuration): Promise<void> {
+    public getNetworkTransmitReports(name: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getNetworkTransmitReports(name, since, _options);
         return result.toPromise();
     }
@@ -821,7 +937,7 @@ export class PromiseSettingsApi {
      * @param id 
      * @param status disable or enable
      */
-    public ipStaticWithHttpInfo(id: string, status: string, _options?: Configuration): Promise<HttpInfo<any>> {
+    public ipStaticWithHttpInfo(id: string, status: string, _options?: Configuration): Promise<HttpInfo<IpStatic200Response>> {
         const result = this.api.ipStaticWithHttpInfo(id, status, _options);
         return result.toPromise();
     }
@@ -832,7 +948,7 @@ export class PromiseSettingsApi {
      * @param id 
      * @param status disable or enable
      */
-    public ipStatic(id: string, status: string, _options?: Configuration): Promise<any> {
+    public ipStatic(id: string, status: string, _options?: Configuration): Promise<IpStatic200Response> {
         const result = this.api.ipStatic(id, status, _options);
         return result.toPromise();
     }
@@ -842,7 +958,7 @@ export class PromiseSettingsApi {
      * Update envs
      * @param updateEnvs 
      */
-    public updateEnvsWithHttpInfo(updateEnvs: UpdateEnvs, _options?: Configuration): Promise<HttpInfo<void>> {
+    public updateEnvsWithHttpInfo(updateEnvs: UpdateEnvs, _options?: Configuration): Promise<HttpInfo<UpdateEnvs200Response>> {
         const result = this.api.updateEnvsWithHttpInfo(updateEnvs, _options);
         return result.toPromise();
     }
@@ -852,7 +968,7 @@ export class PromiseSettingsApi {
      * Update envs
      * @param updateEnvs 
      */
-    public updateEnvs(updateEnvs: UpdateEnvs, _options?: Configuration): Promise<void> {
+    public updateEnvs(updateEnvs: UpdateEnvs, _options?: Configuration): Promise<UpdateEnvs200Response> {
         const result = this.api.updateEnvs(updateEnvs, _options);
         return result.toPromise();
     }

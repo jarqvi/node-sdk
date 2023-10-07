@@ -10,11 +10,12 @@
  * Do not edit the class manually.
  */
 
+import { CountMailPerDayData } from '../models/CountMailPerDayData';
 import { HttpFile } from '../http/http';
 
 export class CountMailPerDay {
     'status'?: string;
-    'date'?: number;
+    'data'?: CountMailPerDayData;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,9 +27,9 @@ export class CountMailPerDay {
             "format": ""
         },
         {
-            "name": "date",
-            "baseName": "date",
-            "type": "number",
+            "name": "data",
+            "baseName": "data",
+            "type": "CountMailPerDayData",
             "format": ""
         }    ];
 

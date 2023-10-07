@@ -2,11 +2,25 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration} from '../configuration'
 
 import { CheckDNS } from '../models/CheckDNS';
+import { CheckDNSData } from '../models/CheckDNSData';
+import { CheckDNSResponse } from '../models/CheckDNSResponse';
+import { CheckDNSResponseDnsSetup } from '../models/CheckDNSResponseDnsSetup';
+import { CheckDNSResponseDnsSetupDkim } from '../models/CheckDNSResponseDnsSetupDkim';
+import { CheckDNSResponseDnsSetupMxRecord } from '../models/CheckDNSResponseDnsSetupMxRecord';
+import { CheckDNSResponseDnsSetupReturnPath } from '../models/CheckDNSResponseDnsSetupReturnPath';
+import { CheckDNSResponseDnsSetupSpf } from '../models/CheckDNSResponseDnsSetupSpf';
 import { CountMailPerDay } from '../models/CountMailPerDay';
+import { CountMailPerDayData } from '../models/CountMailPerDayData';
+import { CountMailPerDayDataEmailPerDayInner } from '../models/CountMailPerDayDataEmailPerDayInner';
 import { CreateSMTP } from '../models/CreateSMTP';
 import { CreateSMTPData } from '../models/CreateSMTPData';
+import { DownloadAttachments200Response } from '../models/DownloadAttachments200Response';
+import { DownloadAttachments200ResponseData } from '../models/DownloadAttachments200ResponseData';
+import { GetSingleMail200Response } from '../models/GetSingleMail200Response';
+import { GetSingleMail200ResponseData } from '../models/GetSingleMail200ResponseData';
 import { MailAccounts } from '../models/MailAccounts';
 import { MailAccountsData } from '../models/MailAccountsData';
+import { MailAccountsDataAccountsInner } from '../models/MailAccountsDataAccountsInner';
 import { MailAttachment } from '../models/MailAttachment';
 import { MailAttachments } from '../models/MailAttachments';
 import { MailAttachmentsData } from '../models/MailAttachmentsData';
@@ -14,10 +28,17 @@ import { MailEvents } from '../models/MailEvents';
 import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
+import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
 import { MailMessage } from '../models/MailMessage';
+import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
 import { MailMessagesData } from '../models/MailMessagesData';
 import { MailServer } from '../models/MailServer';
+import { MailServerData } from '../models/MailServerData';
+import { MailServerResponse } from '../models/MailServerResponse';
+import { MailServerResponseRateLimitTier } from '../models/MailServerResponseRateLimitTier';
+import { MailServers } from '../models/MailServers';
+import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1 } from '../models/Model1';
 import { Model10 } from '../models/Model10';
@@ -29,10 +50,12 @@ import { Model6 } from '../models/Model6';
 import { Model7 } from '../models/Model7';
 import { Model8 } from '../models/Model8';
 import { Model9 } from '../models/Model9';
+import { PostMails201Response } from '../models/PostMails201Response';
 import { RemainingFreeMails } from '../models/RemainingFreeMails';
 import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
+import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
 import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
@@ -55,7 +78,7 @@ export class PromiseAccountsApi {
      * @param mailServerID 
      * @param accountName 
      */
-    public checkMailAvailableWithHttpInfo(mailServerID: string, accountName: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public checkMailAvailableWithHttpInfo(mailServerID: string, accountName: string, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.checkMailAvailableWithHttpInfo(mailServerID, accountName, _options);
         return result.toPromise();
     }
@@ -65,7 +88,7 @@ export class PromiseAccountsApi {
      * @param mailServerID 
      * @param accountName 
      */
-    public checkMailAvailable(mailServerID: string, accountName: string, _options?: Configuration): Promise<void> {
+    public checkMailAvailable(mailServerID: string, accountName: string, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.checkMailAvailable(mailServerID, accountName, _options);
         return result.toPromise();
     }
@@ -75,7 +98,7 @@ export class PromiseAccountsApi {
      * @param mailServerID 
      * @param body 
      */
-    public createMailACcountWithHttpInfo(mailServerID: string, body?: Model5, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createMailACcountWithHttpInfo(mailServerID: string, body?: Model5, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.createMailACcountWithHttpInfo(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -85,7 +108,7 @@ export class PromiseAccountsApi {
      * @param mailServerID 
      * @param body 
      */
-    public createMailACcount(mailServerID: string, body?: Model5, _options?: Configuration): Promise<void> {
+    public createMailACcount(mailServerID: string, body?: Model5, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.createMailACcount(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -153,7 +176,7 @@ export class PromiseAttachmentsApi {
      * @param messageID 
      * @param attachmentID 
      */
-    public downloadAttachmentsWithHttpInfo(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Promise<HttpInfo<MailAttachment>> {
+    public downloadAttachmentsWithHttpInfo(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Promise<HttpInfo<DownloadAttachments200Response>> {
         const result = this.api.downloadAttachmentsWithHttpInfo(mailServerID, messageID, attachmentID, _options);
         return result.toPromise();
     }
@@ -164,7 +187,7 @@ export class PromiseAttachmentsApi {
      * @param messageID 
      * @param attachmentID 
      */
-    public downloadAttachments(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Promise<MailAttachment> {
+    public downloadAttachments(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Promise<DownloadAttachments200Response> {
         const result = this.api.downloadAttachments(mailServerID, messageID, attachmentID, _options);
         return result.toPromise();
     }
@@ -257,7 +280,7 @@ export class PromiseForwardApi {
      * @param accountID 
      * @param body 
      */
-    public createAddressForwardingWithHttpInfo(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createAddressForwardingWithHttpInfo(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.createAddressForwardingWithHttpInfo(mailServerID, accountID, body, _options);
         return result.toPromise();
     }
@@ -268,7 +291,7 @@ export class PromiseForwardApi {
      * @param accountID 
      * @param body 
      */
-    public createAddressForwarding(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Promise<void> {
+    public createAddressForwarding(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.createAddressForwarding(mailServerID, accountID, body, _options);
         return result.toPromise();
     }
@@ -339,7 +362,7 @@ export class PromiseMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerModeWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Promise<HttpInfo<void>> {
+    public changeMailServerModeWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.changeMailServerModeWithHttpInfo(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -349,7 +372,7 @@ export class PromiseMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerMode(mailServerID: string, body?: Model8, _options?: Configuration): Promise<void> {
+    public changeMailServerMode(mailServerID: string, body?: Model8, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.changeMailServerMode(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -359,7 +382,7 @@ export class PromiseMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerPlanWithHttpInfo(mailServerID: string, body?: Model10, _options?: Configuration): Promise<HttpInfo<void>> {
+    public changeMailServerPlanWithHttpInfo(mailServerID: string, body?: Model10, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.changeMailServerPlanWithHttpInfo(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -369,7 +392,7 @@ export class PromiseMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerPlan(mailServerID: string, body?: Model10, _options?: Configuration): Promise<void> {
+    public changeMailServerPlan(mailServerID: string, body?: Model10, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.changeMailServerPlan(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -378,7 +401,7 @@ export class PromiseMailsApi {
      * check if domain name is available
      * @param domain 
      */
-    public checkDomainAvailableWithHttpInfo(domain: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public checkDomainAvailableWithHttpInfo(domain: string, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.checkDomainAvailableWithHttpInfo(domain, _options);
         return result.toPromise();
     }
@@ -387,7 +410,7 @@ export class PromiseMailsApi {
      * check if domain name is available
      * @param domain 
      */
-    public checkDomainAvailable(domain: string, _options?: Configuration): Promise<void> {
+    public checkDomainAvailable(domain: string, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.checkDomainAvailable(domain, _options);
         return result.toPromise();
     }
@@ -469,7 +492,7 @@ export class PromiseMailsApi {
     /**
      * get all mail servers
      */
-    public getMailsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Array<MailServer>>> {
+    public getMailsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<MailServers>> {
         const result = this.api.getMailsWithHttpInfo(_options);
         return result.toPromise();
     }
@@ -477,7 +500,7 @@ export class PromiseMailsApi {
     /**
      * get all mail servers
      */
-    public getMails(_options?: Configuration): Promise<Array<MailServer>> {
+    public getMails(_options?: Configuration): Promise<MailServers> {
         const result = this.api.getMails(_options);
         return result.toPromise();
     }
@@ -504,7 +527,7 @@ export class PromiseMailsApi {
      * create mail server
      * @param body 
      */
-    public postMailsWithHttpInfo(body?: Model1, _options?: Configuration): Promise<HttpInfo<void>> {
+    public postMailsWithHttpInfo(body?: Model1, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.postMailsWithHttpInfo(body, _options);
         return result.toPromise();
     }
@@ -513,7 +536,7 @@ export class PromiseMailsApi {
      * create mail server
      * @param body 
      */
-    public postMails(body?: Model1, _options?: Configuration): Promise<void> {
+    public postMails(body?: Model1, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.postMails(body, _options);
         return result.toPromise();
     }
@@ -596,7 +619,7 @@ export class PromiseMessagesApi {
      * @param mailServerID 
      * @param messageID 
      */
-    public getSingleMailWithHttpInfo(mailServerID: string, messageID: string, _options?: Configuration): Promise<HttpInfo<MailMessage>> {
+    public getSingleMailWithHttpInfo(mailServerID: string, messageID: string, _options?: Configuration): Promise<HttpInfo<GetSingleMail200Response>> {
         const result = this.api.getSingleMailWithHttpInfo(mailServerID, messageID, _options);
         return result.toPromise();
     }
@@ -606,7 +629,7 @@ export class PromiseMessagesApi {
      * @param mailServerID 
      * @param messageID 
      */
-    public getSingleMail(mailServerID: string, messageID: string, _options?: Configuration): Promise<MailMessage> {
+    public getSingleMail(mailServerID: string, messageID: string, _options?: Configuration): Promise<GetSingleMail200Response> {
         const result = this.api.getSingleMail(mailServerID, messageID, _options);
         return result.toPromise();
     }
@@ -638,7 +661,7 @@ export class PromiseMessagesApi {
      * @param mailServerID 
      * @param body 
      */
-    public sendMailWithHttpInfo(mailServerID: string, body?: Model3, _options?: Configuration): Promise<HttpInfo<void>> {
+    public sendMailWithHttpInfo(mailServerID: string, body?: Model3, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         const result = this.api.sendMailWithHttpInfo(mailServerID, body, _options);
         return result.toPromise();
     }
@@ -648,7 +671,7 @@ export class PromiseMessagesApi {
      * @param mailServerID 
      * @param body 
      */
-    public sendMail(mailServerID: string, body?: Model3, _options?: Configuration): Promise<void> {
+    public sendMail(mailServerID: string, body?: Model3, _options?: Configuration): Promise<PostMails201Response> {
         const result = this.api.sendMail(mailServerID, body, _options);
         return result.toPromise();
     }

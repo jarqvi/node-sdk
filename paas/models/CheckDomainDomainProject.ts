@@ -10,53 +10,15 @@
  * Do not edit the class manually.
  */
 
-import { CheckDomainDomainProjectCurrentService } from '../models/CheckDomainDomainProjectCurrentService';
-import { ProjectAllDetailsProjectEnvsInner } from '../models/ProjectAllDetailsProjectEnvsInner';
 import { HttpFile } from '../http/http';
 
 export class CheckDomainDomainProject {
-    'currentService'?: CheckDomainDomainProjectCurrentService;
-    'fixedNode'?: boolean;
     'id'?: string;
-    'user'?: string;
     'projectId'?: string;
-    'type'?: string;
-    'status'?: string;
-    'readOnlyRootFilesystem'?: boolean;
-    'defaultSubdomain'?: boolean;
-    'zeroDowntime'?: boolean;
-    'isOneClickApp'?: boolean;
-    'isWPPlus'?: boolean;
-    'scale'?: number;
-    'envs'?: Array<ProjectAllDetailsProjectEnvsInner>;
-    'planID'?: string;
-    'hasVolume'?: boolean;
-    'fixedIPStatus'?: string;
-    'managedBySystem'?: boolean;
-    'updatedAt'?: string;
-    'createdAt'?: string;
-    'v'?: number;
-    'node'?: string;
-    'currentRelease'?: string;
-    'lastScaleStartedAt'?: string;
-    'lastScaleFinishedAt'?: string;
-    'resizes'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "currentService",
-            "baseName": "current_service",
-            "type": "CheckDomainDomainProjectCurrentService",
-            "format": ""
-        },
-        {
-            "name": "fixedNode",
-            "baseName": "fixedNode",
-            "type": "boolean",
-            "format": ""
-        },
         {
             "name": "id",
             "baseName": "_id",
@@ -64,141 +26,9 @@ export class CheckDomainDomainProject {
             "format": ""
         },
         {
-            "name": "user",
-            "baseName": "user",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "projectId",
             "baseName": "project_id",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "readOnlyRootFilesystem",
-            "baseName": "readOnlyRootFilesystem",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "defaultSubdomain",
-            "baseName": "defaultSubdomain",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "zeroDowntime",
-            "baseName": "zeroDowntime",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "isOneClickApp",
-            "baseName": "isOneClickApp",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "isWPPlus",
-            "baseName": "isWPPlus",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "scale",
-            "baseName": "scale",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "envs",
-            "baseName": "envs",
-            "type": "Array<ProjectAllDetailsProjectEnvsInner>",
-            "format": ""
-        },
-        {
-            "name": "planID",
-            "baseName": "planID",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "hasVolume",
-            "baseName": "hasVolume",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "fixedIPStatus",
-            "baseName": "fixedIPStatus",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "managedBySystem",
-            "baseName": "managedBySystem",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "updatedAt",
-            "baseName": "updated_at",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "createdAt",
-            "baseName": "created_at",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "v",
-            "baseName": "__v",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "node",
-            "baseName": "node",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "currentRelease",
-            "baseName": "currentRelease",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "lastScaleStartedAt",
-            "baseName": "lastScaleStartedAt",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "lastScaleFinishedAt",
-            "baseName": "lastScaleFinishedAt",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "resizes",
-            "baseName": "resizes",
-            "type": "number",
             "format": ""
         }    ];
 

@@ -10,32 +10,19 @@
  * Do not edit the class manually.
  */
 
+import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
 import { HttpFile } from '../http/http';
 
 export class SMTPData {
-    'description'?: string;
-    'createdAt'?: string;
-    'username'?: string;
+    'credentials'?: Array<SMTPDataCredentialsInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "createdAt",
-            "baseName": "createdAt",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "username",
-            "baseName": "username",
-            "type": "string",
+            "name": "credentials",
+            "baseName": "credentials",
+            "type": "Array<SMTPDataCredentialsInner>",
             "format": ""
         }    ];
 

@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 ```typescript
 mail.MailsApi.deleteMailServer('mail-server-id')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

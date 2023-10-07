@@ -13,7 +13,7 @@
 import { HttpFile } from '../http/http';
 
 export class TmpAccessData {
-    'token'?: any;
+    'token'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,7 +21,7 @@ export class TmpAccessData {
         {
             "name": "token",
             "baseName": "token",
-            "type": "any",
+            "type": "string",
             "format": ""
         }    ];
 

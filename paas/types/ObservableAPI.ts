@@ -9,15 +9,33 @@ import { ChangePlanRequest } from '../models/ChangePlanRequest';
 import { CheckDomain } from '../models/CheckDomain';
 import { CheckDomainDomain } from '../models/CheckDomainDomain';
 import { CheckDomainDomainProject } from '../models/CheckDomainDomainProject';
-import { CheckDomainDomainProjectCurrentService } from '../models/CheckDomainDomainProjectCurrentService';
 import { CreateApp } from '../models/CreateApp';
+import { CreateAppDomain201Response } from '../models/CreateAppDomain201Response';
+import { CreateAppDomain201ResponseDomain } from '../models/CreateAppDomain201ResponseDomain';
 import { CreateAppDomainRequest } from '../models/CreateAppDomainRequest';
 import { CreateDiskRequest } from '../models/CreateDiskRequest';
+import { CreateFtp200Response } from '../models/CreateFtp200Response';
+import { CreateFtpRequest } from '../models/CreateFtpRequest';
 import { DeployReleases } from '../models/DeployReleases';
 import { Domains } from '../models/Domains';
 import { DomainsDomainsInner } from '../models/DomainsDomainsInner';
 import { DomainsDomainsInnerProject } from '../models/DomainsDomainsInnerProject';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { EnableSsl200Response } from '../models/EnableSsl200Response';
 import { EnableSslRequest } from '../models/EnableSslRequest';
+import { GetAppSummaryReports200Response } from '../models/GetAppSummaryReports200Response';
+import { GetAppSummaryReports200ResponseCpuUsageInner } from '../models/GetAppSummaryReports200ResponseCpuUsageInner';
+import { GetAppSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetAppSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetAppSummaryReports200ResponseDisksUsageInner } from '../models/GetAppSummaryReports200ResponseDisksUsageInner';
+import { GetDiskBackup } from '../models/GetDiskBackup';
+import { GetDiskBackupBackupsInner } from '../models/GetDiskBackupBackupsInner';
+import { GetDisks } from '../models/GetDisks';
+import { GetDisksDisksInner } from '../models/GetDisksDisksInner';
+import { GetDisksMountsInner } from '../models/GetDisksMountsInner';
+import { GetFtps200Response } from '../models/GetFtps200Response';
+import { GetFtps200ResponseAccessesInner } from '../models/GetFtps200ResponseAccessesInner';
+import { IpStatic200Response } from '../models/IpStatic200Response';
+import { LogsInner } from '../models/LogsInner';
 import { ProjectAllDetails } from '../models/ProjectAllDetails';
 import { ProjectAllDetailsProject } from '../models/ProjectAllDetailsProject';
 import { ProjectAllDetailsProjectEnvsInner } from '../models/ProjectAllDetailsProjectEnvsInner';
@@ -26,10 +44,18 @@ import { Projects } from '../models/Projects';
 import { ProjectsProjectsInner } from '../models/ProjectsProjectsInner';
 import { RedirectDomainRequest } from '../models/RedirectDomainRequest';
 import { Releases } from '../models/Releases';
+import { ReleasesDeploy200Response } from '../models/ReleasesDeploy200Response';
 import { ReleasesReleasesInner } from '../models/ReleasesReleasesInner';
+import { ReleasesReleasesInnerGitInfo } from '../models/ReleasesReleasesInnerGitInfo';
+import { ReleasesReleasesInnerGitInfoAuthor } from '../models/ReleasesReleasesInnerGitInfoAuthor';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
+import { ResizeDiskRequest } from '../models/ResizeDiskRequest';
 import { SetAppDomainRequest } from '../models/SetAppDomainRequest';
+import { SourcesDeploy200Response } from '../models/SourcesDeploy200Response';
 import { TurnAppRequest } from '../models/TurnAppRequest';
 import { UpdateEnvs } from '../models/UpdateEnvs';
+import { UpdateEnvs200Response } from '../models/UpdateEnvs200Response';
 import { UpdateEnvsVariablesInner } from '../models/UpdateEnvsVariablesInner';
 
 import { AppsApiRequestFactory, AppsApiResponseProcessor} from "../apis/AppsApi";
@@ -221,7 +247,7 @@ export class ObservableAppsApi {
      * @param name The name of your app
      * @param since Show logs since timestamp
      */
-    public getAppLogsWithHttpInfo(name: string, since: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getAppLogsWithHttpInfo(name: string, since: string, _options?: Configuration): Observable<HttpInfo<Array<LogsInner>>> {
         const requestContextPromise = this.requestFactory.getAppLogs(name, since, _options);
 
         // build promise chain
@@ -246,8 +272,8 @@ export class ObservableAppsApi {
      * @param name The name of your app
      * @param since Show logs since timestamp
      */
-    public getAppLogs(name: string, since: string, _options?: Configuration): Observable<void> {
-        return this.getAppLogsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getAppLogs(name: string, since: string, _options?: Configuration): Observable<Array<LogsInner>> {
+        return this.getAppLogsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<Array<LogsInner>>) => apiResponse.data));
     }
 
     /**
@@ -410,7 +436,7 @@ export class ObservableDeployApi {
      * @param name The name of your app for deploy
      * @param deployReleases 
      */
-    public releasesDeployWithHttpInfo(name: string, deployReleases: DeployReleases, _options?: Configuration): Observable<HttpInfo<void>> {
+    public releasesDeployWithHttpInfo(name: string, deployReleases: DeployReleases, _options?: Configuration): Observable<HttpInfo<ReleasesDeploy200Response>> {
         const requestContextPromise = this.requestFactory.releasesDeploy(name, deployReleases, _options);
 
         // build promise chain
@@ -435,8 +461,8 @@ export class ObservableDeployApi {
      * @param name The name of your app for deploy
      * @param deployReleases 
      */
-    public releasesDeploy(name: string, deployReleases: DeployReleases, _options?: Configuration): Observable<void> {
-        return this.releasesDeployWithHttpInfo(name, deployReleases, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public releasesDeploy(name: string, deployReleases: DeployReleases, _options?: Configuration): Observable<ReleasesDeploy200Response> {
+        return this.releasesDeployWithHttpInfo(name, deployReleases, _options).pipe(map((apiResponse: HttpInfo<ReleasesDeploy200Response>) => apiResponse.data));
     }
 
     /**
@@ -445,7 +471,7 @@ export class ObservableDeployApi {
      * @param name The name of your app for deploy
      * @param file The .gz file to deploy
      */
-    public sourcesDeployWithHttpInfo(name: string, file: HttpFile, _options?: Configuration): Observable<HttpInfo<void>> {
+    public sourcesDeployWithHttpInfo(name: string, file: HttpFile, _options?: Configuration): Observable<HttpInfo<SourcesDeploy200Response>> {
         const requestContextPromise = this.requestFactory.sourcesDeploy(name, file, _options);
 
         // build promise chain
@@ -470,8 +496,8 @@ export class ObservableDeployApi {
      * @param name The name of your app for deploy
      * @param file The .gz file to deploy
      */
-    public sourcesDeploy(name: string, file: HttpFile, _options?: Configuration): Observable<void> {
-        return this.sourcesDeployWithHttpInfo(name, file, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public sourcesDeploy(name: string, file: HttpFile, _options?: Configuration): Observable<SourcesDeploy200Response> {
+        return this.sourcesDeployWithHttpInfo(name, file, _options).pipe(map((apiResponse: HttpInfo<SourcesDeploy200Response>) => apiResponse.data));
     }
 
 }
@@ -563,6 +589,43 @@ export class ObservableDisksApi {
     }
 
     /**
+     * create ftp that user owns
+     * Create ftp
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param createFtp The plan of your app
+     */
+    public createFtpWithHttpInfo(name: string, dname: string, createFtp: CreateFtpRequest, _options?: Configuration): Observable<HttpInfo<CreateFtp200Response>> {
+        const requestContextPromise = this.requestFactory.createFtp(name, dname, createFtp, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createFtpWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * create ftp that user owns
+     * Create ftp
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param createFtp The plan of your app
+     */
+    public createFtp(name: string, dname: string, createFtp: CreateFtpRequest, _options?: Configuration): Observable<CreateFtp200Response> {
+        return this.createFtpWithHttpInfo(name, dname, createFtp, _options).pipe(map((apiResponse: HttpInfo<CreateFtp200Response>) => apiResponse.data));
+    }
+
+    /**
      * delete a disk that user owns
      * Delete a disk
      * @param id The id of your app
@@ -598,13 +661,46 @@ export class ObservableDisksApi {
     }
 
     /**
+     * delete a ftp that user owns
+     * Delete a ftp
+     * @param fname The name of your ftp
+     */
+    public deleteFtpWithHttpInfo(fname: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.deleteFtp(fname, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteFtpWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * delete a ftp that user owns
+     * Delete a ftp
+     * @param fname The name of your ftp
+     */
+    public deleteFtp(fname: string, _options?: Configuration): Observable<void> {
+        return this.deleteFtpWithHttpInfo(fname, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
      * download backup disk that user owns
      * Download backup disk
      * @param id The id of your app
      * @param dname The name of your disk
      * @param bname The name of your backup
      */
-    public downloadBackupWithHttpInfo(id: string, dname: string, bname: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public downloadBackupWithHttpInfo(id: string, dname: string, bname: string, _options?: Configuration): Observable<HttpInfo<DownloadBackup200Response>> {
         const requestContextPromise = this.requestFactory.downloadBackup(id, dname, bname, _options);
 
         // build promise chain
@@ -630,8 +726,8 @@ export class ObservableDisksApi {
      * @param dname The name of your disk
      * @param bname The name of your backup
      */
-    public downloadBackup(id: string, dname: string, bname: string, _options?: Configuration): Observable<void> {
-        return this.downloadBackupWithHttpInfo(id, dname, bname, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public downloadBackup(id: string, dname: string, bname: string, _options?: Configuration): Observable<DownloadBackup200Response> {
+        return this.downloadBackupWithHttpInfo(id, dname, bname, _options).pipe(map((apiResponse: HttpInfo<DownloadBackup200Response>) => apiResponse.data));
     }
 
     /**
@@ -640,7 +736,7 @@ export class ObservableDisksApi {
      * @param id The id of your app
      * @param name The name of your disk
      */
-    public getBackupsWithHttpInfo(id: string, name: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getBackupsWithHttpInfo(id: string, name: string, _options?: Configuration): Observable<HttpInfo<GetDiskBackup>> {
         const requestContextPromise = this.requestFactory.getBackups(id, name, _options);
 
         // build promise chain
@@ -665,8 +761,8 @@ export class ObservableDisksApi {
      * @param id The id of your app
      * @param name The name of your disk
      */
-    public getBackups(id: string, name: string, _options?: Configuration): Observable<void> {
-        return this.getBackupsWithHttpInfo(id, name, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getBackups(id: string, name: string, _options?: Configuration): Observable<GetDiskBackup> {
+        return this.getBackupsWithHttpInfo(id, name, _options).pipe(map((apiResponse: HttpInfo<GetDiskBackup>) => apiResponse.data));
     }
 
     /**
@@ -674,7 +770,7 @@ export class ObservableDisksApi {
      * Get disks
      * @param id The id of your app
      */
-    public getDisksWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getDisksWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<GetDisks>> {
         const requestContextPromise = this.requestFactory.getDisks(id, _options);
 
         // build promise chain
@@ -698,8 +794,80 @@ export class ObservableDisksApi {
      * Get disks
      * @param id The id of your app
      */
-    public getDisks(id: string, _options?: Configuration): Observable<void> {
-        return this.getDisksWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getDisks(id: string, _options?: Configuration): Observable<GetDisks> {
+        return this.getDisksWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<GetDisks>) => apiResponse.data));
+    }
+
+    /**
+     * get ftps that user owns
+     * Get ftps
+     * @param name The name of your app
+     * @param dname The name of your disk
+     */
+    public getFtpsWithHttpInfo(name: string, dname: string, _options?: Configuration): Observable<HttpInfo<GetFtps200Response>> {
+        const requestContextPromise = this.requestFactory.getFtps(name, dname, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFtpsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * get ftps that user owns
+     * Get ftps
+     * @param name The name of your app
+     * @param dname The name of your disk
+     */
+    public getFtps(name: string, dname: string, _options?: Configuration): Observable<GetFtps200Response> {
+        return this.getFtpsWithHttpInfo(name, dname, _options).pipe(map((apiResponse: HttpInfo<GetFtps200Response>) => apiResponse.data));
+    }
+
+    /**
+     * resize disk that user owns
+     * Resize disk
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param resizeDisk The size of your disk
+     */
+    public resizeDiskWithHttpInfo(name: string, dname: string, resizeDisk: ResizeDiskRequest, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.resizeDisk(name, dname, resizeDisk, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.resizeDiskWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * resize disk that user owns
+     * Resize disk
+     * @param name The name of your app
+     * @param dname The name of your disk
+     * @param resizeDisk The size of your disk
+     */
+    public resizeDisk(name: string, dname: string, resizeDisk: ResizeDiskRequest, _options?: Configuration): Observable<void> {
+        return this.resizeDiskWithHttpInfo(name, dname, resizeDisk, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
 }
@@ -758,7 +926,7 @@ export class ObservableDomainsApi {
      * Create a domain
      * @param domain The domain of your app
      */
-    public createAppDomainWithHttpInfo(domain: CreateAppDomainRequest, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createAppDomainWithHttpInfo(domain: CreateAppDomainRequest, _options?: Configuration): Observable<HttpInfo<CreateAppDomain201Response>> {
         const requestContextPromise = this.requestFactory.createAppDomain(domain, _options);
 
         // build promise chain
@@ -782,8 +950,8 @@ export class ObservableDomainsApi {
      * Create a domain
      * @param domain The domain of your app
      */
-    public createAppDomain(domain: CreateAppDomainRequest, _options?: Configuration): Observable<void> {
-        return this.createAppDomainWithHttpInfo(domain, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createAppDomain(domain: CreateAppDomainRequest, _options?: Configuration): Observable<CreateAppDomain201Response> {
+        return this.createAppDomainWithHttpInfo(domain, _options).pipe(map((apiResponse: HttpInfo<CreateAppDomain201Response>) => apiResponse.data));
     }
 
     /**
@@ -857,7 +1025,7 @@ export class ObservableDomainsApi {
      * Enable ssl
      * @param domain The domain of your app
      */
-    public enableSslWithHttpInfo(domain: EnableSslRequest, _options?: Configuration): Observable<HttpInfo<void>> {
+    public enableSslWithHttpInfo(domain: EnableSslRequest, _options?: Configuration): Observable<HttpInfo<EnableSsl200Response>> {
         const requestContextPromise = this.requestFactory.enableSsl(domain, _options);
 
         // build promise chain
@@ -881,17 +1049,17 @@ export class ObservableDomainsApi {
      * Enable ssl
      * @param domain The domain of your app
      */
-    public enableSsl(domain: EnableSslRequest, _options?: Configuration): Observable<void> {
-        return this.enableSslWithHttpInfo(domain, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public enableSsl(domain: EnableSslRequest, _options?: Configuration): Observable<EnableSsl200Response> {
+        return this.enableSslWithHttpInfo(domain, _options).pipe(map((apiResponse: HttpInfo<EnableSsl200Response>) => apiResponse.data));
     }
 
     /**
      * get all domains that user owns
      * Get all domains
-     * @param name The name of your app
+     * @param project The name of your app
      */
-    public getAppDomainsWithHttpInfo(name: string, _options?: Configuration): Observable<HttpInfo<Domains>> {
-        const requestContextPromise = this.requestFactory.getAppDomains(name, _options);
+    public getAppDomainsWithHttpInfo(project: string, _options?: Configuration): Observable<HttpInfo<Domains>> {
+        const requestContextPromise = this.requestFactory.getAppDomains(project, _options);
 
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
@@ -912,10 +1080,10 @@ export class ObservableDomainsApi {
     /**
      * get all domains that user owns
      * Get all domains
-     * @param name The name of your app
+     * @param project The name of your app
      */
-    public getAppDomains(name: string, _options?: Configuration): Observable<Domains> {
-        return this.getAppDomainsWithHttpInfo(name, _options).pipe(map((apiResponse: HttpInfo<Domains>) => apiResponse.data));
+    public getAppDomains(project: string, _options?: Configuration): Observable<Domains> {
+        return this.getAppDomainsWithHttpInfo(project, _options).pipe(map((apiResponse: HttpInfo<Domains>) => apiResponse.data));
     }
 
     /**
@@ -1010,7 +1178,7 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your cpu reports
      */
-    public getAppCpuReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getAppCpuReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getAppCpuReports(name, since, _options);
 
         // build promise chain
@@ -1035,8 +1203,8 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your cpu reports
      */
-    public getAppCpuReports(name: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getAppCpuReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getAppCpuReports(name: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getAppCpuReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -1045,7 +1213,7 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your memory reports
      */
-    public getAppMemoryReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getAppMemoryReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getAppMemoryReports(name, since, _options);
 
         // build promise chain
@@ -1070,8 +1238,8 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your memory reports
      */
-    public getAppMemoryReports(name: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getAppMemoryReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getAppMemoryReports(name: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getAppMemoryReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -1080,7 +1248,7 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your network-receive reports
      */
-    public getAppNetworkReceiveReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getAppNetworkReceiveReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getAppNetworkReceiveReports(name, since, _options);
 
         // build promise chain
@@ -1105,8 +1273,8 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your network-receive reports
      */
-    public getAppNetworkReceiveReports(name: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getAppNetworkReceiveReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getAppNetworkReceiveReports(name: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getAppNetworkReceiveReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -1114,7 +1282,7 @@ export class ObservableReportsApi {
      * Get summary reports of app
      * @param name The name of your app
      */
-    public getAppSummaryReportsWithHttpInfo(name: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getAppSummaryReportsWithHttpInfo(name: string, _options?: Configuration): Observable<HttpInfo<GetAppSummaryReports200Response>> {
         const requestContextPromise = this.requestFactory.getAppSummaryReports(name, _options);
 
         // build promise chain
@@ -1138,8 +1306,8 @@ export class ObservableReportsApi {
      * Get summary reports of app
      * @param name The name of your app
      */
-    public getAppSummaryReports(name: string, _options?: Configuration): Observable<void> {
-        return this.getAppSummaryReportsWithHttpInfo(name, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getAppSummaryReports(name: string, _options?: Configuration): Observable<GetAppSummaryReports200Response> {
+        return this.getAppSummaryReportsWithHttpInfo(name, _options).pipe(map((apiResponse: HttpInfo<GetAppSummaryReports200Response>) => apiResponse.data));
     }
 
     /**
@@ -1148,7 +1316,7 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your network-transmit reports
      */
-    public getNetworkTransmitReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getNetworkTransmitReportsWithHttpInfo(name: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getNetworkTransmitReports(name, since, _options);
 
         // build promise chain
@@ -1173,8 +1341,8 @@ export class ObservableReportsApi {
      * @param name The name of your app
      * @param since The since of your network-transmit reports
      */
-    public getNetworkTransmitReports(name: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getNetworkTransmitReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getNetworkTransmitReports(name: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getNetworkTransmitReportsWithHttpInfo(name, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
 }
@@ -1236,7 +1404,7 @@ export class ObservableSettingsApi {
      * @param id 
      * @param status disable or enable
      */
-    public ipStaticWithHttpInfo(id: string, status: string, _options?: Configuration): Observable<HttpInfo<any>> {
+    public ipStaticWithHttpInfo(id: string, status: string, _options?: Configuration): Observable<HttpInfo<IpStatic200Response>> {
         const requestContextPromise = this.requestFactory.ipStatic(id, status, _options);
 
         // build promise chain
@@ -1261,8 +1429,8 @@ export class ObservableSettingsApi {
      * @param id 
      * @param status disable or enable
      */
-    public ipStatic(id: string, status: string, _options?: Configuration): Observable<any> {
-        return this.ipStaticWithHttpInfo(id, status, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public ipStatic(id: string, status: string, _options?: Configuration): Observable<IpStatic200Response> {
+        return this.ipStaticWithHttpInfo(id, status, _options).pipe(map((apiResponse: HttpInfo<IpStatic200Response>) => apiResponse.data));
     }
 
     /**
@@ -1270,7 +1438,7 @@ export class ObservableSettingsApi {
      * Update envs
      * @param updateEnvs 
      */
-    public updateEnvsWithHttpInfo(updateEnvs: UpdateEnvs, _options?: Configuration): Observable<HttpInfo<void>> {
+    public updateEnvsWithHttpInfo(updateEnvs: UpdateEnvs, _options?: Configuration): Observable<HttpInfo<UpdateEnvs200Response>> {
         const requestContextPromise = this.requestFactory.updateEnvs(updateEnvs, _options);
 
         // build promise chain
@@ -1294,8 +1462,8 @@ export class ObservableSettingsApi {
      * Update envs
      * @param updateEnvs 
      */
-    public updateEnvs(updateEnvs: UpdateEnvs, _options?: Configuration): Observable<void> {
-        return this.updateEnvsWithHttpInfo(updateEnvs, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateEnvs(updateEnvs: UpdateEnvs, _options?: Configuration): Observable<UpdateEnvs200Response> {
+        return this.updateEnvsWithHttpInfo(updateEnvs, _options).pipe(map((apiResponse: HttpInfo<UpdateEnvs200Response>) => apiResponse.data));
     }
 
     /**

@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { ReleasesReleasesInnerGitInfo } from '../models/ReleasesReleasesInnerGitInfo';
 import { HttpFile } from '../http/http';
 
 export class ReleasesReleasesInner {
@@ -37,10 +38,7 @@ export class ReleasesReleasesInner {
     * The port of release
     */
     'port'?: number;
-    /**
-    * The gitInfo of release
-    */
-    'gitInfo'?: any;
+    'gitInfo'?: ReleasesReleasesInnerGitInfo;
     /**
     * The client of release
     */
@@ -104,7 +102,7 @@ export class ReleasesReleasesInner {
         {
             "name": "gitInfo",
             "baseName": "gitInfo",
-            "type": "any",
+            "type": "ReleasesReleasesInnerGitInfo",
             "format": ""
         },
         {

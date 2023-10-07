@@ -42,7 +42,7 @@ export class ProjectAllDetailsProject {
     /**
     * The being on of project
     */
-    'scale'?: string;
+    'scale'?: number;
     /**
     * The envs of project
     */
@@ -67,7 +67,7 @@ export class ProjectAllDetailsProject {
     /**
     * The deployment status of project
     */
-    'isDeployed'?: string;
+    'isDeployed'?: boolean;
     /**
     * The count reservedDiskSpace of project
     */
@@ -115,7 +115,7 @@ export class ProjectAllDetailsProject {
         {
             "name": "scale",
             "baseName": "scale",
-            "type": "string",
+            "type": "number",
             "format": ""
         },
         {
@@ -157,7 +157,7 @@ export class ProjectAllDetailsProject {
         {
             "name": "isDeployed",
             "baseName": "isDeployed",
-            "type": "string",
+            "type": "boolean",
             "format": ""
         },
         {

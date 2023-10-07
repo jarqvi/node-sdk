@@ -20,7 +20,7 @@ backup a database that user owns
 ```typescript
 dbaas.BackupsApi.createBackup('id-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

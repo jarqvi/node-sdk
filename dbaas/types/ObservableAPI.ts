@@ -2,13 +2,25 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration} from '../configuration'
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
+import { ChangeControlPanel200Response } from '../models/ChangeControlPanel200Response';
+import { CreateDatabase200Response } from '../models/CreateDatabase200Response';
 import { CreateDatabases } from '../models/CreateDatabases';
+import { CreateDatabasesOptions } from '../models/CreateDatabasesOptions';
 import { DBDetails } from '../models/DBDetails';
 import { DBDetailsDatabase } from '../models/DBDetailsDatabase';
 import { DBDetailsDatabaseMetaData } from '../models/DBDetailsDatabaseMetaData';
 import { DBDetailsDatabaseNode } from '../models/DBDetailsDatabaseNode';
 import { DBsDetails } from '../models/DBsDetails';
 import { DBsDetailsDatabasesInner } from '../models/DBsDetailsDatabasesInner';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { GetDatabaseSummaryReports200Response } from '../models/GetDatabaseSummaryReports200Response';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInner';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetDatabaseSummaryReports200ResponseDisksUsageInner } from '../models/GetDatabaseSummaryReports200ResponseDisksUsageInner';
+import { GetListBackups200Response } from '../models/GetListBackups200Response';
+import { GetListBackups200ResponseBackupsInner } from '../models/GetListBackups200ResponseBackupsInner';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
 import { ResizeDatabaseRequest } from '../models/ResizeDatabaseRequest';
 import { TurnDatabaseRequest } from '../models/TurnDatabaseRequest';
 
@@ -67,7 +79,7 @@ export class ObservableBackupsApi {
      * @param id The id of your database
      * @param name The name of your backup
      */
-    public downloadBackupWithHttpInfo(id: string, name: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public downloadBackupWithHttpInfo(id: string, name: string, _options?: Configuration): Observable<HttpInfo<DownloadBackup200Response>> {
         const requestContextPromise = this.requestFactory.downloadBackup(id, name, _options);
 
         // build promise chain
@@ -92,8 +104,8 @@ export class ObservableBackupsApi {
      * @param id The id of your database
      * @param name The name of your backup
      */
-    public downloadBackup(id: string, name: string, _options?: Configuration): Observable<void> {
-        return this.downloadBackupWithHttpInfo(id, name, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public downloadBackup(id: string, name: string, _options?: Configuration): Observable<DownloadBackup200Response> {
+        return this.downloadBackupWithHttpInfo(id, name, _options).pipe(map((apiResponse: HttpInfo<DownloadBackup200Response>) => apiResponse.data));
     }
 
     /**
@@ -101,7 +113,7 @@ export class ObservableBackupsApi {
      * Get all backups
      * @param id 
      */
-    public getListBackupsWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getListBackupsWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<GetListBackups200Response>> {
         const requestContextPromise = this.requestFactory.getListBackups(id, _options);
 
         // build promise chain
@@ -125,8 +137,8 @@ export class ObservableBackupsApi {
      * Get all backups
      * @param id 
      */
-    public getListBackups(id: string, _options?: Configuration): Observable<void> {
-        return this.getListBackupsWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getListBackups(id: string, _options?: Configuration): Observable<GetListBackups200Response> {
+        return this.getListBackupsWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<GetListBackups200Response>) => apiResponse.data));
     }
 
 }
@@ -153,7 +165,7 @@ export class ObservableDatabasesApi {
      * @param id 
      * @param status 
      */
-    public changeControlPanelWithHttpInfo(id: string, status: 'enable' | 'disable', _options?: Configuration): Observable<HttpInfo<void>> {
+    public changeControlPanelWithHttpInfo(id: string, status: 'enable' | 'disable', _options?: Configuration): Observable<HttpInfo<ChangeControlPanel200Response>> {
         const requestContextPromise = this.requestFactory.changeControlPanel(id, status, _options);
 
         // build promise chain
@@ -178,8 +190,8 @@ export class ObservableDatabasesApi {
      * @param id 
      * @param status 
      */
-    public changeControlPanel(id: string, status: 'enable' | 'disable', _options?: Configuration): Observable<void> {
-        return this.changeControlPanelWithHttpInfo(id, status, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public changeControlPanel(id: string, status: 'enable' | 'disable', _options?: Configuration): Observable<ChangeControlPanel200Response> {
+        return this.changeControlPanelWithHttpInfo(id, status, _options).pipe(map((apiResponse: HttpInfo<ChangeControlPanel200Response>) => apiResponse.data));
     }
 
     /**
@@ -222,7 +234,7 @@ export class ObservableDatabasesApi {
      * Create a database
      * @param createADatabases 
      */
-    public createDatabaseWithHttpInfo(createADatabases: CreateDatabases, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createDatabaseWithHttpInfo(createADatabases: CreateDatabases, _options?: Configuration): Observable<HttpInfo<CreateDatabase200Response>> {
         const requestContextPromise = this.requestFactory.createDatabase(createADatabases, _options);
 
         // build promise chain
@@ -246,8 +258,8 @@ export class ObservableDatabasesApi {
      * Create a database
      * @param createADatabases 
      */
-    public createDatabase(createADatabases: CreateDatabases, _options?: Configuration): Observable<void> {
-        return this.createDatabaseWithHttpInfo(createADatabases, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createDatabase(createADatabases: CreateDatabases, _options?: Configuration): Observable<CreateDatabase200Response> {
+        return this.createDatabaseWithHttpInfo(createADatabases, _options).pipe(map((apiResponse: HttpInfo<CreateDatabase200Response>) => apiResponse.data));
     }
 
     /**
@@ -441,7 +453,7 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your cpu reports
      */
-    public getDatabaseCpuReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getDatabaseCpuReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getDatabaseCpuReports(id, since, _options);
 
         // build promise chain
@@ -466,8 +478,8 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your cpu reports
      */
-    public getDatabaseCpuReports(id: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getDatabaseCpuReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getDatabaseCpuReports(id: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getDatabaseCpuReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -476,7 +488,7 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your memory reports
      */
-    public getDatabaseMemoryReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getDatabaseMemoryReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getDatabaseMemoryReports(id, since, _options);
 
         // build promise chain
@@ -501,8 +513,8 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your memory reports
      */
-    public getDatabaseMemoryReports(id: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getDatabaseMemoryReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getDatabaseMemoryReports(id: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getDatabaseMemoryReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -511,7 +523,7 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your network-receive reports
      */
-    public getDatabaseNetworkReceiveReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getDatabaseNetworkReceiveReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getDatabaseNetworkReceiveReports(id, since, _options);
 
         // build promise chain
@@ -536,8 +548,8 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your network-receive reports
      */
-    public getDatabaseNetworkReceiveReports(id: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getDatabaseNetworkReceiveReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getDatabaseNetworkReceiveReports(id: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getDatabaseNetworkReceiveReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -546,7 +558,7 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your network-transmit reports
      */
-    public getDatabaseNetworkTransmitReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getDatabaseNetworkTransmitReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Observable<HttpInfo<Reports>> {
         const requestContextPromise = this.requestFactory.getDatabaseNetworkTransmitReports(id, since, _options);
 
         // build promise chain
@@ -571,8 +583,8 @@ export class ObservableReportsApi {
      * @param id The name of your database
      * @param since The since of your network-transmit reports
      */
-    public getDatabaseNetworkTransmitReports(id: string, since: number, _options?: Configuration): Observable<void> {
-        return this.getDatabaseNetworkTransmitReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getDatabaseNetworkTransmitReports(id: string, since: number, _options?: Configuration): Observable<Reports> {
+        return this.getDatabaseNetworkTransmitReportsWithHttpInfo(id, since, _options).pipe(map((apiResponse: HttpInfo<Reports>) => apiResponse.data));
     }
 
     /**
@@ -580,7 +592,7 @@ export class ObservableReportsApi {
      * Get summary reports of database
      * @param id The name of your database
      */
-    public getDatabaseSummaryReportsWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getDatabaseSummaryReportsWithHttpInfo(id: string, _options?: Configuration): Observable<HttpInfo<GetDatabaseSummaryReports200Response>> {
         const requestContextPromise = this.requestFactory.getDatabaseSummaryReports(id, _options);
 
         // build promise chain
@@ -604,8 +616,8 @@ export class ObservableReportsApi {
      * Get summary reports of database
      * @param id The name of your database
      */
-    public getDatabaseSummaryReports(id: string, _options?: Configuration): Observable<void> {
-        return this.getDatabaseSummaryReportsWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getDatabaseSummaryReports(id: string, _options?: Configuration): Observable<GetDatabaseSummaryReports200Response> {
+        return this.getDatabaseSummaryReportsWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<GetDatabaseSummaryReports200Response>) => apiResponse.data));
     }
 
 }

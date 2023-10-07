@@ -9,8 +9,10 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { CheckDomain } from '../models/CheckDomain';
+import { CreateAppDomain201Response } from '../models/CreateAppDomain201Response';
 import { CreateAppDomainRequest } from '../models/CreateAppDomainRequest';
 import { Domains } from '../models/Domains';
+import { EnableSsl200Response } from '../models/EnableSsl200Response';
 import { EnableSslRequest } from '../models/EnableSslRequest';
 import { RedirectDomainRequest } from '../models/RedirectDomainRequest';
 import { SetAppDomainRequest } from '../models/SetAppDomainRequest';
@@ -233,24 +235,28 @@ export class DomainsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * get all domains that user owns
      * Get all domains
-     * @param name The name of your app
+     * @param project The name of your app
      */
-    public async getAppDomains(name: string, _options?: Configuration): Promise<RequestContext> {
+    public async getAppDomains(project: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'name' is not null or undefined
-        if (name === null || name === undefined) {
-            throw new RequiredError("DomainsApi", "getAppDomains", "name");
+        // verify required parameter 'project' is not null or undefined
+        if (project === null || project === undefined) {
+            throw new RequiredError("DomainsApi", "getAppDomains", "project");
         }
 
 
         // Path Params
-        const localVarPath = '/v1/domains?project={name}'
-            .replace('{' + 'name' + '}', encodeURIComponent(String(name)));
+        const localVarPath = '/v1/domains';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (project !== undefined) {
+            requestContext.setQueryParam("project", ObjectSerializer.serialize(project, "string", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -421,10 +427,14 @@ export class DomainsApiResponseProcessor {
      * @params response Response returned by the server for a request to createAppDomain
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createAppDomainWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createAppDomainWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateAppDomain201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CreateAppDomain201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateAppDomain201Response", ""
+            ) as CreateAppDomain201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -441,10 +451,10 @@ export class DomainsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateAppDomain201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateAppDomain201Response", ""
+            ) as CreateAppDomain201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -526,10 +536,14 @@ export class DomainsApiResponseProcessor {
      * @params response Response returned by the server for a request to enableSsl
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async enableSslWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async enableSslWithHttpInfo(response: ResponseContext): Promise<HttpInfo<EnableSsl200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: EnableSsl200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "EnableSsl200Response", ""
+            ) as EnableSsl200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -543,10 +557,10 @@ export class DomainsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: EnableSsl200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "EnableSsl200Response", ""
+            ) as EnableSsl200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

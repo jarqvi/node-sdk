@@ -1,13 +1,25 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
 import { Configuration} from '../configuration'
 
+import { ChangeControlPanel200Response } from '../models/ChangeControlPanel200Response';
+import { CreateDatabase200Response } from '../models/CreateDatabase200Response';
 import { CreateDatabases } from '../models/CreateDatabases';
+import { CreateDatabasesOptions } from '../models/CreateDatabasesOptions';
 import { DBDetails } from '../models/DBDetails';
 import { DBDetailsDatabase } from '../models/DBDetailsDatabase';
 import { DBDetailsDatabaseMetaData } from '../models/DBDetailsDatabaseMetaData';
 import { DBDetailsDatabaseNode } from '../models/DBDetailsDatabaseNode';
 import { DBsDetails } from '../models/DBsDetails';
 import { DBsDetailsDatabasesInner } from '../models/DBsDetailsDatabasesInner';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { GetDatabaseSummaryReports200Response } from '../models/GetDatabaseSummaryReports200Response';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInner';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetDatabaseSummaryReports200ResponseDisksUsageInner } from '../models/GetDatabaseSummaryReports200ResponseDisksUsageInner';
+import { GetListBackups200Response } from '../models/GetListBackups200Response';
+import { GetListBackups200ResponseBackupsInner } from '../models/GetListBackups200ResponseBackupsInner';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
 import { ResizeDatabaseRequest } from '../models/ResizeDatabaseRequest';
 import { TurnDatabaseRequest } from '../models/TurnDatabaseRequest';
 import { ObservableBackupsApi } from './ObservableAPI';
@@ -50,7 +62,7 @@ export class PromiseBackupsApi {
      * @param id The id of your database
      * @param name The name of your backup
      */
-    public downloadBackupWithHttpInfo(id: string, name: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public downloadBackupWithHttpInfo(id: string, name: string, _options?: Configuration): Promise<HttpInfo<DownloadBackup200Response>> {
         const result = this.api.downloadBackupWithHttpInfo(id, name, _options);
         return result.toPromise();
     }
@@ -61,7 +73,7 @@ export class PromiseBackupsApi {
      * @param id The id of your database
      * @param name The name of your backup
      */
-    public downloadBackup(id: string, name: string, _options?: Configuration): Promise<void> {
+    public downloadBackup(id: string, name: string, _options?: Configuration): Promise<DownloadBackup200Response> {
         const result = this.api.downloadBackup(id, name, _options);
         return result.toPromise();
     }
@@ -71,7 +83,7 @@ export class PromiseBackupsApi {
      * Get all backups
      * @param id 
      */
-    public getListBackupsWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getListBackupsWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<GetListBackups200Response>> {
         const result = this.api.getListBackupsWithHttpInfo(id, _options);
         return result.toPromise();
     }
@@ -81,7 +93,7 @@ export class PromiseBackupsApi {
      * Get all backups
      * @param id 
      */
-    public getListBackups(id: string, _options?: Configuration): Promise<void> {
+    public getListBackups(id: string, _options?: Configuration): Promise<GetListBackups200Response> {
         const result = this.api.getListBackups(id, _options);
         return result.toPromise();
     }
@@ -111,7 +123,7 @@ export class PromiseDatabasesApi {
      * @param id 
      * @param status 
      */
-    public changeControlPanelWithHttpInfo(id: string, status: 'enable' | 'disable', _options?: Configuration): Promise<HttpInfo<void>> {
+    public changeControlPanelWithHttpInfo(id: string, status: 'enable' | 'disable', _options?: Configuration): Promise<HttpInfo<ChangeControlPanel200Response>> {
         const result = this.api.changeControlPanelWithHttpInfo(id, status, _options);
         return result.toPromise();
     }
@@ -122,7 +134,7 @@ export class PromiseDatabasesApi {
      * @param id 
      * @param status 
      */
-    public changeControlPanel(id: string, status: 'enable' | 'disable', _options?: Configuration): Promise<void> {
+    public changeControlPanel(id: string, status: 'enable' | 'disable', _options?: Configuration): Promise<ChangeControlPanel200Response> {
         const result = this.api.changeControlPanel(id, status, _options);
         return result.toPromise();
     }
@@ -154,7 +166,7 @@ export class PromiseDatabasesApi {
      * Create a database
      * @param createADatabases 
      */
-    public createDatabaseWithHttpInfo(createADatabases: CreateDatabases, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createDatabaseWithHttpInfo(createADatabases: CreateDatabases, _options?: Configuration): Promise<HttpInfo<CreateDatabase200Response>> {
         const result = this.api.createDatabaseWithHttpInfo(createADatabases, _options);
         return result.toPromise();
     }
@@ -164,7 +176,7 @@ export class PromiseDatabasesApi {
      * Create a database
      * @param createADatabases 
      */
-    public createDatabase(createADatabases: CreateDatabases, _options?: Configuration): Promise<void> {
+    public createDatabase(createADatabases: CreateDatabases, _options?: Configuration): Promise<CreateDatabase200Response> {
         const result = this.api.createDatabase(createADatabases, _options);
         return result.toPromise();
     }
@@ -296,7 +308,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your cpu reports
      */
-    public getDatabaseCpuReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseCpuReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getDatabaseCpuReportsWithHttpInfo(id, since, _options);
         return result.toPromise();
     }
@@ -307,7 +319,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your cpu reports
      */
-    public getDatabaseCpuReports(id: string, since: number, _options?: Configuration): Promise<void> {
+    public getDatabaseCpuReports(id: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getDatabaseCpuReports(id, since, _options);
         return result.toPromise();
     }
@@ -318,7 +330,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your memory reports
      */
-    public getDatabaseMemoryReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseMemoryReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getDatabaseMemoryReportsWithHttpInfo(id, since, _options);
         return result.toPromise();
     }
@@ -329,7 +341,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your memory reports
      */
-    public getDatabaseMemoryReports(id: string, since: number, _options?: Configuration): Promise<void> {
+    public getDatabaseMemoryReports(id: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getDatabaseMemoryReports(id, since, _options);
         return result.toPromise();
     }
@@ -340,7 +352,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your network-receive reports
      */
-    public getDatabaseNetworkReceiveReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseNetworkReceiveReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getDatabaseNetworkReceiveReportsWithHttpInfo(id, since, _options);
         return result.toPromise();
     }
@@ -351,7 +363,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your network-receive reports
      */
-    public getDatabaseNetworkReceiveReports(id: string, since: number, _options?: Configuration): Promise<void> {
+    public getDatabaseNetworkReceiveReports(id: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getDatabaseNetworkReceiveReports(id, since, _options);
         return result.toPromise();
     }
@@ -362,7 +374,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your network-transmit reports
      */
-    public getDatabaseNetworkTransmitReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseNetworkTransmitReportsWithHttpInfo(id: string, since: number, _options?: Configuration): Promise<HttpInfo<Reports>> {
         const result = this.api.getDatabaseNetworkTransmitReportsWithHttpInfo(id, since, _options);
         return result.toPromise();
     }
@@ -373,7 +385,7 @@ export class PromiseReportsApi {
      * @param id The name of your database
      * @param since The since of your network-transmit reports
      */
-    public getDatabaseNetworkTransmitReports(id: string, since: number, _options?: Configuration): Promise<void> {
+    public getDatabaseNetworkTransmitReports(id: string, since: number, _options?: Configuration): Promise<Reports> {
         const result = this.api.getDatabaseNetworkTransmitReports(id, since, _options);
         return result.toPromise();
     }
@@ -383,7 +395,7 @@ export class PromiseReportsApi {
      * Get summary reports of database
      * @param id The name of your database
      */
-    public getDatabaseSummaryReportsWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseSummaryReportsWithHttpInfo(id: string, _options?: Configuration): Promise<HttpInfo<GetDatabaseSummaryReports200Response>> {
         const result = this.api.getDatabaseSummaryReportsWithHttpInfo(id, _options);
         return result.toPromise();
     }
@@ -393,7 +405,7 @@ export class PromiseReportsApi {
      * Get summary reports of database
      * @param id The name of your database
      */
-    public getDatabaseSummaryReports(id: string, _options?: Configuration): Promise<void> {
+    public getDatabaseSummaryReports(id: string, _options?: Configuration): Promise<GetDatabaseSummaryReports200Response> {
         const result = this.api.getDatabaseSummaryReports(id, _options);
         return result.toPromise();
     }

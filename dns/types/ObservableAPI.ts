@@ -3,12 +3,14 @@ import { Configuration} from '../configuration'
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { AllDnsRecordResponse } from '../models/AllDnsRecordResponse';
+import { CreateZone } from '../models/CreateZone';
 import { CreateZoneRequest } from '../models/CreateZoneRequest';
 import { DnsRecord } from '../models/DnsRecord';
 import { DnsRecordId } from '../models/DnsRecordId';
 import { DnsRecordResponse } from '../models/DnsRecordResponse';
 import { Submitted } from '../models/Submitted';
 import { Zone } from '../models/Zone';
+import { Zones } from '../models/Zones';
 
 import { CheckNameServersApiRequestFactory, CheckNameServersApiResponseProcessor} from "../apis/CheckNameServersApi";
 export class ObservableCheckNameServersApi {
@@ -275,7 +277,7 @@ export class ObservableZoneApi {
      * Create Zone
      * @param zoneStruct The zone to create
      */
-    public createZoneWithHttpInfo(zoneStruct: CreateZoneRequest, _options?: Configuration): Observable<HttpInfo<Zone>> {
+    public createZoneWithHttpInfo(zoneStruct: CreateZoneRequest, _options?: Configuration): Observable<HttpInfo<CreateZone>> {
         const requestContextPromise = this.requestFactory.createZone(zoneStruct, _options);
 
         // build promise chain
@@ -299,8 +301,8 @@ export class ObservableZoneApi {
      * Create Zone
      * @param zoneStruct The zone to create
      */
-    public createZone(zoneStruct: CreateZoneRequest, _options?: Configuration): Observable<Zone> {
-        return this.createZoneWithHttpInfo(zoneStruct, _options).pipe(map((apiResponse: HttpInfo<Zone>) => apiResponse.data));
+    public createZone(zoneStruct: CreateZoneRequest, _options?: Configuration): Observable<CreateZone> {
+        return this.createZoneWithHttpInfo(zoneStruct, _options).pipe(map((apiResponse: HttpInfo<CreateZone>) => apiResponse.data));
     }
 
     /**
@@ -308,7 +310,7 @@ export class ObservableZoneApi {
      * Delete Zone
      * @param zone The name of the zone to delete
      */
-    public deleteZoneWithHttpInfo(zone: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public deleteZoneWithHttpInfo(zone: string, _options?: Configuration): Observable<HttpInfo<Submitted | void>> {
         const requestContextPromise = this.requestFactory.deleteZone(zone, _options);
 
         // build promise chain
@@ -332,15 +334,15 @@ export class ObservableZoneApi {
      * Delete Zone
      * @param zone The name of the zone to delete
      */
-    public deleteZone(zone: string, _options?: Configuration): Observable<void> {
-        return this.deleteZoneWithHttpInfo(zone, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public deleteZone(zone: string, _options?: Configuration): Observable<Submitted | void> {
+        return this.deleteZoneWithHttpInfo(zone, _options).pipe(map((apiResponse: HttpInfo<Submitted | void>) => apiResponse.data));
     }
 
     /**
      * list all zones that user owns
      * List all zones
      */
-    public getListZonesWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Array<Zone>>> {
+    public getListZonesWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Zones>> {
         const requestContextPromise = this.requestFactory.getListZones(_options);
 
         // build promise chain
@@ -363,16 +365,16 @@ export class ObservableZoneApi {
      * list all zones that user owns
      * List all zones
      */
-    public getListZones(_options?: Configuration): Observable<Array<Zone>> {
-        return this.getListZonesWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<Zone>>) => apiResponse.data));
+    public getListZones(_options?: Configuration): Observable<Zones> {
+        return this.getListZonesWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Zones>) => apiResponse.data));
     }
 
     /**
      * Get this zone, all dns records
      * Get Zone
-     * @param zone The name of the zone to delete
+     * @param zone The name of the zone
      */
-    public getZoneWithHttpInfo(zone: string, _options?: Configuration): Observable<HttpInfo<Zone>> {
+    public getZoneWithHttpInfo(zone: string, _options?: Configuration): Observable<HttpInfo<CreateZone>> {
         const requestContextPromise = this.requestFactory.getZone(zone, _options);
 
         // build promise chain
@@ -394,10 +396,10 @@ export class ObservableZoneApi {
     /**
      * Get this zone, all dns records
      * Get Zone
-     * @param zone The name of the zone to delete
+     * @param zone The name of the zone
      */
-    public getZone(zone: string, _options?: Configuration): Observable<Zone> {
-        return this.getZoneWithHttpInfo(zone, _options).pipe(map((apiResponse: HttpInfo<Zone>) => apiResponse.data));
+    public getZone(zone: string, _options?: Configuration): Observable<CreateZone> {
+        return this.getZoneWithHttpInfo(zone, _options).pipe(map((apiResponse: HttpInfo<CreateZone>) => apiResponse.data));
     }
 
 }

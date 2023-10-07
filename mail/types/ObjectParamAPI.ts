@@ -2,11 +2,25 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration} from '../configuration'
 
 import { CheckDNS } from '../models/CheckDNS';
+import { CheckDNSData } from '../models/CheckDNSData';
+import { CheckDNSResponse } from '../models/CheckDNSResponse';
+import { CheckDNSResponseDnsSetup } from '../models/CheckDNSResponseDnsSetup';
+import { CheckDNSResponseDnsSetupDkim } from '../models/CheckDNSResponseDnsSetupDkim';
+import { CheckDNSResponseDnsSetupMxRecord } from '../models/CheckDNSResponseDnsSetupMxRecord';
+import { CheckDNSResponseDnsSetupReturnPath } from '../models/CheckDNSResponseDnsSetupReturnPath';
+import { CheckDNSResponseDnsSetupSpf } from '../models/CheckDNSResponseDnsSetupSpf';
 import { CountMailPerDay } from '../models/CountMailPerDay';
+import { CountMailPerDayData } from '../models/CountMailPerDayData';
+import { CountMailPerDayDataEmailPerDayInner } from '../models/CountMailPerDayDataEmailPerDayInner';
 import { CreateSMTP } from '../models/CreateSMTP';
 import { CreateSMTPData } from '../models/CreateSMTPData';
+import { DownloadAttachments200Response } from '../models/DownloadAttachments200Response';
+import { DownloadAttachments200ResponseData } from '../models/DownloadAttachments200ResponseData';
+import { GetSingleMail200Response } from '../models/GetSingleMail200Response';
+import { GetSingleMail200ResponseData } from '../models/GetSingleMail200ResponseData';
 import { MailAccounts } from '../models/MailAccounts';
 import { MailAccountsData } from '../models/MailAccountsData';
+import { MailAccountsDataAccountsInner } from '../models/MailAccountsDataAccountsInner';
 import { MailAttachment } from '../models/MailAttachment';
 import { MailAttachments } from '../models/MailAttachments';
 import { MailAttachmentsData } from '../models/MailAttachmentsData';
@@ -14,10 +28,17 @@ import { MailEvents } from '../models/MailEvents';
 import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
+import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
 import { MailMessage } from '../models/MailMessage';
+import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
 import { MailMessagesData } from '../models/MailMessagesData';
 import { MailServer } from '../models/MailServer';
+import { MailServerData } from '../models/MailServerData';
+import { MailServerResponse } from '../models/MailServerResponse';
+import { MailServerResponseRateLimitTier } from '../models/MailServerResponseRateLimitTier';
+import { MailServers } from '../models/MailServers';
+import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1 } from '../models/Model1';
 import { Model10 } from '../models/Model10';
@@ -29,10 +50,12 @@ import { Model6 } from '../models/Model6';
 import { Model7 } from '../models/Model7';
 import { Model8 } from '../models/Model8';
 import { Model9 } from '../models/Model9';
+import { PostMails201Response } from '../models/PostMails201Response';
 import { RemainingFreeMails } from '../models/RemainingFreeMails';
 import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
+import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
 import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
@@ -105,7 +128,7 @@ export class ObjectAccountsApi {
      * check if mail account is available
      * @param param the request object
      */
-    public checkMailAvailableWithHttpInfo(param: AccountsApiCheckMailAvailableRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public checkMailAvailableWithHttpInfo(param: AccountsApiCheckMailAvailableRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.checkMailAvailableWithHttpInfo(param.mailServerID, param.accountName,  options).toPromise();
     }
 
@@ -113,7 +136,7 @@ export class ObjectAccountsApi {
      * check if mail account is available
      * @param param the request object
      */
-    public checkMailAvailable(param: AccountsApiCheckMailAvailableRequest, options?: Configuration): Promise<void> {
+    public checkMailAvailable(param: AccountsApiCheckMailAvailableRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.checkMailAvailable(param.mailServerID, param.accountName,  options).toPromise();
     }
 
@@ -121,7 +144,7 @@ export class ObjectAccountsApi {
      * add mail account
      * @param param the request object
      */
-    public createMailACcountWithHttpInfo(param: AccountsApiCreateMailACcountRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public createMailACcountWithHttpInfo(param: AccountsApiCreateMailACcountRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.createMailACcountWithHttpInfo(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -129,7 +152,7 @@ export class ObjectAccountsApi {
      * add mail account
      * @param param the request object
      */
-    public createMailACcount(param: AccountsApiCreateMailACcountRequest, options?: Configuration): Promise<void> {
+    public createMailACcount(param: AccountsApiCreateMailACcountRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.createMailACcount(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -217,7 +240,7 @@ export class ObjectAttachmentsApi {
      * download attachment
      * @param param the request object
      */
-    public downloadAttachmentsWithHttpInfo(param: AttachmentsApiDownloadAttachmentsRequest, options?: Configuration): Promise<HttpInfo<MailAttachment>> {
+    public downloadAttachmentsWithHttpInfo(param: AttachmentsApiDownloadAttachmentsRequest, options?: Configuration): Promise<HttpInfo<DownloadAttachments200Response>> {
         return this.api.downloadAttachmentsWithHttpInfo(param.mailServerID, param.messageID, param.attachmentID,  options).toPromise();
     }
 
@@ -225,7 +248,7 @@ export class ObjectAttachmentsApi {
      * download attachment
      * @param param the request object
      */
-    public downloadAttachments(param: AttachmentsApiDownloadAttachmentsRequest, options?: Configuration): Promise<MailAttachment> {
+    public downloadAttachments(param: AttachmentsApiDownloadAttachmentsRequest, options?: Configuration): Promise<DownloadAttachments200Response> {
         return this.api.downloadAttachments(param.mailServerID, param.messageID, param.attachmentID,  options).toPromise();
     }
 
@@ -373,7 +396,7 @@ export class ObjectForwardApi {
      * add address endpoint to forwarding mails
      * @param param the request object
      */
-    public createAddressForwardingWithHttpInfo(param: ForwardApiCreateAddressForwardingRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public createAddressForwardingWithHttpInfo(param: ForwardApiCreateAddressForwardingRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.createAddressForwardingWithHttpInfo(param.mailServerID, param.accountID, param.body,  options).toPromise();
     }
 
@@ -381,7 +404,7 @@ export class ObjectForwardApi {
      * add address endpoint to forwarding mails
      * @param param the request object
      */
-    public createAddressForwarding(param: ForwardApiCreateAddressForwardingRequest, options?: Configuration): Promise<void> {
+    public createAddressForwarding(param: ForwardApiCreateAddressForwardingRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.createAddressForwarding(param.mailServerID, param.accountID, param.body,  options).toPromise();
     }
 
@@ -535,7 +558,7 @@ export class ObjectMailsApi {
      * chagen mail server mode
      * @param param the request object
      */
-    public changeMailServerModeWithHttpInfo(param: MailsApiChangeMailServerModeRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public changeMailServerModeWithHttpInfo(param: MailsApiChangeMailServerModeRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.changeMailServerModeWithHttpInfo(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -543,7 +566,7 @@ export class ObjectMailsApi {
      * chagen mail server mode
      * @param param the request object
      */
-    public changeMailServerMode(param: MailsApiChangeMailServerModeRequest, options?: Configuration): Promise<void> {
+    public changeMailServerMode(param: MailsApiChangeMailServerModeRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.changeMailServerMode(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -551,7 +574,7 @@ export class ObjectMailsApi {
      * change mail server plan
      * @param param the request object
      */
-    public changeMailServerPlanWithHttpInfo(param: MailsApiChangeMailServerPlanRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public changeMailServerPlanWithHttpInfo(param: MailsApiChangeMailServerPlanRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.changeMailServerPlanWithHttpInfo(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -559,7 +582,7 @@ export class ObjectMailsApi {
      * change mail server plan
      * @param param the request object
      */
-    public changeMailServerPlan(param: MailsApiChangeMailServerPlanRequest, options?: Configuration): Promise<void> {
+    public changeMailServerPlan(param: MailsApiChangeMailServerPlanRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.changeMailServerPlan(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -567,7 +590,7 @@ export class ObjectMailsApi {
      * check if domain name is available
      * @param param the request object
      */
-    public checkDomainAvailableWithHttpInfo(param: MailsApiCheckDomainAvailableRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public checkDomainAvailableWithHttpInfo(param: MailsApiCheckDomainAvailableRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.checkDomainAvailableWithHttpInfo(param.domain,  options).toPromise();
     }
 
@@ -575,7 +598,7 @@ export class ObjectMailsApi {
      * check if domain name is available
      * @param param the request object
      */
-    public checkDomainAvailable(param: MailsApiCheckDomainAvailableRequest, options?: Configuration): Promise<void> {
+    public checkDomainAvailable(param: MailsApiCheckDomainAvailableRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.checkDomainAvailable(param.domain,  options).toPromise();
     }
 
@@ -647,7 +670,7 @@ export class ObjectMailsApi {
      * get all mail servers
      * @param param the request object
      */
-    public getMailsWithHttpInfo(param: MailsApiGetMailsRequest = {}, options?: Configuration): Promise<HttpInfo<Array<MailServer>>> {
+    public getMailsWithHttpInfo(param: MailsApiGetMailsRequest = {}, options?: Configuration): Promise<HttpInfo<MailServers>> {
         return this.api.getMailsWithHttpInfo( options).toPromise();
     }
 
@@ -655,7 +678,7 @@ export class ObjectMailsApi {
      * get all mail servers
      * @param param the request object
      */
-    public getMails(param: MailsApiGetMailsRequest = {}, options?: Configuration): Promise<Array<MailServer>> {
+    public getMails(param: MailsApiGetMailsRequest = {}, options?: Configuration): Promise<MailServers> {
         return this.api.getMails( options).toPromise();
     }
 
@@ -679,7 +702,7 @@ export class ObjectMailsApi {
      * create mail server
      * @param param the request object
      */
-    public postMailsWithHttpInfo(param: MailsApiPostMailsRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public postMailsWithHttpInfo(param: MailsApiPostMailsRequest = {}, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.postMailsWithHttpInfo(param.body,  options).toPromise();
     }
 
@@ -687,7 +710,7 @@ export class ObjectMailsApi {
      * create mail server
      * @param param the request object
      */
-    public postMails(param: MailsApiPostMailsRequest = {}, options?: Configuration): Promise<void> {
+    public postMails(param: MailsApiPostMailsRequest = {}, options?: Configuration): Promise<PostMails201Response> {
         return this.api.postMails(param.body,  options).toPromise();
     }
 
@@ -862,7 +885,7 @@ export class ObjectMessagesApi {
      * get single mail
      * @param param the request object
      */
-    public getSingleMailWithHttpInfo(param: MessagesApiGetSingleMailRequest, options?: Configuration): Promise<HttpInfo<MailMessage>> {
+    public getSingleMailWithHttpInfo(param: MessagesApiGetSingleMailRequest, options?: Configuration): Promise<HttpInfo<GetSingleMail200Response>> {
         return this.api.getSingleMailWithHttpInfo(param.mailServerID, param.messageID,  options).toPromise();
     }
 
@@ -870,7 +893,7 @@ export class ObjectMessagesApi {
      * get single mail
      * @param param the request object
      */
-    public getSingleMail(param: MessagesApiGetSingleMailRequest, options?: Configuration): Promise<MailMessage> {
+    public getSingleMail(param: MessagesApiGetSingleMailRequest, options?: Configuration): Promise<GetSingleMail200Response> {
         return this.api.getSingleMail(param.mailServerID, param.messageID,  options).toPromise();
     }
 
@@ -894,7 +917,7 @@ export class ObjectMessagesApi {
      * send a mail
      * @param param the request object
      */
-    public sendMailWithHttpInfo(param: MessagesApiSendMailRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public sendMailWithHttpInfo(param: MessagesApiSendMailRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
         return this.api.sendMailWithHttpInfo(param.mailServerID, param.body,  options).toPromise();
     }
 
@@ -902,7 +925,7 @@ export class ObjectMessagesApi {
      * send a mail
      * @param param the request object
      */
-    public sendMail(param: MessagesApiSendMailRequest, options?: Configuration): Promise<void> {
+    public sendMail(param: MessagesApiSendMailRequest, options?: Configuration): Promise<PostMails201Response> {
         return this.api.sendMail(param.mailServerID, param.body,  options).toPromise();
     }
 

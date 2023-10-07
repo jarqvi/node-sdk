@@ -11,6 +11,7 @@ import {SecurityAuthentication} from '../auth/auth';
 import { Applets } from '../models/Applets';
 import { ChangePlanRequest } from '../models/ChangePlanRequest';
 import { CreateApp } from '../models/CreateApp';
+import { LogsInner } from '../models/LogsInner';
 import { ProjectAllDetails } from '../models/ProjectAllDetails';
 import { Projects } from '../models/Projects';
 import { Releases } from '../models/Releases';
@@ -261,13 +262,17 @@ export class AppsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v1/projects/{name}/logs?since={since}'
-            .replace('{' + 'name' + '}', encodeURIComponent(String(name)))
-            .replace('{' + 'since' + '}', encodeURIComponent(String(since)));
+        const localVarPath = '/v1/projects/{name}/logs'
+            .replace('{' + 'name' + '}', encodeURIComponent(String(name)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (since !== undefined) {
+            requestContext.setQueryParam("since", ObjectSerializer.serialize(since, "string", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -314,14 +319,22 @@ export class AppsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v1/projects/{name}/releases?page={page}&count={count}'
-            .replace('{' + 'name' + '}', encodeURIComponent(String(name)))
-            .replace('{' + 'page' + '}', encodeURIComponent(String(page)))
-            .replace('{' + 'count' + '}', encodeURIComponent(String(count)));
+        const localVarPath = '/v1/projects/{name}/releases'
+            .replace('{' + 'name' + '}', encodeURIComponent(String(name)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (page !== undefined) {
+            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", ""));
+        }
+
+        // Query Params
+        if (count !== undefined) {
+            requestContext.setQueryParam("count", ObjectSerializer.serialize(count, "number", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -649,10 +662,14 @@ export class AppsApiResponseProcessor {
      * @params response Response returned by the server for a request to getAppLogs
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getAppLogsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getAppLogsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<LogsInner> >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Array<LogsInner> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<LogsInner>", ""
+            ) as Array<LogsInner>;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -666,10 +683,10 @@ export class AppsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Array<LogsInner> = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Array<LogsInner>", ""
+            ) as Array<LogsInner>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

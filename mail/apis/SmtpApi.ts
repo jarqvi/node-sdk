@@ -39,7 +39,7 @@ export class SmtpApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/smtp-credentials/{username}'
+        const localVarPath = '/api/v1/mails/{mailServerID}/smtp-credentials/{username}'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'username' + '}', encodeURIComponent(String(username)));
 
@@ -79,7 +79,7 @@ export class SmtpApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/smtp-credentials'
+        const localVarPath = '/api/v1/mails/{mailServerID}/smtp-credentials'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -88,7 +88,9 @@ export class SmtpApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "Model4", ""),
@@ -125,7 +127,7 @@ export class SmtpApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/smtp-credentials'
+        const localVarPath = '/api/v1/mails/{mailServerID}/smtp-credentials'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -164,7 +166,7 @@ export class SmtpApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/smtp-credentials'
+        const localVarPath = '/api/v1/mails/{mailServerID}/smtp-credentials'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -173,7 +175,9 @@ export class SmtpApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "Model9", ""),

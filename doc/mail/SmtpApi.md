@@ -20,7 +20,7 @@ Method | HTTP request | Description
 ```typescript
 mail.SmtpApi.deleteSmtpCredential('mail-server-id', 'username')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

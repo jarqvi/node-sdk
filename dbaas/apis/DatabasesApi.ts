@@ -8,6 +8,8 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { ChangeControlPanel200Response } from '../models/ChangeControlPanel200Response';
+import { CreateDatabase200Response } from '../models/CreateDatabase200Response';
 import { CreateDatabases } from '../models/CreateDatabases';
 import { DBDetails } from '../models/DBDetails';
 import { DBsDetails } from '../models/DBsDetails';
@@ -135,7 +137,7 @@ export class DatabasesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
-            "Databaselication/json"
+            "application/json"
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
@@ -297,7 +299,7 @@ export class DatabasesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
-            "Databaselication/json"
+            "application/json"
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
@@ -353,7 +355,7 @@ export class DatabasesApiRequestFactory extends BaseAPIRequestFactory {
 
         // Body Params
         const contentType = ObjectSerializer.getPreferredMediaType([
-            "Databaselication/json"
+            "application/json"
         ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
@@ -388,10 +390,14 @@ export class DatabasesApiResponseProcessor {
      * @params response Response returned by the server for a request to changeControlPanel
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async changeControlPanelWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async changeControlPanelWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ChangeControlPanel200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: ChangeControlPanel200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ChangeControlPanel200Response", ""
+            ) as ChangeControlPanel200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -408,10 +414,10 @@ export class DatabasesApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: ChangeControlPanel200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "ChangeControlPanel200Response", ""
+            ) as ChangeControlPanel200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -462,10 +468,14 @@ export class DatabasesApiResponseProcessor {
      * @params response Response returned by the server for a request to createDatabase
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createDatabaseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createDatabaseWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateDatabase200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: CreateDatabase200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateDatabase200Response", ""
+            ) as CreateDatabase200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -479,10 +489,10 @@ export class DatabasesApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateDatabase200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateDatabase200Response", ""
+            ) as CreateDatabase200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

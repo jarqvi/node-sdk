@@ -8,6 +8,8 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { GetHisotricalMetrics200Response } from '../models/GetHisotricalMetrics200Response';
+import { GetMetricsSummary200Response } from '../models/GetMetricsSummary200Response';
 
 /**
  * no description
@@ -35,7 +37,7 @@ export class MetricsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/metrics/historical'
+        const localVarPath = '/api/v1/buckets/{bucket}/metrics/historical'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -77,7 +79,7 @@ export class MetricsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/metrics/summary'
+        const localVarPath = '/api/v1/buckets/{bucket}/metrics/summary'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -111,10 +113,14 @@ export class MetricsApiResponseProcessor {
      * @params response Response returned by the server for a request to getHisotricalMetrics
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getHisotricalMetricsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getHisotricalMetricsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetHisotricalMetrics200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: GetHisotricalMetrics200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetHisotricalMetrics200Response", ""
+            ) as GetHisotricalMetrics200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -134,10 +140,10 @@ export class MetricsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: GetHisotricalMetrics200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "GetHisotricalMetrics200Response", ""
+            ) as GetHisotricalMetrics200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -151,10 +157,14 @@ export class MetricsApiResponseProcessor {
      * @params response Response returned by the server for a request to getMetricsSummary
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getMetricsSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getMetricsSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetMetricsSummary200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: GetMetricsSummary200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetMetricsSummary200Response", ""
+            ) as GetMetricsSummary200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -174,10 +184,10 @@ export class MetricsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: GetMetricsSummary200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "GetMetricsSummary200Response", ""
+            ) as GetMetricsSummary200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

@@ -8,8 +8,10 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { CreateZone } from '../models/CreateZone';
 import { CreateZoneRequest } from '../models/CreateZoneRequest';
-import { Zone } from '../models/Zone';
+import { Submitted } from '../models/Submitted';
+import { Zones } from '../models/Zones';
 
 /**
  * no description
@@ -31,7 +33,7 @@ export class ZoneApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones';
+        const localVarPath = '/api/v1/zones';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -79,7 +81,7 @@ export class ZoneApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}'
+        const localVarPath = '/api/v1/zones/{zone}'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)));
 
         // Make Request Context
@@ -110,7 +112,7 @@ export class ZoneApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/zones';
+        const localVarPath = '/api/v1/zones';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -135,7 +137,7 @@ export class ZoneApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get this zone, all dns records
      * Get Zone
-     * @param zone The name of the zone to delete
+     * @param zone The name of the zone
      */
     public async getZone(zone: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -147,7 +149,7 @@ export class ZoneApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}'
+        const localVarPath = '/api/v1/zones/{zone}'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)));
 
         // Make Request Context
@@ -181,13 +183,13 @@ export class ZoneApiResponseProcessor {
      * @params response Response returned by the server for a request to createZone
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createZoneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Zone >> {
+     public async createZoneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateZone >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: Zone = ObjectSerializer.deserialize(
+            const body: CreateZone = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Zone", ""
-            ) as Zone;
+                "CreateZone", ""
+            ) as CreateZone;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -205,10 +207,10 @@ export class ZoneApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Zone = ObjectSerializer.deserialize(
+            const body: CreateZone = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Zone", ""
-            ) as Zone;
+                "CreateZone", ""
+            ) as CreateZone;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -222,10 +224,14 @@ export class ZoneApiResponseProcessor {
      * @params response Response returned by the server for a request to deleteZone
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async deleteZoneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async deleteZoneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Submitted | void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Submitted = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Submitted", ""
+            ) as Submitted;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("204", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -239,10 +245,10 @@ export class ZoneApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Submitted | void = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Submitted | void", ""
+            ) as Submitted | void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -256,22 +262,22 @@ export class ZoneApiResponseProcessor {
      * @params response Response returned by the server for a request to getListZones
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getListZonesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<Zone> >> {
+     public async getListZonesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Zones >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Array<Zone> = ObjectSerializer.deserialize(
+            const body: Zones = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<Zone>", ""
-            ) as Array<Zone>;
+                "Zones", ""
+            ) as Zones;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Array<Zone> = ObjectSerializer.deserialize(
+            const body: Zones = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Array<Zone>", ""
-            ) as Array<Zone>;
+                "Zones", ""
+            ) as Zones;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -285,13 +291,13 @@ export class ZoneApiResponseProcessor {
      * @params response Response returned by the server for a request to getZone
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getZoneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Zone >> {
+     public async getZoneWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateZone >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: Zone = ObjectSerializer.deserialize(
+            const body: CreateZone = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Zone", ""
-            ) as Zone;
+                "CreateZone", ""
+            ) as CreateZone;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
@@ -303,10 +309,10 @@ export class ZoneApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: Zone = ObjectSerializer.deserialize(
+            const body: CreateZone = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "Zone", ""
-            ) as Zone;
+                "CreateZone", ""
+            ) as CreateZone;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

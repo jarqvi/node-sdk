@@ -1,13 +1,25 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
 import { Configuration} from '../configuration'
 
+import { ChangeControlPanel200Response } from '../models/ChangeControlPanel200Response';
+import { CreateDatabase200Response } from '../models/CreateDatabase200Response';
 import { CreateDatabases } from '../models/CreateDatabases';
+import { CreateDatabasesOptions } from '../models/CreateDatabasesOptions';
 import { DBDetails } from '../models/DBDetails';
 import { DBDetailsDatabase } from '../models/DBDetailsDatabase';
 import { DBDetailsDatabaseMetaData } from '../models/DBDetailsDatabaseMetaData';
 import { DBDetailsDatabaseNode } from '../models/DBDetailsDatabaseNode';
 import { DBsDetails } from '../models/DBsDetails';
 import { DBsDetailsDatabasesInner } from '../models/DBsDetailsDatabasesInner';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { GetDatabaseSummaryReports200Response } from '../models/GetDatabaseSummaryReports200Response';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInner';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetDatabaseSummaryReports200ResponseDisksUsageInner } from '../models/GetDatabaseSummaryReports200ResponseDisksUsageInner';
+import { GetListBackups200Response } from '../models/GetListBackups200Response';
+import { GetListBackups200ResponseBackupsInner } from '../models/GetListBackups200ResponseBackupsInner';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
 import { ResizeDatabaseRequest } from '../models/ResizeDatabaseRequest';
 import { TurnDatabaseRequest } from '../models/TurnDatabaseRequest';
 
@@ -77,7 +89,7 @@ export class ObjectBackupsApi {
      * Download a backup
      * @param param the request object
      */
-    public downloadBackupWithHttpInfo(param: BackupsApiDownloadBackupRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public downloadBackupWithHttpInfo(param: BackupsApiDownloadBackupRequest, options?: Configuration): Promise<HttpInfo<DownloadBackup200Response>> {
         return this.api.downloadBackupWithHttpInfo(param.id, param.name,  options).toPromise();
     }
 
@@ -86,7 +98,7 @@ export class ObjectBackupsApi {
      * Download a backup
      * @param param the request object
      */
-    public downloadBackup(param: BackupsApiDownloadBackupRequest, options?: Configuration): Promise<void> {
+    public downloadBackup(param: BackupsApiDownloadBackupRequest, options?: Configuration): Promise<DownloadBackup200Response> {
         return this.api.downloadBackup(param.id, param.name,  options).toPromise();
     }
 
@@ -95,7 +107,7 @@ export class ObjectBackupsApi {
      * Get all backups
      * @param param the request object
      */
-    public getListBackupsWithHttpInfo(param: BackupsApiGetListBackupsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getListBackupsWithHttpInfo(param: BackupsApiGetListBackupsRequest, options?: Configuration): Promise<HttpInfo<GetListBackups200Response>> {
         return this.api.getListBackupsWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -104,7 +116,7 @@ export class ObjectBackupsApi {
      * Get all backups
      * @param param the request object
      */
-    public getListBackups(param: BackupsApiGetListBackupsRequest, options?: Configuration): Promise<void> {
+    public getListBackups(param: BackupsApiGetListBackupsRequest, options?: Configuration): Promise<GetListBackups200Response> {
         return this.api.getListBackups(param.id,  options).toPromise();
     }
 
@@ -215,7 +227,7 @@ export class ObjectDatabasesApi {
      * Change control-panel status
      * @param param the request object
      */
-    public changeControlPanelWithHttpInfo(param: DatabasesApiChangeControlPanelRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public changeControlPanelWithHttpInfo(param: DatabasesApiChangeControlPanelRequest, options?: Configuration): Promise<HttpInfo<ChangeControlPanel200Response>> {
         return this.api.changeControlPanelWithHttpInfo(param.id, param.status,  options).toPromise();
     }
 
@@ -224,7 +236,7 @@ export class ObjectDatabasesApi {
      * Change control-panel status
      * @param param the request object
      */
-    public changeControlPanel(param: DatabasesApiChangeControlPanelRequest, options?: Configuration): Promise<void> {
+    public changeControlPanel(param: DatabasesApiChangeControlPanelRequest, options?: Configuration): Promise<ChangeControlPanel200Response> {
         return this.api.changeControlPanel(param.id, param.status,  options).toPromise();
     }
 
@@ -251,7 +263,7 @@ export class ObjectDatabasesApi {
      * Create a database
      * @param param the request object
      */
-    public createDatabaseWithHttpInfo(param: DatabasesApiCreateDatabaseRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public createDatabaseWithHttpInfo(param: DatabasesApiCreateDatabaseRequest, options?: Configuration): Promise<HttpInfo<CreateDatabase200Response>> {
         return this.api.createDatabaseWithHttpInfo(param.createADatabases,  options).toPromise();
     }
 
@@ -260,7 +272,7 @@ export class ObjectDatabasesApi {
      * Create a database
      * @param param the request object
      */
-    public createDatabase(param: DatabasesApiCreateDatabaseRequest, options?: Configuration): Promise<void> {
+    public createDatabase(param: DatabasesApiCreateDatabaseRequest, options?: Configuration): Promise<CreateDatabase200Response> {
         return this.api.createDatabase(param.createADatabases,  options).toPromise();
     }
 
@@ -440,7 +452,7 @@ export class ObjectReportsApi {
      * Get cpu reports of database
      * @param param the request object
      */
-    public getDatabaseCpuReportsWithHttpInfo(param: ReportsApiGetDatabaseCpuReportsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseCpuReportsWithHttpInfo(param: ReportsApiGetDatabaseCpuReportsRequest, options?: Configuration): Promise<HttpInfo<Reports>> {
         return this.api.getDatabaseCpuReportsWithHttpInfo(param.id, param.since,  options).toPromise();
     }
 
@@ -449,7 +461,7 @@ export class ObjectReportsApi {
      * Get cpu reports of database
      * @param param the request object
      */
-    public getDatabaseCpuReports(param: ReportsApiGetDatabaseCpuReportsRequest, options?: Configuration): Promise<void> {
+    public getDatabaseCpuReports(param: ReportsApiGetDatabaseCpuReportsRequest, options?: Configuration): Promise<Reports> {
         return this.api.getDatabaseCpuReports(param.id, param.since,  options).toPromise();
     }
 
@@ -458,7 +470,7 @@ export class ObjectReportsApi {
      * Get memory reports of database
      * @param param the request object
      */
-    public getDatabaseMemoryReportsWithHttpInfo(param: ReportsApiGetDatabaseMemoryReportsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseMemoryReportsWithHttpInfo(param: ReportsApiGetDatabaseMemoryReportsRequest, options?: Configuration): Promise<HttpInfo<Reports>> {
         return this.api.getDatabaseMemoryReportsWithHttpInfo(param.id, param.since,  options).toPromise();
     }
 
@@ -467,7 +479,7 @@ export class ObjectReportsApi {
      * Get memory reports of database
      * @param param the request object
      */
-    public getDatabaseMemoryReports(param: ReportsApiGetDatabaseMemoryReportsRequest, options?: Configuration): Promise<void> {
+    public getDatabaseMemoryReports(param: ReportsApiGetDatabaseMemoryReportsRequest, options?: Configuration): Promise<Reports> {
         return this.api.getDatabaseMemoryReports(param.id, param.since,  options).toPromise();
     }
 
@@ -476,7 +488,7 @@ export class ObjectReportsApi {
      * Get network-receive reports of database
      * @param param the request object
      */
-    public getDatabaseNetworkReceiveReportsWithHttpInfo(param: ReportsApiGetDatabaseNetworkReceiveReportsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseNetworkReceiveReportsWithHttpInfo(param: ReportsApiGetDatabaseNetworkReceiveReportsRequest, options?: Configuration): Promise<HttpInfo<Reports>> {
         return this.api.getDatabaseNetworkReceiveReportsWithHttpInfo(param.id, param.since,  options).toPromise();
     }
 
@@ -485,7 +497,7 @@ export class ObjectReportsApi {
      * Get network-receive reports of database
      * @param param the request object
      */
-    public getDatabaseNetworkReceiveReports(param: ReportsApiGetDatabaseNetworkReceiveReportsRequest, options?: Configuration): Promise<void> {
+    public getDatabaseNetworkReceiveReports(param: ReportsApiGetDatabaseNetworkReceiveReportsRequest, options?: Configuration): Promise<Reports> {
         return this.api.getDatabaseNetworkReceiveReports(param.id, param.since,  options).toPromise();
     }
 
@@ -494,7 +506,7 @@ export class ObjectReportsApi {
      * Get network-transmit reports of database
      * @param param the request object
      */
-    public getDatabaseNetworkTransmitReportsWithHttpInfo(param: ReportsApiGetDatabaseNetworkTransmitReportsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseNetworkTransmitReportsWithHttpInfo(param: ReportsApiGetDatabaseNetworkTransmitReportsRequest, options?: Configuration): Promise<HttpInfo<Reports>> {
         return this.api.getDatabaseNetworkTransmitReportsWithHttpInfo(param.id, param.since,  options).toPromise();
     }
 
@@ -503,7 +515,7 @@ export class ObjectReportsApi {
      * Get network-transmit reports of database
      * @param param the request object
      */
-    public getDatabaseNetworkTransmitReports(param: ReportsApiGetDatabaseNetworkTransmitReportsRequest, options?: Configuration): Promise<void> {
+    public getDatabaseNetworkTransmitReports(param: ReportsApiGetDatabaseNetworkTransmitReportsRequest, options?: Configuration): Promise<Reports> {
         return this.api.getDatabaseNetworkTransmitReports(param.id, param.since,  options).toPromise();
     }
 
@@ -512,7 +524,7 @@ export class ObjectReportsApi {
      * Get summary reports of database
      * @param param the request object
      */
-    public getDatabaseSummaryReportsWithHttpInfo(param: ReportsApiGetDatabaseSummaryReportsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getDatabaseSummaryReportsWithHttpInfo(param: ReportsApiGetDatabaseSummaryReportsRequest, options?: Configuration): Promise<HttpInfo<GetDatabaseSummaryReports200Response>> {
         return this.api.getDatabaseSummaryReportsWithHttpInfo(param.id,  options).toPromise();
     }
 
@@ -521,7 +533,7 @@ export class ObjectReportsApi {
      * Get summary reports of database
      * @param param the request object
      */
-    public getDatabaseSummaryReports(param: ReportsApiGetDatabaseSummaryReportsRequest, options?: Configuration): Promise<void> {
+    public getDatabaseSummaryReports(param: ReportsApiGetDatabaseSummaryReportsRequest, options?: Configuration): Promise<GetDatabaseSummaryReports200Response> {
         return this.api.getDatabaseSummaryReports(param.id,  options).toPromise();
     }
 

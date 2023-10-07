@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class MailEventsData {
     'total'?: number;
-    'events'?: any;
+    'events'?: Array<any>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,7 +28,7 @@ export class MailEventsData {
         {
             "name": "events",
             "baseName": "events",
-            "type": "any",
+            "type": "Array<any>",
             "format": ""
         }    ];
 

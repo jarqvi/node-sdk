@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { CreateDatabasesOptions } from '../models/CreateDatabasesOptions';
 import { HttpFile } from '../http/http';
 
 export class CreateDatabases {
@@ -17,6 +18,7 @@ export class CreateDatabases {
     * The hostname of databases that you want to create
     */
     'hostname'?: string;
+    'options'?: CreateDatabasesOptions;
     /**
     * The publicNetwork of databases that you want to create
     */
@@ -41,6 +43,12 @@ export class CreateDatabases {
             "name": "hostname",
             "baseName": "hostname",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "options",
+            "baseName": "options",
+            "type": "CreateDatabasesOptions",
             "format": ""
         },
         {

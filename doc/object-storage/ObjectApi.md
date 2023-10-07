@@ -22,7 +22,7 @@ Delete an object from storage
 ```typescript
 objectStorage.ObjectApi.deleteObject('bucket-example', 'prefix-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

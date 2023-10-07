@@ -8,6 +8,9 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { DownloadObject200Response } from '../models/DownloadObject200Response';
+import { Objects } from '../models/Objects';
+import { Stat } from '../models/Stat';
 
 /**
  * no description
@@ -36,7 +39,7 @@ export class ObjectApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/objects/{prefix}'
+        const localVarPath = '/api/v1/buckets/{bucket}/objects/{prefix}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'prefix' + '}', encodeURIComponent(String(prefix)));
 
@@ -84,7 +87,7 @@ export class ObjectApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/download/${object}'
+        const localVarPath = '/api/v1/buckets/{bucket}/download/${object}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'object' + '}', encodeURIComponent(String(object)));
 
@@ -139,7 +142,7 @@ export class ObjectApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/objects/{prefix}'
+        const localVarPath = '/api/v1/buckets/{bucket}/objects/{prefix}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'prefix' + '}', encodeURIComponent(String(prefix)));
 
@@ -194,7 +197,7 @@ export class ObjectApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/objects/statistics/{object}'
+        const localVarPath = '/api/v1/buckets/{bucket}/objects/statistics/{object}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'object' + '}', encodeURIComponent(String(object)));
 
@@ -240,7 +243,7 @@ export class ObjectApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/upload/{object}'
+        const localVarPath = '/api/v1/buckets/{bucket}/upload/{object}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'object' + '}', encodeURIComponent(String(object)));
 
@@ -315,10 +318,14 @@ export class ObjectApiResponseProcessor {
      * @params response Response returned by the server for a request to downloadObject
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async downloadObjectWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async downloadObjectWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DownloadObject200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: DownloadObject200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DownloadObject200Response", ""
+            ) as DownloadObject200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -338,10 +345,10 @@ export class ObjectApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: DownloadObject200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "DownloadObject200Response", ""
+            ) as DownloadObject200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -355,10 +362,14 @@ export class ObjectApiResponseProcessor {
      * @params response Response returned by the server for a request to getListObjects
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getListObjectsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getListObjectsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Objects >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Objects = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Objects", ""
+            ) as Objects;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -378,10 +389,10 @@ export class ObjectApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Objects = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Objects", ""
+            ) as Objects;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -395,10 +406,14 @@ export class ObjectApiResponseProcessor {
      * @params response Response returned by the server for a request to getStatObject
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getStatObjectWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getStatObjectWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Stat >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("204", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: Stat = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Stat", ""
+            ) as Stat;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -418,10 +433,10 @@ export class ObjectApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Stat = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Stat", ""
+            ) as Stat;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -435,10 +450,14 @@ export class ObjectApiResponseProcessor {
      * @params response Response returned by the server for a request to uploadObject
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async uploadObjectWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async uploadObjectWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DownloadObject200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: DownloadObject200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DownloadObject200Response", ""
+            ) as DownloadObject200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -458,10 +477,10 @@ export class ObjectApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: DownloadObject200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "DownloadObject200Response", ""
+            ) as DownloadObject200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

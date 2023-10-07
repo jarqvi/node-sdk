@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ```typescript
 mail.ForwardApi.deleteExtraEndpoint('mail-server-id', 'account-id', 'address-id')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

@@ -8,7 +8,9 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { IpStatic200Response } from '../models/IpStatic200Response';
 import { UpdateEnvs } from '../models/UpdateEnvs';
+import { UpdateEnvs200Response } from '../models/UpdateEnvs200Response';
 
 /**
  * no description
@@ -249,13 +251,13 @@ export class SettingsApiResponseProcessor {
      * @params response Response returned by the server for a request to ipStatic
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async ipStaticWithHttpInfo(response: ResponseContext): Promise<HttpInfo<any >> {
+     public async ipStaticWithHttpInfo(response: ResponseContext): Promise<HttpInfo<IpStatic200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: any = ObjectSerializer.deserialize(
+            const body: IpStatic200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "any", ""
-            ) as any;
+                "IpStatic200Response", ""
+            ) as IpStatic200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -273,10 +275,10 @@ export class SettingsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: any = ObjectSerializer.deserialize(
+            const body: IpStatic200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "any", ""
-            ) as any;
+                "IpStatic200Response", ""
+            ) as IpStatic200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -290,10 +292,14 @@ export class SettingsApiResponseProcessor {
      * @params response Response returned by the server for a request to updateEnvs
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateEnvsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async updateEnvsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpdateEnvs200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: UpdateEnvs200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "UpdateEnvs200Response", ""
+            ) as UpdateEnvs200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -307,10 +313,10 @@ export class SettingsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: UpdateEnvs200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "UpdateEnvs200Response", ""
+            ) as UpdateEnvs200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

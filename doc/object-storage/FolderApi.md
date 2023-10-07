@@ -76,7 +76,7 @@ Delete Folder in Bucket
 ```typescript
 objectStorage.FolderApi.deleteFolder('bucket-example', 'path-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

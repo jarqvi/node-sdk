@@ -82,7 +82,7 @@ const status = 'enable'; // 'disable'
 
 dbaas.DatabasesApi.changePublicNetwork('id-example', status)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -192,7 +192,7 @@ delete a database that user owns
 ```typescript
 dbaas.DatabasesApi.deleteDatabase('id-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -343,7 +343,7 @@ const body = {
 
 dbaas.DatabasesApi.resizeDatabase('id-example', body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -398,7 +398,7 @@ const body = {
 
 dbaas.DatabasesApi.turnDatabase('id-example', body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

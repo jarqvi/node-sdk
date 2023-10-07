@@ -1,12 +1,78 @@
+export * from '../models/Bucket';
+export * from '../models/ChangeBucketAccess200Response';
 export * from '../models/CreateBucket';
+export * from '../models/CreateBucket201Response';
 export * from '../models/CreateFolder';
+export * from '../models/CreateFolder201Response';
+export * from '../models/CreateFolder201ResponseData';
 export * from '../models/CreateKey';
+export * from '../models/CreateKey201Response';
+export * from '../models/CreateKey201ResponseData';
+export * from '../models/DownloadObject200Response';
+export * from '../models/DownloadObject200ResponseData';
+export * from '../models/GetHisotricalMetrics200Response';
+export * from '../models/GetHisotricalMetrics200ResponseData';
+export * from '../models/GetHisotricalMetrics200ResponseDataMetrics';
+export * from '../models/GetMetricsSummary200Response';
+export * from '../models/GetMetricsSummary200ResponseData';
+export * from '../models/GetMetricsSummary200ResponseDataMetrics';
+export * from '../models/GetMetricsSummary200ResponseDataMetricsTotolObjectsInner';
+export * from '../models/GetMigrations200Response';
+export * from '../models/GetSingleBuckets200Response';
+export * from '../models/Key';
+export * from '../models/KeyBucketsInner';
+export * from '../models/Keys';
+export * from '../models/ListBucket';
 export * from '../models/MigrateBucket';
+export * from '../models/Objects';
+export * from '../models/ObjectsData';
+export * from '../models/ObjectsDataObjects';
+export * from '../models/ObjectsDataObjectsCommonPrefixesInner';
+export * from '../models/ObjectsDataObjectsContentsInner';
+export * from '../models/RevokeSecretKey200Response';
+export * from '../models/Stat';
+export * from '../models/StatData';
+export * from '../models/StatDataObject';
+export * from '../models/StatDataObjectMetaData';
+export * from '../models/UpgradeBucket200Response';
 
+import { Bucket } from '../models/Bucket';
+import { ChangeBucketAccess200Response } from '../models/ChangeBucketAccess200Response';
 import { CreateBucket } from '../models/CreateBucket';
+import { CreateBucket201Response } from '../models/CreateBucket201Response';
 import { CreateFolder } from '../models/CreateFolder';
+import { CreateFolder201Response } from '../models/CreateFolder201Response';
+import { CreateFolder201ResponseData } from '../models/CreateFolder201ResponseData';
 import { CreateKey } from '../models/CreateKey';
+import { CreateKey201Response } from '../models/CreateKey201Response';
+import { CreateKey201ResponseData } from '../models/CreateKey201ResponseData';
+import { DownloadObject200Response } from '../models/DownloadObject200Response';
+import { DownloadObject200ResponseData } from '../models/DownloadObject200ResponseData';
+import { GetHisotricalMetrics200Response } from '../models/GetHisotricalMetrics200Response';
+import { GetHisotricalMetrics200ResponseData } from '../models/GetHisotricalMetrics200ResponseData';
+import { GetHisotricalMetrics200ResponseDataMetrics } from '../models/GetHisotricalMetrics200ResponseDataMetrics';
+import { GetMetricsSummary200Response } from '../models/GetMetricsSummary200Response';
+import { GetMetricsSummary200ResponseData } from '../models/GetMetricsSummary200ResponseData';
+import { GetMetricsSummary200ResponseDataMetrics } from '../models/GetMetricsSummary200ResponseDataMetrics';
+import { GetMetricsSummary200ResponseDataMetricsTotolObjectsInner } from '../models/GetMetricsSummary200ResponseDataMetricsTotolObjectsInner';
+import { GetMigrations200Response } from '../models/GetMigrations200Response';
+import { GetSingleBuckets200Response } from '../models/GetSingleBuckets200Response';
+import { Key } from '../models/Key';
+import { KeyBucketsInner } from '../models/KeyBucketsInner';
+import { Keys } from '../models/Keys';
+import { ListBucket } from '../models/ListBucket';
 import { MigrateBucket } from '../models/MigrateBucket';
+import { Objects } from '../models/Objects';
+import { ObjectsData } from '../models/ObjectsData';
+import { ObjectsDataObjects } from '../models/ObjectsDataObjects';
+import { ObjectsDataObjectsCommonPrefixesInner } from '../models/ObjectsDataObjectsCommonPrefixesInner';
+import { ObjectsDataObjectsContentsInner } from '../models/ObjectsDataObjectsContentsInner';
+import { RevokeSecretKey200Response } from '../models/RevokeSecretKey200Response';
+import { Stat } from '../models/Stat';
+import { StatData } from '../models/StatData';
+import { StatDataObject } from '../models/StatDataObject';
+import { StatDataObjectMetaData } from '../models/StatDataObjectMetaData';
+import { UpgradeBucket200Response } from '../models/UpgradeBucket200Response';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -34,10 +100,43 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "Bucket": Bucket,
+    "ChangeBucketAccess200Response": ChangeBucketAccess200Response,
     "CreateBucket": CreateBucket,
+    "CreateBucket201Response": CreateBucket201Response,
     "CreateFolder": CreateFolder,
+    "CreateFolder201Response": CreateFolder201Response,
+    "CreateFolder201ResponseData": CreateFolder201ResponseData,
     "CreateKey": CreateKey,
+    "CreateKey201Response": CreateKey201Response,
+    "CreateKey201ResponseData": CreateKey201ResponseData,
+    "DownloadObject200Response": DownloadObject200Response,
+    "DownloadObject200ResponseData": DownloadObject200ResponseData,
+    "GetHisotricalMetrics200Response": GetHisotricalMetrics200Response,
+    "GetHisotricalMetrics200ResponseData": GetHisotricalMetrics200ResponseData,
+    "GetHisotricalMetrics200ResponseDataMetrics": GetHisotricalMetrics200ResponseDataMetrics,
+    "GetMetricsSummary200Response": GetMetricsSummary200Response,
+    "GetMetricsSummary200ResponseData": GetMetricsSummary200ResponseData,
+    "GetMetricsSummary200ResponseDataMetrics": GetMetricsSummary200ResponseDataMetrics,
+    "GetMetricsSummary200ResponseDataMetricsTotolObjectsInner": GetMetricsSummary200ResponseDataMetricsTotolObjectsInner,
+    "GetMigrations200Response": GetMigrations200Response,
+    "GetSingleBuckets200Response": GetSingleBuckets200Response,
+    "Key": Key,
+    "KeyBucketsInner": KeyBucketsInner,
+    "Keys": Keys,
+    "ListBucket": ListBucket,
     "MigrateBucket": MigrateBucket,
+    "Objects": Objects,
+    "ObjectsData": ObjectsData,
+    "ObjectsDataObjects": ObjectsDataObjects,
+    "ObjectsDataObjectsCommonPrefixesInner": ObjectsDataObjectsCommonPrefixesInner,
+    "ObjectsDataObjectsContentsInner": ObjectsDataObjectsContentsInner,
+    "RevokeSecretKey200Response": RevokeSecretKey200Response,
+    "Stat": Stat,
+    "StatData": StatData,
+    "StatDataObject": StatDataObject,
+    "StatDataObjectMetaData": StatDataObjectMetaData,
+    "UpgradeBucket200Response": UpgradeBucket200Response,
 }
 
 export class ObjectSerializer {

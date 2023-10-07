@@ -15,7 +15,7 @@ import { HttpFile } from '../http/http';
 
 export class MailMessagesData {
     'total'?: number;
-    'messages'?: MailMessage;
+    'messages'?: Array<MailMessage>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,7 +29,7 @@ export class MailMessagesData {
         {
             "name": "messages",
             "baseName": "messages",
-            "type": "MailMessage",
+            "type": "Array<MailMessage>",
             "format": ""
         }    ];
 

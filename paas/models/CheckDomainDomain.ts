@@ -29,6 +29,7 @@ export class CheckDomainDomain {
     'createdAt'?: string;
     'v'?: number;
     'cNameRecord'?: string;
+    'issuedAt'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -120,6 +121,12 @@ export class CheckDomainDomain {
         {
             "name": "cNameRecord",
             "baseName": "CNameRecord",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "issuedAt",
+            "baseName": "issuedAt",
             "type": "string",
             "format": ""
         }    ];

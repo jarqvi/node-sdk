@@ -8,7 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { MailAttachment } from '../models/MailAttachment';
+import { DownloadAttachments200Response } from '../models/DownloadAttachments200Response';
 import { MailAttachments } from '../models/MailAttachments';
 
 /**
@@ -44,7 +44,7 @@ export class AttachmentsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages/{messageID}/attachments/{attachmentID}'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages/{messageID}/attachments/{attachmentID}'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'messageID' + '}', encodeURIComponent(String(messageID)))
             .replace('{' + 'attachmentID' + '}', encodeURIComponent(String(attachmentID)));
@@ -90,7 +90,7 @@ export class AttachmentsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages/{messageID}/attachments'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages/{messageID}/attachments'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'messageID' + '}', encodeURIComponent(String(messageID)));
 
@@ -125,13 +125,13 @@ export class AttachmentsApiResponseProcessor {
      * @params response Response returned by the server for a request to downloadAttachments
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async downloadAttachmentsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<MailAttachment >> {
+     public async downloadAttachmentsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DownloadAttachments200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: MailAttachment = ObjectSerializer.deserialize(
+            const body: DownloadAttachments200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "MailAttachment", ""
-            ) as MailAttachment;
+                "DownloadAttachments200Response", ""
+            ) as DownloadAttachments200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -146,10 +146,10 @@ export class AttachmentsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: MailAttachment = ObjectSerializer.deserialize(
+            const body: DownloadAttachments200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "MailAttachment", ""
-            ) as MailAttachment;
+                "DownloadAttachments200Response", ""
+            ) as DownloadAttachments200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

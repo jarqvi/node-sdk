@@ -39,7 +39,7 @@ export class DnsRecordApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}/dns-records'
+        const localVarPath = '/api/v1/zones/{zone}/dns-records'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)));
 
         // Make Request Context
@@ -95,7 +95,7 @@ export class DnsRecordApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}/dns-records/{id}'
+        const localVarPath = '/api/v1/zones/{zone}/dns-records/{id}'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)))
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
@@ -148,7 +148,7 @@ export class DnsRecordApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}/dns-records/{id}'
+        const localVarPath = '/api/v1/zones/{zone}/dns-records/{id}'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)))
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
@@ -205,7 +205,7 @@ export class DnsRecordApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}/dns-records/{id}'
+        const localVarPath = '/api/v1/zones/{zone}/dns-records/{id}'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)))
             .replace('{' + 'id' + '}', encodeURIComponent(String(id)));
 
@@ -244,7 +244,7 @@ export class DnsRecordApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}/dns-records'
+        const localVarPath = '/api/v1/zones/{zone}/dns-records'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)));
 
         // Make Request Context

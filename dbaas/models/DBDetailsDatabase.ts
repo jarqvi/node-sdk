@@ -51,11 +51,14 @@ export class DBDetailsDatabase {
     * The size of the database volume
     */
     'volumeSize'?: number;
-    'metaData'?: DBDetailsDatabaseMetaData;
     /**
     * The creation timestamp of the database
     */
     'createdAt'?: string;
+    /**
+    * The name of db
+    */
+    'dbName'?: string;
     'node'?: DBDetailsDatabaseNode;
     /**
     * The port number for the database connection
@@ -77,6 +80,7 @@ export class DBDetailsDatabase {
     * The hourly price of the database
     */
     'hourlyPrice'?: number;
+    'metaData'?: DBDetailsDatabaseMetaData;
     /**
     * The username associated with the database
     */
@@ -140,14 +144,14 @@ export class DBDetailsDatabase {
             "format": ""
         },
         {
-            "name": "metaData",
-            "baseName": "metaData",
-            "type": "DBDetailsDatabaseMetaData",
+            "name": "createdAt",
+            "baseName": "created_at",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "createdAt",
-            "baseName": "created_at",
+            "name": "dbName",
+            "baseName": "dbName",
             "type": "string",
             "format": ""
         },
@@ -185,6 +189,12 @@ export class DBDetailsDatabase {
             "name": "hourlyPrice",
             "baseName": "hourlyPrice",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "metaData",
+            "baseName": "metaData",
+            "type": "DBDetailsDatabaseMetaData",
             "format": ""
         },
         {

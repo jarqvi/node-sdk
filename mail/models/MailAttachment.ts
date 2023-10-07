@@ -17,6 +17,7 @@ export class MailAttachment {
     'size'?: number;
     'contentType'?: string;
     'createdAt'?: string;
+    'id'?: string;
     'data'?: string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -43,6 +44,12 @@ export class MailAttachment {
         {
             "name": "createdAt",
             "baseName": "createdAt",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "id",
+            "baseName": "id",
             "type": "string",
             "format": ""
         },

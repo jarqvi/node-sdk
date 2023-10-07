@@ -1,18 +1,22 @@
 export * from '../models/AllDnsRecordResponse';
+export * from '../models/CreateZone';
 export * from '../models/CreateZoneRequest';
 export * from '../models/DnsRecord';
 export * from '../models/DnsRecordId';
 export * from '../models/DnsRecordResponse';
 export * from '../models/Submitted';
 export * from '../models/Zone';
+export * from '../models/Zones';
 
 import { AllDnsRecordResponse } from '../models/AllDnsRecordResponse';
+import { CreateZone } from '../models/CreateZone';
 import { CreateZoneRequest } from '../models/CreateZoneRequest';
 import { DnsRecord } from '../models/DnsRecord';
 import { DnsRecordId } from '../models/DnsRecordId';
 import { DnsRecordResponse } from '../models/DnsRecordResponse';
 import { Submitted } from '../models/Submitted';
 import { Zone } from '../models/Zone';
+import { Zones } from '../models/Zones';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -41,12 +45,14 @@ let enumsMap: Set<string> = new Set<string>([
 
 let typeMap: {[index: string]: any} = {
     "AllDnsRecordResponse": AllDnsRecordResponse,
+    "CreateZone": CreateZone,
     "CreateZoneRequest": CreateZoneRequest,
     "DnsRecord": DnsRecord,
     "DnsRecordId": DnsRecordId,
     "DnsRecordResponse": DnsRecordResponse,
     "Submitted": Submitted,
     "Zone": Zone,
+    "Zones": Zones,
 }
 
 export class ObjectSerializer {

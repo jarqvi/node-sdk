@@ -1,10 +1,43 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
 import { Configuration} from '../configuration'
 
+import { Bucket } from '../models/Bucket';
+import { ChangeBucketAccess200Response } from '../models/ChangeBucketAccess200Response';
 import { CreateBucket } from '../models/CreateBucket';
+import { CreateBucket201Response } from '../models/CreateBucket201Response';
 import { CreateFolder } from '../models/CreateFolder';
+import { CreateFolder201Response } from '../models/CreateFolder201Response';
+import { CreateFolder201ResponseData } from '../models/CreateFolder201ResponseData';
 import { CreateKey } from '../models/CreateKey';
+import { CreateKey201Response } from '../models/CreateKey201Response';
+import { CreateKey201ResponseData } from '../models/CreateKey201ResponseData';
+import { DownloadObject200Response } from '../models/DownloadObject200Response';
+import { DownloadObject200ResponseData } from '../models/DownloadObject200ResponseData';
+import { GetHisotricalMetrics200Response } from '../models/GetHisotricalMetrics200Response';
+import { GetHisotricalMetrics200ResponseData } from '../models/GetHisotricalMetrics200ResponseData';
+import { GetHisotricalMetrics200ResponseDataMetrics } from '../models/GetHisotricalMetrics200ResponseDataMetrics';
+import { GetMetricsSummary200Response } from '../models/GetMetricsSummary200Response';
+import { GetMetricsSummary200ResponseData } from '../models/GetMetricsSummary200ResponseData';
+import { GetMetricsSummary200ResponseDataMetrics } from '../models/GetMetricsSummary200ResponseDataMetrics';
+import { GetMetricsSummary200ResponseDataMetricsTotolObjectsInner } from '../models/GetMetricsSummary200ResponseDataMetricsTotolObjectsInner';
+import { GetMigrations200Response } from '../models/GetMigrations200Response';
+import { GetSingleBuckets200Response } from '../models/GetSingleBuckets200Response';
+import { Key } from '../models/Key';
+import { KeyBucketsInner } from '../models/KeyBucketsInner';
+import { Keys } from '../models/Keys';
+import { ListBucket } from '../models/ListBucket';
 import { MigrateBucket } from '../models/MigrateBucket';
+import { Objects } from '../models/Objects';
+import { ObjectsData } from '../models/ObjectsData';
+import { ObjectsDataObjects } from '../models/ObjectsDataObjects';
+import { ObjectsDataObjectsCommonPrefixesInner } from '../models/ObjectsDataObjectsCommonPrefixesInner';
+import { ObjectsDataObjectsContentsInner } from '../models/ObjectsDataObjectsContentsInner';
+import { RevokeSecretKey200Response } from '../models/RevokeSecretKey200Response';
+import { Stat } from '../models/Stat';
+import { StatData } from '../models/StatData';
+import { StatDataObject } from '../models/StatDataObject';
+import { StatDataObjectMetaData } from '../models/StatDataObjectMetaData';
+import { UpgradeBucket200Response } from '../models/UpgradeBucket200Response';
 import { ObservableBucketApi } from './ObservableAPI';
 
 import { BucketApiRequestFactory, BucketApiResponseProcessor} from "../apis/BucketApi";
@@ -25,7 +58,7 @@ export class PromiseBucketApi {
      * @param bucket 
      * @param permission 
      */
-    public changeBucketAccessWithHttpInfo(bucket: string, permission: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public changeBucketAccessWithHttpInfo(bucket: string, permission: string, _options?: Configuration): Promise<HttpInfo<ChangeBucketAccess200Response>> {
         const result = this.api.changeBucketAccessWithHttpInfo(bucket, permission, _options);
         return result.toPromise();
     }
@@ -36,7 +69,7 @@ export class PromiseBucketApi {
      * @param bucket 
      * @param permission 
      */
-    public changeBucketAccess(bucket: string, permission: string, _options?: Configuration): Promise<void> {
+    public changeBucketAccess(bucket: string, permission: string, _options?: Configuration): Promise<ChangeBucketAccess200Response> {
         const result = this.api.changeBucketAccess(bucket, permission, _options);
         return result.toPromise();
     }
@@ -46,7 +79,7 @@ export class PromiseBucketApi {
      * Check Bucket availability
      * @param bucket 
      */
-    public checkBucketWithHttpInfo(bucket: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public checkBucketWithHttpInfo(bucket: string, _options?: Configuration): Promise<HttpInfo<CreateBucket201Response>> {
         const result = this.api.checkBucketWithHttpInfo(bucket, _options);
         return result.toPromise();
     }
@@ -56,7 +89,7 @@ export class PromiseBucketApi {
      * Check Bucket availability
      * @param bucket 
      */
-    public checkBucket(bucket: string, _options?: Configuration): Promise<void> {
+    public checkBucket(bucket: string, _options?: Configuration): Promise<CreateBucket201Response> {
         const result = this.api.checkBucket(bucket, _options);
         return result.toPromise();
     }
@@ -66,7 +99,7 @@ export class PromiseBucketApi {
      * Create Bucket
      * @param body create bucket. Acceptable values for permission: ( private / public ) and for plan: ( 20g, 40g, 80g, 160g )
      */
-    public createBucketWithHttpInfo(body: CreateBucket, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createBucketWithHttpInfo(body: CreateBucket, _options?: Configuration): Promise<HttpInfo<CreateBucket201Response>> {
         const result = this.api.createBucketWithHttpInfo(body, _options);
         return result.toPromise();
     }
@@ -76,7 +109,7 @@ export class PromiseBucketApi {
      * Create Bucket
      * @param body create bucket. Acceptable values for permission: ( private / public ) and for plan: ( 20g, 40g, 80g, 160g )
      */
-    public createBucket(body: CreateBucket, _options?: Configuration): Promise<void> {
+    public createBucket(body: CreateBucket, _options?: Configuration): Promise<CreateBucket201Response> {
         const result = this.api.createBucket(body, _options);
         return result.toPromise();
     }
@@ -105,7 +138,7 @@ export class PromiseBucketApi {
      * List all Bucket
      * List all Buckets
      */
-    public getBucketsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<void>> {
+    public getBucketsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<ListBucket>> {
         const result = this.api.getBucketsWithHttpInfo(_options);
         return result.toPromise();
     }
@@ -114,7 +147,7 @@ export class PromiseBucketApi {
      * List all Bucket
      * List all Buckets
      */
-    public getBuckets(_options?: Configuration): Promise<void> {
+    public getBuckets(_options?: Configuration): Promise<ListBucket> {
         const result = this.api.getBuckets(_options);
         return result.toPromise();
     }
@@ -141,7 +174,7 @@ export class PromiseBucketApi {
      * list migration operation
      * list migration operation
      */
-    public getMigrationsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<void>> {
+    public getMigrationsWithHttpInfo(_options?: Configuration): Promise<HttpInfo<GetMigrations200Response>> {
         const result = this.api.getMigrationsWithHttpInfo(_options);
         return result.toPromise();
     }
@@ -150,7 +183,7 @@ export class PromiseBucketApi {
      * list migration operation
      * list migration operation
      */
-    public getMigrations(_options?: Configuration): Promise<void> {
+    public getMigrations(_options?: Configuration): Promise<GetMigrations200Response> {
         const result = this.api.getMigrations(_options);
         return result.toPromise();
     }
@@ -159,7 +192,7 @@ export class PromiseBucketApi {
      * Get Single Buckets
      * @param bucket 
      */
-    public getSingleBucketsWithHttpInfo(bucket: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getSingleBucketsWithHttpInfo(bucket: string, _options?: Configuration): Promise<HttpInfo<GetSingleBuckets200Response>> {
         const result = this.api.getSingleBucketsWithHttpInfo(bucket, _options);
         return result.toPromise();
     }
@@ -168,7 +201,7 @@ export class PromiseBucketApi {
      * Get Single Buckets
      * @param bucket 
      */
-    public getSingleBuckets(bucket: string, _options?: Configuration): Promise<void> {
+    public getSingleBuckets(bucket: string, _options?: Configuration): Promise<GetSingleBuckets200Response> {
         const result = this.api.getSingleBuckets(bucket, _options);
         return result.toPromise();
     }
@@ -199,7 +232,7 @@ export class PromiseBucketApi {
      * @param bucket 
      * @param plan 
      */
-    public upgradeBucketWithHttpInfo(bucket: string, plan: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public upgradeBucketWithHttpInfo(bucket: string, plan: string, _options?: Configuration): Promise<HttpInfo<UpgradeBucket200Response>> {
         const result = this.api.upgradeBucketWithHttpInfo(bucket, plan, _options);
         return result.toPromise();
     }
@@ -210,7 +243,7 @@ export class PromiseBucketApi {
      * @param bucket 
      * @param plan 
      */
-    public upgradeBucket(bucket: string, plan: string, _options?: Configuration): Promise<void> {
+    public upgradeBucket(bucket: string, plan: string, _options?: Configuration): Promise<UpgradeBucket200Response> {
         const result = this.api.upgradeBucket(bucket, plan, _options);
         return result.toPromise();
     }
@@ -240,7 +273,7 @@ export class PromiseFolderApi {
      * @param bucket 
      * @param body 
      */
-    public createFolderWithHttpInfo(bucket: string, body: CreateFolder, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createFolderWithHttpInfo(bucket: string, body: CreateFolder, _options?: Configuration): Promise<HttpInfo<CreateFolder201Response>> {
         const result = this.api.createFolderWithHttpInfo(bucket, body, _options);
         return result.toPromise();
     }
@@ -251,7 +284,7 @@ export class PromiseFolderApi {
      * @param bucket 
      * @param body 
      */
-    public createFolder(bucket: string, body: CreateFolder, _options?: Configuration): Promise<void> {
+    public createFolder(bucket: string, body: CreateFolder, _options?: Configuration): Promise<CreateFolder201Response> {
         const result = this.api.createFolder(bucket, body, _options);
         return result.toPromise();
     }
@@ -302,7 +335,7 @@ export class PromiseKeyApi {
      * Create Keys
      * @param body Declare Buckets for access key
      */
-    public createKeyWithHttpInfo(body: CreateKey, _options?: Configuration): Promise<HttpInfo<void>> {
+    public createKeyWithHttpInfo(body: CreateKey, _options?: Configuration): Promise<HttpInfo<CreateKey201Response>> {
         const result = this.api.createKeyWithHttpInfo(body, _options);
         return result.toPromise();
     }
@@ -312,7 +345,7 @@ export class PromiseKeyApi {
      * Create Keys
      * @param body Declare Buckets for access key
      */
-    public createKey(body: CreateKey, _options?: Configuration): Promise<void> {
+    public createKey(body: CreateKey, _options?: Configuration): Promise<CreateKey201Response> {
         const result = this.api.createKey(body, _options);
         return result.toPromise();
     }
@@ -360,7 +393,7 @@ export class PromiseKeyApi {
     /**
      * Get List of Keys
      */
-    public getListKeysWithHttpInfo(_options?: Configuration): Promise<HttpInfo<void>> {
+    public getListKeysWithHttpInfo(_options?: Configuration): Promise<HttpInfo<Keys>> {
         const result = this.api.getListKeysWithHttpInfo(_options);
         return result.toPromise();
     }
@@ -368,7 +401,7 @@ export class PromiseKeyApi {
     /**
      * Get List of Keys
      */
-    public getListKeys(_options?: Configuration): Promise<void> {
+    public getListKeys(_options?: Configuration): Promise<Keys> {
         const result = this.api.getListKeys(_options);
         return result.toPromise();
     }
@@ -378,7 +411,7 @@ export class PromiseKeyApi {
      * Revoke secret key
      * @param key 
      */
-    public revokeSecretKeyWithHttpInfo(key: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public revokeSecretKeyWithHttpInfo(key: string, _options?: Configuration): Promise<HttpInfo<RevokeSecretKey200Response>> {
         const result = this.api.revokeSecretKeyWithHttpInfo(key, _options);
         return result.toPromise();
     }
@@ -388,7 +421,7 @@ export class PromiseKeyApi {
      * Revoke secret key
      * @param key 
      */
-    public revokeSecretKey(key: string, _options?: Configuration): Promise<void> {
+    public revokeSecretKey(key: string, _options?: Configuration): Promise<RevokeSecretKey200Response> {
         const result = this.api.revokeSecretKey(key, _options);
         return result.toPromise();
     }
@@ -399,7 +432,7 @@ export class PromiseKeyApi {
      * @param key 
      * @param body Declare Buckets for access key
      */
-    public updateKeyWithHttpInfo(key: string, body: CreateKey, _options?: Configuration): Promise<HttpInfo<void>> {
+    public updateKeyWithHttpInfo(key: string, body: CreateKey, _options?: Configuration): Promise<HttpInfo<CreateBucket201Response>> {
         const result = this.api.updateKeyWithHttpInfo(key, body, _options);
         return result.toPromise();
     }
@@ -410,7 +443,7 @@ export class PromiseKeyApi {
      * @param key 
      * @param body Declare Buckets for access key
      */
-    public updateKey(key: string, body: CreateKey, _options?: Configuration): Promise<void> {
+    public updateKey(key: string, body: CreateKey, _options?: Configuration): Promise<CreateBucket201Response> {
         const result = this.api.updateKey(key, body, _options);
         return result.toPromise();
     }
@@ -439,7 +472,7 @@ export class PromiseMetricsApi {
      * @param bucket 
      * @param since unix time
      */
-    public getHisotricalMetricsWithHttpInfo(bucket: string, since: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getHisotricalMetricsWithHttpInfo(bucket: string, since: string, _options?: Configuration): Promise<HttpInfo<GetHisotricalMetrics200Response>> {
         const result = this.api.getHisotricalMetricsWithHttpInfo(bucket, since, _options);
         return result.toPromise();
     }
@@ -449,7 +482,7 @@ export class PromiseMetricsApi {
      * @param bucket 
      * @param since unix time
      */
-    public getHisotricalMetrics(bucket: string, since: string, _options?: Configuration): Promise<void> {
+    public getHisotricalMetrics(bucket: string, since: string, _options?: Configuration): Promise<GetHisotricalMetrics200Response> {
         const result = this.api.getHisotricalMetrics(bucket, since, _options);
         return result.toPromise();
     }
@@ -458,7 +491,7 @@ export class PromiseMetricsApi {
      * metrics summary
      * @param bucket 
      */
-    public getMetricsSummaryWithHttpInfo(bucket: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getMetricsSummaryWithHttpInfo(bucket: string, _options?: Configuration): Promise<HttpInfo<GetMetricsSummary200Response>> {
         const result = this.api.getMetricsSummaryWithHttpInfo(bucket, _options);
         return result.toPromise();
     }
@@ -467,7 +500,7 @@ export class PromiseMetricsApi {
      * metrics summary
      * @param bucket 
      */
-    public getMetricsSummary(bucket: string, _options?: Configuration): Promise<void> {
+    public getMetricsSummary(bucket: string, _options?: Configuration): Promise<GetMetricsSummary200Response> {
         const result = this.api.getMetricsSummary(bucket, _options);
         return result.toPromise();
     }
@@ -520,7 +553,7 @@ export class PromiseObjectApi {
      * @param object specify object path
      * @param expiry example: 2 days 7 hours 45 minutes
      */
-    public downloadObjectWithHttpInfo(bucket: string, object: string, expiry?: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public downloadObjectWithHttpInfo(bucket: string, object: string, expiry?: string, _options?: Configuration): Promise<HttpInfo<DownloadObject200Response>> {
         const result = this.api.downloadObjectWithHttpInfo(bucket, object, expiry, _options);
         return result.toPromise();
     }
@@ -532,7 +565,7 @@ export class PromiseObjectApi {
      * @param object specify object path
      * @param expiry example: 2 days 7 hours 45 minutes
      */
-    public downloadObject(bucket: string, object: string, expiry?: string, _options?: Configuration): Promise<void> {
+    public downloadObject(bucket: string, object: string, expiry?: string, _options?: Configuration): Promise<DownloadObject200Response> {
         const result = this.api.downloadObject(bucket, object, expiry, _options);
         return result.toPromise();
     }
@@ -545,7 +578,7 @@ export class PromiseObjectApi {
      * @param number specify number of object ( max: 50, min: 1 )
      * @param page 
      */
-    public getListObjectsWithHttpInfo(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getListObjectsWithHttpInfo(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Promise<HttpInfo<Objects>> {
         const result = this.api.getListObjectsWithHttpInfo(bucket, prefix, number, page, _options);
         return result.toPromise();
     }
@@ -558,7 +591,7 @@ export class PromiseObjectApi {
      * @param number specify number of object ( max: 50, min: 1 )
      * @param page 
      */
-    public getListObjects(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Promise<void> {
+    public getListObjects(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Promise<Objects> {
         const result = this.api.getListObjects(bucket, prefix, number, page, _options);
         return result.toPromise();
     }
@@ -568,7 +601,7 @@ export class PromiseObjectApi {
      * @param bucket 
      * @param object 
      */
-    public getStatObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public getStatObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Promise<HttpInfo<Stat>> {
         const result = this.api.getStatObjectWithHttpInfo(bucket, object, _options);
         return result.toPromise();
     }
@@ -578,7 +611,7 @@ export class PromiseObjectApi {
      * @param bucket 
      * @param object 
      */
-    public getStatObject(bucket: string, object: string, _options?: Configuration): Promise<void> {
+    public getStatObject(bucket: string, object: string, _options?: Configuration): Promise<Stat> {
         const result = this.api.getStatObject(bucket, object, _options);
         return result.toPromise();
     }
@@ -589,7 +622,7 @@ export class PromiseObjectApi {
      * @param bucket 
      * @param object specify object path
      */
-    public uploadObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Promise<HttpInfo<void>> {
+    public uploadObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Promise<HttpInfo<DownloadObject200Response>> {
         const result = this.api.uploadObjectWithHttpInfo(bucket, object, _options);
         return result.toPromise();
     }
@@ -600,7 +633,7 @@ export class PromiseObjectApi {
      * @param bucket 
      * @param object specify object path
      */
-    public uploadObject(bucket: string, object: string, _options?: Configuration): Promise<void> {
+    public uploadObject(bucket: string, object: string, _options?: Configuration): Promise<DownloadObject200Response> {
         const result = this.api.uploadObject(bucket, object, _options);
         return result.toPromise();
     }

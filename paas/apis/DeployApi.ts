@@ -9,6 +9,8 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { DeployReleases } from '../models/DeployReleases';
+import { ReleasesDeploy200Response } from '../models/ReleasesDeploy200Response';
+import { SourcesDeploy200Response } from '../models/SourcesDeploy200Response';
 
 /**
  * no description
@@ -154,10 +156,14 @@ export class DeployApiResponseProcessor {
      * @params response Response returned by the server for a request to releasesDeploy
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async releasesDeployWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async releasesDeployWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ReleasesDeploy200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: ReleasesDeploy200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ReleasesDeploy200Response", ""
+            ) as ReleasesDeploy200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -171,10 +177,10 @@ export class DeployApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: ReleasesDeploy200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "ReleasesDeploy200Response", ""
+            ) as ReleasesDeploy200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -188,10 +194,14 @@ export class DeployApiResponseProcessor {
      * @params response Response returned by the server for a request to sourcesDeploy
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async sourcesDeployWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async sourcesDeployWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SourcesDeploy200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: SourcesDeploy200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SourcesDeploy200Response", ""
+            ) as SourcesDeploy200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -205,10 +215,10 @@ export class DeployApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: SourcesDeploy200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "SourcesDeploy200Response", ""
+            ) as SourcesDeploy200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

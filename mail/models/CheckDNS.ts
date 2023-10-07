@@ -10,12 +10,12 @@
  * Do not edit the class manually.
  */
 
-import { MailServer } from '../models/MailServer';
+import { CheckDNSData } from '../models/CheckDNSData';
 import { HttpFile } from '../http/http';
 
 export class CheckDNS {
     'status'?: string;
-    'date'?: MailServer;
+    'data'?: CheckDNSData;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,9 +27,9 @@ export class CheckDNS {
             "format": ""
         },
         {
-            "name": "date",
-            "baseName": "date",
-            "type": "MailServer",
+            "name": "data",
+            "baseName": "data",
+            "type": "CheckDNSData",
             "format": ""
         }    ];
 

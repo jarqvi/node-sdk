@@ -5,15 +5,33 @@ export * from '../models/ChangePlanRequest';
 export * from '../models/CheckDomain';
 export * from '../models/CheckDomainDomain';
 export * from '../models/CheckDomainDomainProject';
-export * from '../models/CheckDomainDomainProjectCurrentService';
 export * from '../models/CreateApp';
+export * from '../models/CreateAppDomain201Response';
+export * from '../models/CreateAppDomain201ResponseDomain';
 export * from '../models/CreateAppDomainRequest';
 export * from '../models/CreateDiskRequest';
+export * from '../models/CreateFtp200Response';
+export * from '../models/CreateFtpRequest';
 export * from '../models/DeployReleases';
 export * from '../models/Domains';
 export * from '../models/DomainsDomainsInner';
 export * from '../models/DomainsDomainsInnerProject';
+export * from '../models/DownloadBackup200Response';
+export * from '../models/EnableSsl200Response';
 export * from '../models/EnableSslRequest';
+export * from '../models/GetAppSummaryReports200Response';
+export * from '../models/GetAppSummaryReports200ResponseCpuUsageInner';
+export * from '../models/GetAppSummaryReports200ResponseCpuUsageInnerValueInner';
+export * from '../models/GetAppSummaryReports200ResponseDisksUsageInner';
+export * from '../models/GetDiskBackup';
+export * from '../models/GetDiskBackupBackupsInner';
+export * from '../models/GetDisks';
+export * from '../models/GetDisksDisksInner';
+export * from '../models/GetDisksMountsInner';
+export * from '../models/GetFtps200Response';
+export * from '../models/GetFtps200ResponseAccessesInner';
+export * from '../models/IpStatic200Response';
+export * from '../models/LogsInner';
 export * from '../models/ProjectAllDetails';
 export * from '../models/ProjectAllDetailsProject';
 export * from '../models/ProjectAllDetailsProjectEnvsInner';
@@ -22,10 +40,18 @@ export * from '../models/Projects';
 export * from '../models/ProjectsProjectsInner';
 export * from '../models/RedirectDomainRequest';
 export * from '../models/Releases';
+export * from '../models/ReleasesDeploy200Response';
 export * from '../models/ReleasesReleasesInner';
+export * from '../models/ReleasesReleasesInnerGitInfo';
+export * from '../models/ReleasesReleasesInnerGitInfoAuthor';
+export * from '../models/Reports';
+export * from '../models/ReportsResultInner';
+export * from '../models/ResizeDiskRequest';
 export * from '../models/SetAppDomainRequest';
+export * from '../models/SourcesDeploy200Response';
 export * from '../models/TurnAppRequest';
 export * from '../models/UpdateEnvs';
+export * from '../models/UpdateEnvs200Response';
 export * from '../models/UpdateEnvsVariablesInner';
 
 import { Applets } from '../models/Applets';
@@ -35,15 +61,33 @@ import { ChangePlanRequest } from '../models/ChangePlanRequest';
 import { CheckDomain } from '../models/CheckDomain';
 import { CheckDomainDomain } from '../models/CheckDomainDomain';
 import { CheckDomainDomainProject } from '../models/CheckDomainDomainProject';
-import { CheckDomainDomainProjectCurrentService } from '../models/CheckDomainDomainProjectCurrentService';
 import { CreateApp } from '../models/CreateApp';
+import { CreateAppDomain201Response } from '../models/CreateAppDomain201Response';
+import { CreateAppDomain201ResponseDomain } from '../models/CreateAppDomain201ResponseDomain';
 import { CreateAppDomainRequest } from '../models/CreateAppDomainRequest';
 import { CreateDiskRequest } from '../models/CreateDiskRequest';
+import { CreateFtp200Response } from '../models/CreateFtp200Response';
+import { CreateFtpRequest } from '../models/CreateFtpRequest';
 import { DeployReleases } from '../models/DeployReleases';
 import { Domains } from '../models/Domains';
 import { DomainsDomainsInner } from '../models/DomainsDomainsInner';
 import { DomainsDomainsInnerProject } from '../models/DomainsDomainsInnerProject';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { EnableSsl200Response } from '../models/EnableSsl200Response';
 import { EnableSslRequest } from '../models/EnableSslRequest';
+import { GetAppSummaryReports200Response } from '../models/GetAppSummaryReports200Response';
+import { GetAppSummaryReports200ResponseCpuUsageInner } from '../models/GetAppSummaryReports200ResponseCpuUsageInner';
+import { GetAppSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetAppSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetAppSummaryReports200ResponseDisksUsageInner } from '../models/GetAppSummaryReports200ResponseDisksUsageInner';
+import { GetDiskBackup } from '../models/GetDiskBackup';
+import { GetDiskBackupBackupsInner } from '../models/GetDiskBackupBackupsInner';
+import { GetDisks } from '../models/GetDisks';
+import { GetDisksDisksInner } from '../models/GetDisksDisksInner';
+import { GetDisksMountsInner } from '../models/GetDisksMountsInner';
+import { GetFtps200Response } from '../models/GetFtps200Response';
+import { GetFtps200ResponseAccessesInner } from '../models/GetFtps200ResponseAccessesInner';
+import { IpStatic200Response } from '../models/IpStatic200Response';
+import { LogsInner } from '../models/LogsInner';
 import { ProjectAllDetails } from '../models/ProjectAllDetails';
 import { ProjectAllDetailsProject } from '../models/ProjectAllDetailsProject';
 import { ProjectAllDetailsProjectEnvsInner } from '../models/ProjectAllDetailsProjectEnvsInner';
@@ -52,10 +96,18 @@ import { Projects } from '../models/Projects';
 import { ProjectsProjectsInner } from '../models/ProjectsProjectsInner';
 import { RedirectDomainRequest } from '../models/RedirectDomainRequest';
 import { Releases } from '../models/Releases';
+import { ReleasesDeploy200Response } from '../models/ReleasesDeploy200Response';
 import { ReleasesReleasesInner } from '../models/ReleasesReleasesInner';
+import { ReleasesReleasesInnerGitInfo } from '../models/ReleasesReleasesInnerGitInfo';
+import { ReleasesReleasesInnerGitInfoAuthor } from '../models/ReleasesReleasesInnerGitInfoAuthor';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
+import { ResizeDiskRequest } from '../models/ResizeDiskRequest';
 import { SetAppDomainRequest } from '../models/SetAppDomainRequest';
+import { SourcesDeploy200Response } from '../models/SourcesDeploy200Response';
 import { TurnAppRequest } from '../models/TurnAppRequest';
 import { UpdateEnvs } from '../models/UpdateEnvs';
+import { UpdateEnvs200Response } from '../models/UpdateEnvs200Response';
 import { UpdateEnvsVariablesInner } from '../models/UpdateEnvsVariablesInner';
 
 /* tslint:disable:no-unused-variable */
@@ -91,15 +143,33 @@ let typeMap: {[index: string]: any} = {
     "CheckDomain": CheckDomain,
     "CheckDomainDomain": CheckDomainDomain,
     "CheckDomainDomainProject": CheckDomainDomainProject,
-    "CheckDomainDomainProjectCurrentService": CheckDomainDomainProjectCurrentService,
     "CreateApp": CreateApp,
+    "CreateAppDomain201Response": CreateAppDomain201Response,
+    "CreateAppDomain201ResponseDomain": CreateAppDomain201ResponseDomain,
     "CreateAppDomainRequest": CreateAppDomainRequest,
     "CreateDiskRequest": CreateDiskRequest,
+    "CreateFtp200Response": CreateFtp200Response,
+    "CreateFtpRequest": CreateFtpRequest,
     "DeployReleases": DeployReleases,
     "Domains": Domains,
     "DomainsDomainsInner": DomainsDomainsInner,
     "DomainsDomainsInnerProject": DomainsDomainsInnerProject,
+    "DownloadBackup200Response": DownloadBackup200Response,
+    "EnableSsl200Response": EnableSsl200Response,
     "EnableSslRequest": EnableSslRequest,
+    "GetAppSummaryReports200Response": GetAppSummaryReports200Response,
+    "GetAppSummaryReports200ResponseCpuUsageInner": GetAppSummaryReports200ResponseCpuUsageInner,
+    "GetAppSummaryReports200ResponseCpuUsageInnerValueInner": GetAppSummaryReports200ResponseCpuUsageInnerValueInner,
+    "GetAppSummaryReports200ResponseDisksUsageInner": GetAppSummaryReports200ResponseDisksUsageInner,
+    "GetDiskBackup": GetDiskBackup,
+    "GetDiskBackupBackupsInner": GetDiskBackupBackupsInner,
+    "GetDisks": GetDisks,
+    "GetDisksDisksInner": GetDisksDisksInner,
+    "GetDisksMountsInner": GetDisksMountsInner,
+    "GetFtps200Response": GetFtps200Response,
+    "GetFtps200ResponseAccessesInner": GetFtps200ResponseAccessesInner,
+    "IpStatic200Response": IpStatic200Response,
+    "LogsInner": LogsInner,
     "ProjectAllDetails": ProjectAllDetails,
     "ProjectAllDetailsProject": ProjectAllDetailsProject,
     "ProjectAllDetailsProjectEnvsInner": ProjectAllDetailsProjectEnvsInner,
@@ -108,10 +178,18 @@ let typeMap: {[index: string]: any} = {
     "ProjectsProjectsInner": ProjectsProjectsInner,
     "RedirectDomainRequest": RedirectDomainRequest,
     "Releases": Releases,
+    "ReleasesDeploy200Response": ReleasesDeploy200Response,
     "ReleasesReleasesInner": ReleasesReleasesInner,
+    "ReleasesReleasesInnerGitInfo": ReleasesReleasesInnerGitInfo,
+    "ReleasesReleasesInnerGitInfoAuthor": ReleasesReleasesInnerGitInfoAuthor,
+    "Reports": Reports,
+    "ReportsResultInner": ReportsResultInner,
+    "ResizeDiskRequest": ResizeDiskRequest,
     "SetAppDomainRequest": SetAppDomainRequest,
+    "SourcesDeploy200Response": SourcesDeploy200Response,
     "TurnAppRequest": TurnAppRequest,
     "UpdateEnvs": UpdateEnvs,
+    "UpdateEnvs200Response": UpdateEnvs200Response,
     "UpdateEnvsVariablesInner": UpdateEnvsVariablesInner,
 }
 

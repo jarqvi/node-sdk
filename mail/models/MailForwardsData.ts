@@ -10,10 +10,11 @@
  * Do not edit the class manually.
  */
 
+import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
 import { HttpFile } from '../http/http';
 
 export class MailForwardsData {
-    'forwarders'?: any;
+    'forwarders'?: Array<MailForwardsDataForwardersInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,7 +22,7 @@ export class MailForwardsData {
         {
             "name": "forwarders",
             "baseName": "forwarders",
-            "type": "any",
+            "type": "Array<MailForwardsDataForwardersInner>",
             "format": ""
         }    ];
 

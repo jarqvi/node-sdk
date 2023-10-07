@@ -31,7 +31,7 @@ const body = {
 
 paas.AppsApi.changePlan('name-example', body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -88,7 +88,7 @@ const body = {
 
 paas.AppsApi.createApp(body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -138,7 +138,7 @@ delete app that user owns
 ```typescript
 paas.AppsApi.deleteAppByName('name-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -436,7 +436,7 @@ to restart app that user owns
 ```typescript
 paas.AppsApi.restartApp('name-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -489,7 +489,7 @@ const body = {
 
 paas.AppsApi.turnApp('name-example', body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

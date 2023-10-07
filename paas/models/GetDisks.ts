@@ -10,30 +10,32 @@
  * Do not edit the class manually.
  */
 
+import { GetDisksDisksInner } from '../models/GetDisksDisksInner';
+import { GetDisksMountsInner } from '../models/GetDisksMountsInner';
 import { HttpFile } from '../http/http';
 
-export class CheckDomainDomainProjectCurrentService {
-    'port'?: number;
-    'name'?: string;
+export class GetDisks {
+    'disks'?: Array<GetDisksDisksInner>;
+    'mounts'?: Array<GetDisksMountsInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "port",
-            "baseName": "port",
-            "type": "number",
+            "name": "disks",
+            "baseName": "disks",
+            "type": "Array<GetDisksDisksInner>",
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
+            "name": "mounts",
+            "baseName": "mounts",
+            "type": "Array<GetDisksMountsInner>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CheckDomainDomainProjectCurrentService.attributeTypeMap;
+        return GetDisks.attributeTypeMap;
     }
 
     public constructor() {

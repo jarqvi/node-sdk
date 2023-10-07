@@ -2,12 +2,14 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration} from '../configuration'
 
 import { AllDnsRecordResponse } from '../models/AllDnsRecordResponse';
+import { CreateZone } from '../models/CreateZone';
 import { CreateZoneRequest } from '../models/CreateZoneRequest';
 import { DnsRecord } from '../models/DnsRecord';
 import { DnsRecordId } from '../models/DnsRecordId';
 import { DnsRecordResponse } from '../models/DnsRecordResponse';
 import { Submitted } from '../models/Submitted';
 import { Zone } from '../models/Zone';
+import { Zones } from '../models/Zones';
 
 import { ObservableCheckNameServersApi } from "./ObservableAPI";
 import { CheckNameServersApiRequestFactory, CheckNameServersApiResponseProcessor} from "../apis/CheckNameServersApi";
@@ -251,7 +253,7 @@ export interface ZoneApiGetListZonesRequest {
 
 export interface ZoneApiGetZoneRequest {
     /**
-     * The name of the zone to delete
+     * The name of the zone
      * @type string
      * @memberof ZoneApigetZone
      */
@@ -270,7 +272,7 @@ export class ObjectZoneApi {
      * Create Zone
      * @param param the request object
      */
-    public createZoneWithHttpInfo(param: ZoneApiCreateZoneRequest, options?: Configuration): Promise<HttpInfo<Zone>> {
+    public createZoneWithHttpInfo(param: ZoneApiCreateZoneRequest, options?: Configuration): Promise<HttpInfo<CreateZone>> {
         return this.api.createZoneWithHttpInfo(param.zoneStruct,  options).toPromise();
     }
 
@@ -279,7 +281,7 @@ export class ObjectZoneApi {
      * Create Zone
      * @param param the request object
      */
-    public createZone(param: ZoneApiCreateZoneRequest, options?: Configuration): Promise<Zone> {
+    public createZone(param: ZoneApiCreateZoneRequest, options?: Configuration): Promise<CreateZone> {
         return this.api.createZone(param.zoneStruct,  options).toPromise();
     }
 
@@ -288,7 +290,7 @@ export class ObjectZoneApi {
      * Delete Zone
      * @param param the request object
      */
-    public deleteZoneWithHttpInfo(param: ZoneApiDeleteZoneRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public deleteZoneWithHttpInfo(param: ZoneApiDeleteZoneRequest, options?: Configuration): Promise<HttpInfo<Submitted | void>> {
         return this.api.deleteZoneWithHttpInfo(param.zone,  options).toPromise();
     }
 
@@ -297,7 +299,7 @@ export class ObjectZoneApi {
      * Delete Zone
      * @param param the request object
      */
-    public deleteZone(param: ZoneApiDeleteZoneRequest, options?: Configuration): Promise<void> {
+    public deleteZone(param: ZoneApiDeleteZoneRequest, options?: Configuration): Promise<Submitted | void> {
         return this.api.deleteZone(param.zone,  options).toPromise();
     }
 
@@ -306,7 +308,7 @@ export class ObjectZoneApi {
      * List all zones
      * @param param the request object
      */
-    public getListZonesWithHttpInfo(param: ZoneApiGetListZonesRequest = {}, options?: Configuration): Promise<HttpInfo<Array<Zone>>> {
+    public getListZonesWithHttpInfo(param: ZoneApiGetListZonesRequest = {}, options?: Configuration): Promise<HttpInfo<Zones>> {
         return this.api.getListZonesWithHttpInfo( options).toPromise();
     }
 
@@ -315,7 +317,7 @@ export class ObjectZoneApi {
      * List all zones
      * @param param the request object
      */
-    public getListZones(param: ZoneApiGetListZonesRequest = {}, options?: Configuration): Promise<Array<Zone>> {
+    public getListZones(param: ZoneApiGetListZonesRequest = {}, options?: Configuration): Promise<Zones> {
         return this.api.getListZones( options).toPromise();
     }
 
@@ -324,7 +326,7 @@ export class ObjectZoneApi {
      * Get Zone
      * @param param the request object
      */
-    public getZoneWithHttpInfo(param: ZoneApiGetZoneRequest, options?: Configuration): Promise<HttpInfo<Zone>> {
+    public getZoneWithHttpInfo(param: ZoneApiGetZoneRequest, options?: Configuration): Promise<HttpInfo<CreateZone>> {
         return this.api.getZoneWithHttpInfo(param.zone,  options).toPromise();
     }
 
@@ -333,7 +335,7 @@ export class ObjectZoneApi {
      * Get Zone
      * @param param the request object
      */
-    public getZone(param: ZoneApiGetZoneRequest, options?: Configuration): Promise<Zone> {
+    public getZone(param: ZoneApiGetZoneRequest, options?: Configuration): Promise<CreateZone> {
         return this.api.getZone(param.zone,  options).toPromise();
     }
 

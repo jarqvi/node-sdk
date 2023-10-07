@@ -8,6 +8,8 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { GetListBackups200Response } from '../models/GetListBackups200Response';
 
 /**
  * no description
@@ -181,10 +183,14 @@ export class BackupsApiResponseProcessor {
      * @params response Response returned by the server for a request to downloadBackup
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async downloadBackupWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async downloadBackupWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DownloadBackup200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: DownloadBackup200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DownloadBackup200Response", ""
+            ) as DownloadBackup200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -198,10 +204,10 @@ export class BackupsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: DownloadBackup200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "DownloadBackup200Response", ""
+            ) as DownloadBackup200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -215,10 +221,14 @@ export class BackupsApiResponseProcessor {
      * @params response Response returned by the server for a request to getListBackups
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getListBackupsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getListBackupsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetListBackups200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: GetListBackups200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetListBackups200Response", ""
+            ) as GetListBackups200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad request", undefined, response.headers);
@@ -232,10 +242,10 @@ export class BackupsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: GetListBackups200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "GetListBackups200Response", ""
+            ) as GetListBackups200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

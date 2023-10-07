@@ -17,6 +17,7 @@ http/isomorphic-fetch.ts
 index.ts
 middleware.ts
 models/AllDnsRecordResponse.ts
+models/CreateZone.ts
 models/CreateZoneRequest.ts
 models/DnsRecord.ts
 models/DnsRecordId.ts
@@ -24,6 +25,7 @@ models/DnsRecordResponse.ts
 models/ObjectSerializer.ts
 models/Submitted.ts
 models/Zone.ts
+models/Zones.ts
 models/all.ts
 package.json
 rxjsStub.ts

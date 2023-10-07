@@ -21,7 +21,7 @@ default subdomain that user owns
 ```typescript
 paas.SettingsApi.defaultSubdomain('id-example', 'enable') // or 'disable'
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -185,7 +185,7 @@ zero downtime that user owns
 ```typescript
 paas.SettingsApi.zeroDowntime('id-example', 'enable') // or 'disable'
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

@@ -3,11 +3,25 @@ import { Configuration} from '../configuration'
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { CheckDNS } from '../models/CheckDNS';
+import { CheckDNSData } from '../models/CheckDNSData';
+import { CheckDNSResponse } from '../models/CheckDNSResponse';
+import { CheckDNSResponseDnsSetup } from '../models/CheckDNSResponseDnsSetup';
+import { CheckDNSResponseDnsSetupDkim } from '../models/CheckDNSResponseDnsSetupDkim';
+import { CheckDNSResponseDnsSetupMxRecord } from '../models/CheckDNSResponseDnsSetupMxRecord';
+import { CheckDNSResponseDnsSetupReturnPath } from '../models/CheckDNSResponseDnsSetupReturnPath';
+import { CheckDNSResponseDnsSetupSpf } from '../models/CheckDNSResponseDnsSetupSpf';
 import { CountMailPerDay } from '../models/CountMailPerDay';
+import { CountMailPerDayData } from '../models/CountMailPerDayData';
+import { CountMailPerDayDataEmailPerDayInner } from '../models/CountMailPerDayDataEmailPerDayInner';
 import { CreateSMTP } from '../models/CreateSMTP';
 import { CreateSMTPData } from '../models/CreateSMTPData';
+import { DownloadAttachments200Response } from '../models/DownloadAttachments200Response';
+import { DownloadAttachments200ResponseData } from '../models/DownloadAttachments200ResponseData';
+import { GetSingleMail200Response } from '../models/GetSingleMail200Response';
+import { GetSingleMail200ResponseData } from '../models/GetSingleMail200ResponseData';
 import { MailAccounts } from '../models/MailAccounts';
 import { MailAccountsData } from '../models/MailAccountsData';
+import { MailAccountsDataAccountsInner } from '../models/MailAccountsDataAccountsInner';
 import { MailAttachment } from '../models/MailAttachment';
 import { MailAttachments } from '../models/MailAttachments';
 import { MailAttachmentsData } from '../models/MailAttachmentsData';
@@ -15,10 +29,17 @@ import { MailEvents } from '../models/MailEvents';
 import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
+import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
 import { MailMessage } from '../models/MailMessage';
+import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
 import { MailMessagesData } from '../models/MailMessagesData';
 import { MailServer } from '../models/MailServer';
+import { MailServerData } from '../models/MailServerData';
+import { MailServerResponse } from '../models/MailServerResponse';
+import { MailServerResponseRateLimitTier } from '../models/MailServerResponseRateLimitTier';
+import { MailServers } from '../models/MailServers';
+import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1 } from '../models/Model1';
 import { Model10 } from '../models/Model10';
@@ -30,10 +51,12 @@ import { Model6 } from '../models/Model6';
 import { Model7 } from '../models/Model7';
 import { Model8 } from '../models/Model8';
 import { Model9 } from '../models/Model9';
+import { PostMails201Response } from '../models/PostMails201Response';
 import { RemainingFreeMails } from '../models/RemainingFreeMails';
 import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
+import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
 import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
@@ -59,7 +82,7 @@ export class ObservableAccountsApi {
      * @param mailServerID 
      * @param accountName 
      */
-    public checkMailAvailableWithHttpInfo(mailServerID: string, accountName: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public checkMailAvailableWithHttpInfo(mailServerID: string, accountName: string, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.checkMailAvailable(mailServerID, accountName, _options);
 
         // build promise chain
@@ -83,8 +106,8 @@ export class ObservableAccountsApi {
      * @param mailServerID 
      * @param accountName 
      */
-    public checkMailAvailable(mailServerID: string, accountName: string, _options?: Configuration): Observable<void> {
-        return this.checkMailAvailableWithHttpInfo(mailServerID, accountName, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public checkMailAvailable(mailServerID: string, accountName: string, _options?: Configuration): Observable<PostMails201Response> {
+        return this.checkMailAvailableWithHttpInfo(mailServerID, accountName, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
@@ -92,7 +115,7 @@ export class ObservableAccountsApi {
      * @param mailServerID 
      * @param body 
      */
-    public createMailACcountWithHttpInfo(mailServerID: string, body?: Model5, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createMailACcountWithHttpInfo(mailServerID: string, body?: Model5, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.createMailACcount(mailServerID, body, _options);
 
         // build promise chain
@@ -116,8 +139,8 @@ export class ObservableAccountsApi {
      * @param mailServerID 
      * @param body 
      */
-    public createMailACcount(mailServerID: string, body?: Model5, _options?: Configuration): Observable<void> {
-        return this.createMailACcountWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createMailACcount(mailServerID: string, body?: Model5, _options?: Configuration): Observable<PostMails201Response> {
+        return this.createMailACcountWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
@@ -208,7 +231,7 @@ export class ObservableAttachmentsApi {
      * @param messageID 
      * @param attachmentID 
      */
-    public downloadAttachmentsWithHttpInfo(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Observable<HttpInfo<MailAttachment>> {
+    public downloadAttachmentsWithHttpInfo(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Observable<HttpInfo<DownloadAttachments200Response>> {
         const requestContextPromise = this.requestFactory.downloadAttachments(mailServerID, messageID, attachmentID, _options);
 
         // build promise chain
@@ -233,8 +256,8 @@ export class ObservableAttachmentsApi {
      * @param messageID 
      * @param attachmentID 
      */
-    public downloadAttachments(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Observable<MailAttachment> {
-        return this.downloadAttachmentsWithHttpInfo(mailServerID, messageID, attachmentID, _options).pipe(map((apiResponse: HttpInfo<MailAttachment>) => apiResponse.data));
+    public downloadAttachments(mailServerID: string, messageID: string, attachmentID: string, _options?: Configuration): Observable<DownloadAttachments200Response> {
+        return this.downloadAttachmentsWithHttpInfo(mailServerID, messageID, attachmentID, _options).pipe(map((apiResponse: HttpInfo<DownloadAttachments200Response>) => apiResponse.data));
     }
 
     /**
@@ -349,7 +372,7 @@ export class ObservableForwardApi {
      * @param accountID 
      * @param body 
      */
-    public createAddressForwardingWithHttpInfo(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createAddressForwardingWithHttpInfo(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.createAddressForwarding(mailServerID, accountID, body, _options);
 
         // build promise chain
@@ -374,8 +397,8 @@ export class ObservableForwardApi {
      * @param accountID 
      * @param body 
      */
-    public createAddressForwarding(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Observable<void> {
-        return this.createAddressForwardingWithHttpInfo(mailServerID, accountID, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createAddressForwarding(mailServerID: string, accountID: string, body?: Model6, _options?: Configuration): Observable<PostMails201Response> {
+        return this.createAddressForwardingWithHttpInfo(mailServerID, accountID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
@@ -469,7 +492,7 @@ export class ObservableMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerModeWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Observable<HttpInfo<void>> {
+    public changeMailServerModeWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.changeMailServerMode(mailServerID, body, _options);
 
         // build promise chain
@@ -493,8 +516,8 @@ export class ObservableMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerMode(mailServerID: string, body?: Model8, _options?: Configuration): Observable<void> {
-        return this.changeMailServerModeWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public changeMailServerMode(mailServerID: string, body?: Model8, _options?: Configuration): Observable<PostMails201Response> {
+        return this.changeMailServerModeWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
@@ -502,7 +525,7 @@ export class ObservableMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerPlanWithHttpInfo(mailServerID: string, body?: Model10, _options?: Configuration): Observable<HttpInfo<void>> {
+    public changeMailServerPlanWithHttpInfo(mailServerID: string, body?: Model10, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.changeMailServerPlan(mailServerID, body, _options);
 
         // build promise chain
@@ -526,15 +549,15 @@ export class ObservableMailsApi {
      * @param mailServerID 
      * @param body 
      */
-    public changeMailServerPlan(mailServerID: string, body?: Model10, _options?: Configuration): Observable<void> {
-        return this.changeMailServerPlanWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public changeMailServerPlan(mailServerID: string, body?: Model10, _options?: Configuration): Observable<PostMails201Response> {
+        return this.changeMailServerPlanWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
      * check if domain name is available
      * @param domain 
      */
-    public checkDomainAvailableWithHttpInfo(domain: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public checkDomainAvailableWithHttpInfo(domain: string, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.checkDomainAvailable(domain, _options);
 
         // build promise chain
@@ -557,8 +580,8 @@ export class ObservableMailsApi {
      * check if domain name is available
      * @param domain 
      */
-    public checkDomainAvailable(domain: string, _options?: Configuration): Observable<void> {
-        return this.checkDomainAvailableWithHttpInfo(domain, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public checkDomainAvailable(domain: string, _options?: Configuration): Observable<PostMails201Response> {
+        return this.checkDomainAvailableWithHttpInfo(domain, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
@@ -690,7 +713,7 @@ export class ObservableMailsApi {
     /**
      * get all mail servers
      */
-    public getMailsWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Array<MailServer>>> {
+    public getMailsWithHttpInfo(_options?: Configuration): Observable<HttpInfo<MailServers>> {
         const requestContextPromise = this.requestFactory.getMails(_options);
 
         // build promise chain
@@ -712,8 +735,8 @@ export class ObservableMailsApi {
     /**
      * get all mail servers
      */
-    public getMails(_options?: Configuration): Observable<Array<MailServer>> {
-        return this.getMailsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<MailServer>>) => apiResponse.data));
+    public getMails(_options?: Configuration): Observable<MailServers> {
+        return this.getMailsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<MailServers>) => apiResponse.data));
     }
 
     /**
@@ -751,7 +774,7 @@ export class ObservableMailsApi {
      * create mail server
      * @param body 
      */
-    public postMailsWithHttpInfo(body?: Model1, _options?: Configuration): Observable<HttpInfo<void>> {
+    public postMailsWithHttpInfo(body?: Model1, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.postMails(body, _options);
 
         // build promise chain
@@ -774,8 +797,8 @@ export class ObservableMailsApi {
      * create mail server
      * @param body 
      */
-    public postMails(body?: Model1, _options?: Configuration): Observable<void> {
-        return this.postMailsWithHttpInfo(body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public postMails(body?: Model1, _options?: Configuration): Observable<PostMails201Response> {
+        return this.postMailsWithHttpInfo(body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
 }
@@ -881,7 +904,7 @@ export class ObservableMessagesApi {
      * @param mailServerID 
      * @param messageID 
      */
-    public getSingleMailWithHttpInfo(mailServerID: string, messageID: string, _options?: Configuration): Observable<HttpInfo<MailMessage>> {
+    public getSingleMailWithHttpInfo(mailServerID: string, messageID: string, _options?: Configuration): Observable<HttpInfo<GetSingleMail200Response>> {
         const requestContextPromise = this.requestFactory.getSingleMail(mailServerID, messageID, _options);
 
         // build promise chain
@@ -905,8 +928,8 @@ export class ObservableMessagesApi {
      * @param mailServerID 
      * @param messageID 
      */
-    public getSingleMail(mailServerID: string, messageID: string, _options?: Configuration): Observable<MailMessage> {
-        return this.getSingleMailWithHttpInfo(mailServerID, messageID, _options).pipe(map((apiResponse: HttpInfo<MailMessage>) => apiResponse.data));
+    public getSingleMail(mailServerID: string, messageID: string, _options?: Configuration): Observable<GetSingleMail200Response> {
+        return this.getSingleMailWithHttpInfo(mailServerID, messageID, _options).pipe(map((apiResponse: HttpInfo<GetSingleMail200Response>) => apiResponse.data));
     }
 
     /**
@@ -949,7 +972,7 @@ export class ObservableMessagesApi {
      * @param mailServerID 
      * @param body 
      */
-    public sendMailWithHttpInfo(mailServerID: string, body?: Model3, _options?: Configuration): Observable<HttpInfo<void>> {
+    public sendMailWithHttpInfo(mailServerID: string, body?: Model3, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
         const requestContextPromise = this.requestFactory.sendMail(mailServerID, body, _options);
 
         // build promise chain
@@ -973,8 +996,8 @@ export class ObservableMessagesApi {
      * @param mailServerID 
      * @param body 
      */
-    public sendMail(mailServerID: string, body?: Model3, _options?: Configuration): Observable<void> {
-        return this.sendMailWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public sendMail(mailServerID: string, body?: Model3, _options?: Configuration): Observable<PostMails201Response> {
+        return this.sendMailWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
 }

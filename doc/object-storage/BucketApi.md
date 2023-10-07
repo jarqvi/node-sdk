@@ -188,7 +188,7 @@ Delete Bucket on an object storage
 ```typescript
 objectStorage.BucketApi.destroyBucket('bocket-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -435,7 +435,7 @@ const body = {
 
 objectStorage.BucketApi.migratingBuckets(body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);

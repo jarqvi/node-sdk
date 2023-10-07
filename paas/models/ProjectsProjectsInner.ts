@@ -32,7 +32,7 @@ export class ProjectsProjectsInner {
     /**
     * The being on of project
     */
-    'scale'?: string;
+    'scale'?: number;
     /**
     * The plan of project
     */
@@ -44,7 +44,7 @@ export class ProjectsProjectsInner {
     /**
     * The project deployment status
     */
-    'isDeployed'?: string;
+    'isDeployed'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -76,7 +76,7 @@ export class ProjectsProjectsInner {
         {
             "name": "scale",
             "baseName": "scale",
-            "type": "string",
+            "type": "number",
             "format": ""
         },
         {
@@ -94,7 +94,7 @@ export class ProjectsProjectsInner {
         {
             "name": "isDeployed",
             "baseName": "isDeployed",
-            "type": "string",
+            "type": "boolean",
             "format": ""
         }    ];
 

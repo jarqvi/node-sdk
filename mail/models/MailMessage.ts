@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 
+import { MailMessageStatus } from '../models/MailMessageStatus';
 import { HttpFile } from '../http/http';
 
 export class MailMessage {
@@ -23,7 +24,8 @@ export class MailMessage {
     'subject'?: string;
     'to'?: string;
     'text'?: string;
-    'status'?: any;
+    'status'?: MailMessageStatus;
+    'id'?: string;
     'spamReson'?: any;
 
     static readonly discriminator: string | undefined = undefined;
@@ -92,7 +94,13 @@ export class MailMessage {
         {
             "name": "status",
             "baseName": "status",
-            "type": "any",
+            "type": "MailMessageStatus",
+            "format": ""
+        },
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "string",
             "format": ""
         },
         {

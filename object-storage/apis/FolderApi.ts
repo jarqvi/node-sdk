@@ -9,6 +9,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { CreateFolder } from '../models/CreateFolder';
+import { CreateFolder201Response } from '../models/CreateFolder201Response';
 
 /**
  * no description
@@ -37,7 +38,7 @@ export class FolderApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/folders'
+        const localVarPath = '/api/v1/buckets/{bucket}/folders'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -46,7 +47,9 @@ export class FolderApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "CreateFolder", ""),
@@ -91,7 +94,7 @@ export class FolderApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/folders'
+        const localVarPath = '/api/v1/buckets/{bucket}/folders'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -130,10 +133,14 @@ export class FolderApiResponseProcessor {
      * @params response Response returned by the server for a request to createFolder
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createFolderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createFolderWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateFolder201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: CreateFolder201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateFolder201Response", ""
+            ) as CreateFolder201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -153,10 +160,10 @@ export class FolderApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateFolder201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateFolder201Response", ""
+            ) as CreateFolder201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

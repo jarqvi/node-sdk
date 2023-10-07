@@ -8,8 +8,14 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { ChangeBucketAccess200Response } from '../models/ChangeBucketAccess200Response';
 import { CreateBucket } from '../models/CreateBucket';
+import { CreateBucket201Response } from '../models/CreateBucket201Response';
+import { GetMigrations200Response } from '../models/GetMigrations200Response';
+import { GetSingleBuckets200Response } from '../models/GetSingleBuckets200Response';
+import { ListBucket } from '../models/ListBucket';
 import { MigrateBucket } from '../models/MigrateBucket';
+import { UpgradeBucket200Response } from '../models/UpgradeBucket200Response';
 
 /**
  * no description
@@ -38,7 +44,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/type/{permission}'
+        const localVarPath = '/api/v1/buckets/{bucket}/type/{permission}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'permission' + '}', encodeURIComponent(String(permission)));
 
@@ -77,7 +83,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/check-availability'
+        const localVarPath = '/api/v1/buckets/{bucket}/check-availability'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -115,7 +121,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets';
+        const localVarPath = '/api/v1/buckets';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -123,7 +129,9 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "CreateBucket", ""),
@@ -161,7 +169,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}'
+        const localVarPath = '/api/v1/buckets/{bucket}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -192,7 +200,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/buckets';
+        const localVarPath = '/api/v1/buckets';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -222,7 +230,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/buckets/migration/from';
+        const localVarPath = '/api/v1/buckets/migration/from';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -252,7 +260,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/buckets/migrations';
+        const localVarPath = '/api/v1/buckets/migrations';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -288,7 +296,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}'
+        const localVarPath = '/api/v1/buckets/{bucket}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)));
 
         // Make Request Context
@@ -326,7 +334,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/migrates';
+        const localVarPath = '/api/v1/buckets/migrates';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -334,7 +342,9 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "MigrateBucket", ""),
@@ -379,7 +389,7 @@ export class BucketApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/buckets/{bucket}/upgrade/{plan}'
+        const localVarPath = '/api/v1/buckets/{bucket}/upgrade/{plan}'
             .replace('{' + 'bucket' + '}', encodeURIComponent(String(bucket)))
             .replace('{' + 'plan' + '}', encodeURIComponent(String(plan)));
 
@@ -414,10 +424,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to changeBucketAccess
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async changeBucketAccessWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async changeBucketAccessWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ChangeBucketAccess200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: ChangeBucketAccess200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ChangeBucketAccess200Response", ""
+            ) as ChangeBucketAccess200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -434,10 +448,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: ChangeBucketAccess200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "ChangeBucketAccess200Response", ""
+            ) as ChangeBucketAccess200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -451,10 +465,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to checkBucket
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async checkBucketWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async checkBucketWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateBucket201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: CreateBucket201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateBucket201Response", ""
+            ) as CreateBucket201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -474,10 +492,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateBucket201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateBucket201Response", ""
+            ) as CreateBucket201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -491,10 +509,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to createBucket
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createBucketWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createBucketWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateBucket201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: CreateBucket201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateBucket201Response", ""
+            ) as CreateBucket201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -511,10 +533,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateBucket201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateBucket201Response", ""
+            ) as CreateBucket201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -565,10 +587,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to getBuckets
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getBucketsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getBucketsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListBucket >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: ListBucket = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListBucket", ""
+            ) as ListBucket;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Missing authentication", undefined, response.headers);
@@ -579,10 +605,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: ListBucket = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "ListBucket", ""
+            ) as ListBucket;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -633,10 +659,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to getMigrations
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getMigrationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getMigrationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetMigrations200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: GetMigrations200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetMigrations200Response", ""
+            ) as GetMigrations200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -653,10 +683,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: GetMigrations200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "GetMigrations200Response", ""
+            ) as GetMigrations200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -670,10 +700,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to getSingleBuckets
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getSingleBucketsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getSingleBucketsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetSingleBuckets200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: GetSingleBuckets200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetSingleBuckets200Response", ""
+            ) as GetSingleBuckets200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("401", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Missing authentication", undefined, response.headers);
@@ -684,10 +718,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: GetSingleBuckets200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "GetSingleBuckets200Response", ""
+            ) as GetSingleBuckets200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -738,10 +772,14 @@ export class BucketApiResponseProcessor {
      * @params response Response returned by the server for a request to upgradeBucket
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async upgradeBucketWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async upgradeBucketWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpgradeBucket200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: UpgradeBucket200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "UpgradeBucket200Response", ""
+            ) as UpgradeBucket200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -764,10 +802,10 @@ export class BucketApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: UpgradeBucket200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "UpgradeBucket200Response", ""
+            ) as UpgradeBucket200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

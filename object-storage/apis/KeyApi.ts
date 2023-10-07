@@ -8,7 +8,11 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { CreateBucket201Response } from '../models/CreateBucket201Response';
 import { CreateKey } from '../models/CreateKey';
+import { CreateKey201Response } from '../models/CreateKey201Response';
+import { Keys } from '../models/Keys';
+import { RevokeSecretKey200Response } from '../models/RevokeSecretKey200Response';
 
 /**
  * no description
@@ -30,7 +34,7 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/keys';
+        const localVarPath = '/api/v1/keys';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -38,7 +42,9 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "CreateKey", ""),
@@ -76,7 +82,7 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/keys/{key}'
+        const localVarPath = '/api/v1/keys/{key}'
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
 
         // Make Request Context
@@ -114,7 +120,7 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/keys/{key}'
+        const localVarPath = '/api/v1/keys/{key}'
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
 
         // Make Request Context
@@ -144,7 +150,7 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
         let _config = _options || this.configuration;
 
         // Path Params
-        const localVarPath = '/keys';
+        const localVarPath = '/api/v1/keys';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -181,7 +187,7 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/keys/{key}/revoke'
+        const localVarPath = '/api/v1/keys/{key}/revoke'
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
 
         // Make Request Context
@@ -226,7 +232,7 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/keys/{key}'
+        const localVarPath = '/api/v1/keys/{key}'
             .replace('{' + 'key' + '}', encodeURIComponent(String(key)));
 
         // Make Request Context
@@ -235,7 +241,9 @@ export class KeyApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "CreateKey", ""),
@@ -269,10 +277,14 @@ export class KeyApiResponseProcessor {
      * @params response Response returned by the server for a request to createKey
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createKeyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createKeyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateKey201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: CreateKey201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateKey201Response", ""
+            ) as CreateKey201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -289,10 +301,10 @@ export class KeyApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateKey201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateKey201Response", ""
+            ) as CreateKey201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -383,10 +395,14 @@ export class KeyApiResponseProcessor {
      * @params response Response returned by the server for a request to getListKeys
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getListKeysWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async getListKeysWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Keys >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: Keys = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Keys", ""
+            ) as Keys;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -403,10 +419,10 @@ export class KeyApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: Keys = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "Keys", ""
+            ) as Keys;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -420,10 +436,14 @@ export class KeyApiResponseProcessor {
      * @params response Response returned by the server for a request to revokeSecretKey
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async revokeSecretKeyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async revokeSecretKeyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RevokeSecretKey200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: RevokeSecretKey200Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RevokeSecretKey200Response", ""
+            ) as RevokeSecretKey200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -443,10 +463,10 @@ export class KeyApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: RevokeSecretKey200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "RevokeSecretKey200Response", ""
+            ) as RevokeSecretKey200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -460,10 +480,14 @@ export class KeyApiResponseProcessor {
      * @params response Response returned by the server for a request to updateKey
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async updateKeyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async updateKeyWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateBucket201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: CreateBucket201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateBucket201Response", ""
+            ) as CreateBucket201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -483,10 +507,10 @@ export class KeyApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: CreateBucket201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "CreateBucket201Response", ""
+            ) as CreateBucket201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

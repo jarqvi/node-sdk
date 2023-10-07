@@ -30,6 +30,7 @@ export class Releases {
     * The total of releases
     */
     'releases'?: Array<ReleasesReleasesInner>;
+    'platform'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -56,6 +57,12 @@ export class Releases {
             "name": "releases",
             "baseName": "releases",
             "type": "Array<ReleasesReleasesInner>",
+            "format": ""
+        },
+        {
+            "name": "platform",
+            "baseName": "platform",
+            "type": "string",
             "format": ""
         }    ];
 

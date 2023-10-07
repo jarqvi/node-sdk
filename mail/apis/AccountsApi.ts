@@ -10,6 +10,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 import { MailAccounts } from '../models/MailAccounts';
 import { Model5 } from '../models/Model5';
+import { PostMails201Response } from '../models/PostMails201Response';
 
 /**
  * no description
@@ -37,7 +38,7 @@ export class AccountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts/{accountName}/check-availability'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts/{accountName}/check-availability'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'accountName' + '}', encodeURIComponent(String(accountName)));
 
@@ -77,7 +78,7 @@ export class AccountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -86,7 +87,9 @@ export class AccountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([]);
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(body, "Model5", ""),
@@ -130,7 +133,7 @@ export class AccountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts/{accountID}'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts/{accountID}'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'accountID' + '}', encodeURIComponent(String(accountID)));
 
@@ -168,7 +171,7 @@ export class AccountsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/accounts'
+        const localVarPath = '/api/v1/mails/{mailServerID}/accounts'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)));
 
         // Make Request Context
@@ -202,10 +205,14 @@ export class AccountsApiResponseProcessor {
      * @params response Response returned by the server for a request to checkMailAvailable
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async checkMailAvailableWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async checkMailAvailableWithHttpInfo(response: ResponseContext): Promise<HttpInfo<PostMails201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: PostMails201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PostMails201Response", ""
+            ) as PostMails201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -222,10 +229,10 @@ export class AccountsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: PostMails201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "PostMails201Response", ""
+            ) as PostMails201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -239,10 +246,14 @@ export class AccountsApiResponseProcessor {
      * @params response Response returned by the server for a request to createMailACcount
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async createMailACcountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async createMailACcountWithHttpInfo(response: ResponseContext): Promise<HttpInfo<PostMails201Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+            const body: PostMails201Response = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "PostMails201Response", ""
+            ) as PostMails201Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
             throw new ApiException<undefined>(response.httpStatusCode, "Bad Request", undefined, response.headers);
@@ -256,10 +267,10 @@ export class AccountsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
+            const body: PostMails201Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
+                "PostMails201Response", ""
+            ) as PostMails201Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

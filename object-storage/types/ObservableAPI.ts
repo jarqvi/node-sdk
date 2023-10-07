@@ -2,10 +2,43 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration} from '../configuration'
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
+import { Bucket } from '../models/Bucket';
+import { ChangeBucketAccess200Response } from '../models/ChangeBucketAccess200Response';
 import { CreateBucket } from '../models/CreateBucket';
+import { CreateBucket201Response } from '../models/CreateBucket201Response';
 import { CreateFolder } from '../models/CreateFolder';
+import { CreateFolder201Response } from '../models/CreateFolder201Response';
+import { CreateFolder201ResponseData } from '../models/CreateFolder201ResponseData';
 import { CreateKey } from '../models/CreateKey';
+import { CreateKey201Response } from '../models/CreateKey201Response';
+import { CreateKey201ResponseData } from '../models/CreateKey201ResponseData';
+import { DownloadObject200Response } from '../models/DownloadObject200Response';
+import { DownloadObject200ResponseData } from '../models/DownloadObject200ResponseData';
+import { GetHisotricalMetrics200Response } from '../models/GetHisotricalMetrics200Response';
+import { GetHisotricalMetrics200ResponseData } from '../models/GetHisotricalMetrics200ResponseData';
+import { GetHisotricalMetrics200ResponseDataMetrics } from '../models/GetHisotricalMetrics200ResponseDataMetrics';
+import { GetMetricsSummary200Response } from '../models/GetMetricsSummary200Response';
+import { GetMetricsSummary200ResponseData } from '../models/GetMetricsSummary200ResponseData';
+import { GetMetricsSummary200ResponseDataMetrics } from '../models/GetMetricsSummary200ResponseDataMetrics';
+import { GetMetricsSummary200ResponseDataMetricsTotolObjectsInner } from '../models/GetMetricsSummary200ResponseDataMetricsTotolObjectsInner';
+import { GetMigrations200Response } from '../models/GetMigrations200Response';
+import { GetSingleBuckets200Response } from '../models/GetSingleBuckets200Response';
+import { Key } from '../models/Key';
+import { KeyBucketsInner } from '../models/KeyBucketsInner';
+import { Keys } from '../models/Keys';
+import { ListBucket } from '../models/ListBucket';
 import { MigrateBucket } from '../models/MigrateBucket';
+import { Objects } from '../models/Objects';
+import { ObjectsData } from '../models/ObjectsData';
+import { ObjectsDataObjects } from '../models/ObjectsDataObjects';
+import { ObjectsDataObjectsCommonPrefixesInner } from '../models/ObjectsDataObjectsCommonPrefixesInner';
+import { ObjectsDataObjectsContentsInner } from '../models/ObjectsDataObjectsContentsInner';
+import { RevokeSecretKey200Response } from '../models/RevokeSecretKey200Response';
+import { Stat } from '../models/Stat';
+import { StatData } from '../models/StatData';
+import { StatDataObject } from '../models/StatDataObject';
+import { StatDataObjectMetaData } from '../models/StatDataObjectMetaData';
+import { UpgradeBucket200Response } from '../models/UpgradeBucket200Response';
 
 import { BucketApiRequestFactory, BucketApiResponseProcessor} from "../apis/BucketApi";
 export class ObservableBucketApi {
@@ -29,7 +62,7 @@ export class ObservableBucketApi {
      * @param bucket 
      * @param permission 
      */
-    public changeBucketAccessWithHttpInfo(bucket: string, permission: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public changeBucketAccessWithHttpInfo(bucket: string, permission: string, _options?: Configuration): Observable<HttpInfo<ChangeBucketAccess200Response>> {
         const requestContextPromise = this.requestFactory.changeBucketAccess(bucket, permission, _options);
 
         // build promise chain
@@ -54,8 +87,8 @@ export class ObservableBucketApi {
      * @param bucket 
      * @param permission 
      */
-    public changeBucketAccess(bucket: string, permission: string, _options?: Configuration): Observable<void> {
-        return this.changeBucketAccessWithHttpInfo(bucket, permission, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public changeBucketAccess(bucket: string, permission: string, _options?: Configuration): Observable<ChangeBucketAccess200Response> {
+        return this.changeBucketAccessWithHttpInfo(bucket, permission, _options).pipe(map((apiResponse: HttpInfo<ChangeBucketAccess200Response>) => apiResponse.data));
     }
 
     /**
@@ -63,7 +96,7 @@ export class ObservableBucketApi {
      * Check Bucket availability
      * @param bucket 
      */
-    public checkBucketWithHttpInfo(bucket: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public checkBucketWithHttpInfo(bucket: string, _options?: Configuration): Observable<HttpInfo<CreateBucket201Response>> {
         const requestContextPromise = this.requestFactory.checkBucket(bucket, _options);
 
         // build promise chain
@@ -87,8 +120,8 @@ export class ObservableBucketApi {
      * Check Bucket availability
      * @param bucket 
      */
-    public checkBucket(bucket: string, _options?: Configuration): Observable<void> {
-        return this.checkBucketWithHttpInfo(bucket, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public checkBucket(bucket: string, _options?: Configuration): Observable<CreateBucket201Response> {
+        return this.checkBucketWithHttpInfo(bucket, _options).pipe(map((apiResponse: HttpInfo<CreateBucket201Response>) => apiResponse.data));
     }
 
     /**
@@ -96,7 +129,7 @@ export class ObservableBucketApi {
      * Create Bucket
      * @param body create bucket. Acceptable values for permission: ( private / public ) and for plan: ( 20g, 40g, 80g, 160g )
      */
-    public createBucketWithHttpInfo(body: CreateBucket, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createBucketWithHttpInfo(body: CreateBucket, _options?: Configuration): Observable<HttpInfo<CreateBucket201Response>> {
         const requestContextPromise = this.requestFactory.createBucket(body, _options);
 
         // build promise chain
@@ -120,8 +153,8 @@ export class ObservableBucketApi {
      * Create Bucket
      * @param body create bucket. Acceptable values for permission: ( private / public ) and for plan: ( 20g, 40g, 80g, 160g )
      */
-    public createBucket(body: CreateBucket, _options?: Configuration): Observable<void> {
-        return this.createBucketWithHttpInfo(body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createBucket(body: CreateBucket, _options?: Configuration): Observable<CreateBucket201Response> {
+        return this.createBucketWithHttpInfo(body, _options).pipe(map((apiResponse: HttpInfo<CreateBucket201Response>) => apiResponse.data));
     }
 
     /**
@@ -161,7 +194,7 @@ export class ObservableBucketApi {
      * List all Bucket
      * List all Buckets
      */
-    public getBucketsWithHttpInfo(_options?: Configuration): Observable<HttpInfo<void>> {
+    public getBucketsWithHttpInfo(_options?: Configuration): Observable<HttpInfo<ListBucket>> {
         const requestContextPromise = this.requestFactory.getBuckets(_options);
 
         // build promise chain
@@ -184,8 +217,8 @@ export class ObservableBucketApi {
      * List all Bucket
      * List all Buckets
      */
-    public getBuckets(_options?: Configuration): Observable<void> {
-        return this.getBucketsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getBuckets(_options?: Configuration): Observable<ListBucket> {
+        return this.getBucketsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListBucket>) => apiResponse.data));
     }
 
     /**
@@ -223,7 +256,7 @@ export class ObservableBucketApi {
      * list migration operation
      * list migration operation
      */
-    public getMigrationsWithHttpInfo(_options?: Configuration): Observable<HttpInfo<void>> {
+    public getMigrationsWithHttpInfo(_options?: Configuration): Observable<HttpInfo<GetMigrations200Response>> {
         const requestContextPromise = this.requestFactory.getMigrations(_options);
 
         // build promise chain
@@ -246,15 +279,15 @@ export class ObservableBucketApi {
      * list migration operation
      * list migration operation
      */
-    public getMigrations(_options?: Configuration): Observable<void> {
-        return this.getMigrationsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getMigrations(_options?: Configuration): Observable<GetMigrations200Response> {
+        return this.getMigrationsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<GetMigrations200Response>) => apiResponse.data));
     }
 
     /**
      * Get Single Buckets
      * @param bucket 
      */
-    public getSingleBucketsWithHttpInfo(bucket: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getSingleBucketsWithHttpInfo(bucket: string, _options?: Configuration): Observable<HttpInfo<GetSingleBuckets200Response>> {
         const requestContextPromise = this.requestFactory.getSingleBuckets(bucket, _options);
 
         // build promise chain
@@ -277,8 +310,8 @@ export class ObservableBucketApi {
      * Get Single Buckets
      * @param bucket 
      */
-    public getSingleBuckets(bucket: string, _options?: Configuration): Observable<void> {
-        return this.getSingleBucketsWithHttpInfo(bucket, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getSingleBuckets(bucket: string, _options?: Configuration): Observable<GetSingleBuckets200Response> {
+        return this.getSingleBucketsWithHttpInfo(bucket, _options).pipe(map((apiResponse: HttpInfo<GetSingleBuckets200Response>) => apiResponse.data));
     }
 
     /**
@@ -320,7 +353,7 @@ export class ObservableBucketApi {
      * @param bucket 
      * @param plan 
      */
-    public upgradeBucketWithHttpInfo(bucket: string, plan: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public upgradeBucketWithHttpInfo(bucket: string, plan: string, _options?: Configuration): Observable<HttpInfo<UpgradeBucket200Response>> {
         const requestContextPromise = this.requestFactory.upgradeBucket(bucket, plan, _options);
 
         // build promise chain
@@ -345,8 +378,8 @@ export class ObservableBucketApi {
      * @param bucket 
      * @param plan 
      */
-    public upgradeBucket(bucket: string, plan: string, _options?: Configuration): Observable<void> {
-        return this.upgradeBucketWithHttpInfo(bucket, plan, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public upgradeBucket(bucket: string, plan: string, _options?: Configuration): Observable<UpgradeBucket200Response> {
+        return this.upgradeBucketWithHttpInfo(bucket, plan, _options).pipe(map((apiResponse: HttpInfo<UpgradeBucket200Response>) => apiResponse.data));
     }
 
 }
@@ -373,7 +406,7 @@ export class ObservableFolderApi {
      * @param bucket 
      * @param body 
      */
-    public createFolderWithHttpInfo(bucket: string, body: CreateFolder, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createFolderWithHttpInfo(bucket: string, body: CreateFolder, _options?: Configuration): Observable<HttpInfo<CreateFolder201Response>> {
         const requestContextPromise = this.requestFactory.createFolder(bucket, body, _options);
 
         // build promise chain
@@ -398,8 +431,8 @@ export class ObservableFolderApi {
      * @param bucket 
      * @param body 
      */
-    public createFolder(bucket: string, body: CreateFolder, _options?: Configuration): Observable<void> {
-        return this.createFolderWithHttpInfo(bucket, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createFolder(bucket: string, body: CreateFolder, _options?: Configuration): Observable<CreateFolder201Response> {
+        return this.createFolderWithHttpInfo(bucket, body, _options).pipe(map((apiResponse: HttpInfo<CreateFolder201Response>) => apiResponse.data));
     }
 
     /**
@@ -460,7 +493,7 @@ export class ObservableKeyApi {
      * Create Keys
      * @param body Declare Buckets for access key
      */
-    public createKeyWithHttpInfo(body: CreateKey, _options?: Configuration): Observable<HttpInfo<void>> {
+    public createKeyWithHttpInfo(body: CreateKey, _options?: Configuration): Observable<HttpInfo<CreateKey201Response>> {
         const requestContextPromise = this.requestFactory.createKey(body, _options);
 
         // build promise chain
@@ -484,8 +517,8 @@ export class ObservableKeyApi {
      * Create Keys
      * @param body Declare Buckets for access key
      */
-    public createKey(body: CreateKey, _options?: Configuration): Observable<void> {
-        return this.createKeyWithHttpInfo(body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public createKey(body: CreateKey, _options?: Configuration): Observable<CreateKey201Response> {
+        return this.createKeyWithHttpInfo(body, _options).pipe(map((apiResponse: HttpInfo<CreateKey201Response>) => apiResponse.data));
     }
 
     /**
@@ -557,7 +590,7 @@ export class ObservableKeyApi {
     /**
      * Get List of Keys
      */
-    public getListKeysWithHttpInfo(_options?: Configuration): Observable<HttpInfo<void>> {
+    public getListKeysWithHttpInfo(_options?: Configuration): Observable<HttpInfo<Keys>> {
         const requestContextPromise = this.requestFactory.getListKeys(_options);
 
         // build promise chain
@@ -579,8 +612,8 @@ export class ObservableKeyApi {
     /**
      * Get List of Keys
      */
-    public getListKeys(_options?: Configuration): Observable<void> {
-        return this.getListKeysWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getListKeys(_options?: Configuration): Observable<Keys> {
+        return this.getListKeysWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Keys>) => apiResponse.data));
     }
 
     /**
@@ -588,7 +621,7 @@ export class ObservableKeyApi {
      * Revoke secret key
      * @param key 
      */
-    public revokeSecretKeyWithHttpInfo(key: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public revokeSecretKeyWithHttpInfo(key: string, _options?: Configuration): Observable<HttpInfo<RevokeSecretKey200Response>> {
         const requestContextPromise = this.requestFactory.revokeSecretKey(key, _options);
 
         // build promise chain
@@ -612,8 +645,8 @@ export class ObservableKeyApi {
      * Revoke secret key
      * @param key 
      */
-    public revokeSecretKey(key: string, _options?: Configuration): Observable<void> {
-        return this.revokeSecretKeyWithHttpInfo(key, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public revokeSecretKey(key: string, _options?: Configuration): Observable<RevokeSecretKey200Response> {
+        return this.revokeSecretKeyWithHttpInfo(key, _options).pipe(map((apiResponse: HttpInfo<RevokeSecretKey200Response>) => apiResponse.data));
     }
 
     /**
@@ -622,7 +655,7 @@ export class ObservableKeyApi {
      * @param key 
      * @param body Declare Buckets for access key
      */
-    public updateKeyWithHttpInfo(key: string, body: CreateKey, _options?: Configuration): Observable<HttpInfo<void>> {
+    public updateKeyWithHttpInfo(key: string, body: CreateKey, _options?: Configuration): Observable<HttpInfo<CreateBucket201Response>> {
         const requestContextPromise = this.requestFactory.updateKey(key, body, _options);
 
         // build promise chain
@@ -647,8 +680,8 @@ export class ObservableKeyApi {
      * @param key 
      * @param body Declare Buckets for access key
      */
-    public updateKey(key: string, body: CreateKey, _options?: Configuration): Observable<void> {
-        return this.updateKeyWithHttpInfo(key, body, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public updateKey(key: string, body: CreateKey, _options?: Configuration): Observable<CreateBucket201Response> {
+        return this.updateKeyWithHttpInfo(key, body, _options).pipe(map((apiResponse: HttpInfo<CreateBucket201Response>) => apiResponse.data));
     }
 
 }
@@ -674,7 +707,7 @@ export class ObservableMetricsApi {
      * @param bucket 
      * @param since unix time
      */
-    public getHisotricalMetricsWithHttpInfo(bucket: string, since: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getHisotricalMetricsWithHttpInfo(bucket: string, since: string, _options?: Configuration): Observable<HttpInfo<GetHisotricalMetrics200Response>> {
         const requestContextPromise = this.requestFactory.getHisotricalMetrics(bucket, since, _options);
 
         // build promise chain
@@ -698,15 +731,15 @@ export class ObservableMetricsApi {
      * @param bucket 
      * @param since unix time
      */
-    public getHisotricalMetrics(bucket: string, since: string, _options?: Configuration): Observable<void> {
-        return this.getHisotricalMetricsWithHttpInfo(bucket, since, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getHisotricalMetrics(bucket: string, since: string, _options?: Configuration): Observable<GetHisotricalMetrics200Response> {
+        return this.getHisotricalMetricsWithHttpInfo(bucket, since, _options).pipe(map((apiResponse: HttpInfo<GetHisotricalMetrics200Response>) => apiResponse.data));
     }
 
     /**
      * metrics summary
      * @param bucket 
      */
-    public getMetricsSummaryWithHttpInfo(bucket: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getMetricsSummaryWithHttpInfo(bucket: string, _options?: Configuration): Observable<HttpInfo<GetMetricsSummary200Response>> {
         const requestContextPromise = this.requestFactory.getMetricsSummary(bucket, _options);
 
         // build promise chain
@@ -729,8 +762,8 @@ export class ObservableMetricsApi {
      * metrics summary
      * @param bucket 
      */
-    public getMetricsSummary(bucket: string, _options?: Configuration): Observable<void> {
-        return this.getMetricsSummaryWithHttpInfo(bucket, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getMetricsSummary(bucket: string, _options?: Configuration): Observable<GetMetricsSummary200Response> {
+        return this.getMetricsSummaryWithHttpInfo(bucket, _options).pipe(map((apiResponse: HttpInfo<GetMetricsSummary200Response>) => apiResponse.data));
     }
 
 }
@@ -793,7 +826,7 @@ export class ObservableObjectApi {
      * @param object specify object path
      * @param expiry example: 2 days 7 hours 45 minutes
      */
-    public downloadObjectWithHttpInfo(bucket: string, object: string, expiry?: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public downloadObjectWithHttpInfo(bucket: string, object: string, expiry?: string, _options?: Configuration): Observable<HttpInfo<DownloadObject200Response>> {
         const requestContextPromise = this.requestFactory.downloadObject(bucket, object, expiry, _options);
 
         // build promise chain
@@ -819,8 +852,8 @@ export class ObservableObjectApi {
      * @param object specify object path
      * @param expiry example: 2 days 7 hours 45 minutes
      */
-    public downloadObject(bucket: string, object: string, expiry?: string, _options?: Configuration): Observable<void> {
-        return this.downloadObjectWithHttpInfo(bucket, object, expiry, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public downloadObject(bucket: string, object: string, expiry?: string, _options?: Configuration): Observable<DownloadObject200Response> {
+        return this.downloadObjectWithHttpInfo(bucket, object, expiry, _options).pipe(map((apiResponse: HttpInfo<DownloadObject200Response>) => apiResponse.data));
     }
 
     /**
@@ -831,7 +864,7 @@ export class ObservableObjectApi {
      * @param number specify number of object ( max: 50, min: 1 )
      * @param page 
      */
-    public getListObjectsWithHttpInfo(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getListObjectsWithHttpInfo(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Observable<HttpInfo<Objects>> {
         const requestContextPromise = this.requestFactory.getListObjects(bucket, prefix, number, page, _options);
 
         // build promise chain
@@ -858,8 +891,8 @@ export class ObservableObjectApi {
      * @param number specify number of object ( max: 50, min: 1 )
      * @param page 
      */
-    public getListObjects(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Observable<void> {
-        return this.getListObjectsWithHttpInfo(bucket, prefix, number, page, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getListObjects(bucket: string, prefix: string, number?: string, page?: string, _options?: Configuration): Observable<Objects> {
+        return this.getListObjectsWithHttpInfo(bucket, prefix, number, page, _options).pipe(map((apiResponse: HttpInfo<Objects>) => apiResponse.data));
     }
 
     /**
@@ -867,7 +900,7 @@ export class ObservableObjectApi {
      * @param bucket 
      * @param object 
      */
-    public getStatObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public getStatObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Observable<HttpInfo<Stat>> {
         const requestContextPromise = this.requestFactory.getStatObject(bucket, object, _options);
 
         // build promise chain
@@ -891,8 +924,8 @@ export class ObservableObjectApi {
      * @param bucket 
      * @param object 
      */
-    public getStatObject(bucket: string, object: string, _options?: Configuration): Observable<void> {
-        return this.getStatObjectWithHttpInfo(bucket, object, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public getStatObject(bucket: string, object: string, _options?: Configuration): Observable<Stat> {
+        return this.getStatObjectWithHttpInfo(bucket, object, _options).pipe(map((apiResponse: HttpInfo<Stat>) => apiResponse.data));
     }
 
     /**
@@ -901,7 +934,7 @@ export class ObservableObjectApi {
      * @param bucket 
      * @param object specify object path
      */
-    public uploadObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Observable<HttpInfo<void>> {
+    public uploadObjectWithHttpInfo(bucket: string, object: string, _options?: Configuration): Observable<HttpInfo<DownloadObject200Response>> {
         const requestContextPromise = this.requestFactory.uploadObject(bucket, object, _options);
 
         // build promise chain
@@ -926,8 +959,8 @@ export class ObservableObjectApi {
      * @param bucket 
      * @param object specify object path
      */
-    public uploadObject(bucket: string, object: string, _options?: Configuration): Observable<void> {
-        return this.uploadObjectWithHttpInfo(bucket, object, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public uploadObject(bucket: string, object: string, _options?: Configuration): Observable<DownloadObject200Response> {
+        return this.uploadObjectWithHttpInfo(bucket, object, _options).pipe(map((apiResponse: HttpInfo<DownloadObject200Response>) => apiResponse.data));
     }
 
 }

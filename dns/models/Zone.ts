@@ -13,6 +13,7 @@
 import { HttpFile } from '../http/http';
 
 export class Zone {
+    'id'?: string;
     /**
     * The name of the zone, “liara.ir”, max length: 253, pattern: ^([a-zA-Z0-9][\\-a-zA-Z0-9]*\\.)+[\\-a-zA-Z0-9]{2,20}$
     */
@@ -21,8 +22,8 @@ export class Zone {
     * The status of the zone, valid values: [CREATING, PENDING, ACTIVE, DELETING]
     */
     'status'?: string;
-    'nameServers'?: Array<string>;
     'currentNameServers'?: Array<string>;
+    'nameServers'?: Array<string>;
     /**
     * Last time when zones nameservers was checked
     */
@@ -36,6 +37,12 @@ export class Zone {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "id",
+            "baseName": "id",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "name",
             "baseName": "name",
             "type": "string",
@@ -48,14 +55,14 @@ export class Zone {
             "format": ""
         },
         {
-            "name": "nameServers",
-            "baseName": "nameServers",
+            "name": "currentNameServers",
+            "baseName": "currentNameServers",
             "type": "Array<string>",
             "format": ""
         },
         {
-            "name": "currentNameServers",
-            "baseName": "currentNameServers",
+            "name": "nameServers",
+            "baseName": "nameServers",
             "type": "Array<string>",
             "format": ""
         },

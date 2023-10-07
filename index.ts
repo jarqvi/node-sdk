@@ -4,56 +4,57 @@ import * as paasSDK from './paas/index';
 import * as mailSDK from './mail/index';
 import * as dnsSDK from './dns/index';
 
-// interface LiaraSDK {
-//     paas: {
-//         AppsApi: paasSDK.AppsApi;
-//         DeployApi: paasSDK.DeployApi;
-//         SettingsApi: paasSDK.SettingsApi;
-//         DisksApi: paasSDK.DisksApi;
-//         PReportsApi: paasSDK.ReportsApi;
-//     };
-//     dbaas: {
-//         DatabasesApi: dbaasSDK.DatabasesApi;
-//         BackupsApi: dbaasSDK.BackupsApi;
-//         DBReportsApi: dbaasSDK.ReportsApi;
-//     };
-//     mail: {
-//         MailsApi: mailSDK.MailsApi;
-//         SmtpApi: mailSDK.SmtpApi;
-//         AccountsApi: mailSDK.AccountsApi;
-//         MessagesApi: mailSDK.MessagesApi;
-//         ForwardApi: mailSDK.ForwardApi;
-//         AttachmentsApi: mailSDK.AttachmentsApi;
-//         EventApi: mailSDK.EventApi;
-//     };
-//     dns: {
-//         ZoneApi: dnsSDK.ZoneApi;
-//         CheckNameServersApi: dnsSDK.CheckNameServersApi;
-//         DnsRecordApi: dnsSDK.DnsRecordApi;
-//     };
-//     objectStorage: {
-//         BucketApi: objectStorageSDK.BucketApi;
-//         KeyApi: objectStorageSDK.KeyApi;
-//         FolderApi: objectStorageSDK.FolderApi;
-//         ObjectApi: objectStorageSDK.ObjectApi;
-//         MetricsApi: objectStorageSDK.MetricsApi;
-//     };
-// }
+interface ILiaraSDK {
+    paas: {
+        AppsApi: paasSDK.AppsApi;
+        DeployApi: paasSDK.DeployApi;
+        SettingsApi: paasSDK.SettingsApi;
+        DisksApi: paasSDK.DisksApi;
+        PReportsApi: paasSDK.ReportsApi;
+        DomainsApi: paasSDK.DomainsApi;
+    };
+    dbaas: {
+        DatabasesApi: dbaasSDK.DatabasesApi;
+        BackupsApi: dbaasSDK.BackupsApi;
+        DBReportsApi: dbaasSDK.ReportsApi;
+    };
+    mail: {
+        MailsApi: mailSDK.MailsApi;
+        SmtpApi: mailSDK.SmtpApi;
+        AccountsApi: mailSDK.AccountsApi;
+        MessagesApi: mailSDK.MessagesApi;
+        ForwardApi: mailSDK.ForwardApi;
+        AttachmentsApi: mailSDK.AttachmentsApi;
+        EventApi: mailSDK.EventApi;
+    };
+    dns: {
+        ZoneApi: dnsSDK.ZoneApi;
+        CheckNameServersApi: dnsSDK.CheckNameServersApi;
+        DnsRecordApi: dnsSDK.DnsRecordApi;
+    };
+    objectStorage: {
+        BucketApi: objectStorageSDK.BucketApi;
+        KeyApi: objectStorageSDK.KeyApi;
+        FolderApi: objectStorageSDK.FolderApi;
+        ObjectApi: objectStorageSDK.ObjectApi;
+        MetricsApi: objectStorageSDK.MetricsApi;
+    };
+}
 
-interface LiaraAuthConfig {
+interface ILiaraAuthConfig {
     jwt: string;
 }
 
-interface LiaraConfiguration {
-    authMethods: LiaraAuthConfig;
+interface ILiaraConfiguration {
+    authMethods: ILiaraAuthConfig;
 }
 
-function createLiaraSDK(token: string) {
-    const authConfig: LiaraAuthConfig = {
+function createLiaraSDK(token: string): ILiaraSDK {
+    const authConfig: ILiaraAuthConfig = {
         jwt: `Bearer ${token}`,
     };
 
-    const configuration: LiaraConfiguration = {
+    const configuration: ILiaraConfiguration = {
         authMethods: authConfig,
     };
 
@@ -97,7 +98,7 @@ function createLiaraSDK(token: string) {
             FolderApi: new objectStorageSDK.FolderApi(objectStorageConfig),
             ObjectApi: new objectStorageSDK.ObjectApi(objectStorageConfig),
             MetricsApi: new objectStorageSDK.MetricsApi(objectStorageConfig),
-        },
+        }
     };
 
     return liaraSDK;

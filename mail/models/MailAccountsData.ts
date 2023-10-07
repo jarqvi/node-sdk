@@ -10,11 +10,12 @@
  * Do not edit the class manually.
  */
 
+import { MailAccountsDataAccountsInner } from '../models/MailAccountsDataAccountsInner';
 import { HttpFile } from '../http/http';
 
 export class MailAccountsData {
     'domain'?: string;
-    'accounts'?: any;
+    'accounts'?: Array<MailAccountsDataAccountsInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,7 +29,7 @@ export class MailAccountsData {
         {
             "name": "accounts",
             "baseName": "accounts",
-            "type": "any",
+            "type": "Array<MailAccountsDataAccountsInner>",
             "format": ""
         }    ];
 

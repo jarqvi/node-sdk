@@ -30,7 +30,7 @@ export class CheckNameServersApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/zones/{zone}/check'
+        const localVarPath = '/api/v1/zones/{zone}/check'
             .replace('{' + 'zone' + '}', encodeURIComponent(String(zone)));
 
         // Make Request Context

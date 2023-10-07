@@ -40,7 +40,7 @@ export class EventApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/mails/{mailServerID}/messages/{messageID}/events'
+        const localVarPath = '/api/v1/mails/{mailServerID}/messages/{messageID}/events'
             .replace('{' + 'mailServerID' + '}', encodeURIComponent(String(mailServerID)))
             .replace('{' + 'messageID' + '}', encodeURIComponent(String(messageID)));
 

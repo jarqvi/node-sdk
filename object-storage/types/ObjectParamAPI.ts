@@ -1,10 +1,43 @@
 import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/http';
 import { Configuration} from '../configuration'
 
+import { Bucket } from '../models/Bucket';
+import { ChangeBucketAccess200Response } from '../models/ChangeBucketAccess200Response';
 import { CreateBucket } from '../models/CreateBucket';
+import { CreateBucket201Response } from '../models/CreateBucket201Response';
 import { CreateFolder } from '../models/CreateFolder';
+import { CreateFolder201Response } from '../models/CreateFolder201Response';
+import { CreateFolder201ResponseData } from '../models/CreateFolder201ResponseData';
 import { CreateKey } from '../models/CreateKey';
+import { CreateKey201Response } from '../models/CreateKey201Response';
+import { CreateKey201ResponseData } from '../models/CreateKey201ResponseData';
+import { DownloadObject200Response } from '../models/DownloadObject200Response';
+import { DownloadObject200ResponseData } from '../models/DownloadObject200ResponseData';
+import { GetHisotricalMetrics200Response } from '../models/GetHisotricalMetrics200Response';
+import { GetHisotricalMetrics200ResponseData } from '../models/GetHisotricalMetrics200ResponseData';
+import { GetHisotricalMetrics200ResponseDataMetrics } from '../models/GetHisotricalMetrics200ResponseDataMetrics';
+import { GetMetricsSummary200Response } from '../models/GetMetricsSummary200Response';
+import { GetMetricsSummary200ResponseData } from '../models/GetMetricsSummary200ResponseData';
+import { GetMetricsSummary200ResponseDataMetrics } from '../models/GetMetricsSummary200ResponseDataMetrics';
+import { GetMetricsSummary200ResponseDataMetricsTotolObjectsInner } from '../models/GetMetricsSummary200ResponseDataMetricsTotolObjectsInner';
+import { GetMigrations200Response } from '../models/GetMigrations200Response';
+import { GetSingleBuckets200Response } from '../models/GetSingleBuckets200Response';
+import { Key } from '../models/Key';
+import { KeyBucketsInner } from '../models/KeyBucketsInner';
+import { Keys } from '../models/Keys';
+import { ListBucket } from '../models/ListBucket';
 import { MigrateBucket } from '../models/MigrateBucket';
+import { Objects } from '../models/Objects';
+import { ObjectsData } from '../models/ObjectsData';
+import { ObjectsDataObjects } from '../models/ObjectsDataObjects';
+import { ObjectsDataObjectsCommonPrefixesInner } from '../models/ObjectsDataObjectsCommonPrefixesInner';
+import { ObjectsDataObjectsContentsInner } from '../models/ObjectsDataObjectsContentsInner';
+import { RevokeSecretKey200Response } from '../models/RevokeSecretKey200Response';
+import { Stat } from '../models/Stat';
+import { StatData } from '../models/StatData';
+import { StatDataObject } from '../models/StatDataObject';
+import { StatDataObjectMetaData } from '../models/StatDataObjectMetaData';
+import { UpgradeBucket200Response } from '../models/UpgradeBucket200Response';
 
 import { ObservableBucketApi } from "./ObservableAPI";
 import { BucketApiRequestFactory, BucketApiResponseProcessor} from "../apis/BucketApi";
@@ -105,7 +138,7 @@ export class ObjectBucketApi {
      * change Bucket Access Policy
      * @param param the request object
      */
-    public changeBucketAccessWithHttpInfo(param: BucketApiChangeBucketAccessRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public changeBucketAccessWithHttpInfo(param: BucketApiChangeBucketAccessRequest, options?: Configuration): Promise<HttpInfo<ChangeBucketAccess200Response>> {
         return this.api.changeBucketAccessWithHttpInfo(param.bucket, param.permission,  options).toPromise();
     }
 
@@ -114,7 +147,7 @@ export class ObjectBucketApi {
      * change Bucket Access Policy
      * @param param the request object
      */
-    public changeBucketAccess(param: BucketApiChangeBucketAccessRequest, options?: Configuration): Promise<void> {
+    public changeBucketAccess(param: BucketApiChangeBucketAccessRequest, options?: Configuration): Promise<ChangeBucketAccess200Response> {
         return this.api.changeBucketAccess(param.bucket, param.permission,  options).toPromise();
     }
 
@@ -123,7 +156,7 @@ export class ObjectBucketApi {
      * Check Bucket availability
      * @param param the request object
      */
-    public checkBucketWithHttpInfo(param: BucketApiCheckBucketRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public checkBucketWithHttpInfo(param: BucketApiCheckBucketRequest, options?: Configuration): Promise<HttpInfo<CreateBucket201Response>> {
         return this.api.checkBucketWithHttpInfo(param.bucket,  options).toPromise();
     }
 
@@ -132,7 +165,7 @@ export class ObjectBucketApi {
      * Check Bucket availability
      * @param param the request object
      */
-    public checkBucket(param: BucketApiCheckBucketRequest, options?: Configuration): Promise<void> {
+    public checkBucket(param: BucketApiCheckBucketRequest, options?: Configuration): Promise<CreateBucket201Response> {
         return this.api.checkBucket(param.bucket,  options).toPromise();
     }
 
@@ -141,7 +174,7 @@ export class ObjectBucketApi {
      * Create Bucket
      * @param param the request object
      */
-    public createBucketWithHttpInfo(param: BucketApiCreateBucketRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public createBucketWithHttpInfo(param: BucketApiCreateBucketRequest, options?: Configuration): Promise<HttpInfo<CreateBucket201Response>> {
         return this.api.createBucketWithHttpInfo(param.body,  options).toPromise();
     }
 
@@ -150,7 +183,7 @@ export class ObjectBucketApi {
      * Create Bucket
      * @param param the request object
      */
-    public createBucket(param: BucketApiCreateBucketRequest, options?: Configuration): Promise<void> {
+    public createBucket(param: BucketApiCreateBucketRequest, options?: Configuration): Promise<CreateBucket201Response> {
         return this.api.createBucket(param.body,  options).toPromise();
     }
 
@@ -177,7 +210,7 @@ export class ObjectBucketApi {
      * List all Buckets
      * @param param the request object
      */
-    public getBucketsWithHttpInfo(param: BucketApiGetBucketsRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public getBucketsWithHttpInfo(param: BucketApiGetBucketsRequest = {}, options?: Configuration): Promise<HttpInfo<ListBucket>> {
         return this.api.getBucketsWithHttpInfo( options).toPromise();
     }
 
@@ -186,7 +219,7 @@ export class ObjectBucketApi {
      * List all Buckets
      * @param param the request object
      */
-    public getBuckets(param: BucketApiGetBucketsRequest = {}, options?: Configuration): Promise<void> {
+    public getBuckets(param: BucketApiGetBucketsRequest = {}, options?: Configuration): Promise<ListBucket> {
         return this.api.getBuckets( options).toPromise();
     }
 
@@ -213,7 +246,7 @@ export class ObjectBucketApi {
      * list migration operation
      * @param param the request object
      */
-    public getMigrationsWithHttpInfo(param: BucketApiGetMigrationsRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public getMigrationsWithHttpInfo(param: BucketApiGetMigrationsRequest = {}, options?: Configuration): Promise<HttpInfo<GetMigrations200Response>> {
         return this.api.getMigrationsWithHttpInfo( options).toPromise();
     }
 
@@ -222,7 +255,7 @@ export class ObjectBucketApi {
      * list migration operation
      * @param param the request object
      */
-    public getMigrations(param: BucketApiGetMigrationsRequest = {}, options?: Configuration): Promise<void> {
+    public getMigrations(param: BucketApiGetMigrationsRequest = {}, options?: Configuration): Promise<GetMigrations200Response> {
         return this.api.getMigrations( options).toPromise();
     }
 
@@ -230,7 +263,7 @@ export class ObjectBucketApi {
      * Get Single Buckets
      * @param param the request object
      */
-    public getSingleBucketsWithHttpInfo(param: BucketApiGetSingleBucketsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getSingleBucketsWithHttpInfo(param: BucketApiGetSingleBucketsRequest, options?: Configuration): Promise<HttpInfo<GetSingleBuckets200Response>> {
         return this.api.getSingleBucketsWithHttpInfo(param.bucket,  options).toPromise();
     }
 
@@ -238,7 +271,7 @@ export class ObjectBucketApi {
      * Get Single Buckets
      * @param param the request object
      */
-    public getSingleBuckets(param: BucketApiGetSingleBucketsRequest, options?: Configuration): Promise<void> {
+    public getSingleBuckets(param: BucketApiGetSingleBucketsRequest, options?: Configuration): Promise<GetSingleBuckets200Response> {
         return this.api.getSingleBuckets(param.bucket,  options).toPromise();
     }
 
@@ -265,7 +298,7 @@ export class ObjectBucketApi {
      * Upgrade Bucket
      * @param param the request object
      */
-    public upgradeBucketWithHttpInfo(param: BucketApiUpgradeBucketRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public upgradeBucketWithHttpInfo(param: BucketApiUpgradeBucketRequest, options?: Configuration): Promise<HttpInfo<UpgradeBucket200Response>> {
         return this.api.upgradeBucketWithHttpInfo(param.bucket, param.plan,  options).toPromise();
     }
 
@@ -274,7 +307,7 @@ export class ObjectBucketApi {
      * Upgrade Bucket
      * @param param the request object
      */
-    public upgradeBucket(param: BucketApiUpgradeBucketRequest, options?: Configuration): Promise<void> {
+    public upgradeBucket(param: BucketApiUpgradeBucketRequest, options?: Configuration): Promise<UpgradeBucket200Response> {
         return this.api.upgradeBucket(param.bucket, param.plan,  options).toPromise();
     }
 
@@ -325,7 +358,7 @@ export class ObjectFolderApi {
      * Create Folder
      * @param param the request object
      */
-    public createFolderWithHttpInfo(param: FolderApiCreateFolderRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public createFolderWithHttpInfo(param: FolderApiCreateFolderRequest, options?: Configuration): Promise<HttpInfo<CreateFolder201Response>> {
         return this.api.createFolderWithHttpInfo(param.bucket, param.body,  options).toPromise();
     }
 
@@ -334,7 +367,7 @@ export class ObjectFolderApi {
      * Create Folder
      * @param param the request object
      */
-    public createFolder(param: FolderApiCreateFolderRequest, options?: Configuration): Promise<void> {
+    public createFolder(param: FolderApiCreateFolderRequest, options?: Configuration): Promise<CreateFolder201Response> {
         return this.api.createFolder(param.bucket, param.body,  options).toPromise();
     }
 
@@ -427,7 +460,7 @@ export class ObjectKeyApi {
      * Create Keys
      * @param param the request object
      */
-    public createKeyWithHttpInfo(param: KeyApiCreateKeyRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public createKeyWithHttpInfo(param: KeyApiCreateKeyRequest, options?: Configuration): Promise<HttpInfo<CreateKey201Response>> {
         return this.api.createKeyWithHttpInfo(param.body,  options).toPromise();
     }
 
@@ -436,7 +469,7 @@ export class ObjectKeyApi {
      * Create Keys
      * @param param the request object
      */
-    public createKey(param: KeyApiCreateKeyRequest, options?: Configuration): Promise<void> {
+    public createKey(param: KeyApiCreateKeyRequest, options?: Configuration): Promise<CreateKey201Response> {
         return this.api.createKey(param.body,  options).toPromise();
     }
 
@@ -480,7 +513,7 @@ export class ObjectKeyApi {
      * Get List of Keys
      * @param param the request object
      */
-    public getListKeysWithHttpInfo(param: KeyApiGetListKeysRequest = {}, options?: Configuration): Promise<HttpInfo<void>> {
+    public getListKeysWithHttpInfo(param: KeyApiGetListKeysRequest = {}, options?: Configuration): Promise<HttpInfo<Keys>> {
         return this.api.getListKeysWithHttpInfo( options).toPromise();
     }
 
@@ -488,7 +521,7 @@ export class ObjectKeyApi {
      * Get List of Keys
      * @param param the request object
      */
-    public getListKeys(param: KeyApiGetListKeysRequest = {}, options?: Configuration): Promise<void> {
+    public getListKeys(param: KeyApiGetListKeysRequest = {}, options?: Configuration): Promise<Keys> {
         return this.api.getListKeys( options).toPromise();
     }
 
@@ -497,7 +530,7 @@ export class ObjectKeyApi {
      * Revoke secret key
      * @param param the request object
      */
-    public revokeSecretKeyWithHttpInfo(param: KeyApiRevokeSecretKeyRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public revokeSecretKeyWithHttpInfo(param: KeyApiRevokeSecretKeyRequest, options?: Configuration): Promise<HttpInfo<RevokeSecretKey200Response>> {
         return this.api.revokeSecretKeyWithHttpInfo(param.key,  options).toPromise();
     }
 
@@ -506,7 +539,7 @@ export class ObjectKeyApi {
      * Revoke secret key
      * @param param the request object
      */
-    public revokeSecretKey(param: KeyApiRevokeSecretKeyRequest, options?: Configuration): Promise<void> {
+    public revokeSecretKey(param: KeyApiRevokeSecretKeyRequest, options?: Configuration): Promise<RevokeSecretKey200Response> {
         return this.api.revokeSecretKey(param.key,  options).toPromise();
     }
 
@@ -515,7 +548,7 @@ export class ObjectKeyApi {
      * Update key
      * @param param the request object
      */
-    public updateKeyWithHttpInfo(param: KeyApiUpdateKeyRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public updateKeyWithHttpInfo(param: KeyApiUpdateKeyRequest, options?: Configuration): Promise<HttpInfo<CreateBucket201Response>> {
         return this.api.updateKeyWithHttpInfo(param.key, param.body,  options).toPromise();
     }
 
@@ -524,7 +557,7 @@ export class ObjectKeyApi {
      * Update key
      * @param param the request object
      */
-    public updateKey(param: KeyApiUpdateKeyRequest, options?: Configuration): Promise<void> {
+    public updateKey(param: KeyApiUpdateKeyRequest, options?: Configuration): Promise<CreateBucket201Response> {
         return this.api.updateKey(param.key, param.body,  options).toPromise();
     }
 
@@ -568,7 +601,7 @@ export class ObjectMetricsApi {
      * hisotrical metrics
      * @param param the request object
      */
-    public getHisotricalMetricsWithHttpInfo(param: MetricsApiGetHisotricalMetricsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getHisotricalMetricsWithHttpInfo(param: MetricsApiGetHisotricalMetricsRequest, options?: Configuration): Promise<HttpInfo<GetHisotricalMetrics200Response>> {
         return this.api.getHisotricalMetricsWithHttpInfo(param.bucket, param.since,  options).toPromise();
     }
 
@@ -576,7 +609,7 @@ export class ObjectMetricsApi {
      * hisotrical metrics
      * @param param the request object
      */
-    public getHisotricalMetrics(param: MetricsApiGetHisotricalMetricsRequest, options?: Configuration): Promise<void> {
+    public getHisotricalMetrics(param: MetricsApiGetHisotricalMetricsRequest, options?: Configuration): Promise<GetHisotricalMetrics200Response> {
         return this.api.getHisotricalMetrics(param.bucket, param.since,  options).toPromise();
     }
 
@@ -584,7 +617,7 @@ export class ObjectMetricsApi {
      * metrics summary
      * @param param the request object
      */
-    public getMetricsSummaryWithHttpInfo(param: MetricsApiGetMetricsSummaryRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getMetricsSummaryWithHttpInfo(param: MetricsApiGetMetricsSummaryRequest, options?: Configuration): Promise<HttpInfo<GetMetricsSummary200Response>> {
         return this.api.getMetricsSummaryWithHttpInfo(param.bucket,  options).toPromise();
     }
 
@@ -592,7 +625,7 @@ export class ObjectMetricsApi {
      * metrics summary
      * @param param the request object
      */
-    public getMetricsSummary(param: MetricsApiGetMetricsSummaryRequest, options?: Configuration): Promise<void> {
+    public getMetricsSummary(param: MetricsApiGetMetricsSummaryRequest, options?: Configuration): Promise<GetMetricsSummary200Response> {
         return this.api.getMetricsSummary(param.bucket,  options).toPromise();
     }
 
@@ -724,7 +757,7 @@ export class ObjectObjectApi {
      * Download Object
      * @param param the request object
      */
-    public downloadObjectWithHttpInfo(param: ObjectApiDownloadObjectRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public downloadObjectWithHttpInfo(param: ObjectApiDownloadObjectRequest, options?: Configuration): Promise<HttpInfo<DownloadObject200Response>> {
         return this.api.downloadObjectWithHttpInfo(param.bucket, param.object, param.expiry,  options).toPromise();
     }
 
@@ -733,7 +766,7 @@ export class ObjectObjectApi {
      * Download Object
      * @param param the request object
      */
-    public downloadObject(param: ObjectApiDownloadObjectRequest, options?: Configuration): Promise<void> {
+    public downloadObject(param: ObjectApiDownloadObjectRequest, options?: Configuration): Promise<DownloadObject200Response> {
         return this.api.downloadObject(param.bucket, param.object, param.expiry,  options).toPromise();
     }
 
@@ -742,7 +775,7 @@ export class ObjectObjectApi {
      * List Objects
      * @param param the request object
      */
-    public getListObjectsWithHttpInfo(param: ObjectApiGetListObjectsRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getListObjectsWithHttpInfo(param: ObjectApiGetListObjectsRequest, options?: Configuration): Promise<HttpInfo<Objects>> {
         return this.api.getListObjectsWithHttpInfo(param.bucket, param.prefix, param.number, param.page,  options).toPromise();
     }
 
@@ -751,7 +784,7 @@ export class ObjectObjectApi {
      * List Objects
      * @param param the request object
      */
-    public getListObjects(param: ObjectApiGetListObjectsRequest, options?: Configuration): Promise<void> {
+    public getListObjects(param: ObjectApiGetListObjectsRequest, options?: Configuration): Promise<Objects> {
         return this.api.getListObjects(param.bucket, param.prefix, param.number, param.page,  options).toPromise();
     }
 
@@ -759,7 +792,7 @@ export class ObjectObjectApi {
      * Get Stat Object
      * @param param the request object
      */
-    public getStatObjectWithHttpInfo(param: ObjectApiGetStatObjectRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public getStatObjectWithHttpInfo(param: ObjectApiGetStatObjectRequest, options?: Configuration): Promise<HttpInfo<Stat>> {
         return this.api.getStatObjectWithHttpInfo(param.bucket, param.object,  options).toPromise();
     }
 
@@ -767,7 +800,7 @@ export class ObjectObjectApi {
      * Get Stat Object
      * @param param the request object
      */
-    public getStatObject(param: ObjectApiGetStatObjectRequest, options?: Configuration): Promise<void> {
+    public getStatObject(param: ObjectApiGetStatObjectRequest, options?: Configuration): Promise<Stat> {
         return this.api.getStatObject(param.bucket, param.object,  options).toPromise();
     }
 
@@ -776,7 +809,7 @@ export class ObjectObjectApi {
      * Upload Object
      * @param param the request object
      */
-    public uploadObjectWithHttpInfo(param: ObjectApiUploadObjectRequest, options?: Configuration): Promise<HttpInfo<void>> {
+    public uploadObjectWithHttpInfo(param: ObjectApiUploadObjectRequest, options?: Configuration): Promise<HttpInfo<DownloadObject200Response>> {
         return this.api.uploadObjectWithHttpInfo(param.bucket, param.object,  options).toPromise();
     }
 
@@ -785,7 +818,7 @@ export class ObjectObjectApi {
      * Upload Object
      * @param param the request object
      */
-    public uploadObject(param: ObjectApiUploadObjectRequest, options?: Configuration): Promise<void> {
+    public uploadObject(param: ObjectApiUploadObjectRequest, options?: Configuration): Promise<DownloadObject200Response> {
         return this.api.uploadObject(param.bucket, param.object,  options).toPromise();
     }
 

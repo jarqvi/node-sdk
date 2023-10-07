@@ -1,20 +1,44 @@
+export * from '../models/ChangeControlPanel200Response';
+export * from '../models/CreateDatabase200Response';
 export * from '../models/CreateDatabases';
+export * from '../models/CreateDatabasesOptions';
 export * from '../models/DBDetails';
 export * from '../models/DBDetailsDatabase';
 export * from '../models/DBDetailsDatabaseMetaData';
 export * from '../models/DBDetailsDatabaseNode';
 export * from '../models/DBsDetails';
 export * from '../models/DBsDetailsDatabasesInner';
+export * from '../models/DownloadBackup200Response';
+export * from '../models/GetDatabaseSummaryReports200Response';
+export * from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInner';
+export * from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner';
+export * from '../models/GetDatabaseSummaryReports200ResponseDisksUsageInner';
+export * from '../models/GetListBackups200Response';
+export * from '../models/GetListBackups200ResponseBackupsInner';
+export * from '../models/Reports';
+export * from '../models/ReportsResultInner';
 export * from '../models/ResizeDatabaseRequest';
 export * from '../models/TurnDatabaseRequest';
 
+import { ChangeControlPanel200Response } from '../models/ChangeControlPanel200Response';
+import { CreateDatabase200Response } from '../models/CreateDatabase200Response';
 import { CreateDatabases } from '../models/CreateDatabases';
+import { CreateDatabasesOptions } from '../models/CreateDatabasesOptions';
 import { DBDetails } from '../models/DBDetails';
 import { DBDetailsDatabase } from '../models/DBDetailsDatabase';
 import { DBDetailsDatabaseMetaData } from '../models/DBDetailsDatabaseMetaData';
 import { DBDetailsDatabaseNode } from '../models/DBDetailsDatabaseNode';
 import { DBsDetails } from '../models/DBsDetails';
 import { DBsDetailsDatabasesInner } from '../models/DBsDetailsDatabasesInner';
+import { DownloadBackup200Response } from '../models/DownloadBackup200Response';
+import { GetDatabaseSummaryReports200Response } from '../models/GetDatabaseSummaryReports200Response';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInner';
+import { GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner } from '../models/GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner';
+import { GetDatabaseSummaryReports200ResponseDisksUsageInner } from '../models/GetDatabaseSummaryReports200ResponseDisksUsageInner';
+import { GetListBackups200Response } from '../models/GetListBackups200Response';
+import { GetListBackups200ResponseBackupsInner } from '../models/GetListBackups200ResponseBackupsInner';
+import { Reports } from '../models/Reports';
+import { ReportsResultInner } from '../models/ReportsResultInner';
 import { ResizeDatabaseRequest } from '../models/ResizeDatabaseRequest';
 import { TurnDatabaseRequest } from '../models/TurnDatabaseRequest';
 
@@ -44,13 +68,25 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "ChangeControlPanel200Response": ChangeControlPanel200Response,
+    "CreateDatabase200Response": CreateDatabase200Response,
     "CreateDatabases": CreateDatabases,
+    "CreateDatabasesOptions": CreateDatabasesOptions,
     "DBDetails": DBDetails,
     "DBDetailsDatabase": DBDetailsDatabase,
     "DBDetailsDatabaseMetaData": DBDetailsDatabaseMetaData,
     "DBDetailsDatabaseNode": DBDetailsDatabaseNode,
     "DBsDetails": DBsDetails,
     "DBsDetailsDatabasesInner": DBsDetailsDatabasesInner,
+    "DownloadBackup200Response": DownloadBackup200Response,
+    "GetDatabaseSummaryReports200Response": GetDatabaseSummaryReports200Response,
+    "GetDatabaseSummaryReports200ResponseCpuUsageInner": GetDatabaseSummaryReports200ResponseCpuUsageInner,
+    "GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner": GetDatabaseSummaryReports200ResponseCpuUsageInnerValueInner,
+    "GetDatabaseSummaryReports200ResponseDisksUsageInner": GetDatabaseSummaryReports200ResponseDisksUsageInner,
+    "GetListBackups200Response": GetListBackups200Response,
+    "GetListBackups200ResponseBackupsInner": GetListBackups200ResponseBackupsInner,
+    "Reports": Reports,
+    "ReportsResultInner": ReportsResultInner,
     "ResizeDatabaseRequest": ResizeDatabaseRequest,
     "TurnDatabaseRequest": TurnDatabaseRequest,
 }

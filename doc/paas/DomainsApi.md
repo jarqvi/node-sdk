@@ -132,7 +132,7 @@ delete a domain that user owns
 ```typescript
 paas.DomainsApi.deleteDomain('id-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -182,7 +182,7 @@ disable ssl that user owns
 ```typescript
 paas.DomainsApi.disableSsl('id-example')
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -341,7 +341,7 @@ const body = {
 
 paas.DomainsApi.redirectDomain('id-example', body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -397,7 +397,7 @@ const body = {
 
 paas.DomainsApi.setAppDomain(body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
