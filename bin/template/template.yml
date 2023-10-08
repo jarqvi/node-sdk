@@ -14,7 +14,7 @@ sdks:
                 })
                 .catch(err => {
                     console.error(err);
-                });>|
+                });
           deleteZone: |
             dns.ZoneApi.deleteZone('zone-example')
               .then(res => {
@@ -22,7 +22,7 @@ sdks:
               })
               .catch(err => {
                   console.error(err);
-              });>|
+              });
           getListZones: |
             dns.ZoneApi.getListZones()
               .then(res => {
@@ -30,7 +30,7 @@ sdks:
               })
               .catch(err => {
                   console.error(err);
-              });>|
+              });
           getZone: |
             dns.ZoneApi.getZone('name-example')
               .then(res => {
@@ -38,5 +38,1206 @@ sdks:
               })
               .catch(err => {
                   console.error(err);
-              });>|
+              });
+      CheckNameServersApi:
+        examples:
+          checkNameServer: |
+            dns.CheckNameServersApi.checkNameServer('zone-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      DnsRecordApi:
+        examples:
+          createDnsRecord: |
+            const body = {
+                "name": "name-example",
+                "type": "type-example",
+                "ttl": 0,
+                "contents": [
+                    {}
+                ]
+            };
 
+            dns.DnsRecordApi.createDnsRecord('zone-example', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteDnsRecord: |
+            dns.DnsRecordApi.deleteDnsRecord('zone-example', 'dns-record-id')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          editDnsRecord: |
+            const body = {
+                "name": "name-example",
+                "type": "type-example",
+                "ttl": 0,
+                "contents": [
+                    {}
+                ]
+            };
+
+            dns.DnsRecordApi.editDnsRecord('zone-example', 'dns-record-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getDnsRecord: |
+            dns.DnsRecordApi.getDnsRecord('zone-example', 'dns-record-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListDnsRecords: |
+            dns.DnsRecordApi.getListDnsRecords('zone-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+  mail:
+    classes:
+      AccountsApi:
+        examples:
+          checkMailAvailable: |
+            mail.AccountsApi.checkMailAvailable('mail-server-id', 'account-name')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          createMailACcount: |
+            const body = {
+                name: "name-example",
+            };
+
+            mail.AccountsApi.createMailACcount('mail-server-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteMailAccount: |
+            mail.AccountsApi.deleteMailAccount('mail-server-id', 'account-id')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAllMailAccounts: |
+            mail.AccountsApi.getAllMailAccounts('mail-server-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      AttachmentsApi:
+        examples:
+          downloadAttachments: |
+            mail.AttachmentsApi.downloadAttachments('mail-server-id', 'attachment-id', 'message-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAllAttachments: |
+            mail.AttachmentsApi.getAllAttachments('mail-server-id', 'message-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      EventApi:
+        examples:
+          getAllEvents: |
+            mail.EventApi.getAllEvents('mail-server-id', 'message-id', 1, 15)
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      ForwardApi:
+        examples:
+          createAddressForwarding: |
+            const body = {
+                address: "address-example",
+            };
+
+            mail.ForwardApi.createAddressForwarding('mail-server-id', 'account-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteExtraEndpoint: |
+            mail.ForwardApi.deleteExtraEndpoint('mail-server-id', 'account-id', 'address-id')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListAddressForwarding: |
+            mail.ForwardApi.getListAddressForwarding('mail-server-id', 'account-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      MailsApi:
+        examples:
+          changeMailServerMode: |
+            const body = {
+                mode: "DEV"
+            };
+            // @ts-ignore
+            mail.MailsApi.changeMailServerMode('mail-server-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          changeMailServerPlan: |
+            const body = {
+                plan: "plan-example"
+            };
+
+            mail.MailsApi.changeMailServerPlan('mail-server-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          checkDomainAvailable: |
+            mail.MailsApi.checkDomainAvailable('domain-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          checkMailServerDnsStatus: |
+            mail.MailsApi.checkMailServerDnsStatus('mail-server-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          deleteMailServer: |
+            mail.MailsApi.deleteMailServer('mail-server-id')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getCountFreeMails: |
+            mail.MailsApi.getCountFreeMails('mail-server-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getCountMails: |
+            mail.MailsApi.getCountMails('mail-server-id', 30)
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getMails: |
+            mail.MailsApi.getMails()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getSingleMailServer: |
+            mail.MailsApi.getSingleMailServer('mail-server-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          postMails: |
+            const body = {
+                plan: 'plan-example',
+                domain: 'domain-example',
+                mode: 'DEV'
+            };
+
+            // @ts-ignore
+            mail.MailsApi.postMails(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      MessagesApi:
+        examples:
+          generateTemporary: |
+            mail.MessagesApi.generateTemporary('mail-server-id', 'message-id', 1)
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAllMails: |
+            const direction = 'incoming'; // or 'outgoing'
+            const state = "state-example";
+            const subject = "subject-example";
+            const _from = "from-example";
+            const to = "to-example";
+
+            mail.MessagesApi.getAllMails('mail-server-id', direction, 1, 15, state, subject, _from, to)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getSingleMail: |
+            mail.MessagesApi.getSingleMail('mail-server-id', 'message-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getSingleMailHtml: |
+            mail.MessagesApi.getSingleMailHtml('mail-server-id', 'message-id', 'token')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          sendMail: |
+            const body = {
+                html: 'html-example',
+                text: 'text-example',
+                subject: 'subject-example',
+                to: 'to-example',
+                _from: '-from-example',
+                replyTo: 'replyTo-example',
+                attachments: [
+                    {
+                        name: 'name-example',
+                        contentType: 'contentType-example',
+                        data: 'data-example',
+                    },
+                ],
+            };
+
+            mail.MessagesApi.sendMail('mail-server-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      SmtpApi:
+        examples:
+          deleteSmtpCredential: |
+            mail.SmtpApi.deleteSmtpCredential('mail-server-id', 'username')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          generateCredentials: |
+            const body = {
+                description: 'description-example'
+            };
+
+            mail.SmtpApi.generateCredentials('mail-server-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getCredential: |
+            mail.SmtpApi.getCredential('mail-server-id')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          revokeCredentials: |
+            const body = {
+                username: 'username-example'
+            };
+
+            mail.SmtpApi.revokeCredentials('mail-server-id', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+  paas:
+    classes:
+      AppsApi:
+        examples:
+          changePlan: |
+            const body = {
+                planID: 'plan-example'
+            };
+
+            paas.AppsApi.changePlan('name-example', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          createApp: |
+            const body = {
+                name: 'name-example',
+                planID: 'planID-example',
+                platform: 'platform-example',
+            };
+
+            paas.AppsApi.createApp(body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteAppByName: |
+            paas.AppsApi.deleteAppByName('name-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAppApplets: |
+            paas.AppsApi.getAppApplets('name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAppByName: |
+            paas.AppsApi.getAppByName('name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAppLogs: |
+            paas.AppsApi.getAppLogs('name-example', 'since-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getAppReleases: |
+            paas.AppsApi.getAppReleases('name-example', 1, 10)
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getApps: |
+            paas.AppsApi.getApps()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          restartApp: |
+            paas.AppsApi.restartApp('name-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          turnApp: |
+            const body = {
+                scale: 1
+            };
+
+            paas.AppsApi.turnApp('name-example', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      DeployApi:
+        examples:
+          releasesDeploy: |
+            const body = {
+                sourceID: 'sourceID-example',
+                port: 3000,
+                type: 'type-example',
+            };
+
+            paas.DeployApi.releasesDeploy('name-example', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          sourcesDeploy: |
+            import * as fs from 'fs';
+
+            export type HttpFile = Blob & { readonly name: string };
+
+            // Function to create an HttpFile from a local file
+            function createHttpFile(filePath: string): HttpFile | null {
+              try {
+                const fileBuffer = fs.readFileSync(filePath);
+                return new Blob([fileBuffer], { type: 'application/octet-stream' }) as HttpFile;
+              } catch (error) {
+                console.error('Error reading file:', error);
+                return null;
+              }
+            }
+
+            // Replace './README.md' with the actual path to your file
+            const filePath = './README.md';
+            const httpFile = createHttpFile(filePath);
+
+            if (httpFile) {
+              paas.DeployApi.sourcesDeploy('name-example', httpFile)
+                .then(res => console.log(res))
+                .catch(err => console.error(err));
+            } else {
+              console.log('HttpFile could not be created.');
+            }
+      DisksApi:
+        examples:
+          createBackup: |
+            paas.DisksApi.createBackup('id-example', 'name-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          createDisk: |
+            const body = {
+                name: 'name-example',
+                size: 'size-example',
+            };
+
+            paas.DisksApi.createDisk('name-example', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          createFtp: |
+            const body = {
+              username: 'username-example',
+              readOnly: true,
+            };
+
+            paas.DisksApi.createFtp('name-example', 'dname-example', body)
+              .then(res => {
+                console.log(res);
+              })
+              .catch(err => {
+                console.error(err);
+              })
+          deleteDisk: |
+            paas.DisksApi.deleteDisk('id-example', 'name-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          deleteFtp: |
+            import {  } from '';
+            import * as fs from 'fs';
+
+            const configuration = .createConfiguration();
+            const apiInstance = new .DisksApi(configuration);
+
+            let body:.DisksApiDeleteFtpRequest = {
+              // string | The name of your ftp
+              fname: "fname_example",
+            };
+
+            apiInstance.deleteFtp(body).then((data:any) => {
+              console.log('API called successfully. Returned data: ' + data);
+            }).catch((error:any) => console.error(error));
+          downloadBackup: |
+            paas.DisksApi.downloadBackup('id-example', 'dname-example', 'bname_example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getBackups: |
+            paas.DisksApi.getBackups('id-example', 'name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getDisks: |
+            paas.DisksApi.getDisks('id-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getFtps: |
+            paas.DisksApi.getFtps('name-example', 'dname-example')
+              .then(res => {
+                console.log(res);
+              })
+              .catch(err => {
+                console.error(err);
+              })
+          resizeDisk: |
+            const body = {
+              size: 'size-example'
+            };
+
+            paas.DisksApi.resizeDisk('name-example', 'dname-example', body)
+              .then(res => {
+                console.log(res);
+              })
+              .catch(err => {
+                console.error(err);
+              })
+      DomainsApi:
+        examples:
+          checkDomain: |
+            paas.DomainsApi.checkDomain('id-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          createAppDomain: |
+            const body = {
+                name: 'name-example',
+                project: 'project-example',
+                type: 'PROJECT',
+            };
+
+            paas.DomainsApi.createAppDomain(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteDomain: |
+            paas.DomainsApi.deleteDomain('id-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          disableSsl: |
+            paas.DomainsApi.disableSsl('id-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          enableSsl: |
+            const body = {
+                domain: 'domain-example',
+            };
+
+            paas.DomainsApi.enableSsl(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getAppDomains: |
+            paas.DomainsApi.getAppDomains('name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          redirectDomain: |
+            const body = {
+                redirectStatus: 301, // or 302
+                redirectTo: 'redirectTo-example',
+            };
+
+            paas.DomainsApi.redirectDomain('id-example', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          setAppDomain: |
+            const body = {
+                domainID: 'domainID-example',
+                projectID: 'projectID-example',
+            };
+
+            paas.DomainsApi.setAppDomain(body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      ReportsApi:
+        examples:
+          getAppCpuReports: |
+            const since = 1354654789; // example
+
+            paas.PReportsApi.getAppCpuReports('name-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getAppMemoryReports: |
+            const since = 1354654789; // example
+
+            paas.PReportsApi.getAppMemoryReports('name-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getAppNetworkReceiveReports: |
+            const since = 1354654789; // example
+
+            paas.PReportsApi.getAppNetworkReceiveReports('name-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getAppSummaryReports: |
+            paas.PReportsApi.getAppSummaryReports('name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getNetworkTransmitReports: |
+            const since = 1354654789; // example
+
+            paas.PReportsApi.getNetworkTransmitReports('name-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      SettingsApi:
+        examples:
+          defaultSubdomain: |
+            paas.SettingsApi.defaultSubdomain('id-example', 'enable') // or 'disable'
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          ipStatic: |
+            paas.SettingsApi.ipStatic('id-example', 'enable') // or 'disable'
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          updateEnvs: |
+            const body = {
+                project: 'project-example',
+                variables: [
+                  {
+                    key: 'key-example',
+                    value: 'value-example',
+                  },
+                ],
+              };
+
+            paas.SettingsApi.updateEnvs(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          zeroDowntime: |
+            paas.SettingsApi.zeroDowntime('id-example', 'enable') // or 'disable'
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+  dbaas:
+    classes:
+      BackupsApi:
+        examples:
+          createBackup: |
+            dbaas.BackupsApi.createBackup('id-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          downloadBackup	: |
+            dbaas.BackupsApi.downloadBackup('id-example', 'name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListBackups: |
+            dbaas.BackupsApi.getListBackups('id-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      DatabasesApi:
+        examples:
+          changeControlPanel: |
+            const status = 'enable'; // 'disable'
+
+            dbaas.DatabasesApi.changeControlPanel('id-example', status)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          changePublicNetwork: |
+            const status = 'enable'; // 'disable'
+
+            dbaas.DatabasesApi.changePublicNetwork('id-example', status)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          createDatabase: |
+            const body = {
+                hostname: 'hostname-example',
+                publicNetwork: true,
+                type: 'type-example',
+                planID: 'planID-example',
+                version: 'version-example',
+            };
+
+            dbaas.DatabasesApi.createDatabase(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteDatabase: |
+            dbaas.DatabasesApi.deleteDatabase('id-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getDatabase: |
+            dbaas.DatabasesApi.getDatabase('id-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListDatabases: |
+            dbaas.DatabasesApi.getListDatabases()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          resizeDatabase: |
+            const body = {
+                disk: true,
+                planID: 'planID-example',
+            };
+
+            dbaas.DatabasesApi.resizeDatabase('id-example', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          turnDatabase: |
+            const body = {
+                scale: 1
+            };
+
+            dbaas.DatabasesApi.turnDatabase('id-example', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      ReportsApi:
+        examples:
+          getDatabaseCpuReports: |
+            const since = 1696214892; // example
+
+              dbaas.DBReportsApi.getDatabaseCpuReports('id-example', since)
+                  .then(res => {
+                      console.log(res);
+                  })
+                  .catch(err => {
+                      console.error(err);
+                  });
+          getDatabaseMemoryReports: |
+            const since = 1696214892;
+
+            dbaas.DBReportsApi.getDatabaseMemoryReports('id-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getDatabaseNetworkReceiveReports: |
+            const since = 1696214892;
+
+            dbaas.DBReportsApi.getDatabaseNetworkReceiveReports('id-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getDatabaseNetworkTransmitReports: |
+            const since = 1696214892;
+
+            dbaas.DBReportsApi.getDatabaseNetworkTransmitReports('id-example', since)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getDatabaseSummaryReports: |
+            dbaas.DBReportsApi.getDatabaseSummaryReports('id-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+  object-storage:
+    classes:
+      BucketApi:
+        examples:
+          changeBucketAccess: |
+            objectStorage.BucketApi.changeBucketAccess('bucket-example', 'permission-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          checkBucket: |
+            objectStorage.BucketApi.checkBucket('bucket-name')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          createBucket: |
+            const body = {
+                name: 'name-example',
+                plan: 'plan-example',
+                permission: 'permission-example',
+            };
+
+            objectStorage.BucketApi.createBucket(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          destroyBucket: |
+            objectStorage.BucketApi.destroyBucket('bocket-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getBuckets: |
+            objectStorage.BucketApi.getBuckets()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListPreviousBuckets: |
+            objectStorage.BucketApi.getListPreviousBuckets()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getMigrations: |
+            objectStorage.BucketApi.getMigrations()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getSingleBuckets: |
+            objectStorage.BucketApi.getSingleBuckets('bucket-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          migratingBuckets: |
+            const body = {
+                _from: '_from-example',
+                to: 'to-example',
+                path: 'path-example',
+            };
+
+            objectStorage.BucketApi.migratingBuckets(body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          upgradeBucket: |
+            objectStorage.BucketApi.upgradeBucket('bucket-example', 'plan-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      FolderApi:
+        examples:
+          createFolder: |
+            const body = {
+                path: 'path-example',
+            };
+
+            objectStorage.FolderApi.createFolder('bucket-example', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteFolder: |
+            objectStorage.FolderApi.deleteFolder('bucket-example', 'path-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      KeyApi:
+        examples:
+          createKey: |
+            const body = {
+                buckets: [
+                    {}
+                ],
+                description: "description-example"
+            };
+
+            objectStorage.KeyApi.createKey(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteKey: |
+            objectStorage.KeyApi.deleteKey('key-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getKey: |
+            objectStorage.KeyApi.getKey('key-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListKeys: |
+            objectStorage.KeyApi.getListKeys()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          revokeSecretKey: |
+            objectStorage.KeyApi.revokeSecretKey('key-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          updateKey: |
+            const body = {
+                buckets: [
+                    {}
+                ],
+                description: "description-example"
+            };
+
+            objectStorage.KeyApi.updateKey('key-example', body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+      MetricsApi:
+        examples:
+          getHisotricalMetrics: |
+            objectStorage.MetricsApi.getHisotricalMetrics('bucket-example', 'sicne-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getMetricsSummary: |
+            objectStorage.MetricsApi.getMetricsSummary('bucket-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+      ObjectApi:
+        examples:
+          deleteObject: |
+            objectStorage.ObjectApi.deleteObject('bucket-example', 'prefix-example')
+              .then(res => {
+                  console.log('Operation successfully');
+              })
+              .catch(err => {
+                  console.error(err);
+              }); 
+          downloadObject	: |
+            objectStorage.ObjectApi.downloadObject('bucket-example', 'object-example', 'expiry-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getListObjects: |
+            objectStorage.ObjectApi.getListObjects('bucket-example', 'prefix-example', '10', '1')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          getStatObject: |
+            objectStorage.ObjectApi.getStatObject('bucket-example', 'object-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });
+          uploadObject: |
+            objectStorage.ObjectApi.uploadObject('bucket-example', 'object-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });

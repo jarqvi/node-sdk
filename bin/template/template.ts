@@ -44,9 +44,6 @@ function readTemplate() {
                 fs.writeFileSync(`../../doc/${sdk}/${apiClass}.md`, newMdFile);
 
                 for (const example in examples) {
-                    // console.log(example);
-                    // console.log(examples[example]);
-
                     const result = readMdFile(`../../doc/${sdk}/${apiClass}.md`, example, examples[example]);
                 }
             }
