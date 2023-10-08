@@ -13,20 +13,20 @@ interface ITemplate {
     sdks: Record<string, ISdk>;
 }
 
-function readMdFile(filePath: string, example: string) {
+function readMdFile(filePath: string, method: string, example: string): void {
     const mdFile = fs.readFileSync(filePath, 'utf8');
 
-    const exampleIndex = mdFile.indexOf(`# **${example}**`);
-    const exampleFile = mdFile.substring(exampleIndex);
-    const regexExample = /^```typescript\n([\s\S]*)\n```$/mg;
-
-    const resultFileExample = exampleFile.replace(regexExample, '```typescript\nhooooo\n```');
+    const indexMethod = mdFile.indexOf(`# **${method}**`);
+    const sectionMethod = mdFile.substring(indexMethod);
     
-    const newMdFile = mdFile.replace(exampleFile, resultFileExample);
-    console.log(newMdFile);
+    const regexMethod = /```([a-zA-Z]*)\n([\s\S]+?)```/;
+    const resolveMethod = sectionMethod.replace(regexMethod, '```typescript\n' + example + '\n```');
+
+    const newMdFile = mdFile.replace(sectionMethod, resolveMethod);
+    fs.createWriteStream(filePath).write(newMdFile);
 }
 
-readMdFile('../../doc/dns/ZoneApi.md', 'getZone');
+readMdFile('../../doc/dns/ZoneApi.md', 'getListZones', 'tttttt');
 
 function readTemplate() {
     const templateFile = fs.readFileSync('./template.yml', 'utf8');
