@@ -3,40 +3,40 @@ sdks:
     classes:
       ZoneApi:
         examples:
-          # createZone: |
-          #   const body = {
-          #     name: "name-example",
-          #   };
+          createZone: |
+            const body = {
+              name: "name-example",
+            };
 
-          #   dns.ZoneApi.createZone(body)
-          #       .then(res => {
-          #           console.log(res);
-          #       })
-          #       .catch(err => {
-          #           console.error(err);
-          #       });
-          # deleteZone: |
-          #   dns.ZoneApi.deleteZone('zone-example')
-          #     .then(res => {
-          #         console.log(res);
-          #     })
-          #     .catch(err => {
-          #         console.error(err);
-          #     });
-          # getListZones: |
-          #   dns.ZoneApi.getListZones()
-          #     .then(res => {
-          #         console.log(res);
-          #     })
-          #     .catch(err => {
-          #         console.error(err);
-          #     });
-          getZone: |
-            dns.ZoneApi.getZone('names-examples')
+            dns.ZoneApi.createZone(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });>|
+          deleteZone: |
+            dns.ZoneApi.deleteZone('zone-example')
               .then(res => {
                   console.log(res);
               })
               .catch(err => {
                   console.error(err);
-              });
-              
+              });>|
+          getListZones: |
+            dns.ZoneApi.getListZones()
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });>|
+          getZone: |
+            dns.ZoneApi.getZone('name-example')
+              .then(res => {
+                  console.log(res);
+              })
+              .catch(err => {
+                  console.error(err);
+              });>|
+

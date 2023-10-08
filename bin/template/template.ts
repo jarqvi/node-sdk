@@ -13,7 +13,7 @@ interface ITemplate {
     sdks: Record<string, ISdk>;
 }
 
-function readMdFile(filePath: string, method: string, example: string): void {
+function readMdFile(filePath: string, method: string, example: string) {
     const mdFile = fs.readFileSync(filePath, 'utf8');
 
     const indexMethod = mdFile.indexOf(`# **${method}**`);
@@ -23,10 +23,8 @@ function readMdFile(filePath: string, method: string, example: string): void {
     const resolveMethod = sectionMethod.replace(regexMethod, '```typescript\n' + example + '\n```');
 
     const newMdFile = mdFile.replace(sectionMethod, resolveMethod);
-    fs.createWriteStream(filePath).write(newMdFile);
+    fs.writeFileSync(filePath, newMdFile);
 }
-
-readMdFile('../../doc/dns/ZoneApi.md', 'getListZones', 'tttttt');
 
 function readTemplate() {
     const templateFile = fs.readFileSync('./template.yml', 'utf8');
@@ -43,14 +41,17 @@ function readTemplate() {
                 let newMdFile = mdFile.replaceAll(jwt, '[jwt](../../README.md#jwt)');
                 newMdFile = newMdFile.replaceAll(footer, '[[Back to top]](#) [[Back to README]](./../../README.md)');
                 newMdFile = newMdFile.replace(`# .${apiClass}`, `# ${apiClass}`);
-                fs.createWriteStream(`../../doc/${sdk}/${apiClass}.md`).write(newMdFile);
+                fs.writeFileSync(`../../doc/${sdk}/${apiClass}.md`, newMdFile);
 
-                // for (const example in examples) {
-                    
-                // }
+                for (const example in examples) {
+                    // console.log(example);
+                    // console.log(examples[example]);
+
+                    const result = readMdFile(`../../doc/${sdk}/${apiClass}.md`, example, examples[example]);
+                }
             }
         }
     }
 }
 
-// readTemplate();
+readTemplate();
