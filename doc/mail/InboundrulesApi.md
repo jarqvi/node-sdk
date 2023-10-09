@@ -1,16 +1,16 @@
-# ForwardApi
+# InboundrulesApi
 
 All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createAddressForwarding**](ForwardApi.md#createAddressForwarding) | **POST** /api/v1/mails/{mailServerID}/accounts/{accountID}/forwards | add address endpoint to forwarding mails
-[**deleteExtraEndpoint**](ForwardApi.md#deleteExtraEndpoint) | **DELETE** /api/v1/mails/{mailServerID}/accounts/{accountID}/forwards/{addressID} | delete extra endpoint address
-[**getListAddressForwarding**](ForwardApi.md#getListAddressForwarding) | **GET** /api/v1/mails/{mailServerID}/accounts/{accountID}/forwards | get all extra address to forwarding mails
+[**addInboundRule**](InboundrulesApi.md#addInboundRule) | **POST** /api/v1/mails/{mailServerID}/inboundrules | add inbound rule.
+[**deleteInboundRule**](InboundrulesApi.md#deleteInboundRule) | **DELETE** /api/v1/mail/{mailServerID}/inboundrules/{inboundruleID} | delete inbound rule.
+[**getAllInboundRules**](InboundrulesApi.md#getAllInboundRules) | **GET** /api/v1/mails/{mailServerID}/inboundrules | get all inbound rules.
 
 
-# **createAddressForwarding**
-> PostMails201Response createAddressForwarding()
+# **addInboundRule**
+> PostMails201Response addInboundRule()
 
 
 ### Example
@@ -18,12 +18,12 @@ Method | HTTP request | Description
 
 ```typescript
 const body = {
-    address: "address-example",
+    rule: 'rule-example'
 };
 
-mail.ForwardApi.createAddressForwarding('mail-server-id', 'account-id', body)
+mail.InboundrulesApi.addInboundRule('mail-server-id', body)
     .then(res => {
-        console.log(res);
+        console.log('Operation successfully');
     })
     .catch(err => {
         console.error(err);
@@ -36,9 +36,8 @@ mail.ForwardApi.createAddressForwarding('mail-server-id', 'account-id', body)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **Model6**|  |
+ **model11** | **Model11**|  |
  **mailServerID** | [**string**] |  | defaults to undefined
- **accountID** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -60,28 +59,26 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | OK |  -  |
 **400** | Bad Request |  -  |
-**403** | Max number of forwarders |  -  |
-**404** | Mail Server or Mail Account not found |  -  |
-**409** | Address endpoint already exists |  -  |
+**404** | Mail Server not found |  -  |
 **500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
-# **deleteExtraEndpoint**
-> void deleteExtraEndpoint()
+# **deleteInboundRule**
+> void deleteInboundRule()
 
 
 ### Example
 
 
 ```typescript
-mail.ForwardApi.deleteExtraEndpoint('mail-server-id', 'account-id', 'address-id')
-  .then(res => {
-      console.log('Operation successfully');
-  })
-  .catch(err => {
-      console.error(err);
-  });
+mail.InboundrulesApi.deleteInboundRule('mail-server-id', 'inboundrule-id')
+    .then(res => {
+        console.log('Operation successfully');
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 ```
 
@@ -91,8 +88,7 @@ mail.ForwardApi.deleteExtraEndpoint('mail-server-id', 'account-id', 'address-id'
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **mailServerID** | [**string**] |  | defaults to undefined
- **accountID** | [**string**] |  | defaults to undefined
- **addressID** | [**string**] |  | defaults to undefined
+ **inboundruleID** | [**string**] |  | defaults to undefined
 
 
 ### Return type
@@ -114,26 +110,26 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **204** | OK |  -  |
 **400** | Bad Request |  -  |
-**404** | Mail Server or Mail Account or Mail Forward not found |  -  |
+**404** | Mail Server or Inbound rule not found |  -  |
 **500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
-# **getListAddressForwarding**
-> MailForwards getListAddressForwarding()
+# **getAllInboundRules**
+> MailInboundRules getAllInboundRules()
 
 
 ### Example
 
 
 ```typescript
-mail.ForwardApi.getListAddressForwarding('mail-server-id', 'account-id')
-  .then(res => {
-      console.log(res);
-  })
-  .catch(err => {
-      console.error(err);
-  });
+mail.InboundrulesApi.getAllInboundRules('mail-server-id')
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
 ```
 
@@ -143,12 +139,11 @@ mail.ForwardApi.getListAddressForwarding('mail-server-id', 'account-id')
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **mailServerID** | [**string**] |  | defaults to undefined
- **accountID** | [**string**] |  | defaults to undefined
 
 
 ### Return type
 
-**MailForwards**
+**MailInboundRules**
 
 ### Authorization
 
@@ -165,7 +160,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
-**404** | Mail Server or Mail Account not found |  -  |
+**404** | Mail Server not found |  -  |
+**409** | Rule already exists. |  -  |
 **500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)

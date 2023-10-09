@@ -26,6 +26,7 @@ interface ILiaraSDK {
         ForwardApi: mailSDK.ForwardApi;
         AttachmentsApi: mailSDK.AttachmentsApi;
         EventApi: mailSDK.EventApi;
+        InboundrulesApi: mailSDK.InboundrulesApi;
     };
     dns: {
         ZoneApi: dnsSDK.ZoneApi;
@@ -86,6 +87,7 @@ function createLiaraSDK(token: string): ILiaraSDK {
             ForwardApi: new mailSDK.ForwardApi(mailConfig),
             AttachmentsApi: new mailSDK.AttachmentsApi(mailConfig),
             EventApi: new mailSDK.EventApi(mailConfig),
+            InboundrulesApi: new mailSDK.InboundrulesApi(mailConfig),
         },
         dns: {
             ZoneApi: new dnsSDK.ZoneApi(dnsConfig),

@@ -1,14 +1,14 @@
 # DnsRecordApi
 
-All URIs are relative to *https://dns-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://dns-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDnsRecord**](DnsRecordApi.md#createDnsRecord) | **POST** /zones/{zone}/dns-records | Create dns record
-[**deleteDnsRecord**](DnsRecordApi.md#deleteDnsRecord) | **DELETE** /zones/{zone}/dns-records/{id} | delete dns record
-[**editDnsRecord**](DnsRecordApi.md#editDnsRecord) | **PUT** /zones/{zone}/dns-records/{id} | edit dns record
-[**getDnsRecord**](DnsRecordApi.md#getDnsRecord) | **GET** /zones/{zone}/dns-records/{id} | Get dns record
-[**getListDnsRecords**](DnsRecordApi.md#getListDnsRecords) | **GET** /zones/{zone}/dns-records | Get all dns record
+[**createDnsRecord**](DnsRecordApi.md#createDnsRecord) | **POST** /api/v1/zones/{zone}/dns-records | Create dns record
+[**deleteDnsRecord**](DnsRecordApi.md#deleteDnsRecord) | **DELETE** /api/v1/zones/{zone}/dns-records/{id} | delete dns record
+[**editDnsRecord**](DnsRecordApi.md#editDnsRecord) | **PUT** /api/v1/zones/{zone}/dns-records/{id} | edit dns record
+[**getDnsRecord**](DnsRecordApi.md#getDnsRecord) | **GET** /api/v1/zones/{zone}/dns-records/{id} | Get dns record
+[**getListDnsRecords**](DnsRecordApi.md#getListDnsRecords) | **GET** /api/v1/zones/{zone}/dns-records | Get all dns record
 
 
 # **createDnsRecord**
@@ -36,6 +36,7 @@ dns.DnsRecordApi.createDnsRecord('zone-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -72,7 +73,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
-
 # **deleteDnsRecord**
 > void deleteDnsRecord()
 
@@ -83,12 +83,13 @@ Delete dns record from this zone
 
 ```typescript
 dns.DnsRecordApi.deleteDnsRecord('zone-example', 'dns-record-id')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -149,6 +150,7 @@ dns.DnsRecordApi.editDnsRecord('zone-example', 'dns-record-id', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -196,12 +198,13 @@ Get Dns Record data on this zone
 
 ```typescript
 dns.DnsRecordApi.getDnsRecord('zone-example', 'dns-record-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -247,12 +250,13 @@ Get all Dns Records on this zone
 
 ```typescript
 dns.DnsRecordApi.getListDnsRecords('zone-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -286,3 +290,5 @@ Name | Type | Description  | Notes
 **404** | Zone Not Found |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

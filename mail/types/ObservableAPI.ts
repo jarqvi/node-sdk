@@ -30,6 +30,9 @@ import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
 import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
+import { MailInboundRules } from '../models/MailInboundRules';
+import { MailInboundRulesData } from '../models/MailInboundRulesData';
+import { MailInboundRulesDataMailInboundrulesInner } from '../models/MailInboundRulesDataMailInboundrulesInner';
 import { MailMessage } from '../models/MailMessage';
 import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
@@ -43,12 +46,12 @@ import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1 } from '../models/Model1';
 import { Model10 } from '../models/Model10';
+import { Model11 } from '../models/Model11';
 import { Model2 } from '../models/Model2';
 import { Model3 } from '../models/Model3';
 import { Model4 } from '../models/Model4';
 import { Model5 } from '../models/Model5';
 import { Model6 } from '../models/Model6';
-import { Model7 } from '../models/Model7';
 import { Model8 } from '../models/Model8';
 import { Model9 } from '../models/Model9';
 import { PostMails201Response } from '../models/PostMails201Response';
@@ -57,7 +60,6 @@ import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
 import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
-import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
 
@@ -471,6 +473,121 @@ export class ObservableForwardApi {
 
 }
 
+import { InboundrulesApiRequestFactory, InboundrulesApiResponseProcessor} from "../apis/InboundrulesApi";
+export class ObservableInboundrulesApi {
+    private requestFactory: InboundrulesApiRequestFactory;
+    private responseProcessor: InboundrulesApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: InboundrulesApiRequestFactory,
+        responseProcessor?: InboundrulesApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new InboundrulesApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new InboundrulesApiResponseProcessor();
+    }
+
+    /**
+     * add inbound rule.
+     * @param mailServerID 
+     * @param model11 
+     */
+    public addInboundRuleWithHttpInfo(mailServerID: string, model11?: Model11, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
+        const requestContextPromise = this.requestFactory.addInboundRule(mailServerID, model11, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addInboundRuleWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * add inbound rule.
+     * @param mailServerID 
+     * @param model11 
+     */
+    public addInboundRule(mailServerID: string, model11?: Model11, _options?: Configuration): Observable<PostMails201Response> {
+        return this.addInboundRuleWithHttpInfo(mailServerID, model11, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
+    }
+
+    /**
+     * delete inbound rule.
+     * @param mailServerID 
+     * @param inboundruleID 
+     */
+    public deleteInboundRuleWithHttpInfo(mailServerID: string, inboundruleID: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.deleteInboundRule(mailServerID, inboundruleID, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteInboundRuleWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * delete inbound rule.
+     * @param mailServerID 
+     * @param inboundruleID 
+     */
+    public deleteInboundRule(mailServerID: string, inboundruleID: string, _options?: Configuration): Observable<void> {
+        return this.deleteInboundRuleWithHttpInfo(mailServerID, inboundruleID, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * get all inbound rules.
+     * @param mailServerID 
+     */
+    public getAllInboundRulesWithHttpInfo(mailServerID: string, _options?: Configuration): Observable<HttpInfo<MailInboundRules>> {
+        const requestContextPromise = this.requestFactory.getAllInboundRules(mailServerID, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAllInboundRulesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * get all inbound rules.
+     * @param mailServerID 
+     */
+    public getAllInboundRules(mailServerID: string, _options?: Configuration): Observable<MailInboundRules> {
+        return this.getAllInboundRulesWithHttpInfo(mailServerID, _options).pipe(map((apiResponse: HttpInfo<MailInboundRules>) => apiResponse.data));
+    }
+
+}
+
 import { MailsApiRequestFactory, MailsApiResponseProcessor} from "../apis/MailsApi";
 export class ObservableMailsApi {
     private requestFactory: MailsApiRequestFactory;
@@ -485,39 +602,6 @@ export class ObservableMailsApi {
         this.configuration = configuration;
         this.requestFactory = requestFactory || new MailsApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new MailsApiResponseProcessor();
-    }
-
-    /**
-     * chagen mail server mode
-     * @param mailServerID 
-     * @param body 
-     */
-    public changeMailServerModeWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
-        const requestContextPromise = this.requestFactory.changeMailServerMode(mailServerID, body, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.changeMailServerModeWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * chagen mail server mode
-     * @param mailServerID 
-     * @param body 
-     */
-    public changeMailServerMode(mailServerID: string, body?: Model8, _options?: Configuration): Observable<PostMails201Response> {
-        return this.changeMailServerModeWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**
@@ -644,6 +728,39 @@ export class ObservableMailsApi {
      */
     public deleteMailServer(mailServerID: string, _options?: Configuration): Observable<void> {
         return this.deleteMailServerWithHttpInfo(mailServerID, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * edit mail server
+     * @param mailServerID 
+     * @param body 
+     */
+    public editMailServerWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Observable<HttpInfo<PostMails201Response>> {
+        const requestContextPromise = this.requestFactory.editMailServer(mailServerID, body, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.editMailServerWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * edit mail server
+     * @param mailServerID 
+     * @param body 
+     */
+    public editMailServer(mailServerID: string, body?: Model8, _options?: Configuration): Observable<PostMails201Response> {
+        return this.editMailServerWithHttpInfo(mailServerID, body, _options).pipe(map((apiResponse: HttpInfo<PostMails201Response>) => apiResponse.data));
     }
 
     /**

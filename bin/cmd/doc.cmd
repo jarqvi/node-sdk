@@ -23,12 +23,12 @@ for %%d in (%directories%) do (
 
     REM Move all markdown files except README.md file in the doc directory
     for %%f in ("%%d\*.md") do (
-        if exist "doc\%%~nxf" (
-            mkdir "doc\%%d\new" 2>nul
-            call :move_file_if_exists "%%f" "doc\%%d\new"
-        ) else (
+        @REM if exist "doc\%%~nxf" (
+            @REM mkdir "doc\%%d\new" 2>nul
+            @REM call :move_file_if_exists "%%f" "doc\%%d\new"
+        @REM ) else (
             call :move_file_if_exists "%%f" "doc\%%d"
-        )
+        @REM )
     )
 )
 

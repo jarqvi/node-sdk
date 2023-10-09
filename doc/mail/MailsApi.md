@@ -1,77 +1,23 @@
 # MailsApi
 
-All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**changeMailServerMode**](MailsApi.md#changeMailServerMode) | **PATCH** /mails/{mailServerID} | chagen mail server mode
-[**changeMailServerPlan**](MailsApi.md#changeMailServerPlan) | **PUT** /mails/{mailServerID}/plans | change mail server plan
-[**checkDomainAvailable**](MailsApi.md#checkDomainAvailable) | **GET** /mails/{domain}/check-availability | check if domain name is available
-[**checkMailServerDnsStatus**](MailsApi.md#checkMailServerDnsStatus) | **GET** /mails/{mailServerID}/dns-check | mail server check dns status
-[**deleteMailServer**](MailsApi.md#deleteMailServer) | **DELETE** /mails/{mailServerID} | delete mail server
-[**getCountFreeMails**](MailsApi.md#getCountFreeMails) | **GET** /mails/{mailServerID}/remaining-free-emails | count number of free mails every month
-[**getCountMails**](MailsApi.md#getCountMails) | **GET** /mails/{mailServerID}/counts | count number of sent mails every day
-[**getMails**](MailsApi.md#getMails) | **GET** /mails | get all mail servers
-[**getSingleMailServer**](MailsApi.md#getSingleMailServer) | **GET** /mails/{mailServerID} | get single mail server
-[**postMails**](MailsApi.md#postMails) | **POST** /mails | create mail server
+[**changeMailServerPlan**](MailsApi.md#changeMailServerPlan) | **PUT** /api/v1/mails/{mailServerID}/plans | change mail server plan
+[**checkDomainAvailable**](MailsApi.md#checkDomainAvailable) | **GET** /api/v1/mails/{domain}/check-availability | check if domain name is available
+[**checkMailServerDnsStatus**](MailsApi.md#checkMailServerDnsStatus) | **GET** /api/v1/mails/{mailServerID}/dns-check | mail server check dns status
+[**deleteMailServer**](MailsApi.md#deleteMailServer) | **DELETE** /api/v1/mails/{mailServerID} | delete mail server
+[**editMailServer**](MailsApi.md#editMailServer) | **PATCH** /api/v1/mails/{mailServerID} | edit mail server
+[**getCountFreeMails**](MailsApi.md#getCountFreeMails) | **GET** /api/v1/mails/{mailServerID}/remaining-free-emails | count number of free mails every month
+[**getCountMails**](MailsApi.md#getCountMails) | **GET** /api/v1/mails/{mailServerID}/counts | count number of sent mails every day
+[**getMails**](MailsApi.md#getMails) | **GET** /api/v1/mails | get all mail servers
+[**getSingleMailServer**](MailsApi.md#getSingleMailServer) | **GET** /api/v1/mails/{mailServerID} | get single mail server
+[**postMails**](MailsApi.md#postMails) | **POST** /api/v1/mails | create mail server
 
-
-# **changeMailServerMode**
-> void changeMailServerMode()
-
-
-### Example
-
-
-```typescript
-const body = {
-    mode: "DEV"
-};
-// @ts-ignore
-mail.MailsApi.changeMailServerMode('mail-server-id', body)
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | **Model8**|  |
- **mailServerID** | [**string**] |  | defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[jwt](../../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**404** | Mail Server not found |  -  |
-**500** | Unexpected error |  -  |
-
-[[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **changeMailServerPlan**
-> void changeMailServerPlan()
+> PostMails201Response changeMailServerPlan()
 
 
 ### Example
@@ -89,6 +35,7 @@ mail.MailsApi.changeMailServerPlan('mail-server-id', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -102,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**PostMails201Response**
 
 ### Authorization
 
@@ -110,8 +57,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -125,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **checkDomainAvailable**
-> void checkDomainAvailable()
+> PostMails201Response checkDomainAvailable()
 
 
 ### Example
@@ -133,12 +80,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MailsApi.checkDomainAvailable('domain-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -151,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**PostMails201Response**
 
 ### Authorization
 
@@ -160,7 +108,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -181,12 +129,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MailsApi.checkMailServerDnsStatus('mail-server-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -208,7 +157,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -229,12 +178,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MailsApi.deleteMailServer('mail-server-id')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -269,6 +219,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
+# **editMailServer**
+> PostMails201Response editMailServer()
+
+
+### Example
+
+
+```typescript
+const body = {
+    mode: "DEV",
+    inboundSpamThreshold: 0
+};
+
+// @ts-ignore
+mail.MailsApi.editMailServer('mail-server-id', body)
+    .then(res => {
+        console.log(res);
+    })
+    .catch(err => {
+        console.error(err);
+    });
+
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | **Model8**|  |
+ **mailServerID** | [**string**] |  | defaults to undefined
+
+
+### Return type
+
+**PostMails201Response**
+
+### Authorization
+
+[jwt](../../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**404** | Mail Server not found |  -  |
+**500** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to README]](./../../README.md)
+
 # **getCountFreeMails**
 > RemainingFreeMails getCountFreeMails()
 
@@ -278,12 +285,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MailsApi.getCountFreeMails('mail-server-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -305,7 +313,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -327,12 +335,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MailsApi.getCountMails('mail-server-id', 30)
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -355,7 +364,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -369,7 +378,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getMails**
-> Array<MailServer> getMails()
+> MailServers getMails()
 
 
 ### Example
@@ -377,12 +386,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MailsApi.getMails()
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -392,7 +402,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array<MailServer>**
+**MailServers**
 
 ### Authorization
 
@@ -401,7 +411,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -421,12 +431,13 @@ This endpoint does not need any parameter.
 
 ```typescript
 mail.MailsApi.getSingleMailServer('mail-server-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -448,7 +459,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -462,7 +473,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **postMails**
-> void postMails()
+> PostMails201Response postMails()
 
 
 ### Example
@@ -483,6 +494,7 @@ mail.MailsApi.postMails(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -495,7 +507,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**PostMails201Response**
 
 ### Authorization
 
@@ -503,8 +515,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details

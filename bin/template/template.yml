@@ -207,6 +207,36 @@ sdks:
               .catch(err => {
                   console.error(err);
               });
+      InboundrulesApi:
+        examples:
+          addInboundRule: |
+            const body = {
+                rule: 'rule-example'
+            };
+
+            mail.InboundrulesApi.addInboundRule('mail-server-id', body)
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          deleteInboundRule: |
+            mail.InboundrulesApi.deleteInboundRule('mail-server-id', 'inboundrule-id')
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          getAllInboundRules: |
+            mail.InboundrulesApi.getAllInboundRules('mail-server-id')
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
       MailsApi:
         examples:
           changeMailServerMode: |
@@ -298,6 +328,20 @@ sdks:
 
             // @ts-ignore
             mail.MailsApi.postMails(body)
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+          editMailServer: |
+            const body = {
+                mode: "DEV",
+                inboundSpamThreshold: 0
+            };
+
+            // @ts-ignore
+            mail.MailsApi.editMailServer('mail-server-id', body)
                 .then(res => {
                     console.log(res);
                 })
@@ -596,20 +640,13 @@ sdks:
                   console.error(err);
               });
           deleteFtp: |
-            import {  } from '';
-            import * as fs from 'fs';
-
-            const configuration = .createConfiguration();
-            const apiInstance = new .DisksApi(configuration);
-
-            let body:.DisksApiDeleteFtpRequest = {
-              // string | The name of your ftp
-              fname: "fname_example",
-            };
-
-            apiInstance.deleteFtp(body).then((data:any) => {
-              console.log('API called successfully. Returned data: ' + data);
-            }).catch((error:any) => console.error(error));
+            paas.DisksApi.deleteFtp('fname-example')
+                .then(res => {
+                    console.log('Operation successfully');
+                })
+                .catch(err => {
+                    console.error(err);
+                });
           downloadBackup: |
             paas.DisksApi.downloadBackup('id-example', 'dname-example', 'bname_example')
               .then(res => {

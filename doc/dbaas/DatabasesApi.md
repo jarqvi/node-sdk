@@ -14,9 +14,8 @@ Method | HTTP request | Description
 [**turnDatabase**](DatabasesApi.md#turnDatabase) | **POST** /v1/databases/{id}/actions/scale | Power on or power off a database
 
 
-
 # **changeControlPanel**
-> void changeControlPanel()
+> ChangeControlPanel200Response changeControlPanel()
 
 change control-panel status that user owns
 
@@ -33,6 +32,7 @@ dbaas.DatabasesApi.changeControlPanel('id-example', status)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**ChangeControlPanel200Response**
 
 ### Authorization
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -87,6 +87,7 @@ dbaas.DatabasesApi.changePublicNetwork('id-example', status)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -124,7 +125,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createDatabase**
-> void createDatabase(createADatabases)
+> CreateDatabase200Response createDatabase(createADatabases)
 
 create a database that user owns
 
@@ -147,6 +148,7 @@ dbaas.DatabasesApi.createDatabase(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -159,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**CreateDatabase200Response**
 
 ### Authorization
 
@@ -167,8 +169,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Databaselication/json
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -191,12 +193,13 @@ delete a database that user owns
 
 ```typescript
 dbaas.DatabasesApi.deleteDatabase('id-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -241,12 +244,13 @@ get a database that user owns
 
 ```typescript
 dbaas.DatabasesApi.getDatabase('id-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -268,7 +272,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Databaselication/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -291,12 +295,13 @@ get all databases that user owns
 
 ```typescript
 dbaas.DatabasesApi.getListDatabases()
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -315,7 +320,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Databaselication/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -348,6 +353,7 @@ dbaas.DatabasesApi.resizeDatabase('id-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -369,7 +375,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Databaselication/json
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 
@@ -403,6 +409,7 @@ dbaas.DatabasesApi.turnDatabase('id-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -424,7 +431,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Databaselication/json
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 
@@ -437,3 +444,5 @@ Name | Type | Description  | Notes
 **404** | Database not found |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

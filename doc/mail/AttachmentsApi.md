@@ -1,15 +1,15 @@
 # AttachmentsApi
 
-All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**downloadAttachments**](AttachmentsApi.md#downloadAttachments) | **GET** /mails/{mailServerID}/messages/{messageID}/attachments/{attachmentID} | download attachment
-[**getAllAttachments**](AttachmentsApi.md#getAllAttachments) | **GET** /mails/{mailServerID}/messages/{messageID}/attachments | get all attachments for message
+[**downloadAttachments**](AttachmentsApi.md#downloadAttachments) | **GET** /api/v1/mails/{mailServerID}/messages/{messageID}/attachments/{attachmentID} | download attachment
+[**getAllAttachments**](AttachmentsApi.md#getAllAttachments) | **GET** /api/v1/mails/{mailServerID}/messages/{messageID}/attachments | get all attachments for message
 
 
 # **downloadAttachments**
-> MailAttachment downloadAttachments()
+> DownloadAttachments200Response downloadAttachments()
 
 
 ### Example
@@ -17,12 +17,13 @@ Method | HTTP request | Description
 
 ```typescript
 mail.AttachmentsApi.downloadAttachments('mail-server-id', 'attachment-id', 'message-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -37,7 +38,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**MailAttachment**
+**DownloadAttachments200Response**
 
 ### Authorization
 
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -68,12 +69,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.AttachmentsApi.getAllAttachments('mail-server-id', 'message-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -96,7 +98,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -109,3 +111,5 @@ Name | Type | Description  | Notes
 **500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

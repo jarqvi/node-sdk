@@ -1,9 +1,9 @@
 .gitignore
-.openapi-generator-ignore
 AccountsApi.md
 AttachmentsApi.md
 EventApi.md
 ForwardApi.md
+InboundrulesApi.md
 MailsApi.md
 MessagesApi.md
 README.md
@@ -12,6 +12,7 @@ apis/AccountsApi.ts
 apis/AttachmentsApi.ts
 apis/EventApi.ts
 apis/ForwardApi.ts
+apis/InboundrulesApi.ts
 apis/MailsApi.ts
 apis/MessagesApi.ts
 apis/SmtpApi.ts
@@ -52,6 +53,9 @@ models/MailEventsData.ts
 models/MailForwards.ts
 models/MailForwardsData.ts
 models/MailForwardsDataForwardersInner.ts
+models/MailInboundRules.ts
+models/MailInboundRulesData.ts
+models/MailInboundRulesDataMailInboundrulesInner.ts
 models/MailMessage.ts
 models/MailMessageStatus.ts
 models/MailMessages.ts
@@ -65,12 +69,12 @@ models/MailServersData.ts
 models/Mode.ts
 models/Model1.ts
 models/Model10.ts
+models/Model11.ts
 models/Model2.ts
 models/Model3.ts
 models/Model4.ts
 models/Model5.ts
 models/Model6.ts
-models/Model7.ts
 models/Model8.ts
 models/Model9.ts
 models/ObjectSerializer.ts
@@ -80,7 +84,6 @@ models/RemainingFreeMailsData.ts
 models/SMTP.ts
 models/SMTPData.ts
 models/SMTPDataCredentialsInner.ts
-models/Timeout.ts
 models/TmpAccess.ts
 models/TmpAccessData.ts
 models/all.ts

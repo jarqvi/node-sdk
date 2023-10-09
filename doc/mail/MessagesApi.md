@@ -1,14 +1,14 @@
-# .MessagesApi
+# MessagesApi
 
-All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**generateTemporary**](MessagesApi.md#generateTemporary) | **POST** /mails/{mailServerID}/messages/{messageID}/temporary-access | generate temporary access to email html
-[**getAllMails**](MessagesApi.md#getAllMails) | **GET** /mails/{mailServerID}/messages | get all mails
-[**getSingleMail**](MessagesApi.md#getSingleMail) | **GET** /mails/{mailServerID}/messages/{messageID} | get single mail
-[**getSingleMailHtml**](MessagesApi.md#getSingleMailHtml) | **GET** /mails/{mailServerID}/messages/{messageID}/render | get single mail html
-[**sendMail**](MessagesApi.md#sendMail) | **POST** /mails/{mailServerID}/messages | send a mail
+[**generateTemporary**](MessagesApi.md#generateTemporary) | **POST** /api/v1/mails/{mailServerID}/messages/{messageID}/temporary-access | generate temporary access to email html
+[**getAllMails**](MessagesApi.md#getAllMails) | **GET** /api/v1/mails/{mailServerID}/messages | get all mails
+[**getSingleMail**](MessagesApi.md#getSingleMail) | **GET** /api/v1/mails/{mailServerID}/messages/{messageID} | get single mail
+[**getSingleMailHtml**](MessagesApi.md#getSingleMailHtml) | **GET** /api/v1/mails/{mailServerID}/messages/{messageID}/render | get single mail html
+[**sendMail**](MessagesApi.md#sendMail) | **POST** /api/v1/mails/{mailServerID}/messages | send a mail
 
 
 # **generateTemporary**
@@ -20,12 +20,13 @@ Method | HTTP request | Description
 
 ```typescript
 mail.MessagesApi.generateTemporary('mail-server-id', 'message-id', 1)
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -49,7 +50,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -84,6 +85,7 @@ mail.MessagesApi.getAllMails('mail-server-id', direction, 1, 15, state, subject,
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -112,7 +114,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -126,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getSingleMail**
-> MailMessage getSingleMail()
+> GetSingleMail200Response getSingleMail()
 
 
 ### Example
@@ -134,12 +136,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MessagesApi.getSingleMail('mail-server-id', 'message-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -153,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**MailMessage**
+**GetSingleMail200Response**
 
 ### Authorization
 
@@ -162,7 +165,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -184,12 +187,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.MessagesApi.getSingleMailHtml('mail-server-id', 'message-id', 'token')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -229,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **sendMail**
-> void sendMail()
+> PostMails201Response sendMail()
 
 
 ### Example
@@ -259,6 +263,7 @@ mail.MessagesApi.sendMail('mail-server-id', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -272,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**PostMails201Response**
 
 ### Authorization
 
@@ -280,8 +285,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -296,3 +301,5 @@ Name | Type | Description  | Notes
 **500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

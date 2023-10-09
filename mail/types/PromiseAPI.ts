@@ -29,6 +29,9 @@ import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
 import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
+import { MailInboundRules } from '../models/MailInboundRules';
+import { MailInboundRulesData } from '../models/MailInboundRulesData';
+import { MailInboundRulesDataMailInboundrulesInner } from '../models/MailInboundRulesDataMailInboundrulesInner';
 import { MailMessage } from '../models/MailMessage';
 import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
@@ -42,12 +45,12 @@ import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1 } from '../models/Model1';
 import { Model10 } from '../models/Model10';
+import { Model11 } from '../models/Model11';
 import { Model2 } from '../models/Model2';
 import { Model3 } from '../models/Model3';
 import { Model4 } from '../models/Model4';
 import { Model5 } from '../models/Model5';
 import { Model6 } from '../models/Model6';
-import { Model7 } from '../models/Model7';
 import { Model8 } from '../models/Model8';
 import { Model9 } from '../models/Model9';
 import { PostMails201Response } from '../models/PostMails201Response';
@@ -56,7 +59,6 @@ import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
 import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
-import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
 import { ObservableAccountsApi } from './ObservableAPI';
@@ -343,6 +345,83 @@ export class PromiseForwardApi {
 
 
 
+import { ObservableInboundrulesApi } from './ObservableAPI';
+
+import { InboundrulesApiRequestFactory, InboundrulesApiResponseProcessor} from "../apis/InboundrulesApi";
+export class PromiseInboundrulesApi {
+    private api: ObservableInboundrulesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: InboundrulesApiRequestFactory,
+        responseProcessor?: InboundrulesApiResponseProcessor
+    ) {
+        this.api = new ObservableInboundrulesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * add inbound rule.
+     * @param mailServerID 
+     * @param model11 
+     */
+    public addInboundRuleWithHttpInfo(mailServerID: string, model11?: Model11, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
+        const result = this.api.addInboundRuleWithHttpInfo(mailServerID, model11, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * add inbound rule.
+     * @param mailServerID 
+     * @param model11 
+     */
+    public addInboundRule(mailServerID: string, model11?: Model11, _options?: Configuration): Promise<PostMails201Response> {
+        const result = this.api.addInboundRule(mailServerID, model11, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * delete inbound rule.
+     * @param mailServerID 
+     * @param inboundruleID 
+     */
+    public deleteInboundRuleWithHttpInfo(mailServerID: string, inboundruleID: string, _options?: Configuration): Promise<HttpInfo<void>> {
+        const result = this.api.deleteInboundRuleWithHttpInfo(mailServerID, inboundruleID, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * delete inbound rule.
+     * @param mailServerID 
+     * @param inboundruleID 
+     */
+    public deleteInboundRule(mailServerID: string, inboundruleID: string, _options?: Configuration): Promise<void> {
+        const result = this.api.deleteInboundRule(mailServerID, inboundruleID, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * get all inbound rules.
+     * @param mailServerID 
+     */
+    public getAllInboundRulesWithHttpInfo(mailServerID: string, _options?: Configuration): Promise<HttpInfo<MailInboundRules>> {
+        const result = this.api.getAllInboundRulesWithHttpInfo(mailServerID, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * get all inbound rules.
+     * @param mailServerID 
+     */
+    public getAllInboundRules(mailServerID: string, _options?: Configuration): Promise<MailInboundRules> {
+        const result = this.api.getAllInboundRules(mailServerID, _options);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableMailsApi } from './ObservableAPI';
 
 import { MailsApiRequestFactory, MailsApiResponseProcessor} from "../apis/MailsApi";
@@ -355,26 +434,6 @@ export class PromiseMailsApi {
         responseProcessor?: MailsApiResponseProcessor
     ) {
         this.api = new ObservableMailsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * chagen mail server mode
-     * @param mailServerID 
-     * @param body 
-     */
-    public changeMailServerModeWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
-        const result = this.api.changeMailServerModeWithHttpInfo(mailServerID, body, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * chagen mail server mode
-     * @param mailServerID 
-     * @param body 
-     */
-    public changeMailServerMode(mailServerID: string, body?: Model8, _options?: Configuration): Promise<PostMails201Response> {
-        const result = this.api.changeMailServerMode(mailServerID, body, _options);
-        return result.toPromise();
     }
 
     /**
@@ -448,6 +507,26 @@ export class PromiseMailsApi {
      */
     public deleteMailServer(mailServerID: string, _options?: Configuration): Promise<void> {
         const result = this.api.deleteMailServer(mailServerID, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * edit mail server
+     * @param mailServerID 
+     * @param body 
+     */
+    public editMailServerWithHttpInfo(mailServerID: string, body?: Model8, _options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
+        const result = this.api.editMailServerWithHttpInfo(mailServerID, body, _options);
+        return result.toPromise();
+    }
+
+    /**
+     * edit mail server
+     * @param mailServerID 
+     * @param body 
+     */
+    public editMailServer(mailServerID: string, body?: Model8, _options?: Configuration): Promise<PostMails201Response> {
+        const result = this.api.editMailServer(mailServerID, body, _options);
         return result.toPromise();
     }
 

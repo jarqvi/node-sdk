@@ -93,6 +93,8 @@ paas.AppsApi.getApps()
 
 [ForwardApi](./doc/mail/ForwardApi.md)
 
+[InboundrulesApi](./doc/mail/InboundrulesApi.md)
+
 [MailsApi](./doc/mail/MailsApi.md)
 
 [MessagesApi](./doc/mail/MessagesApi.md)

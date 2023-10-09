@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**deleteDomain**](DomainsApi.md#deleteDomain) | **DELETE** /v1/domains/{id} | Delete a domain
 [**disableSsl**](DomainsApi.md#disableSsl) | **POST** /v1/domains/{id}/ssl/disable | Disable ssl
 [**enableSsl**](DomainsApi.md#enableSsl) | **POST** /v1/domains/provision-ssl-certs | Enable ssl
-[**getAppDomains**](DomainsApi.md#getAppDomains) | **GET** /v1/domains?project&#x3D;{name} | Get all domains
+[**getAppDomains**](DomainsApi.md#getAppDomains) | **GET** /v1/domains | Get all domains
 [**redirectDomain**](DomainsApi.md#redirectDomain) | **POST** /v1/domains/{id}/set-redirect | Redirect a domain
 [**setAppDomain**](DomainsApi.md#setAppDomain) | **POST** /v1/domains/set-project | Set a domain for project
 
@@ -24,12 +24,13 @@ check a domain that user owns
 
 ```typescript
 paas.DomainsApi.checkDomain('id-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createAppDomain**
-> void createAppDomain(domain)
+> CreateAppDomain201Response createAppDomain(domain)
 
 create a domain that user owns
 
@@ -86,6 +87,7 @@ paas.DomainsApi.createAppDomain(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -98,7 +100,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**CreateAppDomain201Response**
 
 ### Authorization
 
@@ -107,13 +109,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful operation |  -  |
+**201** | Successful operation |  -  |
 **400** | Bad request |  -  |
 **401** | Missing authentication |  -  |
 **404** | App does not exists. |  -  |
@@ -131,12 +133,13 @@ delete a domain that user owns
 
 ```typescript
 paas.DomainsApi.deleteDomain('id-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -181,12 +184,13 @@ disable ssl that user owns
 
 ```typescript
 paas.DomainsApi.disableSsl('id-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -222,7 +226,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **enableSsl**
-> void enableSsl(domain)
+> EnableSsl200Response enableSsl(domain)
 
 enable ssl that user owns
 
@@ -241,6 +245,7 @@ paas.DomainsApi.enableSsl(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -253,7 +258,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**EnableSsl200Response**
 
 ### Authorization
 
@@ -262,7 +267,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -285,12 +290,13 @@ get all domains that user owns
 
 ```typescript
 paas.DomainsApi.getAppDomains('name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -298,7 +304,7 @@ paas.DomainsApi.getAppDomains('name-example')
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | [**string**] | The name of your app | defaults to undefined
+ **project** | [**string**] | The name of your app | defaults to undefined
 
 
 ### Return type
@@ -346,6 +352,7 @@ paas.DomainsApi.redirectDomain('id-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -402,6 +409,7 @@ paas.DomainsApi.setAppDomain(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -435,3 +443,5 @@ Name | Type | Description  | Notes
 **404** | App or domain does not exists. |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

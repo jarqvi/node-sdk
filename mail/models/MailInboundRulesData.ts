@@ -10,36 +10,27 @@
  * Do not edit the class manually.
  */
 
-import { Mode } from '../models/Mode';
+import { MailInboundRulesDataMailInboundrulesInner } from '../models/MailInboundRulesDataMailInboundrulesInner';
 import { HttpFile } from '../http/http';
 
-export class Model8 {
-    'mode': Mode;
-    'inboundSpamThreshold': number;
+export class MailInboundRulesData {
+    'mailInboundrules'?: Array<MailInboundRulesDataMailInboundrulesInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "mode",
-            "baseName": "mode",
-            "type": "Mode",
-            "format": ""
-        },
-        {
-            "name": "inboundSpamThreshold",
-            "baseName": "inboundSpamThreshold",
-            "type": "number",
+            "name": "mailInboundrules",
+            "baseName": "mailInboundrules",
+            "type": "Array<MailInboundRulesDataMailInboundrulesInner>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Model8.attributeTypeMap;
+        return MailInboundRulesData.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-
 

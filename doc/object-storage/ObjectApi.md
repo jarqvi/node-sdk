@@ -1,14 +1,14 @@
 # ObjectApi
 
-All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://storage-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteObject**](ObjectApi.md#deleteObject) | **DELETE** /buckets/{bucket}/objects/{prefix} | Delete Object
-[**downloadObject**](ObjectApi.md#downloadObject) | **GET** /buckets/{bucket}/download/${object} | Download Object
-[**getListObjects**](ObjectApi.md#getListObjects) | **GET** /buckets/{bucket}/objects/{prefix} | List Objects
-[**getStatObject**](ObjectApi.md#getStatObject) | **GET** /buckets/{bucket}/objects/statistics/{object} | Get Stat Object
-[**uploadObject**](ObjectApi.md#uploadObject) | **GET** /buckets/{bucket}/upload/{object} | Upload Object
+[**deleteObject**](ObjectApi.md#deleteObject) | **DELETE** /api/v1/buckets/{bucket}/objects/{prefix} | Delete Object
+[**downloadObject**](ObjectApi.md#downloadObject) | **GET** /api/v1/buckets/{bucket}/download/${object} | Download Object
+[**getListObjects**](ObjectApi.md#getListObjects) | **GET** /api/v1/buckets/{bucket}/objects/{prefix} | List Objects
+[**getStatObject**](ObjectApi.md#getStatObject) | **GET** /api/v1/buckets/{bucket}/objects/statistics/{object} | Get Stat Object
+[**uploadObject**](ObjectApi.md#uploadObject) | **GET** /api/v1/buckets/{bucket}/upload/{object} | Upload Object
 
 
 # **deleteObject**
@@ -21,12 +21,13 @@ Delete an object from storage
 
 ```typescript
 objectStorage.ObjectApi.deleteObject('bucket-example', 'prefix-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    }); 
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  }); 
+
 ```
 
 
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **downloadObject**
-> void downloadObject()
+> DownloadObject200Response downloadObject()
 
 Return presigned url for download object
 
@@ -74,12 +75,13 @@ Return presigned url for download object
 
 ```typescript
 objectStorage.ObjectApi.downloadObject('bucket-example', 'object-example', 'expiry-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -94,7 +96,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**DownloadObject200Response**
 
 ### Authorization
 
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -119,7 +121,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListObjects**
-> void getListObjects()
+> Objects getListObjects()
 
 Return list of objects ( max:50, min:1 )
 
@@ -128,12 +130,13 @@ Return list of objects ( max:50, min:1 )
 
 ```typescript
 objectStorage.ObjectApi.getListObjects('bucket-example', 'prefix-example', '10', '1')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -149,7 +152,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Objects**
 
 ### Authorization
 
@@ -158,7 +161,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -174,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getStatObject**
-> void getStatObject()
+> Stat getStatObject()
 
 
 ### Example
@@ -182,12 +185,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 objectStorage.ObjectApi.getStatObject('bucket-example', 'object-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -201,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Stat**
 
 ### Authorization
 
@@ -210,60 +214,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | successful operation |  -  |
-**400** | Bad Request |  -  |
-**401** | Missing authentication |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**500** | server does not response |  -  |
-
-[[Back to top]](#) [[Back to README]](./../../README.md)
-
-# **uploadObject**
-> void uploadObject()
-
-Return presigned url for download object
-
-### Example
-
-
-```typescript
-objectStorage.ObjectApi.uploadObject('bucket-example', 'object-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **bucket** | [**string**] |  | defaults to undefined
- **object** | [**string**] | specify object path | defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[jwt](../../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -277,3 +228,59 @@ Name | Type | Description  | Notes
 **500** | server does not response |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+# **uploadObject**
+> DownloadObject200Response uploadObject()
+
+Return presigned url for download object
+
+### Example
+
+
+```typescript
+objectStorage.ObjectApi.uploadObject('bucket-example', 'object-example')
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bucket** | [**string**] |  | defaults to undefined
+ **object** | [**string**] | specify object path | defaults to undefined
+
+
+### Return type
+
+**DownloadObject200Response**
+
+### Authorization
+
+[jwt](../../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+**400** | Bad Request |  -  |
+**401** | Missing authentication |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**500** | server does not response |  -  |
+
+[[Back to top]](#) [[Back to README]](./../../README.md)
+
+

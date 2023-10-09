@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**deleteAppByName**](AppsApi.md#deleteAppByName) | **DELETE** /v1/projects/{name} | Delete a app
 [**getAppApplets**](AppsApi.md#getAppApplets) | **GET** /v1/projects/{name}/applets | Get applets of app
 [**getAppByName**](AppsApi.md#getAppByName) | **GET** /v1/projects/{name} | Get details of a project
-[**getAppLogs**](AppsApi.md#getAppLogs) | **GET** /v1/projects/{name}/logs?since&#x3D;{since} | Get logs of app
-[**getAppReleases**](AppsApi.md#getAppReleases) | **GET** /v1/projects/{name}/releases?page&#x3D;{page}&amp;count&#x3D;{count} | Get releases of app
+[**getAppLogs**](AppsApi.md#getAppLogs) | **GET** /v1/projects/{name}/logs | Get logs of app
+[**getAppReleases**](AppsApi.md#getAppReleases) | **GET** /v1/projects/{name}/releases | Get releases of app
 [**getApps**](AppsApi.md#getApps) | **GET** /v1/projects | Get details of all projects
 [**restartApp**](AppsApi.md#restartApp) | **POST** /v1/projects/{name}/actions/restart | To restart a app
 [**turnApp**](AppsApi.md#turnApp) | **POST** /v1/projects/{name}/actions/scale | Turn on or off a app
@@ -36,6 +36,7 @@ paas.AppsApi.changePlan('name-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -93,6 +94,7 @@ paas.AppsApi.createApp(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -137,12 +139,13 @@ delete app that user owns
 
 ```typescript
 paas.AppsApi.deleteAppByName('name-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -187,12 +190,13 @@ get applets of app that user owns
 
 ```typescript
 paas.AppsApi.getAppApplets('name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -236,13 +240,14 @@ get all details of all project that user owns
 
 
 ```typescript
-ipaas.AppsApi.getAppByName('name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+paas.AppsApi.getAppByName('name-example')
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -277,7 +282,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppLogs**
-> void getAppLogs()
+> Array<LogsInner> getAppLogs()
 
 get logs of app that user owns
 
@@ -286,12 +291,13 @@ get logs of app that user owns
 
 ```typescript
 paas.AppsApi.getAppLogs('name-example', 'since-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -305,7 +311,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Array<LogsInner>**
 
 ### Authorization
 
@@ -314,7 +320,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -337,12 +343,13 @@ get releases of app that user owns
 
 ```typescript
 paas.AppsApi.getAppReleases('name-example', 1, 10)
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -389,12 +396,13 @@ get all details of all projects that user owns
 
 ```typescript
 paas.AppsApi.getApps()
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -435,12 +443,13 @@ to restart app that user owns
 
 ```typescript
 paas.AppsApi.restartApp('name-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -494,6 +503,7 @@ paas.AppsApi.turnApp('name-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -527,3 +537,5 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+
