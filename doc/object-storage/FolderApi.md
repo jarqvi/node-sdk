@@ -1,15 +1,15 @@
 # FolderApi
 
-All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://storage-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createFolder**](FolderApi.md#createFolder) | **POST** /buckets/{bucket}/folders | Create Folder
-[**deleteFolder**](FolderApi.md#deleteFolder) | **DELETE** /buckets/{bucket}/folders | Delete Folder
+[**createFolder**](FolderApi.md#createFolder) | **POST** /api/v1/buckets/{bucket}/folders | Create Folder
+[**deleteFolder**](FolderApi.md#deleteFolder) | **DELETE** /api/v1/buckets/{bucket}/folders | Delete Folder
 
 
 # **createFolder**
-> void createFolder(body)
+> CreateFolder201Response createFolder(body)
 
 Create Folder in Bucket
 
@@ -28,6 +28,7 @@ objectStorage.FolderApi.createFolder('bucket-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -41,7 +42,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**CreateFolder201Response**
 
 ### Authorization
 
@@ -49,8 +50,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -75,12 +76,13 @@ Delete Folder in Bucket
 
 ```typescript
 objectStorage.FolderApi.deleteFolder('bucket-example', 'path-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -117,3 +119,5 @@ Name | Type | Description  | Notes
 **500** | server does not response |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

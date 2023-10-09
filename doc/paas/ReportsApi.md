@@ -4,15 +4,15 @@ All URIs are relative to *https://api.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAppCpuReports**](ReportsApi.md#getAppCpuReports) | **GET** /v1/projects/{name}/metrics/cpu?since&#x3D;{since} | Get cpu reports of app
-[**getAppMemoryReports**](ReportsApi.md#getAppMemoryReports) | **GET** /v1/projects/{name}/metrics/memory?since&#x3D;{since} | Get memory reports of app
-[**getAppNetworkReceiveReports**](ReportsApi.md#getAppNetworkReceiveReports) | **GET** /v1/projects/{name}/metrics/network-receive?since&#x3D;{since} | Get network-receive reports of app
+[**getAppCpuReports**](ReportsApi.md#getAppCpuReports) | **GET** /v1/projects/{name}/metrics/cpu | Get cpu reports of app
+[**getAppMemoryReports**](ReportsApi.md#getAppMemoryReports) | **GET** /v1/projects/{name}/metrics/memory | Get memory reports of app
+[**getAppNetworkReceiveReports**](ReportsApi.md#getAppNetworkReceiveReports) | **GET** /v1/projects/{name}/metrics/network-receive | Get network-receive reports of app
 [**getAppSummaryReports**](ReportsApi.md#getAppSummaryReports) | **GET** /v1/projects/{name}/metrics/summary | Get summary reports of app
-[**getNetworkTransmitReports**](ReportsApi.md#getNetworkTransmitReports) | **GET** /v1/projects/{name}/metrics/network-transmit?since&#x3D;{since} | Get network-transmit reports of app
+[**getNetworkTransmitReports**](ReportsApi.md#getNetworkTransmitReports) | **GET** /v1/projects/{name}/metrics/network-transmit | Get network-transmit reports of app
 
 
 # **getAppCpuReports**
-> void getAppCpuReports()
+> Reports getAppCpuReports()
 
 get cpu reports of app that user owns
 
@@ -29,6 +29,7 @@ paas.PReportsApi.getAppCpuReports('name-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -51,7 +52,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppMemoryReports**
-> void getAppMemoryReports()
+> Reports getAppMemoryReports()
 
 get memory reports of app that user owns
 
@@ -82,6 +83,7 @@ paas.PReportsApi.getAppMemoryReports('name-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -95,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -104,7 +106,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppNetworkReceiveReports**
-> void getAppNetworkReceiveReports()
+> Reports getAppNetworkReceiveReports()
 
 get network-receive reports of app that user owns
 
@@ -135,6 +137,7 @@ paas.PReportsApi.getAppNetworkReceiveReports('name-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -148,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -157,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -171,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getAppSummaryReports**
-> void getAppSummaryReports()
+> GetAppSummaryReports200Response getAppSummaryReports()
 
 get summary reports of app that user owns
 
@@ -180,12 +183,13 @@ get summary reports of app that user owns
 
 ```typescript
 paas.PReportsApi.getAppSummaryReports('name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -198,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**GetAppSummaryReports200Response**
 
 ### Authorization
 
@@ -207,7 +211,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -221,7 +225,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getNetworkTransmitReports**
-> void getNetworkTransmitReports()
+> Reports getNetworkTransmitReports()
 
 get network-transmit reports of app that user owns
 
@@ -238,6 +242,7 @@ paas.PReportsApi.getNetworkTransmitReports('name-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -251,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -260,7 +265,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -272,3 +277,5 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

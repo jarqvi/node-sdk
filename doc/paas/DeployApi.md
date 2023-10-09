@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **releasesDeploy**
-> void releasesDeploy(deployReleases)
+> ReleasesDeploy200Response releasesDeploy(deployReleases)
 
 deploy releases that user owns
 
@@ -30,6 +30,7 @@ paas.DeployApi.releasesDeploy('name-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -43,7 +44,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**ReleasesDeploy200Response**
 
 ### Authorization
 
@@ -52,7 +53,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **sourcesDeploy**
-> void sourcesDeploy()
+> SourcesDeploy200Response sourcesDeploy()
 
 deploy sources code that user owns
 
@@ -100,6 +101,7 @@ if (httpFile) {
 } else {
   console.log('HttpFile could not be created.');
 }
+
 ```
 
 
@@ -113,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**SourcesDeploy200Response**
 
 ### Authorization
 
@@ -122,7 +124,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -134,3 +136,5 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

@@ -1,17 +1,17 @@
 # AccountsApi
 
-All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**checkMailAvailable**](AccountsApi.md#checkMailAvailable) | **GET** /mails/{mailServerID}/accounts/{accountName}/check-availability | check if mail account is available
-[**createMailACcount**](AccountsApi.md#createMailACcount) | **POST** /mails/{mailServerID}/accounts | add mail account
-[**deleteMailAccount**](AccountsApi.md#deleteMailAccount) | **DELETE** /mails/{mailServerID}/accounts/{accountID} | delete mail account
-[**getAllMailAccounts**](AccountsApi.md#getAllMailAccounts) | **GET** /mails/{mailServerID}/accounts | get all mail accounts
+[**checkMailAvailable**](AccountsApi.md#checkMailAvailable) | **GET** /api/v1/mails/{mailServerID}/accounts/{accountName}/check-availability | check if mail account is available
+[**createMailACcount**](AccountsApi.md#createMailACcount) | **POST** /api/v1/mails/{mailServerID}/accounts | add mail account
+[**deleteMailAccount**](AccountsApi.md#deleteMailAccount) | **DELETE** /api/v1/mails/{mailServerID}/accounts/{accountID} | delete mail account
+[**getAllMailAccounts**](AccountsApi.md#getAllMailAccounts) | **GET** /api/v1/mails/{mailServerID}/accounts | get all mail accounts
 
 
 # **checkMailAvailable**
-> void checkMailAvailable()
+> PostMails201Response checkMailAvailable()
 
 
 ### Example
@@ -19,12 +19,13 @@ Method | HTTP request | Description
 
 ```typescript
 mail.AccountsApi.checkMailAvailable('mail-server-id', 'account-name')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -38,7 +39,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**PostMails201Response**
 
 ### Authorization
 
@@ -47,7 +48,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -62,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **createMailACcount**
-> void createMailACcount()
+> PostMails201Response createMailACcount()
 
 
 ### Example
@@ -80,6 +81,7 @@ mail.AccountsApi.createMailACcount('mail-server-id', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -93,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**PostMails201Response**
 
 ### Authorization
 
@@ -101,8 +103,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -124,12 +126,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.AccountsApi.deleteMailAccount('mail-server-id', 'account-id')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -174,12 +177,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.AccountsApi.getAllMailAccounts('mail-server-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -201,7 +205,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details

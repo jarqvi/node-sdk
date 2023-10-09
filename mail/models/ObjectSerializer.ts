@@ -26,6 +26,9 @@ export * from '../models/MailEventsData';
 export * from '../models/MailForwards';
 export * from '../models/MailForwardsData';
 export * from '../models/MailForwardsDataForwardersInner';
+export * from '../models/MailInboundRules';
+export * from '../models/MailInboundRulesData';
+export * from '../models/MailInboundRulesDataMailInboundrulesInner';
 export * from '../models/MailMessage';
 export * from '../models/MailMessageStatus';
 export * from '../models/MailMessages';
@@ -39,12 +42,12 @@ export * from '../models/MailServersData';
 export * from '../models/Mode';
 export * from '../models/Model1';
 export * from '../models/Model10';
+export * from '../models/Model11';
 export * from '../models/Model2';
 export * from '../models/Model3';
 export * from '../models/Model4';
 export * from '../models/Model5';
 export * from '../models/Model6';
-export * from '../models/Model7';
 export * from '../models/Model8';
 export * from '../models/Model9';
 export * from '../models/PostMails201Response';
@@ -53,7 +56,6 @@ export * from '../models/RemainingFreeMailsData';
 export * from '../models/SMTP';
 export * from '../models/SMTPData';
 export * from '../models/SMTPDataCredentialsInner';
-export * from '../models/Timeout';
 export * from '../models/TmpAccess';
 export * from '../models/TmpAccessData';
 
@@ -85,6 +87,9 @@ import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
 import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
+import { MailInboundRules } from '../models/MailInboundRules';
+import { MailInboundRulesData } from '../models/MailInboundRulesData';
+import { MailInboundRulesDataMailInboundrulesInner } from '../models/MailInboundRulesDataMailInboundrulesInner';
 import { MailMessage } from '../models/MailMessage';
 import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
@@ -98,13 +103,13 @@ import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1    } from '../models/Model1';
 import { Model10 } from '../models/Model10';
+import { Model11 } from '../models/Model11';
 import { Model2 } from '../models/Model2';
 import { Model3 } from '../models/Model3';
 import { Model4 } from '../models/Model4';
 import { Model5 } from '../models/Model5';
 import { Model6 } from '../models/Model6';
-import { Model7      } from '../models/Model7';
-import { Model8  } from '../models/Model8';
+import { Model8   } from '../models/Model8';
 import { Model9 } from '../models/Model9';
 import { PostMails201Response } from '../models/PostMails201Response';
 import { RemainingFreeMails } from '../models/RemainingFreeMails';
@@ -112,7 +117,6 @@ import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
 import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
-import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
 
@@ -140,7 +144,6 @@ const supportedMediaTypes: { [mediaType: string]: number } = {
 
 let enumsMap: Set<string> = new Set<string>([
     "Mode",
-    "Timeout",
 ]);
 
 let typeMap: {[index: string]: any} = {
@@ -172,6 +175,9 @@ let typeMap: {[index: string]: any} = {
     "MailForwards": MailForwards,
     "MailForwardsData": MailForwardsData,
     "MailForwardsDataForwardersInner": MailForwardsDataForwardersInner,
+    "MailInboundRules": MailInboundRules,
+    "MailInboundRulesData": MailInboundRulesData,
+    "MailInboundRulesDataMailInboundrulesInner": MailInboundRulesDataMailInboundrulesInner,
     "MailMessage": MailMessage,
     "MailMessageStatus": MailMessageStatus,
     "MailMessages": MailMessages,
@@ -184,12 +190,12 @@ let typeMap: {[index: string]: any} = {
     "MailServersData": MailServersData,
     "Model1": Model1,
     "Model10": Model10,
+    "Model11": Model11,
     "Model2": Model2,
     "Model3": Model3,
     "Model4": Model4,
     "Model5": Model5,
     "Model6": Model6,
-    "Model7": Model7,
     "Model8": Model8,
     "Model9": Model9,
     "PostMails201Response": PostMails201Response,

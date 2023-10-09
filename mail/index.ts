@@ -8,5 +8,5 @@ export * from "./servers";
 export { RequiredError } from "./apis/baseapi";
 
 export { PromiseMiddleware as Middleware } from './middleware';
-export { PromiseAccountsApi as AccountsApi,  PromiseAttachmentsApi as AttachmentsApi,  PromiseEventApi as EventApi,  PromiseForwardApi as ForwardApi,  PromiseMailsApi as MailsApi,  PromiseMessagesApi as MessagesApi,  PromiseSmtpApi as SmtpApi } from './types/PromiseAPI';
+export { PromiseAccountsApi as AccountsApi,  PromiseAttachmentsApi as AttachmentsApi,  PromiseEventApi as EventApi,  PromiseForwardApi as ForwardApi,  PromiseInboundrulesApi as InboundrulesApi,  PromiseMailsApi as MailsApi,  PromiseMessagesApi as MessagesApi,  PromiseSmtpApi as SmtpApi } from './types/PromiseAPI';
 

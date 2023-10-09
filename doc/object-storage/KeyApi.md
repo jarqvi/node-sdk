@@ -1,19 +1,19 @@
 # KeyApi
 
-All URIs are relative to *https://storage-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://storage-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createKey**](KeyApi.md#createKey) | **POST** /keys | Create Keys
-[**deleteKey**](KeyApi.md#deleteKey) | **DELETE** /keys/{key} | Delete Key
-[**getKey**](KeyApi.md#getKey) | **GET** /keys/{key} | Get Key
-[**getListKeys**](KeyApi.md#getListKeys) | **GET** /keys | Get List of Keys
-[**revokeSecretKey**](KeyApi.md#revokeSecretKey) | **PATCH** /keys/{key}/revoke | Revoke secret key
-[**updateKey**](KeyApi.md#updateKey) | **PATCH** /keys/{key} | Update key
+[**createKey**](KeyApi.md#createKey) | **POST** /api/v1/keys | Create Keys
+[**deleteKey**](KeyApi.md#deleteKey) | **DELETE** /api/v1/keys/{key} | Delete Key
+[**getKey**](KeyApi.md#getKey) | **GET** /api/v1/keys/{key} | Get Key
+[**getListKeys**](KeyApi.md#getListKeys) | **GET** /api/v1/keys | Get List of Keys
+[**revokeSecretKey**](KeyApi.md#revokeSecretKey) | **PATCH** /api/v1/keys/{key}/revoke | Revoke secret key
+[**updateKey**](KeyApi.md#updateKey) | **PATCH** /api/v1/keys/{key} | Update key
 
 
 # **createKey**
-> void createKey(body)
+> CreateKey201Response createKey(body)
 
 Create access and secret key
 
@@ -35,6 +35,7 @@ objectStorage.KeyApi.createKey(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -47,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**CreateKey201Response**
 
 ### Authorization
 
@@ -55,8 +56,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -80,12 +81,13 @@ Delete access key
 
 ```typescript
 objectStorage.KeyApi.deleteKey('key-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -132,12 +134,13 @@ Get a key
 
 ```typescript
 objectStorage.KeyApi.getKey('key-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -174,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListKeys**
-> void getListKeys()
+> Keys getListKeys()
 
 
 ### Example
@@ -182,12 +185,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 objectStorage.KeyApi.getListKeys()
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -197,7 +201,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**void**
+**Keys**
 
 ### Authorization
 
@@ -206,7 +210,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -221,7 +225,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **revokeSecretKey**
-> void revokeSecretKey()
+> RevokeSecretKey200Response revokeSecretKey()
 
 Revoke secret key
 
@@ -230,12 +234,13 @@ Revoke secret key
 
 ```typescript
 objectStorage.KeyApi.revokeSecretKey('key-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -248,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**RevokeSecretKey200Response**
 
 ### Authorization
 
@@ -257,7 +262,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -273,7 +278,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **updateKey**
-> void updateKey(body)
+> CreateBucket201Response updateKey(body)
 
 Update buckets of key ( redefine )
 
@@ -295,6 +300,7 @@ objectStorage.KeyApi.updateKey('key-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -308,7 +314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**CreateBucket201Response**
 
 ### Authorization
 
@@ -316,8 +322,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -331,3 +337,5 @@ Name | Type | Description  | Notes
 **500** | server does not response |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

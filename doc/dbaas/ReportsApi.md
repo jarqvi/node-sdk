@@ -4,15 +4,15 @@ All URIs are relative to *https://api.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDatabaseCpuReports**](ReportsApi.md#getDatabaseCpuReports) | **GET** /v1/databases/{id}/metrics/cpu?since&#x3D;{since} | Get cpu reports of database
-[**getDatabaseMemoryReports**](ReportsApi.md#getDatabaseMemoryReports) | **GET** /v1/databases/{id}/metrics/memory?since&#x3D;{since} | Get memory reports of database
-[**getDatabaseNetworkReceiveReports**](ReportsApi.md#getDatabaseNetworkReceiveReports) | **GET** /v1/databases/{id}/metrics/network-receive?since&#x3D;{since} | Get network-receive reports of database
-[**getDatabaseNetworkTransmitReports**](ReportsApi.md#getDatabaseNetworkTransmitReports) | **GET** /v1/databases/{id}/metrics/network-transmit?since&#x3D;{since} | Get network-transmit reports of database
+[**getDatabaseCpuReports**](ReportsApi.md#getDatabaseCpuReports) | **GET** /v1/databases/{id}/metrics/cpu | Get cpu reports of database
+[**getDatabaseMemoryReports**](ReportsApi.md#getDatabaseMemoryReports) | **GET** /v1/databases/{id}/metrics/memory | Get memory reports of database
+[**getDatabaseNetworkReceiveReports**](ReportsApi.md#getDatabaseNetworkReceiveReports) | **GET** /v1/databases/{id}/metrics/network-receive | Get network-receive reports of database
+[**getDatabaseNetworkTransmitReports**](ReportsApi.md#getDatabaseNetworkTransmitReports) | **GET** /v1/databases/{id}/metrics/network-transmit | Get network-transmit reports of database
 [**getDatabaseSummaryReports**](ReportsApi.md#getDatabaseSummaryReports) | **GET** /v1/databases/{id}/metrics/summary | Get summary reports of database
 
 
 # **getDatabaseCpuReports**
-> void getDatabaseCpuReports()
+> Reports getDatabaseCpuReports()
 
 get cpu reports of database that user owns
 
@@ -22,13 +22,14 @@ get cpu reports of database that user owns
 ```typescript
 const since = 1696214892; // example
 
-dbaas.DBReportsApi.getDatabaseCpuReports('id-example', since)
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  dbaas.DBReportsApi.getDatabaseCpuReports('id-example', since)
+      .then(res => {
+          console.log(res);
+      })
+      .catch(err => {
+          console.error(err);
+      });
+
 ```
 
 
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -51,7 +52,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -65,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseMemoryReports**
-> void getDatabaseMemoryReports()
+> Reports getDatabaseMemoryReports()
 
 get memory reports of database that user owns
 
@@ -82,6 +83,7 @@ dbaas.DBReportsApi.getDatabaseMemoryReports('id-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -95,7 +97,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -104,7 +106,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseNetworkReceiveReports**
-> void getDatabaseNetworkReceiveReports()
+> Reports getDatabaseNetworkReceiveReports()
 
 get network-receive reports of database that user owns
 
@@ -135,6 +137,7 @@ dbaas.DBReportsApi.getDatabaseNetworkReceiveReports('id-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -148,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -157,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -171,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseNetworkTransmitReports**
-> void getDatabaseNetworkTransmitReports()
+> Reports getDatabaseNetworkTransmitReports()
 
 get network-transmit reports of database that user owns
 
@@ -188,6 +191,7 @@ dbaas.DBReportsApi.getDatabaseNetworkTransmitReports('id-example', since)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -201,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Reports**
 
 ### Authorization
 
@@ -210,7 +214,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -224,7 +228,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDatabaseSummaryReports**
-> void getDatabaseSummaryReports()
+> GetDatabaseSummaryReports200Response getDatabaseSummaryReports()
 
 get summary reports of database that user owns
 
@@ -233,12 +237,13 @@ get summary reports of database that user owns
 
 ```typescript
 dbaas.DBReportsApi.getDatabaseSummaryReports('id-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -251,7 +256,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**GetDatabaseSummaryReports200Response**
 
 ### Authorization
 
@@ -260,7 +265,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details

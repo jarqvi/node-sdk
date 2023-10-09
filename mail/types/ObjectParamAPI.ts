@@ -29,6 +29,9 @@ import { MailEventsData } from '../models/MailEventsData';
 import { MailForwards } from '../models/MailForwards';
 import { MailForwardsData } from '../models/MailForwardsData';
 import { MailForwardsDataForwardersInner } from '../models/MailForwardsDataForwardersInner';
+import { MailInboundRules } from '../models/MailInboundRules';
+import { MailInboundRulesData } from '../models/MailInboundRulesData';
+import { MailInboundRulesDataMailInboundrulesInner } from '../models/MailInboundRulesDataMailInboundrulesInner';
 import { MailMessage } from '../models/MailMessage';
 import { MailMessageStatus } from '../models/MailMessageStatus';
 import { MailMessages } from '../models/MailMessages';
@@ -42,12 +45,12 @@ import { MailServersData } from '../models/MailServersData';
 import { Mode } from '../models/Mode';
 import { Model1 } from '../models/Model1';
 import { Model10 } from '../models/Model10';
+import { Model11 } from '../models/Model11';
 import { Model2 } from '../models/Model2';
 import { Model3 } from '../models/Model3';
 import { Model4 } from '../models/Model4';
 import { Model5 } from '../models/Model5';
 import { Model6 } from '../models/Model6';
-import { Model7 } from '../models/Model7';
 import { Model8 } from '../models/Model8';
 import { Model9 } from '../models/Model9';
 import { PostMails201Response } from '../models/PostMails201Response';
@@ -56,7 +59,6 @@ import { RemainingFreeMailsData } from '../models/RemainingFreeMailsData';
 import { SMTP } from '../models/SMTP';
 import { SMTPData } from '../models/SMTPData';
 import { SMTPDataCredentialsInner } from '../models/SMTPDataCredentialsInner';
-import { Timeout } from '../models/Timeout';
 import { TmpAccess } from '../models/TmpAccess';
 import { TmpAccessData } from '../models/TmpAccessData';
 
@@ -442,23 +444,107 @@ export class ObjectForwardApi {
 
 }
 
-import { ObservableMailsApi } from "./ObservableAPI";
-import { MailsApiRequestFactory, MailsApiResponseProcessor} from "../apis/MailsApi";
+import { ObservableInboundrulesApi } from "./ObservableAPI";
+import { InboundrulesApiRequestFactory, InboundrulesApiResponseProcessor} from "../apis/InboundrulesApi";
 
-export interface MailsApiChangeMailServerModeRequest {
+export interface InboundrulesApiAddInboundRuleRequest {
     /**
      * 
      * @type string
-     * @memberof MailsApichangeMailServerMode
+     * @memberof InboundrulesApiaddInboundRule
      */
     mailServerID: string
     /**
      * 
-     * @type Model8
-     * @memberof MailsApichangeMailServerMode
+     * @type Model11
+     * @memberof InboundrulesApiaddInboundRule
      */
-    body?: Model8
+    model11?: Model11
 }
+
+export interface InboundrulesApiDeleteInboundRuleRequest {
+    /**
+     * 
+     * @type string
+     * @memberof InboundrulesApideleteInboundRule
+     */
+    mailServerID: string
+    /**
+     * 
+     * @type string
+     * @memberof InboundrulesApideleteInboundRule
+     */
+    inboundruleID: string
+}
+
+export interface InboundrulesApiGetAllInboundRulesRequest {
+    /**
+     * 
+     * @type string
+     * @memberof InboundrulesApigetAllInboundRules
+     */
+    mailServerID: string
+}
+
+export class ObjectInboundrulesApi {
+    private api: ObservableInboundrulesApi
+
+    public constructor(configuration: Configuration, requestFactory?: InboundrulesApiRequestFactory, responseProcessor?: InboundrulesApiResponseProcessor) {
+        this.api = new ObservableInboundrulesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * add inbound rule.
+     * @param param the request object
+     */
+    public addInboundRuleWithHttpInfo(param: InboundrulesApiAddInboundRuleRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
+        return this.api.addInboundRuleWithHttpInfo(param.mailServerID, param.model11,  options).toPromise();
+    }
+
+    /**
+     * add inbound rule.
+     * @param param the request object
+     */
+    public addInboundRule(param: InboundrulesApiAddInboundRuleRequest, options?: Configuration): Promise<PostMails201Response> {
+        return this.api.addInboundRule(param.mailServerID, param.model11,  options).toPromise();
+    }
+
+    /**
+     * delete inbound rule.
+     * @param param the request object
+     */
+    public deleteInboundRuleWithHttpInfo(param: InboundrulesApiDeleteInboundRuleRequest, options?: Configuration): Promise<HttpInfo<void>> {
+        return this.api.deleteInboundRuleWithHttpInfo(param.mailServerID, param.inboundruleID,  options).toPromise();
+    }
+
+    /**
+     * delete inbound rule.
+     * @param param the request object
+     */
+    public deleteInboundRule(param: InboundrulesApiDeleteInboundRuleRequest, options?: Configuration): Promise<void> {
+        return this.api.deleteInboundRule(param.mailServerID, param.inboundruleID,  options).toPromise();
+    }
+
+    /**
+     * get all inbound rules.
+     * @param param the request object
+     */
+    public getAllInboundRulesWithHttpInfo(param: InboundrulesApiGetAllInboundRulesRequest, options?: Configuration): Promise<HttpInfo<MailInboundRules>> {
+        return this.api.getAllInboundRulesWithHttpInfo(param.mailServerID,  options).toPromise();
+    }
+
+    /**
+     * get all inbound rules.
+     * @param param the request object
+     */
+    public getAllInboundRules(param: InboundrulesApiGetAllInboundRulesRequest, options?: Configuration): Promise<MailInboundRules> {
+        return this.api.getAllInboundRules(param.mailServerID,  options).toPromise();
+    }
+
+}
+
+import { ObservableMailsApi } from "./ObservableAPI";
+import { MailsApiRequestFactory, MailsApiResponseProcessor} from "../apis/MailsApi";
 
 export interface MailsApiChangeMailServerPlanRequest {
     /**
@@ -500,6 +586,21 @@ export interface MailsApiDeleteMailServerRequest {
      * @memberof MailsApideleteMailServer
      */
     mailServerID: string
+}
+
+export interface MailsApiEditMailServerRequest {
+    /**
+     * 
+     * @type string
+     * @memberof MailsApieditMailServer
+     */
+    mailServerID: string
+    /**
+     * 
+     * @type Model8
+     * @memberof MailsApieditMailServer
+     */
+    body?: Model8
 }
 
 export interface MailsApiGetCountFreeMailsRequest {
@@ -552,22 +653,6 @@ export class ObjectMailsApi {
 
     public constructor(configuration: Configuration, requestFactory?: MailsApiRequestFactory, responseProcessor?: MailsApiResponseProcessor) {
         this.api = new ObservableMailsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * chagen mail server mode
-     * @param param the request object
-     */
-    public changeMailServerModeWithHttpInfo(param: MailsApiChangeMailServerModeRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
-        return this.api.changeMailServerModeWithHttpInfo(param.mailServerID, param.body,  options).toPromise();
-    }
-
-    /**
-     * chagen mail server mode
-     * @param param the request object
-     */
-    public changeMailServerMode(param: MailsApiChangeMailServerModeRequest, options?: Configuration): Promise<PostMails201Response> {
-        return this.api.changeMailServerMode(param.mailServerID, param.body,  options).toPromise();
     }
 
     /**
@@ -632,6 +717,22 @@ export class ObjectMailsApi {
      */
     public deleteMailServer(param: MailsApiDeleteMailServerRequest, options?: Configuration): Promise<void> {
         return this.api.deleteMailServer(param.mailServerID,  options).toPromise();
+    }
+
+    /**
+     * edit mail server
+     * @param param the request object
+     */
+    public editMailServerWithHttpInfo(param: MailsApiEditMailServerRequest, options?: Configuration): Promise<HttpInfo<PostMails201Response>> {
+        return this.api.editMailServerWithHttpInfo(param.mailServerID, param.body,  options).toPromise();
+    }
+
+    /**
+     * edit mail server
+     * @param param the request object
+     */
+    public editMailServer(param: MailsApiEditMailServerRequest, options?: Configuration): Promise<PostMails201Response> {
+        return this.api.editMailServer(param.mailServerID, param.body,  options).toPromise();
     }
 
     /**

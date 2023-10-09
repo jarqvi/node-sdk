@@ -20,12 +20,13 @@ default subdomain that user owns
 
 ```typescript
 paas.SettingsApi.defaultSubdomain('id-example', 'enable') // or 'disable'
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -63,7 +64,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **ipStatic**
-> any ipStatic()
+> IpStatic200Response ipStatic()
 
 ip static that user owns
 
@@ -72,12 +73,13 @@ ip static that user owns
 
 ```typescript
 paas.SettingsApi.ipStatic('id-example', 'enable') // or 'disable'
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -91,7 +93,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+**IpStatic200Response**
 
 ### Authorization
 
@@ -115,7 +117,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **updateEnvs**
-> void updateEnvs(updateEnvs)
+> UpdateEnvs200Response updateEnvs(updateEnvs)
 
 update envs that user owns
 
@@ -140,6 +142,7 @@ paas.SettingsApi.updateEnvs(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -152,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**UpdateEnvs200Response**
 
 ### Authorization
 
@@ -161,7 +164,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -184,12 +187,13 @@ zero downtime that user owns
 
 ```typescript
 paas.SettingsApi.zeroDowntime('id-example', 'enable') // or 'disable'
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -225,3 +229,5 @@ Name | Type | Description  | Notes
 **409** | Conflict |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

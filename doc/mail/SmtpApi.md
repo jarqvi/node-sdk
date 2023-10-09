@@ -1,13 +1,13 @@
 # SmtpApi
 
-All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteSmtpCredential**](SmtpApi.md#deleteSmtpCredential) | **DELETE** /mails/{mailServerID}/smtp-credentials/{username} | delete smtp credential
-[**generateCredentials**](SmtpApi.md#generateCredentials) | **POST** /mails/{mailServerID}/smtp-credentials | generate credentials to connet mail server with SMTP
-[**getCredential**](SmtpApi.md#getCredential) | **GET** /mails/{mailServerID}/smtp-credentials | get credential to connect to mail server with SMTP
-[**revokeCredentials**](SmtpApi.md#revokeCredentials) | **PATCH** /mails/{mailServerID}/smtp-credentials | revoke credentials to connect mail server with SMTP
+[**deleteSmtpCredential**](SmtpApi.md#deleteSmtpCredential) | **DELETE** /api/v1/mails/{mailServerID}/smtp-credentials/{username} | delete smtp credential
+[**generateCredentials**](SmtpApi.md#generateCredentials) | **POST** /api/v1/mails/{mailServerID}/smtp-credentials | generate credentials to connet mail server with SMTP
+[**getCredential**](SmtpApi.md#getCredential) | **GET** /api/v1/mails/{mailServerID}/smtp-credentials | get credential to connect to mail server with SMTP
+[**revokeCredentials**](SmtpApi.md#revokeCredentials) | **PATCH** /api/v1/mails/{mailServerID}/smtp-credentials | revoke credentials to connect mail server with SMTP
 
 
 # **deleteSmtpCredential**
@@ -19,12 +19,13 @@ Method | HTTP request | Description
 
 ```typescript
 mail.SmtpApi.deleteSmtpCredential('mail-server-id', 'username')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -79,6 +80,7 @@ mail.SmtpApi.generateCredentials('mail-server-id', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -100,8 +102,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -124,12 +126,13 @@ Name | Type | Description  | Notes
 
 ```typescript
 mail.SmtpApi.getCredential('mail-server-id')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -151,7 +154,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -183,6 +186,7 @@ mail.SmtpApi.revokeCredentials('mail-server-id', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -204,8 +208,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 
 ### HTTP response details

@@ -1,10 +1,10 @@
 # EventApi
 
-All URIs are relative to *https://mail-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://mail-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllEvents**](EventApi.md#getAllEvents) | **GET** /mails/{mailServerID}/messages/{messageID}/events | get all events for message
+[**getAllEvents**](EventApi.md#getAllEvents) | **GET** /api/v1/mails/{mailServerID}/messages/{messageID}/events | get all events for message
 
 
 # **getAllEvents**
@@ -16,12 +16,13 @@ Method | HTTP request | Description
 
 ```typescript
 mail.EventApi.getAllEvents('mail-server-id', 'message-id', 1, 15)
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -46,7 +47,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: */*
+ - **Accept**: application/json
 
 
 ### HTTP response details

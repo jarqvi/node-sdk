@@ -1,17 +1,17 @@
 # ZoneApi
 
-All URIs are relative to *https://dns-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://dns-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createZone**](ZoneApi.md#createZone) | **POST** /zones | Create Zone
-[**deleteZone**](ZoneApi.md#deleteZone) | **DELETE** /zones/{zone} | Delete Zone
-[**getListZones**](ZoneApi.md#getListZones) | **GET** /zones | List all zones
-[**getZone**](ZoneApi.md#getZone) | **GET** /zones/{zone} | Get Zone
+[**createZone**](ZoneApi.md#createZone) | **POST** /api/v1/zones | Create Zone
+[**deleteZone**](ZoneApi.md#deleteZone) | **DELETE** /api/v1/zones/{zone} | Delete Zone
+[**getListZones**](ZoneApi.md#getListZones) | **GET** /api/v1/zones | List all zones
+[**getZone**](ZoneApi.md#getZone) | **GET** /api/v1/zones/{zone} | Get Zone
 
 
 # **createZone**
-> Zone createZone(zoneStruct)
+> CreateZone createZone(zoneStruct)
 
 creates a new zone on dns server
 
@@ -20,7 +20,7 @@ creates a new zone on dns server
 
 ```typescript
 const body = {
-    name: "name-example",
+  name: "name-example",
 };
 
 dns.ZoneApi.createZone(body)
@@ -30,6 +30,7 @@ dns.ZoneApi.createZone(body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -42,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Zone**
+**CreateZone**
 
 ### Authorization
 
@@ -66,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **deleteZone**
-> void deleteZone()
+> Submitted | void deleteZone()
 
 Deletes this zone, all dns records
 
@@ -75,12 +76,13 @@ Deletes this zone, all dns records
 
 ```typescript
 dns.ZoneApi.deleteZone('zone-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -93,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**Submitted | void**
 
 ### Authorization
 
@@ -102,7 +104,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -116,7 +118,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListZones**
-> Array<Zone> getListZones()
+> Zones getListZones()
 
 list all zones that user owns
 
@@ -125,12 +127,13 @@ list all zones that user owns
 
 ```typescript
 dns.ZoneApi.getListZones()
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -140,7 +143,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**Array<Zone>**
+**Zones**
 
 ### Authorization
 
@@ -160,7 +163,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getZone**
-> Zone getZone()
+> CreateZone getZone()
 
 Get this zone, all dns records
 
@@ -169,12 +172,13 @@ Get this zone, all dns records
 
 ```typescript
 dns.ZoneApi.getZone('name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -182,12 +186,12 @@ dns.ZoneApi.getZone('name-example')
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **zone** | [**string**] | The name of the zone to delete | defaults to undefined
+ **zone** | [**string**] | The name of the zone | defaults to undefined
 
 
 ### Return type
 
-**Zone**
+**CreateZone**
 
 ### Authorization
 
@@ -207,3 +211,5 @@ Name | Type | Description  | Notes
 **404** | Zone does not exists. |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

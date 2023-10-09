@@ -10,36 +10,26 @@
  * Do not edit the class manually.
  */
 
-import { Mode } from '../models/Mode';
 import { HttpFile } from '../http/http';
 
-export class Model8 {
-    'mode': Mode;
-    'inboundSpamThreshold': number;
+export class Model11 {
+    'rule': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "mode",
-            "baseName": "mode",
-            "type": "Mode",
-            "format": ""
-        },
-        {
-            "name": "inboundSpamThreshold",
-            "baseName": "inboundSpamThreshold",
-            "type": "number",
+            "name": "rule",
+            "baseName": "rule",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Model8.attributeTypeMap;
+        return Model11.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-
 

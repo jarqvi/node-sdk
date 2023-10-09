@@ -26,12 +26,13 @@ create backup disk that user owns
 
 ```typescript
 paas.DisksApi.createBackup('id-example', 'name-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -88,6 +89,7 @@ paas.DisksApi.createDisk('name-example', body)
     .catch(err => {
         console.error(err);
     });
+
 ```
 
 
@@ -144,6 +146,7 @@ paas.DisksApi.createFtp('name-example', 'dname-example', body)
   .catch(err => {
     console.error(err);
   })
+
 ```
 
 
@@ -190,12 +193,13 @@ delete a disk that user owns
 
 ```typescript
 paas.DisksApi.deleteDisk('id-example', 'name-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -241,20 +245,14 @@ delete a ftp that user owns
 
 
 ```typescript
-import {  } from '';
-import * as fs from 'fs';
+paas.DisksApi.deleteFtp('fname-example')
+    .then(res => {
+        console.log('Operation successfully');
+    })
+    .catch(err => {
+        console.error(err);
+    });
 
-const configuration = .createConfiguration();
-const apiInstance = new .DisksApi(configuration);
-
-let body:.DisksApiDeleteFtpRequest = {
-  // string | The name of your ftp
-  fname: "fname_example",
-};
-
-apiInstance.deleteFtp(body).then((data:any) => {
-  console.log('API called successfully. Returned data: ' + data);
-}).catch((error:any) => console.error(error));
 ```
 
 
@@ -291,7 +289,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **downloadBackup**
-> void downloadBackup()
+> DownloadBackup200Response downloadBackup()
 
 download backup disk that user owns
 
@@ -300,12 +298,13 @@ download backup disk that user owns
 
 ```typescript
 paas.DisksApi.downloadBackup('id-example', 'dname-example', 'bname_example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -320,7 +319,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**DownloadBackup200Response**
 
 ### Authorization
 
@@ -329,7 +328,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -343,7 +342,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getBackups**
-> void getBackups()
+> GetDiskBackup getBackups()
 
 get backups disk that user owns
 
@@ -352,12 +351,13 @@ get backups disk that user owns
 
 ```typescript
 paas.DisksApi.getBackups('id-example', 'name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**GetDiskBackup**
 
 ### Authorization
 
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -394,7 +394,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getDisks**
-> void getDisks()
+> GetDisks getDisks()
 
 get disks that user owns
 
@@ -403,12 +403,13 @@ get disks that user owns
 
 ```typescript
 paas.DisksApi.getDisks('id-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -421,7 +422,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**GetDisks**
 
 ### Authorization
 
@@ -430,7 +431,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -459,6 +460,7 @@ paas.DisksApi.getFtps('name-example', 'dname-example')
   .catch(err => {
     console.error(err);
   })
+
 ```
 
 
@@ -514,6 +516,7 @@ paas.DisksApi.resizeDisk('name-example', 'dname-example', body)
   .catch(err => {
     console.error(err);
   })
+
 ```
 
 
@@ -549,3 +552,5 @@ Name | Type | Description  | Notes
 **404** | App does not exists. |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

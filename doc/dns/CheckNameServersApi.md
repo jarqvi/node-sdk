@@ -1,10 +1,10 @@
 # CheckNameServersApi
 
-All URIs are relative to *https://dns-service.iran.liara.ir/api/v1*
+All URIs are relative to *https://dns-service.iran.liara.ir*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**checkNameServer**](CheckNameServersApi.md#checkNameServer) | **PUT** /zones/{zone}/check | check nameserver
+[**checkNameServer**](CheckNameServersApi.md#checkNameServer) | **PUT** /api/v1/zones/{zone}/check | check nameserver
 
 
 # **checkNameServer**
@@ -17,12 +17,13 @@ check nameserver of zone
 
 ```typescript
 dns.CheckNameServersApi.checkNameServer('zone-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -58,3 +59,5 @@ Name | Type | Description  | Notes
 **500** | server does not response |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+

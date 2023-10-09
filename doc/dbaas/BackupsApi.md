@@ -19,12 +19,13 @@ backup a database that user owns
 
 ```typescript
 dbaas.BackupsApi.createBackup('id-example')
-    .then(res => {
-        console.log('Operation successfully');
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log('Operation successfully');
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -60,7 +61,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **downloadBackup**
-> void downloadBackup()
+> DownloadBackup200Response downloadBackup()
 
 download a backup that user owns
 
@@ -69,12 +70,13 @@ download a backup that user owns
 
 ```typescript
 dbaas.BackupsApi.downloadBackup('id-example', 'name-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -88,7 +90,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**DownloadBackup200Response**
 
 ### Authorization
 
@@ -97,7 +99,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -111,7 +113,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to README]](./../../README.md)
 
 # **getListBackups**
-> void getListBackups()
+> GetListBackups200Response getListBackups()
 
 get all backups that user owns
 
@@ -120,12 +122,13 @@ get all backups that user owns
 
 ```typescript
 dbaas.BackupsApi.getListBackups('id-example')
-    .then(res => {
-        console.log(res);
-    })
-    .catch(err => {
-        console.error(err);
-    });
+  .then(res => {
+      console.log(res);
+  })
+  .catch(err => {
+      console.error(err);
+  });
+
 ```
 
 
@@ -138,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**void**
+**GetListBackups200Response**
 
 ### Authorization
 
@@ -147,7 +150,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
@@ -159,3 +162,5 @@ Name | Type | Description  | Notes
 **404** | Database not found |  -  |
 
 [[Back to top]](#) [[Back to README]](./../../README.md)
+
+
